@@ -1,0 +1,9 @@
+menu utilizado
+https://styde.net/menu-dinamico-en-laravel/
+
+adminlte utilizado
+https://github.com/jeroennoten/Laravel-AdminLTE
+
+
+utilizar laracrust
+http://laratrust.readthedocs.io/en/4.0/

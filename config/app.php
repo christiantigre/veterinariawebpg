@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //ADMIN-LTE
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+
     ],
 
     /*
