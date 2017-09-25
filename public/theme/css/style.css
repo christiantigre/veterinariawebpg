@@ -364,7 +364,6 @@ body {
     /*rgba(255,255,255,.8)*/
     background-color: #D7C4C0;
 }
-
 #login-dp .help-block {
     font-size: 12px;
 }
@@ -416,11 +415,26 @@ body {
 
 @media(max-width:768px) {
     #login-dp {
-        background-color: inherit;
+        /*background-color: inherit;*/
+        /*background-color: #000;*/
+        -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+    -o-transform: translate(0px, 0px) scale(1, 1);
+    -ms-transform: translate(0px, 0px) scale(1, 1);
+    transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
         color: #fff;
     }
     #login-dp .bottom {
-        background-color: inherit;
+        /*background-color: inherit;*/
+        /*background-color: #000;*/
+        /*===================================================*/
+        -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+    -o-transform: translate(0px, 0px) scale(1, 1);
+    -ms-transform: translate(0px, 0px) scale(1, 1);
+    transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
         border-top: 0 none;
     }
 }
@@ -2317,9 +2331,9 @@ a.btn-social, .btn-social {
 }
 
 .fondo-third {
-    background-color: #FFEAEC
+    background-color: #FFEAEC;
     /*#F59D72*/
-    ;
+    
     /*margin-bottom: 70px;*/
     padding-top: 50px;
     padding-bottom: 50px;
@@ -2464,3 +2478,63 @@ a.btn-social, .btn-social {
 .link-svgline-getintouch p svg.link-svgline-getintouch {
     stroke: #B78500;
 }
+
+
+.licredentials{display:block;}
+ 
+.licredentials li{display: inline-block;
+position: relative;
+z-index:100;}
+ 
+.licredentials li a {font-weight:600;
+text-decoration:none;
+padding:11px;
+display:block;
+/*color:#ffffff;*/
+ 
+-webkit-transition: all 0.2s ease-in-out 0s;
+   -moz-transition: all 0.2s ease-in-out 0s;
+   -o-transition: all 0.2s ease-in-out 0s;
+   -ms-transition: all 0.2s ease-in-out 0s;
+   transition: all 0.2s ease-in-out 0s;
+}
+ 
+.licredentials li a:hover, .licredentials li:hover > a{
+    /*color:#ffffff;*/
+background-color: #E168A2;
+    color: #BFE9EB;
+}
+
+ul.dropdown-cred {
+    list-style-type: none;
+    margin: 5px;
+    padding: 20px;
+        margin-left: auto;  
+    margin-right: auto; 
+}
+.center {
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.pull-left{
+    float: left;
+    left: : 0px;
+}
+.pull-right{
+    float: right;
+    right: 0px;
+}
+li.col a:hover {
+
+background-color: #E168A2;
+-webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+    -o-transform: translate(0px, 0px) scale(1, 1);
+    -ms-transform: translate(0px, 0px) scale(1, 1);
+    transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
+        color: #fff;
+}
+
