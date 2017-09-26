@@ -1,8 +1,9 @@
  <div class="container-fluid top-fluid">
+@foreach($veterinary as $veterinari)
     <div class="col-md-3 text-center colo-fux logo hidden-xs hidden-sm">
         <p class="text-left text-center colo-fux">
             <a href="">
-                <img class="navbar-brand navbar-brand-logo brand-centered" src="theme/images/logo-principal.png"/>
+                <img class="navbar-brand navbar-brand-logo brand-centered" src="{{ asset($veterinari->logo) }}"/>
             </a>
         </p>
     </div>
@@ -11,37 +12,38 @@
             <span class="nav-text">
                 <i aria-hidden="true" class="fa fa-phone">
                 </i>
-                +123 4567 8910
+                + {{ $veterinari->tlf1 }} | + {{ $veterinari->cel1 }}
                 <i aria-hidden="true" class="fa fa-envelope">
                 </i>
-                sumi9xm@gmail.com
+                {{ $veterinari->mail }}
             </span>
         </div>
     </div>
     <div class="col-md-3 text-center colo-fux ico">
         <div class="" id="bs-megadropdown-tabs">
-            <a class="btn-social btn-facebook" href="http://scripteden.com/download/eden-ui/" target="_blank">
+            <a class="btn-social btn-facebook" href="{{ $veterinari->fb }}" target="_blank">
                 <i class="fa fa-facebook">
                 </i>
             </a>
-            <a class="btn-social btn-twitter" href="http://scripteden.com/download/eden-ui/" target="_blank">
+            <a class="btn-social btn-twitter" href="{{ $veterinari->tw }}" target="_blank">
                 <i class="fa fa-twitter">
                 </i>
             </a>
-            <a class="btn-social btn-instagram" href="http://scripteden.com/download/eden-ui/" target="_blank">
+            <a class="btn-social btn-instagram" href="{{ $veterinari->in }}" target="_blank">
                 <i class="fa fa-instagram">
                 </i>
             </a>
-            <a class="btn-social btn-youtube" href="http://scripteden.com/download/eden-ui/" target="_blank">
+            <a class="btn-social btn-youtube" href="{{ $veterinari->yt }}" target="_blank">
                 <i class="fa fa-youtube">
                 </i>
             </a>
-            <a class="btn-social btn-google-plus" href="http://scripteden.com/download/eden-ui/" target="_blank">
+            <a class="btn-social btn-google-plus" href="{{ $veterinari->gg }}" target="_blank">
                 <i class="fa fa-google-plus">
                 </i>
             </a>
         </div>
     </div>
+@endforeach
     <div class="col-md-3 text-center colo-fux ">
         <div class="" id="bs-megadropdown-tabs">
             <ul class="nav navbar-nav navbar-right right ses_cta">
@@ -119,11 +121,17 @@
                     @else
                     <div class="center">
                         <li class="col">
-                          <a href="{{ route('login') }}" class="pull-left"><i class="fa fa-sign-in mr-5"></i>Ingresar</a> 
+                            <a href="{{ url('/login') }}" class="pull-left"> Ingresar </a>
+                        </li>
+                        <li class="col">
+                          <a href="{{ ('register') }}" class="pull-right">Registrarse</a> 
                       </li>
-                      <li class="col">
+                        <!--<li class="col">-->
+                          <!--<a href="{{ route('login') }}" class="pull-left"><i class="fa fa-sign-in mr-5"></i>Ingresar</a> -->
+                      <!--</li>-->
+                      <!--<li class="col">
                           <a href="{{ route('register') }}" class="pull-right">Registrarse</a> 
-                      </li>
+                      </li>-->
                   </div>
                   @endauth
                   @endif

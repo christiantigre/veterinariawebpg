@@ -1,34 +1,38 @@
 <footer class="nb-footer">
+    @foreach($veterinary as $veterinari)
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="about">
-                    <img alt="" class="img-responsive center-block" src="theme/images/logo.png">
+                    <img alt="" class="img-responsive center-block" src="{{ asset($veterinari->logo) }}">
                     <p>
-                        Bootstrap Footer example snippets with CSS, Javascript and HTML. Code example of bootstrap-3 footer using HTML, Javascript, jQuery, and CSS. 5 Beautiful and Responsive Footer Templates. Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.
+
+
+                        {{ $veterinari->description }}
+
                     </p>
                     <div class="social-media">
                         <ul class="list-inline">
                             <li>
-                                <a href="http://www.nextbootstrap.com/" title="">
+                                <a href="{{ $veterinari->fb }}" title="">
                                     <i class="fa fa-facebook">
                                     </i>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.nextbootstrap.com/" title="">
+                                <a href="{{ $veterinari->tw }}" title="">
                                     <i class="fa fa-twitter">
                                     </i>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.nextbootstrap.com/" title="">
+                                <a href="{{ $veterinari->gg }}" title="">
                                     <i class="fa fa-google-plus">
                                     </i>
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.nextbootstrap.com/" title="">
+                                <a href="{{ $veterinari->in }}" title="">
                                     <i class="fa fa-linkedin">
                                     </i>
                                 </a>
@@ -181,4 +185,6 @@
         </div>
     </div>
 </section>
+
+                    @endforeach
 </footer>

@@ -4,6 +4,22 @@ https://styde.net/menu-dinamico-en-laravel/
 adminlte utilizado
 https://github.com/jeroennoten/Laravel-AdminLTE
 
+paqckage for multiauth 
+https://github.com/Hesto/multi-auth
 
 utilizar laracrust
 http://laratrust.readthedocs.io/en/4.0/
+
+utilizat este administrador con admin de users
+https://github.com/jeremykenedy/laravel-auth#installation-instructions
+
+Integración de intervention image
+https://www.1src.com/video/t_lC3EPjjdLL0
+http://image.intervention.io/getting_started/installation
+
+
+php artisan crud:generate Veterinary --fields="name#string; address#text; tlf1#text; tlf2#text; cel1#text; tlf2#text; mail#text; linkweb#text; prop#text; genent#text; area#text; description#text; logo#text; datestart#text; ruc#text; razonsocial#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Socios --fields="names#string; address#text; tlf1#text; tlf2#text; cel1#text; tlf2#text; mail#text; linkweb#text; prop#text; genent#text; area#text; description#text; logo#text; datestart#text; ruc#text; razonsocial#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Veterinary --fields_from_file="Dropbox/webpageveterinaria/public/fields/fieldsveterinary.json" --view-path=admin --controller-namespace=Admin --route-group=admin
