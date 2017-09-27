@@ -26,4 +26,6 @@ hp artisan crud:generate Slider --fields="img#string; title#text; content#text; 
 
 php artisan crud:generate Card --fields="title#string; paragraph#text; subtitle#text; subtitle2#text; subtitle3#text; linkcard#text; img#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Socios --fields="img#string; description#text; name#string; lastname#string; fb#string; tw#string; in#string; gg#string; lk#string; especialitation#string; blog#string; workplace#string" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 php artisan crud:generate Veterinary --fields_from_file="Dropbox/webpageveterinaria/public/fields/fieldsveterinary.json" --view-path=admin --controller-namespace=Admin --route-group=admin

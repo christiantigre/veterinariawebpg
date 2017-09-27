@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
  Route::resource('/veterinary', 'Admin\\VeterinaryController');
  Route::resource('/card', 'Admin\\CardController');
  Route::resource('/slider', 'Admin\\SliderController');
+Route::resource('/socios', 'Admin\\SociosController');
 });
 
 Route::group(['prefix' => 'employee'], function () {
@@ -75,4 +76,3 @@ Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
 
 
 
-Route::resource('admin/card', 'Admin\\CardController');

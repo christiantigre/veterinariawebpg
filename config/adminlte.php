@@ -203,6 +203,11 @@ return [
                     'icon'    => 'minus',
                     'url'  => 'admin/card',
                 ],
+                [
+                    'text' => 'Socios',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/socios',
+                ],
             ],
         ],
     ],
