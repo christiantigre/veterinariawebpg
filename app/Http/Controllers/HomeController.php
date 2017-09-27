@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Veterinary;
+use App\Slider;
 
 class HomeController extends Controller
 {
@@ -24,10 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $veterinary = Veterinary::where('id', 1)
-               ->orderBy('name', 'desc')
-               ->get();
-               return view('web.template.index',compact('veterinary'));
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+               return view('web.template.index',compact('veterinary','slider'));
         /*return view('home');*/
         //return view('web.index');
     }

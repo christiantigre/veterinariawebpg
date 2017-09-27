@@ -82,8 +82,7 @@ class VeterinaryController extends Controller
         return redirect('admin/veterinary');
     }
 
-    public function postSave()
-    {
+    public function postSave(){
     if(!\Input::file("file"))
     {
         return redirect('uploads')->with('error-message', 'File has required field');
@@ -165,7 +164,7 @@ class VeterinaryController extends Controller
         }else{
             $file = Input::file('logo');
             $nombre = $file->getClientOriginalName();
-            $path = public_path('theme/images/'.$nombre);
+            $path = public_path('uploads/logos/'.$nombre);
             $image = Image::make($file->getRealPath());
             $image->save($path);
         }
@@ -183,7 +182,7 @@ class VeterinaryController extends Controller
         $veterinary->gerent = $request->gerent;
         $veterinary->area = $request->area;
         $veterinary->description = $request->description;
-        $veterinary->logo = 'theme/images/'.$nombre;
+        $veterinary->logo = 'uploads/logos/'.$nombre;
         $veterinary->datestart = $request->datestart;
         $veterinary->ruc = $request->ruc;
         $veterinary->razonsocial = $request->razonsocial;

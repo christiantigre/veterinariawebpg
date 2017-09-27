@@ -4,7 +4,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="about">
+                    
+                    @if(!empty($veterinari->logo))
                     <img alt="" class="img-responsive center-block" src="{{ asset($veterinari->logo) }}">
+                @else
+                    <img alt="" class="img-responsive center-block" src="{{ asset('theme/images/log.png') }}"/>
+                @endif
                     <p>
 
 

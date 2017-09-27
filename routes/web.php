@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
 //Route::get('/administracion', 'Admin\AdminController@index')->name('administracion');
 
  Route::resource('/veterinary', 'Admin\\VeterinaryController');
+ Route::resource('/slider', 'Admin\\SliderController');
 });
 
 Route::group(['prefix' => 'employee'], function () {
@@ -70,3 +71,4 @@ Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
   Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
 });
+
