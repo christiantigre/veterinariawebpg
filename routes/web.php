@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
 //Route::get('/administracion', 'Admin\AdminController@index')->name('administracion');
 
  Route::resource('/veterinary', 'Admin\\VeterinaryController');
+ Route::resource('/card', 'Admin\\CardController');
  Route::resource('/slider', 'Admin\\SliderController');
 });
 
@@ -72,3 +73,6 @@ Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
 });
 
+
+
+Route::resource('admin/card', 'Admin\\CardController');

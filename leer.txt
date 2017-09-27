@@ -22,6 +22,8 @@ php artisan crud:generate Veterinary --fields="name#string; address#text; tlf1#t
 
 php artisan crud:generate Slider --fields="img#string; title#text; content#text; linkinfo#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
-php artisan crud:generate Socios --fields="names#string; address#text; tlf1#text; tlf2#text; cel1#text; tlf2#text; mail#text; linkweb#text; prop#text; genent#text; area#text; description#text; logo#text; datestart#text; ruc#text; razonsocial#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
+hp artisan crud:generate Slider --fields="img#string; title#text; content#text; linkinfo#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Card --fields="title#string; paragraph#text; subtitle#text; subtitle2#text; subtitle3#text; linkcard#text; img#text;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 php artisan crud:generate Veterinary --fields_from_file="Dropbox/webpageveterinaria/public/fields/fieldsveterinary.json" --view-path=admin --controller-namespace=Admin --route-group=admin

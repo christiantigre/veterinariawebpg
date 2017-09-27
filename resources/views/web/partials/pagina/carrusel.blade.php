@@ -1,7 +1,9 @@
 <div class="col-md-10 hidden-xs">
             <div class="body">
+                @if(count($slider)>0)
                 <div class="slider-container" id="slider-container">
                     <div class="slider-outer clearfix" id="slider-outer">
+                        
                         @foreach($slider as $slide)
                         <div class="slide clearfix">
                             <div class="slide-thump">
@@ -35,7 +37,8 @@
                                 
                             </div>
                         </div>
-                        @endforeach
+                        
+                @endforeach
                     </div>
                     <div class="slide-controls">
                         <div class="left">
@@ -46,5 +49,8 @@
                         </div>
                     </div>
                 </div>
+                        @else
+                            Slider no configurado
+                        @endif
             </div>
         </div>
