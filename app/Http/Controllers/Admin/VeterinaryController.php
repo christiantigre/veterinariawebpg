@@ -160,7 +160,7 @@ class VeterinaryController extends Controller
     {
         if(!Input::file("logo"))
         {
-            $path="";
+            $nombre="";
         }else{
             $file = Input::file('logo');
             $nombre = $file->getClientOriginalName();
@@ -168,7 +168,32 @@ class VeterinaryController extends Controller
             $image = Image::make($file->getRealPath());
             $image->save($path);
         }
-        $requestData = $request->all();
+        if(!empty($nombre)){
+            $requestData = $request->all();
+        $veterinary = Veterinary::findOrFail($id);
+        $veterinary->name = $request->name;
+        $veterinary->address = $request->address;
+        $veterinary->tlf1 = $request->tlf1;
+        $veterinary->tlf2 = $request->tlf2;
+        $veterinary->cel1 = $request->cel1;
+        $veterinary->cel2 = $request->cel2;
+        $veterinary->mail = $request->mail;
+        $veterinary->linkweb = $request->linkweb;
+        $veterinary->prop = $request->prop;
+        $veterinary->gerent = $request->gerent;
+        $veterinary->area = $request->area;
+        $veterinary->description = $request->description;
+        $veterinary->datestart = $request->datestart;
+        $veterinary->ruc = $request->ruc;
+        $veterinary->razonsocial = $request->razonsocial;
+        $veterinary->fb = $request->fb;
+        $veterinary->tw = $request->tw;
+        $veterinary->in = $request->in;
+        $veterinary->yt = $request->yt;
+        $veterinary->gg = $request->gg;
+        $veterinary->save();
+        }else{
+            $requestData = $request->all();
         $veterinary = Veterinary::findOrFail($id);
         $veterinary->name = $request->name;
         $veterinary->address = $request->address;
@@ -192,6 +217,8 @@ class VeterinaryController extends Controller
         $veterinary->yt = $request->yt;
         $veterinary->gg = $request->gg;
         $veterinary->save();
+        }
+        
         //$veterinary->update($requestData);
 
         Session::flash('flash_message', 'Veterinary updated!');

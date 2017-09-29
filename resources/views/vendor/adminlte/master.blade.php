@@ -28,6 +28,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
+
+    <!-- Select2 -->
+    {!! Html::style('plugins/select2/dist/css/select2.min.css') !!}
+    <!-- Select2 -->
+    {!! Html::script('plugins/select2/dist/js/select2.full.min.js') !!}
     
 
       

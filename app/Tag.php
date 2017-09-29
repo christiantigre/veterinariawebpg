@@ -25,7 +25,7 @@ class Tag extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'visible'];
+    protected $fillable = ['id','tag', 'description', 'visible'];
 
     public function posts()
     {

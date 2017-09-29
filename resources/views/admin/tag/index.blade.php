@@ -36,7 +36,7 @@
                                 @foreach($tag as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->description }}</td><td>{{ $item->visible }}</td>
+                                        <td>{{ $item->tag }}</td><td>{{ $item->description }}</td><td>{{ $item->visible }}</td>
                                         <td>
                                             <a href="{{ url('/admin/tag/' . $item->id) }}" title="View Tag"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/tag/' . $item->id . '/edit') }}" title="Edit Tag"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

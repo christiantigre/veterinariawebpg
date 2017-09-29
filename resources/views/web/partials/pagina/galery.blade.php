@@ -39,14 +39,14 @@
                     @if(count($galleries)>0)
                     @foreach($galleries as $galery)                       
 
-                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#myModal">
+                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#{{ $galery->Category->category }}">
                         <img class="example-image" src="{{ asset($galery->img) }}"/>
                         <div class="title">
                             {{ $galery->content }} {{ $galery->Category->category }}
                         </div>
                     </a> 
                     <!-- Modal -->
-                      <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal fade" id="{{ $galery->Category->category }}" role="dialog">
                         <div class="modal-dialog">                        
                           <!-- Modal content-->
                           <div class="modal-content">

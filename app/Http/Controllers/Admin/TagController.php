@@ -27,7 +27,7 @@ class TagController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $tag = Tag::where('name', 'LIKE', "%$keyword%")
+            $tag = Tag::where('tag', 'LIKE', "%$keyword%")
 				->orWhere('description', 'LIKE', "%$keyword%")
 				->orWhere('visible', 'LIKE', "%$keyword%")
 				->paginate($perPage);
@@ -57,10 +57,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        
         $requestData = $request->all();
-        
-        Tag::create($requestData);
+        //Tag::create($requestData);
+        Tag::create([
+            'tag'=>$request->tag,
+            'description'=>$request->description,
+            'visible'=>$request->visible
+        ]);
 
         Session::flash('flash_message', 'Tag added!');
 
@@ -130,5 +133,10 @@ class TagController extends Controller
         Session::flash('flash_message', 'Tag deleted!');
 
         return redirect('admin/tag');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

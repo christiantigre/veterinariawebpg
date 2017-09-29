@@ -9,7 +9,7 @@
                     <div class="panel-heading">Post {{ $post->id }}</div>
                     <div class="panel-body">
                         @foreach($post->tags as $tag)
-                            <span class="label label-default">{{ $tag->name }}</span>
+                            <span class="label label-default">{{ $tag->tag }}</span>
                         @endforeach
                         <a href="{{ url('/admin/post') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/admin/post/' . $post->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

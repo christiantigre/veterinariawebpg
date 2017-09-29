@@ -104,8 +104,13 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-
-        return view('admin.post.edit', compact('post'));
+        $category = Category::orderBy('id','DESC')->where('visible',1)->pluck('category','id');
+        $tags = Tag::all();
+        $tags2= array();
+        foreach($tags as $tag){
+            $tags2[$tag->id]= $tag->tag;
+        }
+        return view('admin.post.edit', compact('post','category'),array('tags'=>$tags2));
     }
 
     /**
@@ -123,7 +128,11 @@ class PostController extends Controller
         
         $post = Post::findOrFail($id);
         $post->update($requestData);
-
+        if (isset($request->tags)) {
+            $post->tags()->sync($request->tags);            
+        }else{
+            $post->tags()->sync(array());
+        }
         Session::flash('flash_message', 'Post updated!');
 
         return redirect('admin/post');

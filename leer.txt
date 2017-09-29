@@ -61,3 +61,13 @@ https://www.youtube.com/watch?v=Ow82DXUlp8A
 
 crear controlador
 php artisan make:controller Admin/TagController --resource
+
+
+generador de amin de page 
+https://packagist.org/packages/facuz/spcms
+
+paquetes para laravel
+https://laravel-news.com/13-laravel-admin-panel-generators
+
+
+php artisan optimize
