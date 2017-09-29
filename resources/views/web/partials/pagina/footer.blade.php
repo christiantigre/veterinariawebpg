@@ -54,28 +54,28 @@
                 </h2>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             How to Pay
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             FAQ's
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Sitemap
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Delivery Info
@@ -91,35 +91,35 @@
                 </h2>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             About Us
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             FAQ's
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Sell Your Items
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Contact Us
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             RSS
@@ -135,28 +135,28 @@
                 </h2>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Terms Of Use
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Privacy Policy
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Return / Refund Policy
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.nextbootstrap.com/" title="">
+                        <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
                             Store Locations

@@ -1,329 +1,195 @@
 
-
-
-<div class="container-fluid fondo-second">
-    <div class="row">
-        <div class="col-xs-12 text-center clearfix">
-            <div class="sixteen columns">
-                <div class="sub-text link-svgline">
-                    <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
-                        We believe
-                        <svg class="link-svgline">
-                            <use xlink:href="#svg_line">
-                            </use>
-                        </svg>
-                    </a>
-                    in coming up with original ideas and turning them into digital work that is both
-                    <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
-                        innovative and measurable.
-                        <svg class="link-svgline">
-                            <use xlink:href="#svg_line">
-                            </use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <p>
-                This is my attempt to make a wonderful snippet posted by
-                <a href="" target="_blank">
-                    maridlcrmn
-                </a>
-                a little more responsive. You can find the orginal
-                <a href="" target="_parent">
-                    here
-                </a>
-            </p>
+<div class="container-fluid fondo-quint">
+    <div class="sixteen columns">
+        <div class="sub-text link-svgline">
+            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
+                We believe
+                <svg class="link-svgline">
+                    <use xlink:href="#svg_line">
+                    </use>
+                </svg>
+            </a>
+            in coming up with original ideas and turning them into digital work that is both
+            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
+                innovative and measurable.
+                <svg class="link-svgline">
+                    <use xlink:href="#svg_line">
+                    </use>
+                </svg>
+            </a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center" role="tabpanel">
-            <div class="col-xs-4 col-sm-12">
-                <!-- Nav tabs -->
-                <!--imagenes de 300x300-->
-                <ul class="nav nav-justified" id="nav-tabs" role="tablist">
-                    <li class="active" role="presentation">
-                        <a aria-controls="dustin" data-toggle="tab" href="#dustin" role="tab">
-                            <img class="img-circle" src="theme/images/socios/soc1.jpeg"/>
-                            <span class="quote">
-                                <i class="fa fa-quote-left">
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="" role="presentation">
-                        <a aria-controls="daksh" data-toggle="tab" href="#daksh" role="tab">
-                            <img class="img-circle" src="theme/images/socios/soc2.jpeg"/>
-                            <span class="quote">
-                                <i class="fa fa-quote-left">
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="" role="presentation">
-                        <a aria-controls="anna" data-toggle="tab" href="#anna" role="tab">
-                            <img class="img-circle" src="theme/images/socios/soc3.jpeg"/>
-                            <span class="quote">
-                                <i class="fa fa-quote-left">
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="" role="presentation">
-                        <a aria-controls="wafer" data-toggle="tab" href="#wafer" role="tab">
-                            <img class="img-circle" src="theme/images/socios/soc4.png"/>
-                            <span class="quote">
-                                <i class="fa fa-quote-left">
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="" role="presentation">
-                        <a aria-controls="wafer" data-toggle="tab" href="#wafer" role="tab">
-                            <img class="img-circle" src="theme/images/socios/soc5.jpg"/>
-                            <span class="quote">
-                                <i class="fa fa-quote-left">
-                                </i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-8 col-sm-12">
-                <!-- Tab panes -->
-                <div class="tab-content" id="tabs-collapse">
-                    <div class="tab-pane fade in active" id="dustin" role="tabpanel">
-                        <div class="tab-inner">
-                            <p class="lead">
-                                Etiam tincidunt enim et pretium efficitur. Donec auctor leo sollicitudin eros iaculis sollicitudin.
-                            </p>
-                            <hr>
-                            <p>
-                                <strong class="text-uppercase">
-                                    Dustin Lamont
-                                </strong>
-                            </p>
-                            <p>
-                                <em class="text-capitalize">
-                                    Senior web developer
-                                </em>
-                                at
-                                <a href="#">
-                                    Apple
-                                </a>
-                            </p>
-                        </hr>
+    <div class="row ">
+        <div class="col-md-12 gal-container">
+            <div class="work">
+                <div class="category-buttons">
+                    <a class="active all" data-group="all" href="#">
+                        All
+                    </a>
+                    <a data-group="city" href="#">
+                        city
+                    </a>
+                    <a data-group="nature" href="#">
+                        nature
+                    </a>
+                    <a data-group="food" href="#">
+                        food
+                    </a>
+                    <a data-group="sports" href="#">
+                        sports
+                    </a>
+                    <a data-group="people" href="#">
+                        people
+                    </a>
+                </div>
+                <div class="grid gal-item" id="grid">
+                    <!--<a class="example-image-link card" href="{{ asset('theme/images/galery/city.jpeg') }}" data-lightbox="example-set" data-toggle="modal" data-target="#4" data-groups="city," data-title="Click the right half of the image to move forward.">-->
+                    <a class="card" data-groups="city," href="#" data-toggle="modal" data-target="#myModal">
+                        <img class="example-image" src="{{ asset('theme/images/galery/city.jpeg') }}"/>
+                        <div class="title">
+                            Project Title test me more please do this for me please dood.
                         </div>
-                        <div class="col-md-12">
-                            <ul class="social-network social-circle">
-                                <li>
-                                    <a class="icoLinkedin" href="#" title="LikedIn">
-                                        <i class="fa fa-linkedin">
-                                        </i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="icoFacebook" href="#" title="Facebook">
-                                        <i class="fa fa-facebook">
-                                        </i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="icoTwitter" href="#" title="Twitter">
-                                        <i class="fa fa-twitter">
-                                        </i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="icoGoogle" href="#" title="Google +">
-                                        <i class="fa fa-google-plus">
-                                        </i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="icoRss" href="#" title="Instagram">
-                                        <i class="fa fa-instagram">
-                                        </i>
-                                    </a>
-                                </li>
-                            </ul>
+                    </a> 
+                    <!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                              <div class="modal-body">
+                                <img src="{{ asset('theme/images/galery/city.jpeg') }}" style="width: 100%; height: auto;">
+                              </div>
+                                <div class="col-md-12 description">
+                                  <h4>This is the second one on my Gallery</h4>
+                                </div>
+                            </div>                          
                         </div>
+                      </div>   
+                      <!--fin modal-->
+
+
+
+                    <a class="card" data-groups="nature," href="#">
+                        <img src="{{ asset('theme/images/galery/nature.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="food," href="#">
+                        <img src="{{ asset('theme/images/galery/food.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="sports,people," href="#">
+                        <img src="{{ asset('theme/images/galery/sports.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="people,food," href="#">
+                        <img src="{{ asset('theme/images/galery/people.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="city,people," href="#">
+                        <img src="{{ asset('theme/images/galery/2.jpeg') }}"/>
+                        <div class="title">
+                            Project Title wow this is so sext
+                        </div>
+                    </a>
+                    <a class="card" data-groups="nature,food," href="#">
+                        <img src="{{ asset('theme/images/galery/3.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="food,people," href="#">
+                        <img src="{{ asset('theme/images/galery/4.jpeg') }}"/>
+                        <div class="title">
+                            Project Title test me please dood wow this could be better
+                        </div>
+                    </a>
+                    <a class="card" data-groups="sports,people," href="#">
+                        <img src="{{ asset('theme/images/galery/5.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <a class="card" data-groups="people,food" href="#">
+                        <img src="{{ asset('theme/images/galery/6.jpeg') }}"/>
+                        <div class="title">
+                            Project Title
+                        </div>
+                    </a>
+                    <div class="guide">
                     </div>
-
-
-                    
-                <div class="tab-pane fade" id="daksh" role="tabpanel">
-                    <div class="tab-inner">
-                        <p class="lead">
-                            Suspendisse dictum gravida est, nec consequat tortor venenatis a. Suspendisse vitae venenatis sapien.
-                        </p>
-                        <hr>
-                        <p>
-                            <strong class="text-uppercase">
-                                Daksh Bhagya
-                            </strong>
-                        </p>
-                        <p>
-                            <em class="text-capitalize">
-                                UX designer
-                            </em>
-                            at
-                            <a href="#">
-                                Google
-                            </a>
-                        </p>
-                    </hr>
-                </div>
-                <div class="col-md-12">
-                    <ul class="social-network social-circle">
-                        <li>
-                            <a class="icoRss" href="#" title="Rss">
-                                <i class="fa fa-rss">
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="icoFacebook" href="#" title="Facebook">
-                                <i class="fa fa-facebook">
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="icoTwitter" href="#" title="Twitter">
-                                <i class="fa fa-twitter">
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="icoGoogle" href="#" title="Google +">
-                                <i class="fa fa-google-plus">
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="icoLinkedin" href="#" title="Linkedin">
-                                <i class="fa fa-linkedin">
-                                </i>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
-            <div class="tab-pane fade" id="anna" role="tabpanel">
-                <div class="tab-inner">
-                    <p class="lead">
-                        Nullam suscipit ante ac arcu placerat, nec sagittis quam volutpat. Vestibulum aliquam facilisis velit ut ultrices.
-                    </p>
-                    <hr>
-                    <p>
-                        <strong class="text-uppercase">
-                            Anna Pickard
-                        </strong>
-                    </p>
-                    <p>
-                        <em class="text-capitalize">
-                            Master web developer
-                        </em>
-                        at
-                        <a href="#">
-                            Intel
-                        </a>
-                    </p>
-                </hr>
-            </div>
-            <div class="col-md-12">
-                <ul class="social-network social-circle">
-                    <li>
-                        <a class="icoRss" href="#" title="Rss">
-                            <i class="fa fa-rss">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="icoFacebook" href="#" title="Facebook">
-                            <i class="fa fa-facebook">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="icoTwitter" href="#" title="Twitter">
-                            <i class="fa fa-twitter">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="icoGoogle" href="#" title="Google +">
-                            <i class="fa fa-google-plus">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="icoLinkedin" href="#" title="Linkedin">
-                            <i class="fa fa-linkedin">
-                            </i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="wafer" role="tabpanel">
-            <div class="tab-inner">
-                <p class="lead">
-                    Fusce erat libero, fermentum quis sollicitudin id, venenatis nec felis. Morbi sollicitudin gravida finibus.
-                </p>
-                <hr>
-                <p>
-                    <strong class="text-uppercase">
-                        Wafer Baby
-                    </strong>
-                </p>
-                <p>
-                    <em class="text-capitalize">
-                        Web designer
-                    </em>
-                    at
-                    <a href="#">
-                        Microsoft
-                    </a>
-                </p>
-            </hr>
-        </div>
-        <div class="col-md-12">
-            <ul class="social-network social-circle">
-                <li>
-                    <a class="icoRss" href="#" title="Rss">
-                        <i class="fa fa-rss">
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a class="icoFacebook" href="#" title="Facebook">
-                        <i class="fa fa-facebook">
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a class="icoTwitter" href="#" title="Twitter">
-                        <i class="fa fa-twitter">
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a class="icoGoogle" href="#" title="Google +">
-                        <i class="fa fa-google-plus">
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a class="icoLinkedin" href="#" title="Linkedin">
-                        <i class="fa fa-linkedin">
-                        </i>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
+
+===================================================================================
+<div class="container-fluid fondo-quint">
+    <div class="sixteen columns">
+        <div class="sub-text link-svgline">
+            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
+                We believe
+                <svg class="link-svgline">
+                    <use xlink:href="#svg_line">
+                    </use>
+                </svg>
+            </a>
+            in coming up with original ideas and turning them into digital work that is both
+            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
+                innovative and measurable.
+                <svg class="link-svgline">
+                    <use xlink:href="#svg_line">
+                    </use>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12 gal-container">
+            <div class="work">
+                @if(count($categories)>0)
+                <div class="category-buttons">
+                    @foreach($categories as $category)
+                        @if(($category->id)==1)
+                            <a class="active all" data-group="all" href="#">
+                                Todas
+                            </a>
+                        @else
+                            <a data-group="{{ $category->id }}" href="#">
+                                {{ $category->category }} {{ $category->id }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+                @else
+                    <div class="category-buttons">
+                        Sección Categorias no configurado
+                    </div>
+                @endif
+                <div class="grid gal-item" id="grid">
+                    @if(count($galleries)>0)
+                     @foreach($galleries as $galery)
+                    <a class="card" data-groups="{{ $galery->category_id }}," href="#" data-toggle="modal" data-target="#{{ $galery->id }}">
+                        <img class="example-image" src="{{ asset($galery->img) }}"/>
+                        <div class="title">
+                            {{ $galery->content }}{{ $galery->category_id }}
+                        </div>
+                    </a> 
+                    
+                      @endforeach
+                    <div class="guide">
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

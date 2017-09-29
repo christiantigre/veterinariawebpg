@@ -22,31 +22,27 @@
         <div class="col-md-12 gal-container">
             <div class="work">
                 <div class="category-buttons">
-                    <a class="active all" data-group="all" href="#">
-                        All
-                    </a>
-                    <a data-group="city" href="#">
-                        city
-                    </a>
-                    <a data-group="nature" href="#">
-                        nature
-                    </a>
-                    <a data-group="food" href="#">
-                        food
-                    </a>
-                    <a data-group="sports" href="#">
-                        sports
-                    </a>
-                    <a data-group="people" href="#">
-                        people
-                    </a>
+                    @if(count($categories)>0)
+                            <a class="active all" data-group="all" href="#">
+                                Todas
+                            </a>
+                    @foreach($categories as $category)                       
+                            <a data-group="{{ $category->category }}" href="#">
+                                {{ $category->category }}
+                            </a>
+                    @endforeach
+                    @else
+                        No configurado la sección de categorias
+                    @endif
                 </div>
                 <div class="grid gal-item" id="grid">
-                    <!--<a class="example-image-link card" href="{{ asset('theme/images/galery/city.jpeg') }}" data-lightbox="example-set" data-toggle="modal" data-target="#4" data-groups="city," data-title="Click the right half of the image to move forward.">-->
-                    <a class="card" data-groups="city," href="#" data-toggle="modal" data-target="#myModal">
-                        <img class="example-image" src="{{ asset('theme/images/galery/city.jpeg') }}"/>
+                    @if(count($galleries)>0)
+                    @foreach($galleries as $galery)                       
+
+                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#myModal">
+                        <img class="example-image" src="{{ asset($galery->img) }}"/>
                         <div class="title">
-                            Project Title test me more please do this for me please dood.
+                            {{ $galery->content }} {{ $galery->Category->category }}
                         </div>
                     </a> 
                     <!-- Modal -->
@@ -56,72 +52,22 @@
                           <div class="modal-content">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                               <div class="modal-body">
-                                <img src="{{ asset('theme/images/galery/city.jpeg') }}" style="width: 100%; height: auto;">
+                                <img src="{{ asset($galery->img) }}" style="width: 100%; height: auto;">
                               </div>
                                 <div class="col-md-12 description">
-                                  <h4>This is the second one on my Gallery</h4>
+                                  <h4>{{ $galery->content }}</h4>
                                 </div>
                             </div>                          
                         </div>
                       </div>   
                       <!--fin modal-->
 
+                    @endforeach
+                    @else
+                        No configurado la sección de galegia
+                    @endif
 
 
-                    <a class="card" data-groups="nature," href="#">
-                        <img src="{{ asset('theme/images/galery/nature.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="food," href="#">
-                        <img src="{{ asset('theme/images/galery/food.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="sports,people," href="#">
-                        <img src="{{ asset('theme/images/galery/sports.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="people,food," href="#">
-                        <img src="{{ asset('theme/images/galery/people.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="city,people," href="#">
-                        <img src="{{ asset('theme/images/galery/2.jpeg') }}"/>
-                        <div class="title">
-                            Project Title wow this is so sext
-                        </div>
-                    </a>
-                    <a class="card" data-groups="nature,food," href="#">
-                        <img src="{{ asset('theme/images/galery/3.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="food,people," href="#">
-                        <img src="{{ asset('theme/images/galery/4.jpeg') }}"/>
-                        <div class="title">
-                            Project Title test me please dood wow this could be better
-                        </div>
-                    </a>
-                    <a class="card" data-groups="sports,people," href="#">
-                        <img src="{{ asset('theme/images/galery/5.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="people,food" href="#">
-                        <img src="{{ asset('theme/images/galery/6.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
                     <div class="guide">
                     </div>
                 </div>

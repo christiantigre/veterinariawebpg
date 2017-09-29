@@ -20,6 +20,7 @@ class TagController extends Controller
     {
         $this->middleware('admin', ['except' => 'logout']);
     }
+    
     public function index(Request $request)
     {
         $keyword = $request->get('search');

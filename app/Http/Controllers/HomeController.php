@@ -9,6 +9,8 @@ use App\Card;
 use App\Socio;
 use App\Note;
 use App\Notice;
+use App\Gallery;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -35,12 +37,10 @@ class HomeController extends Controller
         $socios = Socio::orderBy('id', 'desc')->get();
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
-
-            $video = "video/os_simpsons_s25e22_720p.mp4";
-    $mime = "video/mp4";
-    $title = "Os Simpsons";
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
     
-               return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices'));
+        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories'));
         /*return view('home');*/
         //return view('web.index');
     }

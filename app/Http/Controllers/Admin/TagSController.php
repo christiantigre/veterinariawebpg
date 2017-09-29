@@ -16,6 +16,7 @@ class TagController extends Controller
     {
         $this->middleware('admin', ['except' => 'logout']);
     }
+    
     public function index()
     {
         //

@@ -13,7 +13,7 @@
 </div><div class="form-group {{ $errors->has('img') ? 'has-error' : ''}}">
     {!! Form::label('img', 'Img', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('img', null, ['class' => 'form-control']) !!}
+        {!! Form::File('img', null, ['class' => 'form-control','accept'=>'image/*']) !!}
         {!! $errors->first('img', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">

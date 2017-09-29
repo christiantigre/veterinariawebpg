@@ -9,6 +9,8 @@ use App\Gallery;
 use App\Category;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\Input;
+use Image;
 
 class GalleryController extends Controller
 {
@@ -17,6 +19,11 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -45,7 +52,7 @@ class GalleryController extends Controller
     public function create()
     {
 
-        $category = Category::orderBy('id','DESC')->pluck('category','id');
+        $category = Category::orderBy('id','DESC')->where('visible',1)->pluck('category','id');
         return view('admin.gallery.create',compact('category'));
     }
 
@@ -58,12 +65,31 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Input::file("img"))
+        {
+            $path="";
+        }else{
+            $file = Input::file('img');
+            $nombre = $file->getClientOriginalName();
+            $path = public_path('uploads/notices/'.$nombre);
+            $image = Image::make($file->getRealPath());
+            $image->save($path);
+        }
+
+
         $this->validate($request, [
 			'title' => 'required|max:30'
 		]);
         $requestData = $request->all();
         
-        Gallery::create($requestData);
+        Gallery::create([
+            'title'=>$request->title,
+            'content'=>$request->content,
+            'img'=>'uploads/galery/'.$nombre,
+            'link'=>$request->link,
+            'visible'=>$request->visible,
+            'category_id'=>$request->category_id
+        ]);
 
         Session::flash('flash_message', 'Gallery added!');
 
@@ -94,7 +120,7 @@ class GalleryController extends Controller
     public function edit($id)
     {
         $gallery = Gallery::findOrFail($id);
-        $category = Category::orderBy('id','DESC')->pluck('category','id');
+        $category = Category::orderBy('id','DESC')->where('visible',1)->pluck('category','id');
 
         return view('admin.gallery.edit', compact('gallery','category'));
     }
@@ -109,13 +135,47 @@ class GalleryController extends Controller
      */
     public function update($id, Request $request)
     {
+        if(!Input::file("img"))
+        {
+            $nombre="";
+        }else{
+            $file = Input::file('img');
+            $nombre = $file->getClientOriginalName();
+            $path = public_path('uploads/galery/'.$nombre);
+            $image = Image::make($file->getRealPath());
+            $image->save($path);
+        }
+
         $this->validate($request, [
 			'title' => 'required|max:30'
 		]);
         $requestData = $request->all();
         
         $gallery = Gallery::findOrFail($id);
-        $gallery->update($requestData);
+
+        if(!empty($nombre)){
+            $gallery->update(
+            [
+                'title'=>$request->title,
+                'content'=>$request->content,
+                'img'=>'uploads/galery/'.$nombre,
+                'link'=>$request->link,
+                'visible'=>$request->visible,
+                'category_id'=>$request->category_id
+            ]
+        );
+        }else{
+            $gallery->update(
+            [
+                'title'=>$request->title,
+                'content'=>$request->content,
+                'link'=>$request->link,
+                'visible'=>$request->visible,
+                'category_id'=>$request->category_id
+            ]
+        );
+        }
+        
 
         Session::flash('flash_message', 'Gallery updated!');
 
