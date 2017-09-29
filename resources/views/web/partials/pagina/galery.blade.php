@@ -18,8 +18,8 @@
             </a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row ">
+        <div class="col-md-12 gal-container">
             <div class="work">
                 <div class="category-buttons">
                     <a class="active all" data-group="all" href="#">
@@ -41,13 +41,33 @@
                         people
                     </a>
                 </div>
-                <div class="grid" id="grid">
-                    <a class="card" data-groups="city," href="#">
-                        <img src="{{ asset('theme/images/galery/city.jpeg') }}"/>
+                <div class="grid gal-item" id="grid">
+                    <!--<a class="example-image-link card" href="{{ asset('theme/images/galery/city.jpeg') }}" data-lightbox="example-set" data-toggle="modal" data-target="#4" data-groups="city," data-title="Click the right half of the image to move forward.">-->
+                    <a class="card" data-groups="city," href="#" data-toggle="modal" data-target="#myModal">
+                        <img class="example-image" src="{{ asset('theme/images/galery/city.jpeg') }}"/>
                         <div class="title">
                             Project Title test me more please do this for me please dood.
                         </div>
-                    </a>
+                    </a> 
+                    <!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                              <div class="modal-body">
+                                <img src="{{ asset('theme/images/galery/city.jpeg') }}" style="width: 100%; height: auto;">
+                              </div>
+                                <div class="col-md-12 description">
+                                  <h4>This is the second one on my Gallery</h4>
+                                </div>
+                            </div>                          
+                        </div>
+                      </div>   
+                      <!--fin modal-->
+
+
+
                     <a class="card" data-groups="nature," href="#">
                         <img src="{{ asset('theme/images/galery/nature.jpeg') }}"/>
                         <div class="title">

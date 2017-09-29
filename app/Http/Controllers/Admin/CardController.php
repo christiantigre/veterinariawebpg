@@ -16,6 +16,10 @@ class CardController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     public function index(Request $request)
     {
         $keyword = $request->get('search');

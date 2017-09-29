@@ -24,13 +24,15 @@
      <div class="row">
         <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-8">
             <ul class="event-list">
+                @if(count($notices)>0)
+                @foreach($notices as $notice)
                 <li>
                     <time datetime="2014-07-20">
                         <span class="day">
-                            4
+                            {{ $notice->day }}
                         </span>
                         <span class="month">
-                            Jul
+                            {{ $notice->month }}
                         </span>
                         <span class="year">
                             2014
@@ -39,14 +41,43 @@
                             ALL DAY
                         </span>
                     </time>
-                    <img alt="Independence Day" src="theme/images/notice/not1.jpg"/>
+                    <img alt="Independence Day" src="{{ asset($notice->img) }}"/>
                     <div class="info">
                         <h2 class="title">
-                            Independence Day
+                            {{ $notice->title }}
                         </h2>
                         <p class="desc">
-                            United States Holiday
+                            {{ $notice->content }}
                         </p>
+                        <ul>
+                            <li style="width:20%;">
+                                <a href="{{ $notice->link }}">
+                                    <span class="fa fa-globe">
+                                    </span>
+                                    Website
+                                </a>
+                            </li>
+                            <li style="width:20%;">
+                                <span class="fa fa-money">
+                                </span>
+                                $39.99
+                            </li>
+                            <li style="width:20%;">
+                                1
+                                <span class="glyphicon glyphicon-ok">
+                                </span>
+                            </li>
+                            <li style="width:20%;">
+                                3
+                                <span class="fa fa-question">
+                                </span>
+                            </li>
+                            <li style="width:20%;">
+                                103
+                                <span class="fa fa-envelope">
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                     <div class="social">
                         <ul>
@@ -71,7 +102,13 @@
                         </ul>
                     </div>
                 </li>
+                @endforeach
+                @else
                 <li>
+                    No se a configurado la sección de noticias
+                </li>
+                @endif
+                <!--<li>
                     <time datetime="2014-07-20 0000">
                         <span class="day">
                             8
@@ -253,7 +290,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

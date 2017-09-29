@@ -44,6 +44,14 @@ Route::group(['prefix' => 'admin'], function () {
  Route::resource('/card', 'Admin\\CardController');
  Route::resource('/slider', 'Admin\\SliderController');
 Route::resource('/socios', 'Admin\\SociosController');
+Route::resource('/notes', 'Admin\\NotesController');
+Route::resource('/notices', 'Admin\\NoticesController');
+//Route::resource('/gallery', 'Admin\\GalleryController');
+Route::resource('/category', 'Admin\\CategoryController');
+Route::resource('/subcategory', 'Admin\\SubcategoryController');
+Route::resource('/gallery', 'Admin\\GalleryController');
+Route::resource('/tag', 'Admin\\TagController');
+Route::resource('/post', 'Admin\\PostController');
 });
 
 Route::group(['prefix' => 'employee'], function () {
@@ -73,6 +81,12 @@ Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
   Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
 });
+
+
+
+
+
+
 
 
 

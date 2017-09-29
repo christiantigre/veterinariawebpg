@@ -1,0 +1,35 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Gallery extends Model
+{
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'galleries';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'id';
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'content', 'img', 'link', 'visible', 'category_id'];
+
+    public function Category()
+	{
+		return $this->belongsTo('App\Category');
+	}
+	
+}

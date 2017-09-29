@@ -28,4 +28,36 @@ php artisan crud:generate Card --fields="title#string; paragraph#text; subtitle#
 
 php artisan crud:generate Socios --fields="img#string; description#text; name#string; lastname#string; fb#string; tw#string; in#string; gg#string; lk#string; especialitation#string; blog#string; workplace#string" --view-path=admin --controller-namespace=Admin --route-group=admin
 
-php artisan crud:generate Veterinary --fields_from_file="Dropbox/webpageveterinaria/public/fields/fieldsveterinary.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+php artisan crud:generate Notes --fields="title#string; description#text; link#string; name#string;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+
+php artisan crud:generate Notices --fields="title#string; content#text; link#string; img#string; day#string; month#string; compfb#string; comptw#string; compgg#string; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Gallery --fields="title#string; content#text; img#string; link#string; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Category --fields="category#string; description#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Tag --fields="name#string; description#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Post --fields="title#string; body#text; slug#text; category_id#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+generar crud desde json
+php artisan crud:generate Subcategory --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/subcategory.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+
+
+
+laravel chat
+https://www.youtube.com/watch?v=5_VlSC5eXRU
+
+editor en laeavel 
+https://www.youtube.com/watch?v=Y-SvIFS4J8o
+
+subir video laravel
+https://www.youtube.com/watch?v=oL-JMG043qI
+
+laravel multi categorias
+https://www.youtube.com/watch?v=Ow82DXUlp8A
+
+crear controlador
+php artisan make:controller Admin/TagController --resource

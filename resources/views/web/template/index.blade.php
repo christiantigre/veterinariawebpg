@@ -122,8 +122,6 @@
 
 
 
-
-
 <!--***************************FOOTER*********************************-->
     @include('web.partials.pagina.footer')    
 <!--***************************FIN FOOTER*********************************-->
@@ -145,6 +143,8 @@
             <script src="theme/assets/js/ie10-viewport-bug-workaround.js">
             </script>
             <script src="theme/js/jquery-3.2.1.js" type="text/javascript">
+            </script>
+            <script src="theme/js/jquery2-1-4.js" type="text/javascript">
             </script>
             <script src="theme/js/main.js" type="text/javascript">
             </script>

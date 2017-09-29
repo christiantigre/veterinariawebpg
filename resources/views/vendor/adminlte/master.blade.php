@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
-
+    <!-- Select tags -->
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/select2.min.css') }}">
     <!-- Datepicker  -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  
 
@@ -47,6 +48,7 @@
 @yield('body')
 
 <script src="{{ asset('vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="{{ asset('vendor/adminlte/plugins/select2.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables -->

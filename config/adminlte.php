@@ -208,6 +208,41 @@ return [
                     'icon'    => 'minus',
                     'url'  => 'admin/socios',
                 ],
+                [
+                    'text' => 'Notas',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/notes',
+                ],
+                [
+                    'text' => 'Noticias',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/notices',
+                ],
+                [
+                    'text' => 'Categorias',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/category',
+                ],
+                [
+                    'text' => 'Sub-Categorias',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/subcategory',
+                ],
+                [
+                    'text' => 'Galeria',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/gallery',
+                ],
+                [
+                    'text' => 'Etiquetas',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/tag',
+                ],
+                [
+                    'text' => 'Post',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/post',
+                ],
             ],
         ],
     ],

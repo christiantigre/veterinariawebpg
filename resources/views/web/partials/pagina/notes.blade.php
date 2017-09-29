@@ -19,74 +19,38 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <blockquote class="quote-box">
-                <p class="quotation-mark">
-                    “
-                </p>
-                <p class="quote-text">
-                    Don't believe anything that you read on the internet, it may be fake.
-                </p>
-                <hr>
-                <div class="blog-post-actions">
-                    <p class="blog-post-bottom pull-left">
-                        Abraham Lincoln
-                    </p>
-                    <p class="blog-post-bottom pull-right">
-                        <span class="badge quote-badge">
-                            896
-                        </span>
-                        ❤
-                    </p>
+        @if(count($notes)>0)
+            @foreach($notes as $nota)
+                <div class="col-md-4">
+                    <blockquote class="quote-box">
+                        <p class="quotation-mark">
+                            “
+                        </p>
+                        <p class="quote-text">
+                            {{ $nota->description }}
+                        </p>
+                        
+                            <a href="{{ $nota->link }}">{{ $nota->title }}</a>
+                        <hr>
+                        <div class="blog-post-actions">
+                            <p class="blog-post-bottom pull-left">
+                            {{ $nota->name }}
+                            </p>
+                            <p class="blog-post-bottom pull-right">
+                                <span class="badge quote-badge">
+                                    896
+                                </span>
+                                ❤
+                            </p>
+                        </div>
+                    </hr>
+                    </blockquote>
                 </div>
-            </hr>
-        </blockquote>
-    </div>
-    <div class="col-md-4">
-        <blockquote class="quote-box">
-            <p class="quotation-mark">
-                “
-            </p>
-            <p class="quote-text">
-                Don't believe anything that you read on the internet, it may be fake.
-            </p>
-            <hr>
-            <div class="blog-post-actions">
-                <p class="blog-post-bottom pull-left">
-                    Abraham Lincoln
-                </p>
-                <p class="blog-post-bottom pull-right">
-                    <span class="badge quote-badge">
-                        896
-                    </span>
-                    ❤
-                </p>
-            </div>
-        </hr>
-    </blockquote>
-</div>
-<div class="col-md-4">
-    <blockquote class="quote-box">
-        <p class="quotation-mark">
-            “
-        </p>
-        <p class="quote-text">
-            Don't believe anything that you read on the internet, it may be fake.
-        </p>
-        <hr>
-        <div class="blog-post-actions">
-            <p class="blog-post-bottom pull-left">
-                Abraham Lincoln
-            </p>
-            <p class="blog-post-bottom pull-right">
-                <span class="badge quote-badge">
-                    896
-                </span>
-                ❤
-            </p>
+            @endforeach
+        @else
+        <div class="col-md-12">
+            No se ha configurado la sección de notas
         </div>
-    </hr>
-</blockquote>
-</div>
-</div>
+        @endif
+    </div>
 </div>
