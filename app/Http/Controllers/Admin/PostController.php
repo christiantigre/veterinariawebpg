@@ -147,7 +147,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        //$post = Post::destroy($id);
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->delete();
 
         Session::flash('flash_message', 'Post deleted!');
 

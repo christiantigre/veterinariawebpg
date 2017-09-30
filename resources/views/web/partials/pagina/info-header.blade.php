@@ -2,7 +2,7 @@
 @foreach($veterinary as $veterinari)
     <div class="col-md-3 text-center colo-fux logo hidden-xs hidden-sm">
         <p class="text-left text-center colo-fux">
-            <a href="">
+            <a href="{{ url('/') }}">
                 @if(!empty($veterinari->logo))
                 <img class="navbar-brand navbar-brand-logo brand-centered" src="{{ asset($veterinari->logo) }}"/>
                 @else

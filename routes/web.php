@@ -10,12 +10,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Mail;
 /*Route::get('/', function () {
     //return view('welcome');
     return view('web.template.index');
+});
+Route::get('/contact', function () {
+    return view('web.partials.pagina.contact');
 });*/
 Route::get('/', 'HomeController@index')->name('/');
+Route::get('/contact', 'HomeController@contact');
+Route::post('/contact', 'HomeController@postContact');
+Route::get('/us', 'HomeController@contact')->name('/us');
+Route::get('/how-to-get', 'HomeController@contact')->name('/how-to-get');
+Route::get('/notices', 'HomeController@contact')->name('/notices');
+Route::get('/pet', 'HomeController@contact')->name('/pet');
+Route::get('/gallery', 'HomeController@contact')->name('/gallery');
+Route::get('email', function(){
+  //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
+  return new \App\Mail\SendMail('Christian');
+});
 
 Auth::routes();
 

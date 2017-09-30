@@ -41,7 +41,7 @@
     <div class="col-md-6">
         <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
             @foreach($tags as $tag)
-          <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+          <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
           @endforeach
         </select>
         {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}

@@ -128,7 +128,10 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::destroy($id);
+        //Tag::destroy($id);
+        $tag = Tag::find($id);
+        $tag->posts()->detach();
+        $tag->delete();
 
         Session::flash('flash_message', 'Tag deleted!');
 

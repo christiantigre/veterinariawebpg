@@ -12,7 +12,7 @@
         </div>
         <ul class="front scroll_show">
             <li class="active">
-                <a href="http://www.graphicdesigninstitutedelhi.com/">
+                <a href="{{ url('/') }}">
                     INICIO
                 </a>
             </li>
@@ -78,7 +78,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ url('/contact') }}">
                     CONTACTO
                 </a>
             </li>
