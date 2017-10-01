@@ -10,19 +10,20 @@
         </div>
         <div class="button">
         </div>
+        
         <ul class="front scroll_show">
-            <li class="active">
-                <a href="{{ url('/') }}">
+            <li @if(($pag)=='inicio') class="active" @else class="" @endif>
+                <a href="{{ url('/') }}" class="menu">
                     INICIO
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li @if(($pag)=='nosotros') class="active" @else class="" @endif">
+                <a href="{{ url('/us') }}" class="menu">
                     NOSOTROS
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li @if(($pag)=='mascotas') class="active" @else class="" @endif>
+                <a href="{{ url('/pet') }}" class="menu">
                     MASCOTAS
                 </a>
                 <ul>
@@ -62,23 +63,23 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#">
+            <li @if(($pag)=='galeria') class="active" @else class="" @endif>
+                <a href="{{ url('/gallery') }}" class="menu">
                     GALERIA
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li @if(($pag)=='noticias') class="active" @else class="" @endif>
+                <a href="{{ url('/notices') }}" class="menu">
                     NOTICIAS
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li @if(($pag)=='ccomollegar') class="active" @else class="" @endif>
+                <a href="{{ url('/howtoget') }}" class="menu">
                     COMO LLEGAR
                 </a>
             </li>
-            <li>
-                <a href="{{ url('/contact') }}">
+            <li @if(($pag)=='contacto') class="active" @else class="" @endif>
+                <a href="{{ url('/contact') }}" class="menu">
                     CONTACTO
                 </a>
             </li>

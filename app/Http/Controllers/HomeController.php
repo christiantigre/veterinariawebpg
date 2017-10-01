@@ -42,8 +42,9 @@ class HomeController extends Controller
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'inicio';
     
-        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories'));
+        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
         /*return view('home');*/
         //return view('web.index');
     }
@@ -57,8 +58,8 @@ class HomeController extends Controller
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
-    
-        return view('web.partials.pagina.contact',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories'));
+        $pag = 'contacto';
+        return view('web.partials.pagina.contact',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
     }
 
     public function postContact(Request $request){
@@ -78,5 +79,59 @@ class HomeController extends Controller
         Mail::to($request->mail)->send(new SendMail($data));
         Session::flash('flash_message', 'Su mensaje se ha enviado correctamente');
         return redirect('/contact');
+    }
+
+
+
+    public function us(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
+        $socios = Socio::orderBy('id', 'desc')->get();
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'nosotros';
+        return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+    }
+    public function howtoget(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
+        $socios = Socio::orderBy('id', 'desc')->get();
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'comollegar';
+        return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+    }
+    public function notices(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
+        $socios = Socio::orderBy('id', 'desc')->get();
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'noticias';
+        return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+    }
+    public function pet(){
+
+    }
+    public function gallery(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
+        $socios = Socio::orderBy('id', 'desc')->get();
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'galeria';
+        return view('web.partials.pagina.gallery',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
     }
 }

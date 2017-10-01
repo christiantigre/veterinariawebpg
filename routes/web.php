@@ -21,11 +21,11 @@ Route::get('/contact', function () {
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/contact', 'HomeController@contact');
 Route::post('/contact', 'HomeController@postContact');
-Route::get('/us', 'HomeController@contact')->name('/us');
-Route::get('/how-to-get', 'HomeController@contact')->name('/how-to-get');
-Route::get('/notices', 'HomeController@contact')->name('/notices');
-Route::get('/pet', 'HomeController@contact')->name('/pet');
-Route::get('/gallery', 'HomeController@contact')->name('/gallery');
+Route::get('/us', 'HomeController@us')->name('/us');
+Route::get('/howtoget', 'HomeController@howtoget')->name('/howtoget');
+Route::get('/notices', 'HomeController@notices')->name('/notices');
+Route::get('/pet', 'HomeController@pet')->name('/pet');
+Route::get('/gallery', 'HomeController@gallery')->name('/gallery');
 Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
   return new \App\Mail\SendMail('Christian');

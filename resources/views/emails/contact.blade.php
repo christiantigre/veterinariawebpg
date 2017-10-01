@@ -6,7 +6,7 @@
 # {{ $data['message'] }}.
 
 @component('mail::button', ['url' => ''])
-Button Text
+Veterinaria
 @endcomponent
 
 Gracias,<br>

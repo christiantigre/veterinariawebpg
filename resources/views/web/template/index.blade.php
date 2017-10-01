@@ -146,6 +146,8 @@
             </script>
             <script src="theme/js/jquery2-1-4.js" type="text/javascript">
             </script>
+            <script src="theme/js/search.js" type="text/javascript">
+            </script>
             <script src="theme/js/main.js" type="text/javascript">
             </script>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">

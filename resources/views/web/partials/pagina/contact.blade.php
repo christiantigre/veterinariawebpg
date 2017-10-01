@@ -47,7 +47,11 @@
       </div>
     </div>
   </div>
-  <input type="submit" name="enviar" value="Enviar" class="btn btn-success btn-lg">
+  <!--<input type="submit" name="enviar" value="Enviar" class="btn btn-success btn-lg">-->
+  <div class="animat-button">
+           <button class="hoverable-css" name="enviar" ><span class="anim"></span>ENVIAR</button>
+       </div>
+       
  {!! Form::close() !!}
 </div>
 </div>
