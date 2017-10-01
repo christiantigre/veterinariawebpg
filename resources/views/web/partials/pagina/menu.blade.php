@@ -73,7 +73,7 @@
                     NOTICIAS
                 </a>
             </li>
-            <li @if(($pag)=='ccomollegar') class="active" @else class="" @endif>
+            <li @if(($pag)=='comollegar') class="active" @else class="" @endif>
                 <a href="{{ url('/howtoget') }}" class="menu">
                     COMO LLEGAR
                 </a>

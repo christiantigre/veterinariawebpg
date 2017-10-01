@@ -6,9 +6,9 @@
                 <div class="about">
                     
                     @if(!empty($veterinari->logo))
-                    <img alt="" class="img-responsive center-block" src="{{ asset($veterinari->logo) }}">
+                    <img alt="" class="img-responsive navbar-brand center-block" src="{{ asset($veterinari->logo) }}">
                 @else
-                    <img alt="" class="img-responsive center-block" src="{{ asset('theme/images/log.png') }}"/>
+                    <img alt="" class="img-responsive navbar-brand center-block" src="{{ asset('theme/images/log.png') }}"/>
                 @endif
                     <p>
 
