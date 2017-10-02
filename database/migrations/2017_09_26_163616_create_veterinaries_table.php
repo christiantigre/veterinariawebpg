@@ -35,6 +35,8 @@ class CreateVeterinariesTable extends Migration
             $table->string('in',150)->nullable();
             $table->string('yt',150)->nullable();
             $table->string('gg',150)->nullable();
+            $table->string('latitud',50)->nullable();
+            $table->string('longitud',50)->nullable();
             $table->timestamps();
         });
     }

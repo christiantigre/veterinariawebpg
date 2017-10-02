@@ -191,6 +191,8 @@ class VeterinaryController extends Controller
         $veterinary->in = $request->in;
         $veterinary->yt = $request->yt;
         $veterinary->gg = $request->gg;
+        $veterinary->latitud = $request->latitud;
+        $veterinary->longitud = $request->longitud;
         $veterinary->save();
         }else{
             $requestData = $request->all();
@@ -216,6 +218,9 @@ class VeterinaryController extends Controller
         $veterinary->in = $request->in;
         $veterinary->yt = $request->yt;
         $veterinary->gg = $request->gg;
+        $veterinary->latitud = $request->latitud;
+        $veterinary->longitud = $request->longitud;
+
         $veterinary->save();
         }
         

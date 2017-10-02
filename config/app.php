@@ -180,7 +180,8 @@ return [
         //ADMIN-LTE
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
 
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        'GeneaLabs\Phpgmaps\PhpgmapsServiceProvider',
 
     ],
 

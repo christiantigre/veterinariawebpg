@@ -1,5 +1,25 @@
-
-<div class="container-fluid fondo-quint">
+@extends('web.index')
+@section('content')
+<style type="text/css">
+.estilo{
+    width: 950px; 
+    height: 500px;
+}
+.google-maps {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+</style>
+<div class="container-fluid">
     <div class="sixteen columns">
         <div class="sub-text link-svgline">
             <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
@@ -18,178 +38,115 @@
                 </svg>
             </a>
         </div>
-    </div>
-    <div class="row ">
-        <div class="col-md-12 gal-container">
-            <div class="work">
-                <div class="category-buttons">
-                    <a class="active all" data-group="all" href="#">
-                        All
-                    </a>
-                    <a data-group="city" href="#">
-                        city
-                    </a>
-                    <a data-group="nature" href="#">
-                        nature
-                    </a>
-                    <a data-group="food" href="#">
-                        food
-                    </a>
-                    <a data-group="sports" href="#">
-                        sports
-                    </a>
-                    <a data-group="people" href="#">
-                        people
-                    </a>
-                </div>
-                <div class="grid gal-item" id="grid">
-                    <!--<a class="example-image-link card" href="{{ asset('theme/images/galery/city.jpeg') }}" data-lightbox="example-set" data-toggle="modal" data-target="#4" data-groups="city," data-title="Click the right half of the image to move forward.">-->
-                    <a class="card" data-groups="city," href="#" data-toggle="modal" data-target="#myModal">
-                        <img class="example-image" src="{{ asset('theme/images/galery/city.jpeg') }}"/>
-                        <div class="title">
-                            Project Title test me more please do this for me please dood.
-                        </div>
-                    </a> 
-                    <!-- Modal -->
-                      <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">                        
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                              <div class="modal-body">
-                                <img src="{{ asset('theme/images/galery/city.jpeg') }}" style="width: 100%; height: auto;">
-                              </div>
-                                <div class="col-md-12 description">
-                                  <h4>This is the second one on my Gallery</h4>
-                                </div>
-                            </div>                          
-                        </div>
-                      </div>   
-                      <!--fin modal-->
+                <input type="text" id="nom" name="nom" value="veterinaria">                        
+                <input type="text" id="ln" name="ln" value="-2.8551284">
+                <input type="text" id="lg" name="lg" value="-78.77877950000001">
+                <input type="text" id="ubiclg" name="ubiclg" value="-2.8551284">
+                <input type="text" id="ubiclt" name="ubiclt" value="-78.77877950000001">
+                <div id="demo" class="embed-responsive embed-responsive-4by3 col-md-12"></div>
+                <div id='ubicacion' style='display:none;'></div>                                        
+                <div id="mapholder"></div>
 
 
+                <div class="row">
+                    <div class="col-md-2"></div>
 
-                    <a class="card" data-groups="nature," href="#">
-                        <img src="{{ asset('theme/images/galery/nature.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="food," href="#">
-                        <img src="{{ asset('theme/images/galery/food.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="sports,people," href="#">
-                        <img src="{{ asset('theme/images/galery/sports.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="people,food," href="#">
-                        <img src="{{ asset('theme/images/galery/people.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="city,people," href="#">
-                        <img src="{{ asset('theme/images/galery/2.jpeg') }}"/>
-                        <div class="title">
-                            Project Title wow this is so sext
-                        </div>
-                    </a>
-                    <a class="card" data-groups="nature,food," href="#">
-                        <img src="{{ asset('theme/images/galery/3.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="food,people," href="#">
-                        <img src="{{ asset('theme/images/galery/4.jpeg') }}"/>
-                        <div class="title">
-                            Project Title test me please dood wow this could be better
-                        </div>
-                    </a>
-                    <a class="card" data-groups="sports,people," href="#">
-                        <img src="{{ asset('theme/images/galery/5.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <a class="card" data-groups="people,food" href="#">
-                        <img src="{{ asset('theme/images/galery/6.jpeg') }}"/>
-                        <div class="title">
-                            Project Title
-                        </div>
-                    </a>
-                    <div class="guide">
+                    <div class="col-md-8">          
+                        <script type='text/javascript'>var centreGot = false;</script>
+                        {!! $map['js'] !!}
+                        {!! $map['html'] !!}
                     </div>
+
+                    <div class="col-md-2"></div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-===================================================================================
-<div class="container-fluid fondo-quint">
-    <div class="sixteen columns">
-        <div class="sub-text link-svgline">
-            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
-                We believe
-                <svg class="link-svgline">
-                    <use xlink:href="#svg_line">
-                    </use>
-                </svg>
-            </a>
-            in coming up with original ideas and turning them into digital work that is both
-            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
-                innovative and measurable.
-                <svg class="link-svgline">
-                    <use xlink:href="#svg_line">
-                    </use>
-                </svg>
-            </a>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-md-12 gal-container">
-            <div class="work">
-                @if(count($categories)>0)
-                <div class="category-buttons">
-                    @foreach($categories as $category)
-                        @if(($category->id)==1)
-                            <a class="active all" data-group="all" href="#">
-                                Todas
-                            </a>
-                        @else
-                            <a data-group="{{ $category->id }}" href="#">
-                                {{ $category->category }} {{ $category->id }}
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
-                @else
-                    <div class="category-buttons">
-                        Sección Categorias no configurado
-                    </div>
-                @endif
-                <div class="grid gal-item" id="grid">
-                    @if(count($galleries)>0)
-                     @foreach($galleries as $galery)
-                    <a class="card" data-groups="{{ $galery->category_id }}," href="#" data-toggle="modal" data-target="#{{ $galery->id }}">
-                        <img class="example-image" src="{{ asset($galery->img) }}"/>
-                        <div class="title">
-                            {{ $galery->content }}{{ $galery->category_id }}
-                        </div>
-                    </a> 
-                    
-                      @endforeach
-                    <div class="guide">
-                    </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeaMu7HK8FTuG15aoqeVwgwIYYKLzhj2w&callback=initMap"></script>
+            <!--Version con errores google maps-->
+            <script>
+                        //mostrar_objeto(navigator.geolocation);
+                            //navigator.geolocation.getCurrentPosition();
+
+                            navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+                            var divMapa = document.getElementById('demo');
+                            function fn_mal(){
+                                divMapa.innerHTML="Hubo un problema";
+                            }
+
+                            function fn_ok( respuesta ){
+                                //mostrar_objeto(respuesta.coords);
+                                //divMapa.innerHTML = "Tenemos autorización para ver su ubicación";
+                                var lat = $('#ubiclg').val();
+                                var lon = $('#ubiclt').val();
+                                /*var lat ='-2.8553192999999997';
+                                var lon ='-78.7786982';*/
+                                //var lat = respuesta.coords.latitude;
+                                //var lon = respuesta.coords.longitude;
+                                var gLatLon = new google.maps.LatLng(lat, lon);
+                                var objConfig = {
+                                    zoom: 19,
+                                    center: gLatLon,
+                                    title: "StoreLine"
+                                }
+                                var gMapa = new google.maps.Map(divMapa, objConfig);
+                                var objConfigMarker = {
+                                    position:gLatLon,
+                                    map: gMapa
+                                }
+                                var gMarker = new google.maps.Marker(objConfigMarker);
+                                //gMarker.setIcon('../../admin/us.png');
+                                var gCoder = new google.maps.Geocoder();
+                                var objInformation = {
+                                    address: 'Cuenca,Gualaceo'
+                                }
+                                //objInformation.address
+                                gCoder.geocode(objInformation, fn_coder);
+                                function fn_coder(datos){
+                                    var coordenadas = datos[0].geometry.location;
+                                    var config = {
+                                        map:gMapa,
+                                        position:coordenadas,
+                                        title: 'Tienda'
+                                    }
+                                    var gMarkerDV = new google.maps.Marker(config)
+                                    gMarkerDV.setIcon('../../uploads/logos/huella1.png')
+                                    
+                                    var objConfigDR={
+                                        map: gMapa,
+                                        suppressMarkers: true
+                                    }
+                                    var objConfigDS={
+                                        origin: objInformation.address,
+                                        destination:gLatLon,
+                                        travelMode: google.maps.TravelMode.DRIVING
+                                    }
+
+
+                                    var ds = new google.maps.DirectionsService();
+                                    var dr = new google.maps.DirectionsRenderer( objConfigDR );
+
+                                    ds.route(objConfigDS, fnRutear);
+
+                                    function fnRutear( resultados, status ){
+
+                                        if(status=='OK'){
+                                            dr.setDirections(resultados);
+                                        }else{
+                                            alert('Error :'+status);
+                                        }
+
+                                    }
+
+
+
+
+                                }
+
+                            }
+                            function mostrar_objeto(obj){
+                                for (var prop in obj) {
+                                    document.write(prop+': '+obj[prop] +'<br />');
+                                };
+                            }
+                        </script>
+                        @stop

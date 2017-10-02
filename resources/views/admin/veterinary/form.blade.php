@@ -134,19 +134,151 @@
         {!! $errors->first('gg', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
-<div class="form-group">
-    <div class="col-md-offset-4 col-md-4">
-        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Crear', ['class' => 'btn btn-primary']) !!}
+<div class="form-group {{ $errors->has('gg') ? 'has-error' : ''}}">
+    {!! Form::label('latitud', 'Latitud', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('latitud', null, ['class' => 'form-control','id'=>'latitud']) !!}
+        {!! $errors->first('latitud', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
-<script type="text/javascript">  
+
+<div class="form-group {{ $errors->has('gg') ? 'has-error' : ''}}">
+    {!! Form::label('longitud', 'Longitud', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('longitud', null, ['class' => 'form-control','id'=>'longitud']) !!}
+        {!! $errors->first('longitud', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+
+<div class="form-group {{ $errors->has('visible') ? 'has-error' : ''}}">
+    {!! Form::label('ubicacion', 'Ubicación', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        <div class="checkbox">
+            <label><input type="radio" name="rad" id="rad" value="UBICACION" onclick="cargarmap();"/> Compartir ahora</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="radio" name="rad" id="rad" value="DOMICILIO" onclick="vaciar();" checked/> En otro momento</label>
+        </div>
+        {!! $errors->first('rad', '<p class="help-block">:message</p>') !!}
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="control-label col-md-12">      
+            <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-map-marker"></i> Ubicación<i><small></small></i></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <!-- Se determina y escribe la localizacion -->
+                {!! Form::hidden('ln', null, array('class'=>'form-control col-md-7 col-xs-12',
+                'placeholder'=>'Ingrese nombre...','autofocus'=>'autofocus','id'=>'ln') ) !!}
+
+                {!! Form::hidden('lg',null,array('class'=>'form-control col-md-7 col-xs-12','placeholder'=>'Ingrese nombre...','autofocus'=>'autofocus','id'=>'lg')) !!}
+                <div id='ubicacion' class="col-md-12" style='display:none;'></div>
+                <div id="demo" class="embed-responsive embed-responsive-4by3 col-md-12"></div>
+                <div id="mapholder" class="embed-responsive embed-responsive-4by3 col-md-12"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-4">
+            {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Crear', ['class' => 'btn btn-primary']) !!}
+        </div>
+    </div>
+
+    <script type="text/javascript">  
 
         $('.date').datepicker({  
 
            format: 'yyyy-mm-dd'  
 
-         });  
+       });  
 
-    </script> 
+   </script> 
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfEnRziz09pG_OBmrz01pB0X5XXBBFOMg&signed_in=true&callback=initMap"></script>
+   <script type="text/javascript">
+    var x = document.getElementById("demo");
+    function cargarmap() {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+        function showPosition(position)
+        {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            latlon = new google.maps.LatLng(lat, lon)
+            mapholder = document.getElementById('demo')
+            mapholder.style.height = '250px';
+            mapholder.style.width = '500px';
+            var myOptions = {
+                center: latlon, zoom: 10,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
+            };
+            var map = new google.maps.Map(document.getElementById("demo"), myOptions);
+            var marker = new google.maps.Marker({position: latlon, map: map, title: "You are here!"});
+            document.getElementById("ln").value = lat;
+            document.getElementById("latitud").value = lat;
+            document.getElementById("lg").value = lon;
+            document.getElementById("longitud").value = lon;
+        }
+        function showError(error)
+        {
+            switch (error.code)
+            {
+                case error.PERMISSION_DENIED:
+                x.innerHTML = "Denegada la peticion de Geolocalización en el navegador."
+                break;
+                case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "La información de la localización no esta disponible."
+                break;
+                case error.TIMEOUT:
+                x.innerHTML = "El tiempo de petición ha expirado."
+                break;
+                case error.UNKNOWN_ERROR:
+                x.innerHTML = "Ha ocurrido un error desconocido."
+                break;
+            }
+        }}
+    </script>
+
+    <script type="text/javascript">
+        function vaciar() {
+            document.getElementById("ln").value = "";
+            document.getElementById("lg").value = "";
+            document.getElementById("latitud").value = "";
+            document.getElementById("longitud").value = "";
+        }
+
+        function check(rad) {
+            document.getElementById("res").value = rad;
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+        } else {
+            alert("¡Error! Este navegador no soporta la Geolocalización.");
+        }
+
+        function mostrarUbicacion(position) {
+            var times = position.timestamp;
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            var altitud = position.coords.altitude;
+            var exactitud = position.coords.accuracy;
+            var div = document.getElementById("ubicacion");
+
+            /*div.innerHTML = "<input type='text' name='ln' id='ln' value='" + latitud + "'><input type='text' name='lg' id='lg' value='" + longitud + "'><br>Timestamp: " + times + "<br>Latitud: " + latitud + "<br>Longitud: " + longitud + "<br>Altura en metros: " + altitud + "<br>Exactitud: " + exactitud;*/
+        }
+
+        function refrescarUbicacion() {
+            navigator.geolocation.watchPosition(mostrarUbicacion);
+        }
+
+    </script>

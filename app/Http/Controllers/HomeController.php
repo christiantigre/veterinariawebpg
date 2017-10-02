@@ -105,7 +105,39 @@ class HomeController extends Controller
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'comollegar';
-        return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        $config = array();
+    //$config['center'] = 'auto';
+    /*$config['onboundschanged'] = 'if (!centreGot) {
+            var mapCentre = map.getCenter();
+            marker_0.setOptions({
+                position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
+            });
+        }
+        centreGot = true;';*/
+
+        foreach ($veterinary as $dato) {
+            $latitud = $dato->latitud;
+            $longitud = $dato->longitud;
+        }        
+        $coondenadas = $latitud.','.$longitud;
+        //dd($coondenadas);
+        $config['center'] = $coondenadas;
+        $config['zoom'] = '14';
+
+    \Gmaps::initialize($config);
+
+    // set up the marker ready for positioning
+    // once we know the users location
+    $marker = array();
+    $marker['position'] = $coondenadas;
+    \Gmaps::add_marker($marker);
+
+    $map = \Gmaps::create_map();
+    //$data = "<html><head><script type='text/javascript'>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
+        //return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','map'));
+    // mapa estatico return view('web.partials.pagina.mapa');
+     // mapa dinamico return view('web.partials.pagina.mapas.mapas2');
+     return view('web.partials.pagina.mapas.mapas3');
     }
     public function notices(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
@@ -117,7 +149,8 @@ class HomeController extends Controller
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'noticias';
-        return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+       return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.partials.pagina.mapa');
     }
     public function pet(){
 

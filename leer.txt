@@ -71,3 +71,9 @@ https://laravel-news.com/13-laravel-admin-panel-generators
 
 
 php artisan optimize
+
+
+demo google maps
+http://demo.itsolutionstuff.com/demo/demo-laravel-5-multiple-markers-in-google-map-using-gmapsjsexample.html
+funcionalidades
+http://biostall.com/demos/google-maps-v3-api-codeigniter-library/
