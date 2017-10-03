@@ -1,6 +1,20 @@
 @extends('web.index')
 @section('content')
-
+<style type="text/css">
+	.map-responsive{
+    overflow:hidden;
+    padding-bottom:50%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+</style>
 <div class="container-fluid">
 	<div class="sixteen columns">
 		<div class="sub-text link-svgline">
@@ -35,7 +49,7 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 
-			<div class="col-md-8">        	
+			<div class="col-md-8 map-responsive">        	
 				<div id="mapa" style="width: 700px; height: 500px;">La ruta a mostrar</div>
 			</div>
 
