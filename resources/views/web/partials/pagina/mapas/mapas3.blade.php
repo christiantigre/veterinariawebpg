@@ -61,12 +61,13 @@ function success(pos) {
   var coordenada2 = '-2.830963,-78.767076';
   var gLatLon = new google.maps.LatLng(lat, lon);
   var objConfig = {
-    zoom: 17,
+    zoom: 13,
     center: gLatLon
   }
   var gMapa = new google.maps.Map(divMapa, objConfig);
   var objConfigMarker = {
     position: gLatLon,
+      animation: google.maps.Animation.DROP,
     map: gMapa,
     title: "Tu ubicación actual"
   }
@@ -81,10 +82,22 @@ function success(pos) {
     var coordenadas = datos[0].geometry.location;
     var config = {
       map: gMapa,
+      animation: google.maps.Animation.DROP,
       position: coordenadas,
       title: 'Veterinaria'
     }
     var gMarkerDV = new google.maps.Marker(config);
+    gMarkerDV.setIcon('../../../uploads/logos/huella1.png');
+
+    var objHTML={
+      content: '<div style="height: 150px; width: 300px;"> <h2>Vaterinaria</h2> <h3>Visitanos en nuestro sitio web</h3> <a href="">web page</a> </div>'
+    }
+
+    var gIW = new google.maps.InfoWindow( objHTML );
+
+    google.maps.event.addListener(gMarkerDV,'click',function(){
+      gIW.open(gMapa, gMarkerDV);
+    });
   }
   //divMapa.innerHTML = lat+','+lon;/*muestra 
 };

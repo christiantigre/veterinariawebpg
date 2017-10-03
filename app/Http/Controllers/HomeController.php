@@ -134,10 +134,12 @@ class HomeController extends Controller
 
     $map = \Gmaps::create_map();
     //$data = "<html><head><script type='text/javascript'>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
-        //return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','map'));
+        return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','map'));
+      //mapa estatico 2 puntosreturn view('web.partials.pagina.mapas.mapa');
     // mapa estatico return view('web.partials.pagina.mapa');
      // mapa dinamico return view('web.partials.pagina.mapas.mapas2');
-     return view('web.partials.pagina.mapas.mapas3');
+     //mapa con dos posiciones animadas return view('web.partials.pagina.mapas.mapas3');
+     //traza ruta desde punto A a B return view('web.partials.pagina.mapas.mapas4');
     }
     public function notices(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
