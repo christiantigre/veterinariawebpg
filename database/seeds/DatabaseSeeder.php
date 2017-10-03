@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
          $this->call(SubcategoryTableSeeder::class);
          $this->call(GalleryTableSeeder::class);
          $this->call(TagTableSeeder::class);
+         $this->call(ChatterTableSeeder::class);
     }
 }
