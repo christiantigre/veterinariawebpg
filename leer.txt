@@ -77,3 +77,11 @@ demo google maps
 http://demo.itsolutionstuff.com/demo/demo-laravel-5-multiple-markers-in-google-map-using-gmapsjsexample.html
 funcionalidades
 http://biostall.com/demos/google-maps-v3-api-codeigniter-library/
+
+
+linea para mysql batabase
+'options'=>[PDO::ATTR_EMULATE_PREPARES => true]
+
+
+chat con laravel
+https://github.com/dazzz1er/confer
