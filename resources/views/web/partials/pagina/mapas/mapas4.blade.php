@@ -135,12 +135,8 @@ function fnRutear( resultados, status){
 };
 
 
-
-
-
 navigator.geolocation.getCurrentPosition(success, error, options);
 var divMapa = document.getElementById('mapa');
-
 
 
 function mostrar_objeto( obj ) 

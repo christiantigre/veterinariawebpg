@@ -35,6 +35,8 @@ class VeterinaryTableSeeder extends Seeder
     		'in'=>'#',
     		'yt'=>'#',
     		'gg'=>'#',
+            'latitud'=>'-2.8563269'
+            'longitud'=>'-78.7848586'
     		'created_at'=>'2017-09-27 00:55:57',
     		'updated_at'=>'2017-09-27 01:28:16'
     	] );

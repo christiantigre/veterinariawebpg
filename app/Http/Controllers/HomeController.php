@@ -43,7 +43,7 @@ class HomeController extends Controller
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'inicio';
-    
+
         return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
         /*return view('home');*/
         //return view('web.index');
@@ -95,7 +95,7 @@ class HomeController extends Controller
         $pag = 'nosotros';
         return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
     }
-    public function howtoget(){
+    public function _howtoget_(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
         $cards = Card::orderBy('id', 'desc')->get();
@@ -124,15 +124,15 @@ class HomeController extends Controller
         $config['center'] = $coondenadas;
         $config['zoom'] = '14';
 
-    \Gmaps::initialize($config);
+        \Gmaps::initialize($config);
 
     // set up the marker ready for positioning
     // once we know the users location
-    $marker = array();
-    $marker['position'] = $coondenadas;
-    \Gmaps::add_marker($marker);
+        $marker = array();
+        $marker['position'] = $coondenadas;
+        \Gmaps::add_marker($marker);
 
-    $map = \Gmaps::create_map();
+        $map = \Gmaps::create_map();
     //$data = "<html><head><script type='text/javascript'>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
         return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','map'));
       //mapa estatico 2 puntosreturn view('web.partials.pagina.mapas.mapa');
@@ -151,7 +151,7 @@ class HomeController extends Controller
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'noticias';
-       return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
         return view('web.partials.pagina.mapa');
     }
     public function pet(){
@@ -168,5 +168,24 @@ class HomeController extends Controller
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'galeria';
         return view('web.partials.pagina.gallery',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+    }
+    public function howtoget()
+    {
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->get();
+        $socios = Socio::orderBy('id', 'desc')->get();
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
+        $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $pag = 'comollegar';
+        $config = array();
+
+        foreach ($veterinary as $dato) {
+            $latitud = $dato->latitud;
+            $longitud = $dato->longitud;
+        }   
+        return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','latitud','longitud'));
     }
 }
