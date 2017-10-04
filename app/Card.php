@@ -25,7 +25,13 @@ class Card extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'paragraph', 'subtitle', 'subtitle2', 'subtitle3', 'linkcard', 'img'];
+    protected $fillable = ['title', 'paragraph', 'subtitle', 'subtitle2', 'subtitle3', 'linkcard', 
+    'img',
+    'intro',
+    'imgHeader',
+    'detall',
+    'visible'
+];
 
     
 }

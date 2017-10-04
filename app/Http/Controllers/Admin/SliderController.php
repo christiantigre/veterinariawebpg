@@ -137,12 +137,26 @@ class SliderController extends Controller
         
         $requestData = $request->all();
         
-        $slider = Slider::findOrFail($id);
+        if(empty($nombre)){
+            $slider = Slider::findOrFail($id);
+        $slider->title = $request->title;
+        $slider->content = $request->content;
+        $slider->linkinfo= $request->linkinfo;
+        $slider->subtittle= $request->subtittle;
+        $slider->body= $request->body;
+        $slider->detall= $request->detall;
+        $slider->save();
+        }else{
+            $slider = Slider::findOrFail($id);
         $slider->img = 'uploads/slider/'.$nombre;
         $slider->title = $request->title;
         $slider->content = $request->content;
         $slider->linkinfo= $request->linkinfo;
+        $slider->subtittle= $request->subtittle;
+        $slider->body= $request->body;
+        $slider->detall= $request->detall;
         $slider->save();
+        }
         //$slider->update($requestData);
 
         Session::flash('flash_message', 'Slider updated!');

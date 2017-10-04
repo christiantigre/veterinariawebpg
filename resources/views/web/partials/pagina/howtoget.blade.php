@@ -56,6 +56,7 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC27xNrEkkICj_mjdVeWPPl3uwDLQ0MDM0&callback=initMap"></script>
 	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyC27xNrEkkICj_mjdVeWPPl3uwDLQ0MDM0&sensor=true"></script>
 	<script type="text/javascript">
          //mostrar_objeto( navigator.geolocation );

@@ -22,7 +22,7 @@
 
                         {!! Form::model($card, [
                             'method' => 'PATCH',
-                            'url' => ['/admin/card', $card->id],
+                            'url' => ['/admin/card', $card->id],'enctype'=>'multipart/form-data',
                             'class' => 'form-horizontal',
                             'files' => true
                         ]) !!}

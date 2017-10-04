@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Card;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\Input;
+use Image;
 
 class CardController extends Controller
 {
@@ -60,10 +62,60 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(!Input::file("img"))
+        {
+            $nameContent="";
+        }else{
+            $file = Input::file('img');
+            $nameContent = $file->getClientOriginalName();
+            $path = public_path('uploads/card/content/'.$nameContent);
+            $image = Image::make($file->getRealPath());
+            $image->resize(100, 100);
+            $image->save($path);
+        }
+        if(!Input::file("imgHeader"))
+        {
+            $nameHeader="";
+        }else{
+            $file = Input::file('imgHeader');
+            $nameHeader = $file->getClientOriginalName();
+            $path = public_path('uploads/card/head/'.$nameHeader);
+            $image = Image::make($file->getRealPath());
+            $image->resize(100, 100);
+            $image->save($path);
+        }
+
         $requestData = $request->all();
+
         
-        Card::create($requestData);
+                if (!empty($nameContent)) {
+                 $imgCont = 'uploads/card/content/'.$nameContent;   
+                }else{
+                    $imgCont = '';
+                }
+                if (!empty($nameHeader)) {
+                 $imgHead = 'uploads/card/head/'.$nameHeader;   
+                }else{
+                    $imgHead='';
+                }
+
+            Card::create([
+                'title'=>$request->title,
+                'subtitle'=>$request->subtitle,
+                'subtitle2'=>$request->subtitle2,
+                'subtitle3'=>$request->subtitle3,
+                'intro'=>$request->intro,
+                'paragraph'=>$request->paragraph,
+                'detall'=>$request->detall,
+                'linkcard'=>$request->linkcard,
+                'img'=>$imgCont,
+                'imgHeader'=>$imgHead,
+                'visible'=>$request->visible
+            ]);
+        
+
+        
+//        Card::create($requestData);
 
         Session::flash('flash_message', 'Card added!');
 
@@ -108,11 +160,90 @@ class CardController extends Controller
      */
     public function update($id, Request $request)
     {
+        $rutaCont = 'uploads/card/content/';
+        $rutaHead = 'uploads/card/head/';
+        if(!Input::file("img"))
+        {
+            $nameContent="";
+        }else{
+            $file = Input::file('img');
+            $nameContent = $file->getClientOriginalName();
+            $path = public_path($rutaCont.$nameContent);
+            $image = Image::make($file->getRealPath());
+            $imgCont = $rutaCont.$nameContent;
+            $image->resize(100, 100);
+            $image->save($path);
+        }
+        if(!Input::file("imgHeader"))
+        {
+            $nameHeader="";
+        }else{
+            $file = Input::file('imgHeader');
+            $nameHeader = $file->getClientOriginalName();
+            $path = public_path($rutaHead.$nameHeader);
+            $image = Image::make($file->getRealPath());
+            $imgHead = $rutaHead.$nameHeader;
+            $image->resize(100, 100);
+            $image->save($path);
+        }
         
         $requestData = $request->all();
+
+        if((empty($nameContent))and(!empty($nameHeader))){
+            $card = Card::findOrFail($id);
+            $card->title=$request->title;
+            $card->subtitle=$request->subtitle;
+            $card->subtitle2=$request->subtitle2;
+            $card->subtitle3=$request->subtitle3;
+            $card->intro=$request->intro;
+            $card->paragraph=$request->paragraph;
+            $card->detall=$request->detall;
+            $card->linkcard=$request->linkcard;
+            $card->imgHeader=$rutaHead.$nameHeader;
+            $card->visible=$request->visible;
+            $card->save();
+        }elseif ((empty($nameHeader)and(!empty($nameContent)))) {         
+            $card = Card::findOrFail($id);
+            $card->title=$request->title;
+            $card->subtitle=$request->subtitle;
+            $card->subtitle2=$request->subtitle2;
+            $card->subtitle3=$request->subtitle3;
+            $card->intro=$request->intro;
+            $card->paragraph=$request->paragraph;
+            $card->detall=$request->detall;
+            $card->linkcard=$request->linkcard;
+            $card->img=$rutaCont.$nameContent;
+            $card->visible=$request->visible;
+            $card->save();
+        }elseif ((empty($nameHeader)and(empty($nameContent)))){            
+            $card = Card::findOrFail($id);
+            $card->title=$request->title;
+            $card->subtitle=$request->subtitle;
+            $card->subtitle2=$request->subtitle2;
+            $card->subtitle3=$request->subtitle3;
+            $card->intro=$request->intro;
+            $card->paragraph=$request->paragraph;
+            $card->detall=$request->detall;
+            $card->linkcard=$request->linkcard;
+            $card->visible=$request->visible;
+            $card->save();
+        }else{
+            $card = Card::findOrFail($id);
+            $card->title=$request->title;
+            $card->subtitle=$request->subtitle;
+            $card->subtitle2=$request->subtitle2;
+            $card->subtitle3=$request->subtitle3;
+            $card->intro=$request->intro;
+            $card->paragraph=$request->paragraph;
+            $card->detall=$request->detall;
+            $card->img=$rutaCont.$nameContent;
+            $card->imgHeader=$rutaHead.$nameHeader;
+            $card->linkcard=$request->linkcard;
+            $card->visible=$request->visible;
+            $card->save();
+        }
         
-        $card = Card::findOrFail($id);
-        $card->update($requestData);
+        
 
         Session::flash('flash_message', 'Card updated!');
 

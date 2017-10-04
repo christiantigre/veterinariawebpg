@@ -28,14 +28,23 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Title</th><th>Paragraph</th><th>Subtitle</th><th>Actions</th>
+                                        <th>ID</th>
+                                        <th>Titulo</th>
+                                        <th>Subtitulo</th>
+                                        <th>Contenido</th>
+                                        <th>contenido</th>
+                                        <th>Cabecera</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($card as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->paragraph }}</td><td>{{ $item->subtitle }}</td>
+                                        <td>{{ $item->title }}</td><td>{{ $item->subtitle }}</td>
+                                        <td>{{ $item->paragraph }}</td>
+                                        <td><img src="{{ asset($item->img) }}" class="img img-responsive"></td>
+                                        <td><img src="{{ asset($item->imgHeader) }}" class="img img-responsive"></td>
                                         <td>
                                             <a href="{{ url('/admin/card/' . $item->id) }}" title="View Card"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/card/' . $item->id . '/edit') }}" title="Edit Card"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

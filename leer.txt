@@ -85,3 +85,6 @@ linea para mysql batabase
 
 chat con laravel
 https://github.com/dazzz1er/confer
+
+actualizaciones entre paginas 
+https://www.youtube.com/watch?v=Qoti7G-tjN8

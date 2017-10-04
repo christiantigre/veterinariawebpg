@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
-        $cards = Card::orderBy('id', 'desc')->get();
+        $cards = Card::orderBy('id', 'desc')->where('visible',1)->get();
         $socios = Socio::orderBy('id', 'desc')->get();
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
@@ -141,6 +141,7 @@ class HomeController extends Controller
      //mapa con dos posiciones animadas return view('web.partials.pagina.mapas.mapas3');
      //traza ruta desde punto A a B return view('web.partials.pagina.mapas.mapas4');
     }
+
     public function notices(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
@@ -154,9 +155,11 @@ class HomeController extends Controller
         return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
         return view('web.partials.pagina.mapa');
     }
+
     public function pet(){
 
     }
+
     public function gallery(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
@@ -169,6 +172,7 @@ class HomeController extends Controller
         $pag = 'galeria';
         return view('web.partials.pagina.gallery',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
     }
+
     public function howtoget()
     {
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
@@ -188,4 +192,25 @@ class HomeController extends Controller
         }   
         return view('web.partials.pagina.howtoget',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','latitud','longitud'));
     }
+
+
+
+    public function DetallSlider($id){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $slider = Slider::findOrFail($id);
+        $pag = 'noticias';
+        return view('web.partials.pagina.detall.detallslider',compact('veterinary','slider','pag'));
+        dd($slider);
+    }
+
+    public function DetallCards($id){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $notes = Card::findOrFail($id);
+        $pag = 'noticias';
+        dd($notes);
+        return view('web.partials.pagina.detall.detallslider',compact('veterinary','slider','pag'));
+        dd($slider);
+    }
+
+
 }

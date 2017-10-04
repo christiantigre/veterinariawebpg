@@ -18,7 +18,7 @@
                     </h2>
                     <hr>
                     <p class="">
-                        {{ $card->paragraph }}
+                        {{ str_limit($card->paragraph, 100) }}
                     </p>
                     </hr>
                     <div class="cours3">
@@ -33,9 +33,11 @@
                         </h6>
                     </div>
                     <div class="cours4 text-center">
+                        <a href="{{url('DetallCards', ['id' => $card->id])}}">
                         <button class="cou" style="border:1px solid transparent;padding:5px 10px ;font-size:16px;border-radius:10%;background-color:rgb(237,78,110);color:white;">
                             VER MAS
                         </button>
+                        </a>
                     </div>
                 </div>
 

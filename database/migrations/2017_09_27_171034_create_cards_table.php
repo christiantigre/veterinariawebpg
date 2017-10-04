@@ -15,12 +15,16 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title')->nullable();
-            $table->text('paragraph')->nullable();
-            $table->text('subtitle');
+            $table->text('subtitle')->nullable();
             $table->text('subtitle2')->nullable();
             $table->text('subtitle3')->nullable();
+            $table->text('intro')->nullable();
+            $table->text('paragraph')->nullable();
+            $table->text('detall')->nullable();
             $table->text('linkcard')->nullable();
             $table->text('img')->nullable();
+            $table->text('imgHeader')->nullable();
+            $table->boolean('visible')->default(1);
             $table->timestamps();
         });
     }

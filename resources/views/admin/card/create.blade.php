@@ -20,7 +20,7 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/admin/card', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        {!! Form::open(['url' => '/admin/card','enctype'=>'multipart/form-data', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                         @include ('admin.card.form')
 

@@ -26,6 +26,8 @@ Route::get('/contact', function () {
   Route::get('/notices', 'HomeController@notices')->name('/notices');
   Route::get('/pet', 'HomeController@pet')->name('/pet');
   Route::get('/gallery', 'HomeController@gallery')->name('/gallery');
+   Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
+   Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
   Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
     return new \App\Mail\SendMail('Christian');
