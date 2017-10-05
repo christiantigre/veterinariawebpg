@@ -25,8 +25,8 @@
                         <h2 style="text-align:center;margin-top:-1px;color:rgb(237,78,110);">
                            {{ $card->subtitle }}
                         </h2>
-                        <h5 style="text-align:center;">
-                           {{ str_limit($card->subtitle2, 90) }}
+                        <h5 style="text-align:center; width: 500px;">
+                           {{ str_limit($card->subtitle, 100) }}
                         </h5>
                         <h6 style="text-align:center;">
                              {{ str_limit($card->subtitle3, 90) }}

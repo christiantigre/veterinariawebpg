@@ -25,7 +25,7 @@ class Veterinary extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'address', 'tlf1', 'tlf2', 'cel1', 'cel2', 'mail', 'linkweb', 'prop', 'gerent', 'area', 'description', 'logo', 'datestart', 'ruc', 'razonsocial'
+    protected $fillable = ['name', 'address', 'tlf1', 'tlf2', 'cel1', 'cel2', 'mail', 'linkweb', 'prop', 'gerent', 'area', 'description', 'logo','namelogo', 'datestart', 'ruc', 'razonsocial'
     ,'fb','tw','in','yt','gg','latitude','longitud'
 ];
 

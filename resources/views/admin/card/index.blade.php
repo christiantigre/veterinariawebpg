@@ -5,10 +5,10 @@
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Card</div>
+                    <div class="panel-heading">Nuevos temas</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/card/create') }}" class="btn btn-success btn-sm" title="Add New Card">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Crear
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/card', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
@@ -42,18 +42,30 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td><td>{{ $item->subtitle }}</td>
-                                        <td>{{ $item->paragraph }}</td>
-                                        <td><img src="{{ asset($item->img) }}" class="img img-responsive"></td>
-                                        <td><img src="{{ asset($item->imgHeader) }}" class="img img-responsive"></td>
+                                        <td>{{ str_limit($item->paragraph,120) }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/card/' . $item->id) }}" title="View Card"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/card/' . $item->id . '/edit') }}" title="Edit Card"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            @if(empty($item->img))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($item->img) }}" class="img img-responsive">
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if(empty($item->imgHeader))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($item->imgHeader) }}" class="img img-responsive">
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/admin/card/' . $item->id) }}" title="View Card"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/card/' . $item->id . '/edit') }}" title="Edit Card"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/card', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Card',

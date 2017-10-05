@@ -28,14 +28,14 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Img</th><th>Title</th><th>Content</th><th>Actions</th>
+                                        <th>ID</th><th>Imagen</th><th>Titulo</th><th>Contenido</th><th>Acciónes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($slider as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->img }}</td><td>{{ $item->title }}</td><td>{{ $item->content }}</td>
+                                        <td><img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo brand-centered"></td><td>{{ $item->title }}</td><td>{{ str_limit($item->content,50) }}</td>
                                         <td>
                                             <a href="{{ url('/admin/slider/' . $item->id) }}" title="View Slider"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/slider/' . $item->id . '/edit') }}" title="Edit Slider"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

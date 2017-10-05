@@ -82,7 +82,9 @@
                                     </tr>
                                     <tr>
                                         <th> logo </th>
-                                        <td> {{ $veterinary->logo }} </td>
+                                        <td> {{ $veterinary->namelogo }} 
+                                            <img src="{{ asset($veterinary->logo) }}" class="navbar-brand navbar-brand-logo brand-centered">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th> Fecha de inicio </th>

@@ -28,10 +28,12 @@ Route::get('/contact', function () {
   Route::get('/gallery', 'HomeController@gallery')->name('/gallery');
    Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
    Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
+   Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
   Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
     return new \App\Mail\SendMail('Christian');
   });
+
 
   Auth::routes();
 

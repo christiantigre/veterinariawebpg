@@ -73,11 +73,11 @@
                     NOTICIAS
                 </a>
             </li>
-            <li @if(($pag)=='comollegar') class="active" @else class="" @endif>
+            <!--<li @if(($pag)=='comollegar') class="active" @else class="" @endif>
                 <a href="{{ url('/howtoget') }}" class="menu">
                     COMO LLEGAR
                 </a>
-            </li>
+            </li>-->
             <li @if(($pag)=='contacto') class="active" @else class="" @endif>
                 <a href="{{ url('/contact') }}" class="menu">
                     CONTACTO

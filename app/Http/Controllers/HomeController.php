@@ -207,8 +207,17 @@ class HomeController extends Controller
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes = Card::findOrFail($id);
         $pag = 'noticias';
+        return view('web.partials.pagina.detall.detallCards',compact('veterinary','notes','pag'));
         dd($notes);
-        return view('web.partials.pagina.detall.detallslider',compact('veterinary','slider','pag'));
+        dd($slider);
+    }
+
+    public function DetallTopic($id){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $notes = Card::findOrFail($id);
+        $pag = 'noticias';
+        return view('web.partials.pagina.detall.detallTemas',compact('veterinary','notes','pag'));
+        dd($notes);
         dd($slider);
     }
 

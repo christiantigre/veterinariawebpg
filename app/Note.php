@@ -25,7 +25,23 @@ class Note extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'link', 'name','visible'];
+    protected $fillable = [
+        'title', 
+        'subtitle', 
+        'intro',
+        'description',
+         'link',
+          'name',
+         'imgHeader',
+         'nameimg',
+          'visible',
+          'webvisible',
+          'visit',
+          'like',
+          'share',
+          'tag_id',
+          'admins_id'
+      ];
 
     
 }

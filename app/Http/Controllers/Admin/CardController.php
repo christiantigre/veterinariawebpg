@@ -81,7 +81,7 @@ class CardController extends Controller
             $nameHeader = $file->getClientOriginalName();
             $path = public_path('uploads/card/head/'.$nameHeader);
             $image = Image::make($file->getRealPath());
-            $image->resize(100, 100);
+            $image->resize(1000, 200);
             $image->save($path);
         }
 
@@ -171,7 +171,7 @@ class CardController extends Controller
             $path = public_path($rutaCont.$nameContent);
             $image = Image::make($file->getRealPath());
             $imgCont = $rutaCont.$nameContent;
-            $image->resize(100, 100);
+            $image->resize(600, 375);
             $image->save($path);
         }
         if(!Input::file("imgHeader"))
@@ -183,7 +183,7 @@ class CardController extends Controller
             $path = public_path($rutaHead.$nameHeader);
             $image = Image::make($file->getRealPath());
             $imgHead = $rutaHead.$nameHeader;
-            $image->resize(100, 100);
+            $image->resize(1000, 200);
             $image->save($path);
         }
         

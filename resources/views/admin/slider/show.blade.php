@@ -32,7 +32,27 @@
                                     <tr>
                                         <th>ID</th><td>{{ $slider->id }}</td>
                                     </tr>
-                                    <tr><th> Img </th><td> {{ $slider->img }} </td></tr><tr><th> Title </th><td> {{ $slider->title }} </td></tr><tr><th> Content </th><td> {{ $slider->content }} </td></tr>
+                                    <tr>
+                                        <th> Imagen </th><td><img src="{{ asset($slider->img) }}" class="img img-responsive"> </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Titulo </th><td> {{ $slider->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Sub-Titulo </th><td> {{ $slider->subtitle }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Introducción </th><td> {{ $slider->content }} </td>
+                                    </tr>                                    
+                                    <tr>
+                                        <th> Contenido </th><td> {{ $slider->body }} </td>
+                                    </tr>                                  
+                                    <tr>
+                                        <th> Detalles </th><td> {{ $slider->detall }} </td>
+                                    </tr>                                  
+                                    <tr>
+                                        <th> Link </th><td> {{ $slider->linkinfo }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -30,7 +30,7 @@
                             {{ $nota->description }}
                         </p>
                         
-                            <a href="{{ $nota->link }}">{{ $nota->title }}</a>
+                            <a href="{{url('DetallTopic', ['id' => $nota->id])}}">{{ $nota->title }}</a>
                         <hr>
                         <div class="blog-post-actions">
                             <p class="blog-post-bottom pull-left">
