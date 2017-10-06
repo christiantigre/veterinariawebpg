@@ -213,12 +213,12 @@ class HomeController extends Controller
     }
 
     public function DetallTopic($id){
+        //dd('aqui');
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
-        $notes = Card::findOrFail($id);
+        $notes = Note::findOrFail($id);
         $pag = 'noticias';
         return view('web.partials.pagina.detall.detallTemas',compact('veterinary','notes','pag'));
-        dd($notes);
-        dd($slider);
+        
     }
 
 

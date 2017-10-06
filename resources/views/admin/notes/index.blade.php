@@ -28,14 +28,28 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Title</th><th>Description</th><th>Link</th><th>Actions</th>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Link</th>
+                                        <th>Imagen</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($notes as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td>{{ $item->link }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ str_limit($item->description,120) }}</td>
+                                        <td>{{ $item->link }}</td>
+                                        <td>
+                                            @if(empty($item->imgHeader))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($item->imgHeader) }}" class="img img-responsive">
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/notes/' . $item->id) }}" title="View Note"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/notes/' . $item->id . '/edit') }}" title="Edit Note"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

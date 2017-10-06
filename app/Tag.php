@@ -32,5 +32,14 @@ class Tag extends Model
         return $this->belongsToMany('App\Post');
     }
 
+
+
+
+    
+public function Note()
+    {
+        return $this->hasMany('App\Note', 'id');
+    }
+
     
 }

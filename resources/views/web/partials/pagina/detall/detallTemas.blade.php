@@ -6,20 +6,24 @@
 	<div class="row">
 		 <!-- HEADER -->
         <div class="header">
-            <img style="width:100%" src="http://www.limontasport.com/wp-content/uploads/2016/03/limonta-sport-slider-1-2-1800x720.jpg" />
+            @if(empty($notes->imgHeader))
+            Sin imagen de encabezado
+            @else
+            <img style="width:100%" src="{{ asset($notes->imgHeader) }}" />
+            @endif
             <div class="triangulo"></div>
             <div class="profile">
                 <img class="photo-author img-circle" src="http://www.bordeaux-tourism.co.uk/var/ezwebin_site/storage/images/media/images/regards-bordelais/jean-poutge/profil-jean/12599-2-fre-FR/Profil-Jean_format_360x360.jpg" />
-                <span class="name-author">por Rubén Garcia</span>
+                <span class="name-author">por {{ $notes->Admin->name }}</span>
             </div>
-            <h5 class="sub-title">DEPORTES</h5>
-            <h2 class="title">El estadio más impactante del mundo...</h2>
+            <h5 class="sub-title">{{ $notes->Tag->tag }}</h5>
+            <h2 class="title">{{ $notes->subtitle }}...</h2>
         </div>
 
         <!-- INFO -->
         <div class="row">
             <div class="col-xs-12">
-                <h4 style="line-height: 25px;">Tiene capacidad para 150.000 personas, sorprende a todo el mundo y no es el Santiago Bernabéu del Real Madrid, ni el Old Trafford del Manchester United, ni el Camp Nou del FC Barcelona.</h4>
+                <h4 style="line-height: 25px;">{{ $notes->intro }}.</h4>
             </div>
         </div>
         <div class="row row-eq-height" style="padding-right:15px">

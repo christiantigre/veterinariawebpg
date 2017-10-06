@@ -32,7 +32,76 @@
                                     <tr>
                                         <th>ID</th><td>{{ $note->id }}</td>
                                     </tr>
-                                    <tr><th> Title </th><td> {{ $note->title }} </td></tr><tr><th> Description </th><td> {{ $note->description }} </td></tr><tr><th> Link </th><td> {{ $note->link }} </td></tr>
+                                    <tr>
+                                        <th> Titulo </th><td> {{ $note->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Sub Titulo </th><td> {{ $note->subtitle }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Introducción </th><td> {{ $note->intro }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Descripción </th><td> {{ $note->description }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Link </th><td> {{ $note->link }} </td>
+                                    </tr>                                    
+                                    <tr>
+                                        <th> Imagen Encabesado </th><td>
+                                            @if(empty($note->imgHeader))
+                                            No hay imagen
+                                            @else
+                                            <img class="img img-responsive" src="{{ asset( $note->imgHeader ) }}"></img>
+                                            @endif
+                                          </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Link </th><td> {{ $note->link }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Visible </th><td> 
+                                            @if(($note->visible)=='1')
+                                            Activo
+                                            @else
+                                            In-Activo
+                                            @endif
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Vista principal </th><td> 
+                                            @if(($note->webvisible)=='1')
+                                            Activo
+                                            @else
+                                            In-Activo
+                                            @endif
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Visitas </th><td> 
+                                            {{ $note->visit }}
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Me gusta </th><td> 
+                                            {{ $note->like }}
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Compartidos </th><td> 
+                                            {{ $note->share }}
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Etiquetas </th><td> 
+                                            {{ $note->Tag->tag }}
+                                         </td>
+                                    </tr> 
+                                    <tr>
+                                        <th> Publicado por </th><td> 
+                                            {{ $note->Admin->name }}
+                                         </td>
+                                    </tr>   
                                 </tbody>
                             </table>
                         </div>

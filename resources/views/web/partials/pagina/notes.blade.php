@@ -27,7 +27,7 @@
                             “
                         </p>
                         <p class="quote-text">
-                            {{ $nota->description }}
+                            {{ str_limit($nota->description,120) }}
                         </p>
                         
                             <a href="{{url('DetallTopic', ['id' => $nota->id])}}">{{ $nota->title }}</a>

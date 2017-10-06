@@ -43,5 +43,16 @@ class Note extends Model
           'admins_id'
       ];
 
+
+
+    public function Tag()
+    {
+        return $this->belongsTo('App\Tag', 'tag_id');
+    }
+
+    public function Admin()
+    {
+        return $this->belongsTo('App\Admin', 'admins_id');
+    }
     
 }

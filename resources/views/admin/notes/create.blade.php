@@ -19,7 +19,7 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/admin/notes', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        {!! Form::open(['url' => '/admin/notes','enctype'=>'multipart/form-data' , 'class' => 'form-horizontal', 'files' => true]) !!}
 
                         @include ('admin.notes.form')
 

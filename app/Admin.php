@@ -38,4 +38,10 @@ class Admin extends Authenticatable
     {
         $this->notify(new AdminResetPassword($token));
     }
+
+    public function Note()
+    {
+        return $this->hasMany('App\Note', 'id');
+    }
+
 }

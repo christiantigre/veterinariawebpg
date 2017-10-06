@@ -33,11 +33,11 @@
         {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-<div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-    {!! Form::label('name', 'Name', ['class' => 'col-md-4 control-label']) !!}
+<div class="form-group {{ $errors->has('imgHeader') ? 'has-error' : ''}}">
+    {!! Form::label('imgHeader', 'Imagen encabezado', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+         {!! Form::File('imgHeader', null, ['class' => 'form-control','accept'=>'image/*']) !!}
+        {!! $errors->first('imgHeader', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 <div class="form-group {{ $errors->has('visible') ? 'has-error' : ''}}">
@@ -57,6 +57,13 @@
     <label>{!! Form::radio('webvisible', '0') !!} No</label>
 </div>
         {!! $errors->first('webvisible', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('tag_id') ? 'has-error' : ''}}">
+    {!! Form::label('tag_id', 'Etiqueta', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {{ Form::select('tag_id', $tags, null, ['class' => 'form-control']) }}
+        {!! $errors->first('tag_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
