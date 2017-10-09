@@ -1,0 +1,42 @@
+{
+    "fields": [
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "content",
+            "type": "text"
+        },
+        {
+            "name": "img",
+            "type": "string"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "visible",
+            "type": "boolean"
+        },
+        {
+            "name": "tipecourse_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "tipecourse_id",
+            "references": "id",
+            "on": "type_courses"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "TypeCourse",
+            "type": "belongsTo",
+            "class": "App\\TypeCourse"
+        }
+    ]
+}

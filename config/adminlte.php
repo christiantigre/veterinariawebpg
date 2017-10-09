@@ -199,11 +199,21 @@ return [
                     'icon'    => 'minus',
                     'url'  => 'admin/post',
                 ],
+                [
+                    'text' => 'Tipo cursos',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/type-course',
+                ],
+                [
+                    'text' => 'Cursos',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/courses',
+                ],
             ],
         ],        
     ],
 
-    /*
+    /* 
     |--------------------------------------------------------------------------
     | Menu Filters
     |--------------------------------------------------------------------------

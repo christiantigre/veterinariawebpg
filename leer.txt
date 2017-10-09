@@ -41,8 +41,12 @@ php artisan crud:generate Tag --fields="name#string; description#text; visible#b
 
 php artisan crud:generate Post --fields="title#string; body#text; slug#text; category_id#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate TypeCourse --fields="type#string; slug#text; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 generar crud desde json
 php artisan crud:generate Subcategory --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/subcategory.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Courses --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldscourses.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 
 
@@ -88,3 +92,8 @@ https://github.com/dazzz1er/confer
 
 actualizaciones entre paginas 
 https://www.youtube.com/watch?v=Qoti7G-tjN8
+
+
+acceso a webhost
+us: veterinariawebpg@gmail.com
+ps: veterinariawebpg@gmail.com

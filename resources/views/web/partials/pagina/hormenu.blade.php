@@ -4,7 +4,7 @@
                     <ul class="menu">
                         <li>
                             <a href="#">
-                                Categorias
+                                Productos
                             </a>
                             <ul>
                                 <li>
@@ -70,43 +70,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Adopciónes
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        Roku
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Amazon Fire TV
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Citas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Medicina
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Interes
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Planes salud
-                            </a>
                         </li>
                     </ul>
                 </nav>

@@ -34,7 +34,8 @@ h1::after {
 
 .top-color {
     /*#BFE9EB BFE9EB*/
-    background: #77b5e2;
+    /*background: #93CB00;*/
+    background: #93CB00;
     height: 10px;
 }
 
@@ -89,7 +90,7 @@ h1::after {
 }
 
 
-/***************************bisqueda y cuenta*********/
+/***************************busqueda y cuenta*********/
 
 .ses_cta {
     font-size: 14px;
@@ -97,19 +98,16 @@ h1::after {
 
 .ses_cta, li a {
     font-size: 14px;
-    color: #E168A2;
+    color: #00CDF8;
 }
 
 .ses_cta, li a:hover, .glyphicon-search:hover {
     font-size: 14px;
-    /*black #D7C4C0
-    background: #E168A2;
-    color: #fff;*/
     color: #BFE9EB;
 }
 
 div ul li a.hover_class:hover {
-    background-color: #E168A2;
+    background-color: #93CB00;
     color: #BFE9EB;
 }
 
@@ -129,7 +127,7 @@ div ul li a.hover_class:hover {
 }
 
 .colo-fux, .social {
-    color: #E168A2;
+    color: #00CDF8;
     text-align: center;
 }
 
@@ -183,15 +181,14 @@ div.support-menu {
     background-image: -moz-linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
     background-image: -o-linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
     background-image: linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));*/
-    background-color: #77b5e2;
-    background-image: #77b5e2;
-    background-image: #77b5e2;
-    background-image: #77b5e2;
-    background-image: #77b5e2;
+    background-color: #93CB00;
+    background-image: #93CB00;
+    background-image: #93CB00;
+    background-image: #93CB00;
+    background-image: #93CB00;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1), 0 1px 1px rgba(0, 0, 0, .1);
     color: rgb(255, 255, 255);
-    /*color: #E168A2;*/
     display: block;
     font-size: 12px;
     font-weight: 500;
@@ -206,10 +203,10 @@ div.support-menu {
 
 .support-menu nav.vertical>ul>li>a:hover {
     background-color: rgb(114, 51, 98);
-    background-image: -webkit-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
-    background-image: -moz-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
-    background-image: -o-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
-    background-image: linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
+    background-image: -webkit-linear-gradient(150deg, rgb(0, 205, 248), rgb(0, 205, 248));
+    background-image: -moz-linear-gradient(150deg, rgb(0, 205, 248), rgb(0, 205, 248));
+    background-image: -o-linear-gradient(150deg, rgb(0, 205, 248), rgb(0, 205, 248));
+    background-image: linear-gradient(150deg, rgb(0, 205, 248), rgb(0, 205, 248));
     cursor: pointer;
 }
 
@@ -239,11 +236,11 @@ div.support-menu {
 }
 
 .navbar-header, .text-right, .right {
-    color: #E168A2;
+    color: #93CB00;
 }
 
 a .right_a: {
-    color: #E168A2;
+    color: #93CB00;
 }
 
 .navbar-brand, .auto {
@@ -349,7 +346,7 @@ body {
 
 #lisearch a:hover {
     /*black #D7C4C0*/
-    background: #E168A2;
+    background: #93CB00;
     color: #fff;
     /*color: #BFE9EB;*/
 }
@@ -516,7 +513,7 @@ body {
     background-color: #D7C4C0;
     margin: 0;
     padding: 0;
-    color: #E168A2;
+    color: #93CB00;
     /*font-family: sans-serif;*/
     font-size: 12px;
     letter-spacing: 1px;
@@ -531,7 +528,6 @@ body {
 .top-bar .nav-text {
     /*font-family: sans-serif;*/
     font-family: 'Ubuntu', sans-serif;
-    /*color: #E168A2;*/
     display: block;
     margin-top: 5px;
     font-size: 12px;
@@ -542,7 +538,7 @@ body {
 
 .top-bar .social {
     /*color:#FFF;*/
-    color: #E168A2;
+    color: #00CDF8;
     display: inline-block;
     padding: 5px;
     text-decoration: none;
@@ -562,8 +558,8 @@ body {
 .top-bar .tools li a {
     display: block;
     text-decoration: none;
-    /*color: #fff;*/
-    color: #E168A2;
+    /*color: #fff;*/    
+    color: #00cdf8;
     padding-left: 15px;
     padding-top: 5px;
 }
@@ -852,7 +848,8 @@ body {
 
 #cssmenu {
     font-family: sans-serif;
-    background: #70B1CB;
+    /*background: #70B1CB;*/
+    background: #00CDF8;
     /*333*/
 }
 
@@ -875,7 +872,8 @@ body {
 
 #cssmenu>ul>li:hover, #cssmenu ul li.active:hover, #cssmenu ul li.active, #cssmenu ul li.has-sub.active:hover {
     /*background: #f3c087;*/
-    background: #f3c087 !important;
+    /*background: #f3c087 !important;*/
+    background: #93CB00 !important;
     /*background: #405fed !important;*/
     -webkit-transition: background .3s ease;
     -ms-transition: background .3s ease;
@@ -994,7 +992,8 @@ body {
 
 #cssmenu ul ul li.has-sub:hover, #cssmenu ul li.has-sub ul li.has-sub ul li:hover {
     /*background:#363636;*/
-    background: #dc7633;
+    /*background: #dc7633;*/
+    background: #00CDF8;
 }
 
 #cssmenu ul ul ul li.active a {
@@ -1364,16 +1363,16 @@ body {
     margin-top: 10vh;
     padding: 10px 40px;
     font-size: 1.4em;
-    color: #77b5e2;
+    color: #93CB00;
     text-transform: uppercase;
     background-color: transparent;
-    border: 1px solid #77b5e2;
+    border: 1px solid #93CB00;
     cursor: pointer;
     transition: background-color 1s ease-in-out, color .7s ease-in-out;
 }
 
 .slide-details button:hover {
-    background-color: #77b5e2;
+    background-color: #93CB00;
     color: #fff;
 }
 
@@ -1444,7 +1443,7 @@ body {
 /* Footer Style */
 
 i.red {
-    color: #BC0213;
+    color: #93CDF8;
 }
 
 .gal-container {
@@ -1678,7 +1677,7 @@ a.socialIcon:hover, .socialHoverClass {
 
 footer.nb-footer {
     background: #222;
-    border-top: 4px solid #BFE9EB;
+    border-top: 4px solid #93CB00;
 }
 
 footer.nb-footer .about {
@@ -1711,7 +1710,8 @@ footer.nb-footer .about .social-media ul li a {
 }
 
 footer.nb-footer .about .social-media ul li a:hover {
-    background: #BFE9EB;
+    /*background: #BFE9EB;*/
+    background: #93CB00;
     color: #fff;
     border-color: #BFE9EB;
 }
@@ -1724,7 +1724,7 @@ footer.nb-footer .footer-info-single .title {
     color: #aaa;
     text-transform: uppercase;
     font-size: 16px;
-    border-left: 4px solid #BFE9EB;
+    border-left: 4px solid #93CB00;
     padding-left: 5px;
 }
 
@@ -1985,7 +1985,7 @@ a.btn-social, .btn-social {
 }
 
 .btn-facebook {
-    background-color: #E168A2/*#3b5998*/
+    background-color: #93CDF8/*#3b5998*/
     ;
 }
 
@@ -2018,7 +2018,7 @@ a.btn-social, .btn-social {
 }
 
 .btn-google-plus {
-    background-color: #E168A2/*#dd4b39*/
+    background-color: #93CDF8/*#dd4b39*/
     ;
 }
 
@@ -2027,7 +2027,7 @@ a.btn-social, .btn-social {
 }
 
 .btn-instagram {
-    background-color: #E168A2/*#3f729b*/
+    background-color: #93CDF8/*#3f729b*/
     ;
 }
 
@@ -2148,7 +2148,7 @@ a.btn-social, .btn-social {
 }
 
 .btn-twitter {
-    background-color: #E168A2/*#55acee*/
+    background-color: #93CDF8/*#55acee*/
     ;
 }
 
@@ -2221,7 +2221,7 @@ a.btn-social, .btn-social {
 }
 
 .btn-youtube {
-    background-color: #E168A2/*#e52d27*/
+    background-color: #93CDF8/*#e52d27*/
     ;
 }
 
@@ -2499,7 +2499,7 @@ a.btn-social, .btn-social {
 
 .licredentials li a:hover, .licredentials li:hover>a {
     /*color:#ffffff;*/
-    background-color: #E168A2;
+    background-color: #93CB00;
     color: #BFE9EB;
 }
 
@@ -2529,7 +2529,7 @@ ul.dropdown-cred {
 }
 
 li.col a:hover {
-    background-color: #E168A2;
+    background-color: #93CB00;
     -webkit-transform: translate(0px, 0px) scale(1, 1);
     -moz-transform: translate(0px, 0px) scale(1, 1);
     -o-transform: translate(0px, 0px) scale(1, 1);
@@ -2671,7 +2671,6 @@ li.col a:hover {
 }
 
 
-/*divcontacto #E168A2*/
 
 .divcontacto {
     background: #F3F6DD;

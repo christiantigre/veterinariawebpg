@@ -8,9 +8,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Veterinary</div>
                     <div class="panel-body">
-                        <!--<a href="{{ url('/admin/veterinary/create') }}" class="btn btn-success btn-sm" title="Add New Veterinary">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>-->
+                        @if(!empty($veterinary))
+                            <a href="{{ url('/admin/veterinary/create') }}" class="btn btn-success btn-sm" title="Add New Veterinary">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Configurar
+                        </a>
+                        @endif
+                        
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/veterinary', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
                         <div class="input-group">

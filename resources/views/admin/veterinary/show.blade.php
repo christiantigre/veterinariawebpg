@@ -121,6 +121,14 @@
                                         <th> Google + </th>
                                         <td> {{ $veterinary->gg }} </td>
                                     </tr>
+                                    <tr>
+                                        <th> Misión </th>
+                                        <td> {{ $veterinary->mision }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Visión </th>
+                                        <td> {{ $veterinary->vision }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -87,14 +87,33 @@ class HomeController extends Controller
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
         $cards = Card::orderBy('id', 'desc')->get();
-        $socios = Socio::orderBy('id', 'desc')->get();
+        $socios = Socio::where('is_active',1)->orderBy('id', 'desc')->get();
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'nosotros';
-        return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        //return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.partials.pagina.equipo',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
     }
+
+    public function mision(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $pag = 'empresa';
+        return view('web.partials.pagina.empresamision',compact('veterinary','notes','notices','pag'));
+    }
+    public function vision(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $pag = 'empresa';
+        return view('web.partials.pagina.empresavision',compact('veterinary','notes','notices','pag'));
+    }
+
     public function _howtoget_(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();

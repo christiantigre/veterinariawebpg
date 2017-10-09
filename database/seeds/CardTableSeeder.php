@@ -13,7 +13,7 @@ class CardTableSeeder extends Seeder
     {
         Card::create( [
 'id'=>1,
-'title'=>'Peliqueria',
+'title'=>'Peluqueria',
 'paragraph'=>'Realizamos el corte de lana de tus mascotas al estilo que tu quieras.',
 'subtitle'=>'Estilo canino',
 'subtitle2'=>'Medicación para tus mascotas. Esterilización Medicación para tus mascotas, esterilización',

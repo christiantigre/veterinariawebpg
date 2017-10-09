@@ -10,19 +10,29 @@
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
         {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('abrevTitulo') ? 'has-error' : ''}}">
+    {!! Form::label('abrevTitulo', 'Abreviatura titulo', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('abrevTitulo', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('abrevTitulo', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
     {!! Form::label('name', 'Name', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('lastname') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('lastname') ? 'has-error' : ''}}">
     {!! Form::label('lastname', 'Lastname', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('lastname', null, ['class' => 'form-control']) !!}
         {!! $errors->first('lastname', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('fb') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('fb') ? 'has-error' : ''}}">
     {!! Form::label('fb', 'Fb', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('fb', null, ['class' => 'form-control']) !!}
@@ -77,6 +87,18 @@
     <div class="col-md-6">
         {!! Form::text('workplacelink', null, ['class' => 'form-control']) !!}
         {!! $errors->first('workplacelink', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('is_active') ? 'has-error' : ''}}">
+    {!! Form::label('is_active', 'Activo', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        <div class="checkbox">
+    <label>{!! Form::radio('is_active', '1', true) !!} Yes</label>
+</div>
+<div class="checkbox">
+    <label>{!! Form::radio('is_active', '0') !!} No</label>
+</div>
+        {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

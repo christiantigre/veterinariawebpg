@@ -77,8 +77,8 @@ class NotesController extends Controller
                 $image->save($path);
             }
             if (!empty($nameHeader)) {
-               $imgHead = 'uploads/notes/head/'.$nameHeader;   
-           }else{
+             $imgHead = 'uploads/notes/head/'.$nameHeader;   
+         }else{
             $imgHead='';
         }
 
@@ -157,9 +157,9 @@ class NotesController extends Controller
                 $old = public_path().'/'.$move;
                        //verificamos si la imagen exist
                 if(!empty($move)){
-                if(\File::exists($old)){
+                    if(\File::exists($old)){
                         unlink($old);
-                }
+                    }
                 }
 
 
@@ -171,8 +171,8 @@ class NotesController extends Controller
                 $image->save($path);
             }
             if (!empty($nameHeader)) {
-               $imgHead = $rutaHead.$nameHeader;   
-           }else{
+             $imgHead = $rutaHead.$nameHeader;   
+         }else{
             $imgHead='';
         }
 

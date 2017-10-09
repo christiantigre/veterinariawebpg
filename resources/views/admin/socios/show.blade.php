@@ -32,7 +32,16 @@
                                     <tr>
                                         <th>ID</th><td>{{ $socio->id }}</td>
                                     </tr>
-                                    <tr><th> Img </th><td> {{ $socio->img }} </td></tr><tr><th> Description </th><td> {{ $socio->description }} </td></tr><tr><th> Name </th><td> {{ $socio->name }} </td></tr>
+                                    <tr>
+                                        <th> Img </th>
+                                        <td> 
+                                        @if(empty($socio->img))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($socio->img) }}" class="img img-responsive">
+                                            @endif
+                                            </td>
+                                    </tr><tr><th> Description </th><td> {{ $socio->description }} </td></tr><tr><th> Name </th><td> {{ $socio->name }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

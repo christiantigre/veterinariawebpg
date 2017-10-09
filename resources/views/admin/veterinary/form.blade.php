@@ -67,13 +67,15 @@
         {!! Form::text('area', null, ['class' => 'form-control']) !!}
         {!! $errors->first('area', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     {!! Form::label('description', 'Descripción', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::textarea('description', null, ['class' => 'form-control','placeholder'=>'Max 500 caracteres']) !!}
         {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('logo') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('logo') ? 'has-error' : ''}}">
     {!! Form::label('logo', 'Logo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::File('logo', null, ['class' => 'form-control','accept'=>'image/*']) !!}
@@ -148,6 +150,21 @@
     <div class="col-md-6">
         {!! Form::text('longitud', null, ['class' => 'form-control','id'=>'longitud']) !!}
         {!! $errors->first('longitud', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('mision') ? 'has-error' : ''}}">
+    {!! Form::label('mision', 'Misión', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::textarea('mision', null, ['class' => 'form-control','placeholder'=>'Max 500 caracteres']) !!}
+        {!! $errors->first('mision', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('vision') ? 'has-error' : ''}}">
+    {!! Form::label('vision', 'Visión', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::textarea('vision', null, ['class' => 'form-control','placeholder'=>'Max 500 caracteres']) !!}
+        {!! $errors->first('vision', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

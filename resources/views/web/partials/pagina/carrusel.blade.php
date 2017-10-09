@@ -18,7 +18,7 @@
                             </h2>
                         </div>
                         <p>
-                            {{$slide->content}}
+                            {{ str_limit( $slide->content,120) }}
                         </p>
 
                         @if(!empty($slide->linkweb))

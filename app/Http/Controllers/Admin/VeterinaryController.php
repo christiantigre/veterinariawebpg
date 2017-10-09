@@ -34,7 +34,7 @@ class VeterinaryController extends Controller
             ->orWhere('tlf1', 'LIKE', "%$keyword%")
             ->orWhere('tlf2', 'LIKE', "%$keyword%")
             ->orWhere('cel1', 'LIKE', "%$keyword%")
-            ->orWhere('tlf2', 'LIKE', "%$keyword%")
+            ->orWhere('cel2', 'LIKE', "%$keyword%")
             ->orWhere('mail', 'LIKE', "%$keyword%")
             ->orWhere('linkweb', 'LIKE', "%$keyword%")
             ->orWhere('prop', 'LIKE', "%$keyword%")
@@ -72,11 +72,81 @@ class VeterinaryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Input::file("logo"))
+            {
+                $nombre="";
+            }else{
+                $file = Input::file('logo');
+                $nombre = $file->getClientOriginalName();
+                $path = public_path('uploads/logos/'.$nombre);
+                $image = Image::make($file->getRealPath());
+                $image->save($path);
+            }
 
-        $requestData = $request->all();
+            if (empty($nombre)) {
+                
+            }
+
+        //$requestData = $request->all();
         
-        Veterinary::create($requestData);
-
+        //Veterinary::create($requestData);
+            if(!empty($nombre)){
+                Veterinary::create([
+                    'name'=>$request->name,
+                    'address'=>$request->address,
+                    'tlf1'=>$request->tlf1,
+                    'tlf2'=>$request->tlf2,
+                    'cel1'=>$request->cel1,
+                    'cel2'=>$request->cel2,
+                    'mail'=>$request->mail,
+                    'linkweb'=>$request->linkweb,
+                    'prop'=>$request->prop,
+                    'gerent'=>$request->gerent,
+                    'area'=>$request->area,
+                    'description'=>$request->description,
+                    'logo'=>'uploads/logos/'.$nombre,
+                    'namelogo'=>$nombre,
+                    'datestart'=>$request->datestart,
+                    'ruc'=>$request->ruc,
+                    'razonsocial'=>$request->razonsocial,
+                    'fb'=>$request->fb,
+                    'tw'=>$request->tw,
+                    'in'=>$request->in,
+                    'yt'=>$request->yt,
+                    'gg'=>$request->gg,
+                    'latitud'=>$request->latitud,
+                    'longitud'=>$request->longitud,
+                    'mision'=>$request->mision,
+                    'vision'=>$request->vision
+                ]);
+            }else{
+                Veterinary::create([
+                    'name'=>$request->name,
+                    'address'=>$request->address,
+                    'tlf1'=>$request->tlf1,
+                    'tlf2'=>$request->tlf2,
+                    'cel1'=>$request->cel1,
+                    'cel2'=>$request->cel2,
+                    'mail'=>$request->mail,
+                    'linkweb'=>$request->linkweb,
+                    'prop'=>$request->prop,
+                    'gerent'=>$request->gerent,
+                    'area'=>$request->area,
+                    'description'=>$request->description,
+                    'datestart'=>$request->datestart,
+                    'ruc'=>$request->ruc,
+                    'razonsocial'=>$request->razonsocial,
+                    'fb'=>$request->fb,
+                    'tw'=>$request->tw,
+                    'in'=>$request->in,
+                    'yt'=>$request->yt,
+                    'gg'=>$request->gg,
+                    'latitud'=>$request->latitud,
+                    'longitud'=>$request->longitud,
+                    'mision'=>$request->mision,
+                    'vision'=>$request->vision
+                ]);
+            }
         Session::flash('flash_message', 'Veterinary added!');
 
         return redirect('admin/veterinary');
@@ -133,8 +203,10 @@ class VeterinaryController extends Controller
                 $old = public_path().'/'.$move;
                 $new = public_path().'/deleted/';
                        //verificamos si la imagen existe
-                if(\File::exists($old)){
+                if(!empty($move)){
+                    if(\File::exists($old)){
                         unlink($old);
+                    }
                 }
 
 
@@ -171,6 +243,8 @@ class VeterinaryController extends Controller
                 $veterinary->gg = $request->gg;
                 $veterinary->latitud = $request->latitud;
                 $veterinary->longitud = $request->longitud;
+                $veterinary->mision = $request->mision;
+                $veterinary->vision = $request->vision;
                 $veterinary->save();
             }else{
                 $requestData = $request->all();
@@ -197,6 +271,8 @@ class VeterinaryController extends Controller
                 $veterinary->gg = $request->gg;
                 $veterinary->latitud = $request->latitud;
                 $veterinary->longitud = $request->longitud;
+                $veterinary->mision = $request->mision;
+                $veterinary->vision = $request->vision;
 
                 $veterinary->save();
             }

@@ -86,10 +86,10 @@
 </div>
 </div>
 </div>
-<div class="container-fluid">
+<!--<div class="container-fluid">
   <div class="row">
     <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d127514.27370095742!2d-78.95987267870962!3d-2.8679573954641517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e2!4m5!1s0x91cd1814f5dd2e37%3A0x24d0538029abc941!2sPelucan%2C+Juan+Jaramillo+4-22+y+Vargas+Machuca+(sector+Universidad+Catolica)%2C+Juan+Jaramillo+4-22%2C+Vargas+Machuca%2C+Cuenca!3m2!1d-2.90084!2d-79.00067299999999!4m3!3m2!1d-2.8550914!2d-78.778645!5e0!3m2!1ses!2sec!4v1506739690977" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
     <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799145.858158566!2d37.63311325804977!3d38.51847076974884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x407636bd3c77fee3%3A0xb4f07b511f605ac1!2sMalatya!5e0!3m2!1str!2str!4v1480479127130" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>-->
-  </div>
-</div>
+ <!-- </div>
+</div>-->
 @stop

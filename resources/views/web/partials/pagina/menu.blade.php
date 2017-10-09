@@ -17,51 +17,27 @@
                     INICIO
                 </a>
             </li>
-            <li @if(($pag)=='nosotros') class="active" @else class="" @endif">
-                <a href="{{ url('/us') }}" class="menu">
-                    NOSOTROS
-                </a>
-            </li>
-            <li @if(($pag)=='mascotas') class="active" @else class="" @endif>
-                <a href="{{ url('/pet') }}" class="menu">
-                    MASCOTAS
+            <li @if(($pag)=='empresa') class="active" @else class="" @endif>
+                <a href="#" class="menu">
+                    LA EMPRESA
                 </a>
                 <ul>
                     <li>
-                        <a href="#">
-                            Product 1
+                        <a href="{{ url('/mision') }}">
+                            MISIÓN
                         </a>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Sub Product
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Sub Product
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li>
-                        <a href="#">
-                            Product 2
+                        <a href="{{ url('/vision') }}">
+                            VISIÓN
                         </a>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Sub Product
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Sub Product
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
+            </li>
+            <li @if(($pag)=='nosotros') class="active" @else class="" @endif">
+                <a href="{{ url('/us') }}" class="menu">
+                    EQUIPO
+                </a>
             </li>
             <li @if(($pag)=='galeria') class="active" @else class="" @endif>
                 <a href="{{ url('/gallery') }}" class="menu">
@@ -78,6 +54,16 @@
                     COMO LLEGAR
                 </a>
             </li>-->
+            <li @if(($pag)=='contacto') class="active" @else class="" @endif>
+                <a href="{{ url('/contact') }}" class="menu">
+                    PRODUCTOS
+                </a>
+            </li>
+            <li @if(($pag)=='contacto') class="active" @else class="" @endif>
+                <a href="{{ url('/contact') }}" class="menu">
+                    CAPACITACIÓNES
+                </a>
+            </li>
             <li @if(($pag)=='contacto') class="active" @else class="" @endif>
                 <a href="{{ url('/contact') }}" class="menu">
                     CONTACTO

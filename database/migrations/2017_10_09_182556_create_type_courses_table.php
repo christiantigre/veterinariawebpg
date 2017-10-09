@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateEmployeesTable extends Migration
+class CreateTypeCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('type_courses', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name',100);
-            $table->string('email',100)->unique();
-            $table->string('password',100);
-            $table->rememberToken();
+            $table->string('type',150)->nullable();
+            $table->text('slug',150)->nullable();
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('employees');
+        Schema::drop('type_courses');
     }
 }

@@ -29,6 +29,8 @@ Route::get('/contact', function () {
    Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
    Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
    Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
+   Route::get('/mision', 'HomeController@mision');
+   Route::get('/vision', 'HomeController@vision');
   Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
     return new \App\Mail\SendMail('Christian');
@@ -70,6 +72,8 @@ Route::get('/contact', function () {
     Route::resource('/gallery', 'Admin\\GalleryController');
     Route::resource('/tag', 'Admin\\TagController');
     Route::resource('/post', 'Admin\\PostController');
+    Route::resource('/type-course', 'Admin\\TypeCourseController');
+    Route::resource('/courses', 'Admin\\CoursesController');
   });
 
   Route::group(['prefix' => 'employee'], function () {

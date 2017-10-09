@@ -93,7 +93,9 @@ class SociosController extends Controller
             'lk'=>$request->lk,
             'especialitation'=>$request->especialitation,
             'workplace'=>$request->workplace,
-            'workplacelink'=>$request->workplacelink
+            'workplacelink'=>$request->workplacelink,
+            'is_active'=>$request->is_active,
+            'abrevTitulo'=>$request->abrevTitulo
         ]);
 
         Session::flash('flash_message', 'Socio added!');
@@ -139,11 +141,75 @@ class SociosController extends Controller
      */
     public function update($id, Request $request)
     {
+        $rutaHead = 'uploads/socios/';
+        if(!Input::file("img"))
+            {
+                $nameHeader="";
+            }else{
+                $soc_delete = Socio::findOrFail($id);   
+                $move = $soc_delete['img'];
+                $old = public_path().'/'.$move;
+                       //verificamos si la imagen exist
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
+
+                $file = Input::file('img');
+                $nameHeader = $file->getClientOriginalName();
+                $path = public_path($rutaHead.$nameHeader);
+                $image = Image::make($file->getRealPath());
+                //$image->resize(1800, 720);
+                $image->save($path);
+            }
+            if (!empty($nameHeader)) {
+             $imgHead = $rutaHead.$nameHeader;   
+         }else{
+            $imgHead='';
+        }
+
+
+        //$requestData = $request->all();
         
-        $requestData = $request->all();
-        
-        $socio = Socio::findOrFail($id);
-        $socio->update($requestData);
+        //$socio = Socio::findOrFail($id);
+        //$socio->update($requestData);
+        if(empty($nameHeader)){
+            $socio = Socio::findOrFail($id);
+            $socio->description = $request->description;
+            $socio->abrevTitulo = $request->abrevTitulo;
+            $socio->name = $request->name;
+            $socio->lastname = $request->lastname;
+            $socio->fb = $request->fb;
+            $socio->tw = $request->tw;
+            $socio->in = $request->in;
+            $socio->gg = $request->gg;
+            $socio->lk = $request->lk;
+            $socio->especialitation = $request->especialitation;
+            $socio->blog = $request->blog;
+            $socio->workplacelink = $request->workplacelink;
+            $socio->workplace = $request->workplace;
+            $socio->is_active = $request->is_active;
+            $socio->save();
+        }else{
+            $socio = Socio::findOrFail($id);
+            $socio->img = $imgHead;
+            $socio->description = $request->description;
+            $socio->abrevTitulo = $request->abrevTitulo;
+            $socio->name = $request->name;
+            $socio->lastname = $request->lastname;
+            $socio->fb = $request->fb;
+            $socio->tw = $request->tw;
+            $socio->in = $request->in;
+            $socio->gg = $request->gg;
+            $socio->lk = $request->lk;
+            $socio->especialitation = $request->especialitation;
+            $socio->blog = $request->blog;
+            $socio->workplacelink = $request->workplacelink;
+            $socio->workplace = $request->workplace;
+            $socio->is_active = $request->is_active;
+            $socio->save();
+        }
 
         Session::flash('flash_message', 'Socio updated!');
 

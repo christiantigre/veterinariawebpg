@@ -25,9 +25,22 @@ class Socio extends Model
      *
      * @var array
      */
-    protected $fillable = ['img', 'description', 'name', 'lastname', 'fb', 'tw', 'in', 'gg', 'lk', 'especialitation', 'blog', 
+    protected $fillable = [
+        'img', 
+        'description', 
+        'name', 
+        'lastname', 
+        'fb', 
+        'tw', 
+        'in', 
+        'gg', 
+        'lk', 
+        'especialitation',
+         'blog', 
     'workplace',
-    'workplacelink'
+    'workplacelink',
+    'abrevTitulo',
+    'is_active'
 ];
 
     

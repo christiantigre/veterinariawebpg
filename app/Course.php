@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Veterinary extends Model
+class Course extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'veterinaries';
+    protected $table = 'courses';
 
     /**
     * The database primary key value.
@@ -25,9 +25,11 @@ class Veterinary extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'address', 'tlf1', 'tlf2', 'cel1', 'cel2', 'mail', 'linkweb', 'prop', 'gerent', 'area', 'description', 'logo','namelogo', 'datestart', 'ruc', 'razonsocial'
-    ,'fb','tw','in','yt','gg','latitude','longitud','mision','vision'
-];
+    protected $fillable = ['title', 'content', 'img', 'link', 'visible', 'tipecourse_id'];
 
-    
+    public function TypeCourse()
+	{
+		return $this->belongsTo('App\TypeCourse');
+	}
+	
 }
