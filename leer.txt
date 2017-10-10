@@ -71,6 +71,11 @@ https://www.youtube.com/watch?v=oL-JMG043qI
 laravel multi categorias
 https://www.youtube.com/watch?v=Ow82DXUlp8A
 
+laravel caterogias y subcategorias
+https://www.youtube.com/watch?v=FY6Pmrmz0Ws
+https://www.youtube.com/watch?v=Ow82DXUlp8A&t=46s
+https://www.youtube.com/watch?v=MOkwJcALJ-Y&index=18&list=PLl0rlrKS77MpgHg17oW4AvLGUXt8ntVDy
+
 crear controlador
 php artisan make:controller Admin/TagController --resource
 

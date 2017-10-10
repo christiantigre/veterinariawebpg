@@ -17,6 +17,7 @@ use App\TypeCourse;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use Session;
+use App\ClasificationCourse;
 
 class HomeController extends Controller
 {
@@ -124,8 +125,9 @@ class HomeController extends Controller
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
         $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
         $pag = 'courses';
-        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources'));
+        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases'));
     }
 
     public function _howtoget_(){

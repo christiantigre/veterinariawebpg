@@ -39,7 +39,6 @@ class CoursesController extends Controller
      */
     public function create()
     {
-
         $clases = ClasificationCourse::orderBy('id','ASC')->where('visible',1)->pluck('clasification','id');
         $tipes = TypeCourse::orderBy('id','ASC')->where('is_active',1)->pluck('type','id');
         return view('admin.courses.create',compact('tipes','clases'));
@@ -60,14 +59,16 @@ class CoursesController extends Controller
         $curso = Course::create($requestData);
         $files = $request->file('files');
         $destinationPath = $public.'/uploads/archivoscurso/';
-        foreach($files as $file) {
-            $filename = $file->getClientOriginalName();
-            $upload_success = $file->move($destinationPath, $filename);
-            CoursesFiles::create([
-                'filename'=>$filename,
-                'course_id'=>$curso->id,
-                'ruta'=>'/uploads/archivoscurso/'.$filename
-            ]);
+        if(!empty($files)){
+            foreach($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $upload_success = $file->move($destinationPath, $filename);
+                CoursesFiles::create([
+                    'filename'=>$filename,
+                    'course_id'=>$curso->id,
+                    'ruta'=>'/uploads/archivoscurso/'.$filename
+                ]);
+            }
         }
         Session::flash('flash_message', 'Course added!');
         return redirect('admin/courses');
@@ -108,10 +109,8 @@ class CoursesController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update($id, Request $request)
-    {
-        
-        $requestData = $request->all();
-        
+    {        
+        $requestData = $request->all();       
         $course = Course::findOrFail($id);
         $course->update($requestData);
         Session::flash('flash_message', 'Course updated!');

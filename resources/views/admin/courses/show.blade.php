@@ -43,13 +43,17 @@
                                     <tr>
                                         <th> Archivos </th>
                                         <td> 
+                                            <ul>
                                             @foreach($files as $file)
+                                            <li>
                                             <a href="{{ $file->ruta }}" download="{{ $file->ruta }}">
                                                 <button type="button" class="btn btn-primary">
                                                     <i class="glyphicon glyphicon-download">Descargar</i>
                                                 </button>
                                             </a>
+                                            </li>
                                             @endforeach
+                                            </ul>
                                         </td>
                                     </tr>
 
