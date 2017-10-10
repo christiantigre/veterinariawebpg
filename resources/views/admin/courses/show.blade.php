@@ -44,8 +44,7 @@
                                         <th> Archivos </th>
                                         <td> 
                                             @foreach($files as $file)
-                                            {{ $file->ruta }}
-                                            <a href="download/{{ $file->ruta }}" download="{{ $file->ruta }}">
+                                            <a href="{{ $file->ruta }}" download="{{ $file->ruta }}">
                                                 <button type="button" class="btn btn-primary">
                                                     <i class="glyphicon glyphicon-download">Descargar</i>
                                                 </button>

@@ -66,7 +66,7 @@ class CoursesController extends Controller
             CoursesFiles::create([
                 'filename'=>$filename,
                 'course_id'=>$curso->id,
-                'ruta'=>$destinationPath.$filename
+                'ruta'=>'/uploads/archivoscurso/'.$filename
             ]);
         }
         Session::flash('flash_message', 'Course added!');
@@ -82,7 +82,8 @@ class CoursesController extends Controller
     public function show($id)
     {
         $course = Course::findOrFail($id);
-        return view('admin.courses.show', compact('course'));
+        $files = CoursesFiles::where('course_id',$id)->get();
+        return view('admin.courses.show', compact('course','files'));
     }
     /**
      * Show the form for editing the specified resource.
