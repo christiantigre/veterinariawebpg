@@ -11,6 +11,9 @@ use App\Note;
 use App\Notice;
 use App\Gallery;
 use App\Category;
+use App\Service;
+use App\Typeproduct;
+use App\TypeCourse;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use Session;
@@ -42,9 +45,12 @@ class HomeController extends Controller
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+
         $pag = 'inicio';
 
-        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','typeproducts','services'));
         /*return view('home');*/
         //return view('web.index');
     }
@@ -112,6 +118,14 @@ class HomeController extends Controller
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
         $pag = 'empresa';
         return view('web.partials.pagina.empresavision',compact('veterinary','notes','notices','pag'));
+    }
+    public function courses(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $pag = 'courses';
+        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources'));
     }
 
     public function _howtoget_(){

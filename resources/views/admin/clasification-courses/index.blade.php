@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('content')       
- <div class="row">
+@section('content')
+        <div class="row">
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Tipos de cursos</div>
+                    <div class="panel-heading">Clases de cursos</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/type-course/create') }}" class="btn btn-success btn-sm" title="Add New TypeCourse">
+                        <a href="{{ url('/admin/clasification-courses/create') }}" class="btn btn-success btn-sm" title="Add New ClasificationCourse">
                             <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/admin/type-course', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/admin/clasification-courses', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search...">
                             <span class="input-group-btn">
@@ -28,26 +28,26 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Tipo</th><th>Detalle</th><th>Active</th><th>Actions</th>
+                                        <th>ID</th><th>Clasificación</th><th>Body</th><th>Slug</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($typecourse as $item)
+                                @foreach($clasificationcourses as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->type }}</td><td>{{ $item->slug }}</td><td>{{ $item->is_active }}</td>
+                                        <td>{{ $item->clasification }}</td><td>{{ $item->body }}</td><td>{{ $item->slug }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/type-course/' . $item->id) }}" title="View TypeCourse"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                            <a href="{{ url('/admin/type-course/' . $item->id . '/edit') }}" title="Edit TypeCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                            <a href="{{ url('/admin/clasification-courses/' . $item->id) }}" title="View ClasificationCourse"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/clasification-courses/' . $item->id . '/edit') }}" title="Edit ClasificationCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/admin/type-course', $item->id],
+                                                'url' => ['/admin/clasification-courses', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
-                                                        'title' => 'Delete TypeCourse',
+                                                        'title' => 'Delete ClasificationCourse',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
@@ -56,7 +56,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $typecourse->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $clasificationcourses->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

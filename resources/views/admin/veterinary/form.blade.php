@@ -37,6 +37,13 @@
         {!! $errors->first('cel2', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('fax') ? 'has-error' : ''}}">
+    {!! Form::label('fax', 'Fax', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('fax', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('fax', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group {{ $errors->has('mail') ? 'has-error' : ''}}">
     {!! Form::label('mail', 'Correo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

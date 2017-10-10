@@ -31,6 +31,9 @@ Route::get('/contact', function () {
    Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
    Route::get('/mision', 'HomeController@mision');
    Route::get('/vision', 'HomeController@vision');
+   Route::get('/courses', 'HomeController@courses');
+
+
   Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
     return new \App\Mail\SendMail('Christian');
@@ -74,6 +77,12 @@ Route::get('/contact', function () {
     Route::resource('/post', 'Admin\\PostController');
     Route::resource('/type-course', 'Admin\\TypeCourseController');
     Route::resource('/courses', 'Admin\\CoursesController');
+    Route::resource('/modalidad', 'Admin\\ModalidadController');    
+    Route::resource('/service', 'Admin\\ServiceController');
+    Route::resource('/typeproduct', 'Admin\\TypeproductController');
+    Route::resource('/clasification-courses', 'Admin\\ClasificationCoursesController');
+    Route::resource('/tutor', 'Admin\\TutorController');
+    
   });
 
   Route::group(['prefix' => 'employee'], function () {

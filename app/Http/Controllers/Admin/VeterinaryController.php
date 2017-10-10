@@ -117,7 +117,8 @@ class VeterinaryController extends Controller
                     'latitud'=>$request->latitud,
                     'longitud'=>$request->longitud,
                     'mision'=>$request->mision,
-                    'vision'=>$request->vision
+                    'vision'=>$request->vision,
+                    'fax'=>$request->fax
                 ]);
             }else{
                 Veterinary::create([
@@ -144,7 +145,8 @@ class VeterinaryController extends Controller
                     'latitud'=>$request->latitud,
                     'longitud'=>$request->longitud,
                     'mision'=>$request->mision,
-                    'vision'=>$request->vision
+                    'vision'=>$request->vision,
+                    'fax'=>$request->fax
                 ]);
             }
         Session::flash('flash_message', 'Veterinary added!');
@@ -245,6 +247,7 @@ class VeterinaryController extends Controller
                 $veterinary->longitud = $request->longitud;
                 $veterinary->mision = $request->mision;
                 $veterinary->vision = $request->vision;
+                $veterinary->fax = $request->fax;
                 $veterinary->save();
             }else{
                 $requestData = $request->all();
@@ -273,7 +276,7 @@ class VeterinaryController extends Controller
                 $veterinary->longitud = $request->longitud;
                 $veterinary->mision = $request->mision;
                 $veterinary->vision = $request->vision;
-
+                $veterinary->fax = $request->fax;
                 $veterinary->save();
             }
 

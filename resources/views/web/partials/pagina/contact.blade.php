@@ -9,7 +9,9 @@
                                 @endforeach
                             </ul>
                         @endif
-    <h2>   Contacto Clinica Veterinaria  </h2>
+          @foreach($veterinary as $veterinari)
+    <h2>   Contacto {{ $veterinari->name }}  </h2>
+    @endforeach
     <div class="row">
       <div class="col-md-6">
         <div class="infoform">
@@ -17,6 +19,7 @@
 
 
           <h2>   Agradecemos tu visita  </h2>
+          
           <p>   Nos gustaria saber sobre tus dudas o sugerencias. gracias por visitarnos...</p>
         </div>
         
@@ -64,7 +67,7 @@
   <table class="mtop">
     <tbody><tr>
       <td><strong>    Dirección :      </strong></td>
-        <td>{{ $veterinari->address }}
+        <td> {{ $veterinari->address }}.
       </td>
     </tr>
     <tr>
@@ -77,7 +80,7 @@
     </tr>    
     <tr>
       <td><strong>Fax: </strong></td>
-      <td>+90 422 341 39 28</td>
+      <td>+{{ $veterinari->fax }}</td>
     </tr>
   </tbody>
 </table>

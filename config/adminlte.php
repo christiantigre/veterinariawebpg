@@ -205,9 +205,34 @@ return [
                     'url'  => 'admin/type-course',
                 ],
                 [
+                    'text' => 'Modalidades',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/modalidad',
+                ],
+                [
                     'text' => 'Cursos',
                     'icon'    => 'minus',
                     'url'  => 'admin/courses',
+                ],                
+                [
+                    'text' => 'Servicios',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/service',
+                ],            
+                [
+                    'text' => 'Tipos producto',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/typeproduct',
+                ],
+                [
+                    'text' => 'Clasificación cursos',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/clasification-courses',
+                ],
+                [
+                    'text' => 'Tutores',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/tutor',
                 ],
             ],
         ],        

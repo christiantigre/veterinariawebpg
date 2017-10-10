@@ -59,8 +59,8 @@
                     PRODUCTOS
                 </a>
             </li>
-            <li @if(($pag)=='contacto') class="active" @else class="" @endif>
-                <a href="{{ url('/contact') }}" class="menu">
+            <li @if(($pag)=='courses') class="active" @else class="" @endif>
+                <a href="{{ url('/courses') }}" class="menu">
                     CAPACITACIÓNES
                 </a>
             </li>

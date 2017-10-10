@@ -7,36 +7,21 @@
                                 Productos
                             </a>
                             <ul>
+                                @if(count($typeproducts)>0)
+                                    @foreach($typeproducts as $typeproduct)
                                 <li>
                                     <a href="#">
-                                        Servicios
+                                        {{ $typeproduct->typeproduct }}
                                     </a>
                                 </li>
+                                    @endforeach
+                                @else
                                 <li>
                                     <a href="#">
-                                        My Account
+                                        No hay servicios
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        Watching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        How To's
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Site Features
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Submissions
-                                    </a>
-                                </li>
+                                @endif
                             </ul>
                         </li>
                         <li>
@@ -44,31 +29,21 @@
                                 Servicios
                             </a>
                             <ul>
+                                @if(count($services)>0)
+                                    @foreach($services as $service)
                                 <li>
                                     <a href="#">
-                                        iOS
+                                        {{ $service->service }}
                                     </a>
                                 </li>
+                                    @endforeach
+                                @else
                                 <li>
                                     <a href="#">
-                                        Android
+                                        No hay servicios
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        Amazon
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Windows
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Chrome OS
-                                    </a>
-                                </li>
+                                @endif
                             </ul>
                         </li>
                     </ul>

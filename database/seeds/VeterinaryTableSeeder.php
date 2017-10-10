@@ -15,8 +15,8 @@ class VeterinaryTableSeeder extends Seeder
     	Veterinary::create( [
 'id'=>1,
 'name'=>'Austrogen',
-'address'=>'Biblián | Ecuador',
-'tlf1'=>NULL,
+'address'=>'Calle Bolívar Montero (Barrio San Roque) Biblián – Ecuador',
+'tlf1'=>'074020030',
 'tlf2'=>NULL,
 'cel1'=>'098 427 1836',
 'cel2'=>NULL,
@@ -24,7 +24,7 @@ class VeterinaryTableSeeder extends Seeder
 'linkweb'=>NULL,
 'prop'=>NULL,
 'gerent'=>NULL,
-'area'=>'Empresa de biotecnología',
+'area'=>'BIOTECNOLOGÍA  Y SERVICIOS VETERINARIOS “Soluciones técnicas, mejores resultados”',
 'description'=>'AUSTROGEN, es una Asociación de técnicos encaminados a satisfacer las necesidades del sector agropecuario mediante la implementación de programas de mejoramiento y mantenimiento de la biodiversidad genética, prevención de enfermedades, elaboración y ejecución de proyectos agropecuarios, capacitaciones e innovación de tecnologías. Orientando a mantener el bienestar animal, preservando el medio ambiente y dinamizando la producción que garantice el buen vivir.',
 'logo'=>'uploads/logos/fondo-1-final.png',
 'namelogo'=>'fondo-1-final.png',
@@ -39,7 +39,9 @@ class VeterinaryTableSeeder extends Seeder
 'latitud'=>NULL,
 'longitud'=>NULL,
 'created_at'=>'2017-10-10 06:22:53',
-'updated_at'=>'2017-10-10 06:22:53'
+'updated_at'=>'2017-10-10 06:22:53',
+'mision'=>'Desarrollar  servicios biotecnológicos  y soluciones  veterinarias de alta calidad para impulsar la sostenibilidad del  sector ganadero.',
+'vision'=>'Ser líder en brindar en servicios biotecnológicos  en la región, de manera eficaz y oportuna, en conjunto con las organizaciones públicas y privadas.'
 ] );
     }
 }

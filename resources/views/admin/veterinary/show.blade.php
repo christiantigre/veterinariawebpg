@@ -57,6 +57,10 @@
                                         <td> {{ $veterinary->cel2 }} </td>
                                     </tr>
                                     <tr>
+                                        <th> Fax </th>
+                                        <td> {{ $veterinary->fax }} </td>
+                                    </tr>
+                                    <tr>
                                         <th> Email </th>
                                         <td> {{ $veterinary->mail }} </td>
                                     </tr>

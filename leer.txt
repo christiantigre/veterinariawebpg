@@ -43,12 +43,20 @@ php artisan crud:generate Post --fields="title#string; body#text; slug#text; cat
 
 php artisan crud:generate TypeCourse --fields="type#string; slug#text; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Modalidad --fields="modalidad#string; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Service --fields="service#string; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Typeproduct --fields="typeproduct#string; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 generar crud desde json
 php artisan crud:generate Subcategory --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/subcategory.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 php artisan crud:generate Courses --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldscourses.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate ClasificationCourses --fields="clasification#string; body#text; slug#text; typecourse_id#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Tutor --fields="img#string; description#text; name#string; lastname#string; fb#string; tw#string; in#string; gg#string; lk#string; especialitation#string; datenac#string; workplace#string" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 
 laravel chat
@@ -97,3 +105,7 @@ https://www.youtube.com/watch?v=Qoti7G-tjN8
 acceso a webhost
 us: veterinariawebpg@gmail.com
 ps: veterinariawebpg@gmail.com
+
+
+crear seeder
+php artisan make:seeder TypeCourseTableSeeder
