@@ -1,15 +1,13 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Course;
 use App\TypeCourse;
+use App\ClasificationCourse;
+use App\CoursesFiles;
 use Illuminate\Http\Request;
 use Session;
-
 class CoursesController extends Controller
 {
     /**
@@ -21,7 +19,6 @@ class CoursesController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
         if (!empty($keyword)) {
             $courses = Course::where('title', 'LIKE', "%$keyword%")
 				->orWhere('content', 'LIKE', "%$keyword%")
@@ -33,10 +30,8 @@ class CoursesController extends Controller
         } else {
             $courses = Course::paginate($perPage);
         }
-
         return view('admin.courses.index', compact('courses'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,10 +39,11 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        $tipes = TypeCourse::orderBy('id','ASC')->where('is_active',1)->pluck('type','id');
-        return view('admin.courses.create',compact('tipes'));
-    }
 
+        $clases = ClasificationCourse::orderBy('id','ASC')->where('visible',1)->pluck('clasification','id');
+        $tipes = TypeCourse::orderBy('id','ASC')->where('is_active',1)->pluck('type','id');
+        return view('admin.courses.create',compact('tipes','clases'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -57,16 +53,25 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+        $public=public_path();
         
         $requestData = $request->all();
         
-        Course::create($requestData);
-
+        $curso = Course::create($requestData);
+        $files = $request->file('files');
+        $destinationPath = $public.'/uploads/archivoscurso/';
+        foreach($files as $file) {
+            $filename = $file->getClientOriginalName();
+            $upload_success = $file->move($destinationPath, $filename);
+            CoursesFiles::create([
+                'filename'=>$filename,
+                'course_id'=>$curso->id,
+                'ruta'=>$destinationPath.$filename
+            ]);
+        }
         Session::flash('flash_message', 'Course added!');
-
         return redirect('admin/courses');
     }
-
     /**
      * Display the specified resource.
      *
@@ -77,10 +82,8 @@ class CoursesController extends Controller
     public function show($id)
     {
         $course = Course::findOrFail($id);
-
         return view('admin.courses.show', compact('course'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,12 +93,11 @@ class CoursesController extends Controller
      */
     public function edit($id)
     {
+        $clases = ClasificationCourse::orderBy('id','ASC')->where('visible',1)->pluck('clasification','id');
         $tipes = TypeCourse::orderBy('id','ASC')->where('is_active',1)->pluck('type','id');
         $course = Course::findOrFail($id);
-
-        return view('admin.courses.edit', compact('course','tipes'));
+        return view('admin.courses.edit', compact('course','clases'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -111,12 +113,9 @@ class CoursesController extends Controller
         
         $course = Course::findOrFail($id);
         $course->update($requestData);
-
         Session::flash('flash_message', 'Course updated!');
-
         return redirect('admin/courses');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -127,9 +126,7 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         Course::destroy($id);
-
         Session::flash('flash_message', 'Course deleted!');
-
         return redirect('admin/courses');
     }
 }

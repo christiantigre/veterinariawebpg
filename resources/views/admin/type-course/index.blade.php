@@ -35,7 +35,13 @@
                                 @foreach($typecourse as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->type }}</td><td>{{ $item->slug }}</td><td>{{ $item->is_active }}</td>
+                                        <td>{{ $item->type }}</td><td>{{ $item->slug }}</td><td>
+                                            @if(($item->is_active)=='0')
+                                                Inactivo
+                                            @else
+                                                Activo
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/type-course/' . $item->id) }}" title="View TypeCourse"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/type-course/' . $item->id . '/edit') }}" title="Edit TypeCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

@@ -28,14 +28,20 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Clasificación</th><th>Body</th><th>Slug</th><th>Actions</th>
+                                        <th>ID</th><th>Clasificación</th><th>Tipo</th><th>Activo</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($clasificationcourses as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->clasification }}</td><td>{{ $item->body }}</td><td>{{ $item->slug }}</td>
+                                        <td>{{ $item->clasification }}</td><td>{{ $item->TypeCourse->type }}</td><td>
+                                            @if(($item->visible)=='0')
+                                                Inactivo
+                                            @else
+                                                Activo
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/clasification-courses/' . $item->id) }}" title="View ClasificationCourse"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/clasification-courses/' . $item->id . '/edit') }}" title="Edit ClasificationCourse"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

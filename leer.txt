@@ -108,4 +108,4 @@ ps: veterinariawebpg@gmail.com
 
 
 crear seeder
-php artisan make:seeder TypeCourseTableSeeder
+php artisan make:seeder ClasesTableSeeder

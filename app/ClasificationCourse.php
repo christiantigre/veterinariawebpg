@@ -27,5 +27,15 @@ class ClasificationCourse extends Model
      */
     protected $fillable = ['clasification', 'body', 'slug', 'typecourse_id', 'visible'];
 
+
+    public function TypeCourse()
+    {
+        return $this->belongsTo('App\TypeCourse', 'typecourse_id');
+    }
+
+    public function Course()
+    {
+        return $this->hasMany('App\Course', 'id');
+    }
     
 }

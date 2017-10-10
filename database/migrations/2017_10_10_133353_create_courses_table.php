@@ -15,12 +15,20 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title',150)->nullable();
+            $table->string('subtitle',150)->nullable();
             $table->text('content')->nullable();
+            $table->text('description')->nullable();
+            $table->text('duration')->nullable();
+            $table->text('hours')->nullable();
+            $table->text('hourdesde')->nullable();
+            $table->text('hourhasta')->nullable();
+            $table->text('dais')->nullable();
             $table->string('img',150)->nullable();
+            $table->string('video',150)->nullable();
             $table->string('link',150)->nullable();
             $table->boolean('visible')->default(1);
-            $table->integer('tipecourse_id')->unsigned();
-            $table->foreign('tipecourse_id')->references('id')->on('type_courses');
+            $table->integer('clasification_id')->unsigned();
+            $table->foreign('clasification_id')->references('id')->on('clasification_courses');
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@
                     COMO LLEGAR
                 </a>
             </li>-->
-            <li @if(($pag)=='contacto') class="active" @else class="" @endif>
+            <li @if(($pag)=='producto') class="active" @else class="" @endif>
                 <a href="{{ url('/contact') }}" class="menu">
                     PRODUCTOS
                 </a>

@@ -22,7 +22,8 @@
                         {!! Form::model($course, [
                             'method' => 'PATCH',
                             'url' => ['/admin/courses', $course->id],
-                            'class' => 'form-horizontal',
+                            'class' => 'form-horizontal', 
+                            'enctype'=>'multipart/form-data',
                             'files' => true
                         ]) !!}
 

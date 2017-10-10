@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeCourse extends Model
+class CoursesFiles extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'type_courses';
+    protected $table = 'files_courses';
 
     /**
     * The database primary key value.
@@ -25,12 +25,17 @@ class TypeCourse extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'slug', 'is_active'];
+    protected $fillable = [
+        'filename', 
+        'ruta', 
+        'course_id'
+     ];
 
-    public function ClasificationCourse()
+
+    public function Course()
     {
-        return $this->hasMany('App\ClasificationCourse', 'id');
+        return $this->belongsTo('App\Course', 'id');
     }
 
-    
+
 }

@@ -200,19 +200,9 @@ return [
                     'url'  => 'admin/post',
                 ],
                 [
-                    'text' => 'Tipo cursos',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/type-course',
-                ],
-                [
                     'text' => 'Modalidades',
                     'icon'    => 'minus',
                     'url'  => 'admin/modalidad',
-                ],
-                [
-                    'text' => 'Cursos',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/courses',
                 ],                
                 [
                     'text' => 'Servicios',
@@ -225,17 +215,34 @@ return [
                     'url'  => 'admin/typeproduct',
                 ],
                 [
-                    'text' => 'Clasificación cursos',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/clasification-courses',
-                ],
-                [
                     'text' => 'Tutores',
                     'icon'    => 'minus',
                     'url'  => 'admin/tutor',
                 ],
             ],
-        ],        
+        ],               
+        'INSTRUCCIÓN',
+        [
+            'text'    => 'Cursos',
+            'icon'    => 'eye',
+            'submenu' => [                
+                [
+                    'text' => 'Tipo',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/type-course',
+                ],
+                [
+                    'text' => 'Clasificación',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/clasification-courses',
+                ],
+                [
+                    'text' => 'Abrir curso',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/courses',
+                ],
+            ], 
+        ], 
     ],
 
     /* 

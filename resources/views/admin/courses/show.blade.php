@@ -31,7 +31,30 @@
                                     <tr>
                                         <th>ID</th><td>{{ $course->id }}</td>
                                     </tr>
-                                    <tr><th> Title </th><td> {{ $course->title }} </td></tr><tr><th> Content </th><td> {{ $course->content }} </td></tr><tr><th> Img </th><td> {{ $course->img }} </td></tr>
+                                    <tr>
+                                        <th> Title </th><td> {{ $course->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Content </th><td> {{ $course->content }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Img </th><td> {{ $course->img }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Archivos </th>
+                                        <td> 
+                                            @foreach($files as $file)
+                                            {{ $file->ruta }}
+                                            <a href="download/{{ $file->ruta }}" download="{{ $file->ruta }}">
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="glyphicon glyphicon-download">Descargar</i>
+                                                </button>
+                                            </a>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+
+                                            
                                 </tbody>
                             </table>
                         </div>
