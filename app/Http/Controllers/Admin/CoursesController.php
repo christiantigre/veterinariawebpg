@@ -80,6 +80,8 @@ class CoursesController extends Controller
                 'hours' => $request->hours,
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
+                'precio' => $request->precio,
+                'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
                 'img' => 'uploads/courses/'.$nombre,
                 'nameimg' => $nombre,
@@ -98,6 +100,8 @@ class CoursesController extends Controller
                 'hours' => $request->hours,
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
+                'precio' => $request->precio,
+                'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
                 'video' => '',
                 'link' => $request->link,
@@ -194,6 +198,8 @@ class CoursesController extends Controller
             $course->hours = $request->hours;
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
+            $course->precio = $request->precio;
+            $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
             $course->img = $rutaHead.$nameHeader;
             $course->nameimg = $nameHeader;
@@ -212,6 +218,8 @@ class CoursesController extends Controller
             $course->hours = $request->hours;
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
+            $course->precio = $request->precio;
+            $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
             $course->video = '';
             $course->link = $request->link;

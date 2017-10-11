@@ -65,7 +65,7 @@
                     <a href="{{ url('DetallCourses', ['id' => $curso->id])}}">  <h2 class="title">{{ $curso->title }}</h2> </a>
                     <h2 class="sub_title">{{ $curso->subtitle }}</h2>
                     <p class="description">{{ $curso->content }}.</p>
-                    <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-o"></i> 6 mins ago</span><span class="comments"><i class="fa fa-plus"></i><a href="{{ url('DetallCourses', ['id' => $curso->id])}}"> ver detalles</a></span></div>
+                    <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-o"></i> {{ $curso->actividad() }}</span><span class="comments"><i class="fa fa-plus"></i><a href="{{ url('DetallCourses', ['id' => $curso->id])}}"> ver detalles</a></span></div>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
                     <a href="{{ url('DetallCourses', ['id' => $curso->id])}}">  <h2 class="title">{{ $curso->title }}</h2> </a>
                     <h2 class="sub_title">{{ $curso->subtitle }}</h2>
                     <p class="description">{{ $curso->content }}.</p>
-                    <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-o"></i> 6 mins ago</span><span class="comments"><i class="fa fa-plus"></i><a href="{{ url('DetallCourses', ['id' => $curso->id])}}"> ver detalles</a></span></div>
+                    <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-o"></i> {{ $curso->actividad() }}</span><span class="comments"><i class="fa fa-plus"></i><a href="{{ url('DetallCourses', ['id' => $curso->id])}}"> ver detalles</a></span></div>
                   </div>
                 </div>
               </div>

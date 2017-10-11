@@ -13,7 +13,8 @@
         "jeroennoten/laravel-adminlte": "^1.20",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.5"
+        "laravelcollective/html": "^5.5",
+        "nesbot/carbon": "^1.22"
     },
     "require-dev": {
         "appzcoder/crud-generator": "^2.0",

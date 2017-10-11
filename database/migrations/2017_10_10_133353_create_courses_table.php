@@ -23,6 +23,8 @@ class CreateCoursesTable extends Migration
             $table->text('hourdesde')->nullable();
             $table->text('hourhasta')->nullable();
             $table->text('dais')->nullable();
+            $table->text('precio')->nullable();
+            $table->date('fechainit')->nullable();
             $table->string('img',150)->nullable();
             $table->string('nameimg',150)->nullable();
             $table->string('video',150)->nullable();
@@ -34,7 +36,7 @@ class CreateCoursesTable extends Migration
         });
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      *
      * @return void

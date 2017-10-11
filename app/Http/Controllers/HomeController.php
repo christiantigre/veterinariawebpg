@@ -19,6 +19,8 @@ use App\Mail\SendMail;
 use Session;
 use App\ClasificationCourse;
 use App\Course;
+use App\CoursesFiles;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -122,6 +124,7 @@ class HomeController extends Controller
         return view('web.partials.pagina.empresavision',compact('veterinary','notes','notices','pag'));
     }
     public function courses(){
+        $date = Carbon::now();
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
@@ -272,9 +275,10 @@ class HomeController extends Controller
     public function DetallCourses($id){
         //dd('aqui');
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
-        $notes = Note::findOrFail($id);
-        $pag = 'noticias';
-        return view('web.partials.pagina.detall.detallTemas',compact('veterinary','notes','pag'));
+        $course = Course::findOrFail($id);
+        $files = CoursesFiles::where('course_id',$id)->get();
+        $pag = 'courses';
+        return view('web.partials.pagina.detall.detallCourse',compact('veterinary','course','pag','files'));
         
     }
 

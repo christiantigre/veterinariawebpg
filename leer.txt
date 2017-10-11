@@ -114,3 +114,6 @@ ps: veterinariawebpg@gmail.com
 
 crear seeder
 php artisan make:seeder ClasesTableSeeder
+
+colaboracion con laravel 
+http://www.world-mag.pw/traer-un-valor-de-un-modelo-a-mi-vista-laravel/

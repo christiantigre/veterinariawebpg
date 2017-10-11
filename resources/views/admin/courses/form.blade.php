@@ -47,6 +47,20 @@
         {!! $errors->first('hourhasta', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('precio') ? 'has-error' : ''}}">
+    {!! Form::label('precio', 'Precio curso', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('precio', null, ['class' => 'form-control','placeholder'=>'150']) !!}
+        {!! $errors->first('precio', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('fechainit') ? 'has-error' : ''}}">
+    {!! Form::label('fechainit', 'Fecha de inicio', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('fechainit', null, ['class' => 'form-control','placeholder'=>'']) !!}
+        {!! $errors->first('fechainit', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group {{ $errors->has('dais') ? 'has-error' : ''}}">
     {!! Form::label('dais', 'Dias del curso', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
