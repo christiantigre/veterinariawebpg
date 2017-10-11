@@ -35,7 +35,7 @@
                                         <th> Title </th><td> {{ $course->title }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Content </th><td> {{ $course->content }} </td>
+                                        <th> Content </th><td> {!! $course->content !!} </td>
                                     </tr>
                                     <tr>
                                         <th> Img </th>

@@ -117,3 +117,32 @@ php artisan make:seeder ClasesTableSeeder
 
 colaboracion con laravel 
 http://www.world-mag.pw/traer-un-valor-de-un-modelo-a-mi-vista-laravel/
+
+correo de prueba para pagina http://veterinariawebpg.000webhostapp.com/
+correo: veterinariawebpg@gmail.com
+pass: veterinariawebpg17
+
+credenciales mailtrap
+usuario: c105fc943721d3
+pass: 587dcd7d885160
+MAIL_HOST=smtp.mailtrap.io
+MAIL_ENCRYPTION=null
+MAIL_PORT=2525
+
+habilitar para utilizar los correo este link
+https://myaccount.google.com/u/2/security
+
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=veterinariawebpg@gmail.com
+MAIL_PASSWORD=veterinariawebpg17
+MAIL_ENCRYPTION=tls
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=c105fc943721d3
+MAIL_PASSWORD=587dcd7d885160
+MAIL_ENCRYPTION=null

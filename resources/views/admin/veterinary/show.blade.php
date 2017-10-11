@@ -82,7 +82,7 @@
                                     </tr>
                                     <tr>
                                         <th> Descripción </th>
-                                        <td> {{ $veterinary->description }} </td>
+                                        <td> {!! $veterinary->description !!} </td>
                                     </tr>
                                     <tr>
                                         <th> logo </th>
@@ -127,11 +127,11 @@
                                     </tr>
                                     <tr>
                                         <th> Misión </th>
-                                        <td> {{ $veterinary->mision }} </td>
+                                        <td> {!! $veterinary->mision !!} </td>
                                     </tr>
                                     <tr>
                                         <th> Visión </th>
-                                        <td> {{ $veterinary->vision }} </td>
+                                        <td> {!! $veterinary->vision !!} </td>
                                     </tr>
                                 </tbody>
                             </table>

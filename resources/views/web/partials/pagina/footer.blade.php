@@ -13,7 +13,7 @@
                     <p>
 
 
-                        {{ $veterinari->description }}
+                        {!! $veterinari->description !!}
 
                     </p>
                     <div class="social-media">

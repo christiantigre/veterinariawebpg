@@ -28,9 +28,9 @@
         </div>
         <div class="row row-eq-height" style="padding-right:15px">
             <div class="col-xs-9 text">
-                <p>{{ $veterinaria->description }}.</p>
+                <p>{!! $veterinaria->description !!}.</p>
                 <p class="semi-title">Misión</p>
-                <p>{{ $veterinaria->mision }}</p>
+                <p>{!! $veterinaria->mision !!}</p>
             </div>
             <!-- Sidebar // advertising -->
             <div class="col-xs-3 side">

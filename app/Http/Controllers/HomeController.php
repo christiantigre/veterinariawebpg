@@ -16,6 +16,7 @@ use App\Typeproduct;
 use App\TypeCourse;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
+use App\Mail\SendSolicita;
 use Session;
 use App\ClasificationCourse;
 use App\Course;
@@ -86,7 +87,9 @@ class HomeController extends Controller
             'subject'=>$request->subject,
             'message'=>$request->message
         );     
-        Mail::to($request->mail)->send(new SendMail($data));
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->first();
+        $to = $veterinary['mail'];
+        Mail::to($to)->send(new SendMail($data));
         Session::flash('flash_message', 'Su mensaje se ha enviado correctamente');
         return redirect('/contact');
     }
@@ -279,7 +282,24 @@ class HomeController extends Controller
         $files = CoursesFiles::where('course_id',$id)->get();
         $pag = 'courses';
         return view('web.partials.pagina.detall.detallCourse',compact('veterinary','course','pag','files'));
-        
+    }
+
+    public function solicitainfo(Request $request){
+        $data = array(
+            'nombre'=>$request->nombre,
+            'correo'=>$request->correo,
+            'contactos'=>$request->contactos,
+            'ciudad'=>$request->ciudad,
+            'message'=>$request->mensaje,
+            'cursoId'=>$request->cursoId,
+            'cursoName'=>$request->cursoName,
+            'subject'=>'Solicitud Información del curso '.$request->cursoName
+        );     
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->first();
+        $to = $veterinary['mail'];
+        Mail::to($to)->send(new SendSolicita($data));
+        Session::flash('flash_message', 'Su mensaje se ha enviado correctamente');
+        return redirect('/courses');
     }
 
 

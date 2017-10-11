@@ -32,6 +32,8 @@ class CreateCoursesTable extends Migration
             $table->boolean('visible')->default(1);
             $table->integer('clasification_id')->unsigned();
             $table->foreign('clasification_id')->references('id')->on('clasification_courses');
+            $table->integer('admin_id')->unsigned();
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamps();
         });
     }

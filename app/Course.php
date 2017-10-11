@@ -44,6 +44,7 @@ class Course extends Model
         'link', 
         'visible', 
         'clasification_id',
+        'admin_id',
         'created_at'
     ];
 
@@ -69,6 +70,11 @@ class Course extends Model
         $diff = Carbon::now()->diffForHumans(Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at));
         /*Cambiar Y-m-d por el formato que tengas*/
         return $diff;
+    }
+
+    public function Admin()
+    {
+        return $this->belongsTo('App\Admin', 'admin_id');
     }
 
 }

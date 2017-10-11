@@ -36,7 +36,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->content }}</td>
+                                        <td>{!! $item->content !!}</td>
                                         <td>
                                             @if(empty($item->img))
                                             <center>-</center>

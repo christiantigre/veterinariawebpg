@@ -33,6 +33,10 @@
     {!! Html::style('plugins/select2/dist/css/select2.min.css') !!}
     <!-- Select2 -->
     {!! Html::script('plugins/select2/dist/js/select2.full.min.js') !!}
+
+
+    <!-- Tinymce -->
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     
 
       

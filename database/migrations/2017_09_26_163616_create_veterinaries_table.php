@@ -25,7 +25,7 @@ class CreateVeterinariesTable extends Migration
             $table->string('prop',150)->nullable();
             $table->string('gerent',150)->nullable();
             $table->string('area',150)->nullable();
-            $table->string('description',500)->nullable();
+            $table->text('description')->nullable();
             $table->string('logo',150)->nullable();
             $table->string('namelogo',150)->nullable();
             $table->date('datestart')->nullable();

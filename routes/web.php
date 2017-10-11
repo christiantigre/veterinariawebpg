@@ -34,6 +34,7 @@ Route::get('/contact', function () {
    Route::get('/vision', 'HomeController@vision');
    Route::get('/courses', 'HomeController@courses');
    Route::get('/product', 'HomeController@product');
+   Route::post('/solicitainfo', 'HomeController@solicitainfo');
 
 
   Route::get('email', function(){

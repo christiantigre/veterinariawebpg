@@ -182,6 +182,7 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
         'GeneaLabs\Phpgmaps\PhpgmapsServiceProvider',
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 
     ],
 

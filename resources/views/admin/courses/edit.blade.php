@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content') 
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <div class="row">
 
             <div class="col-md-12">
@@ -36,3 +37,4 @@
             </div>
         </div>
 @endsection
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>

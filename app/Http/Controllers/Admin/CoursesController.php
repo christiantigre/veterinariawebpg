@@ -55,6 +55,11 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $admin = auth('admin')->user()->id;
+
         $files = $request->file('files');
         $img = $request->file('img');
         $public=public_path();
@@ -88,7 +93,8 @@ class CoursesController extends Controller
                 'video' => '',
                 'link' => $request->link,
                 'visible' => $request->visible,
-                'clasification_id' => $request->clasification_id
+                'clasification_id' => $request->clasification_id,
+                'admin_id' => $admin
             ]);
         }else{
             $curso = Course::create([
@@ -106,10 +112,10 @@ class CoursesController extends Controller
                 'video' => '',
                 'link' => $request->link,
                 'visible' => $request->visible,
-                'clasification_id' => $request->clasification_id
+                'clasification_id' => $request->clasification_id,
+                'admin_id' => $admin
             ]);
         }
-        
         $destinationPath = $public.'/uploads/archivoscurso/';
         if(!empty($files)){
             foreach($files as $file) {
@@ -162,6 +168,11 @@ class CoursesController extends Controller
      */
     public function update($id, Request $request)
     {        
+        $files = $request->file('files');
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $admin = auth('admin')->user()->id;
+
         $rutaHead = 'uploads/courses/';
         if(!Input::file("img"))
             {
@@ -207,6 +218,7 @@ class CoursesController extends Controller
             $course->link = $request->link;
             $course->visible = $request->visible;
             $course->clasification_id = $request->clasification_id;
+            $course->admin_id = $admin;
             $course->save();
         }else{
             $course = Course::findOrFail($id);
@@ -225,7 +237,22 @@ class CoursesController extends Controller
             $course->link = $request->link;
             $course->visible = $request->visible;
             $course->clasification_id = $request->clasification_id;
+            $course->admin_id = $admin;
             $course->save();
+        }
+        
+        $public=public_path();
+        $destinationPath = $public.'/uploads/archivoscurso/';
+        if(!empty($files)){
+            foreach($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $upload_success = $file->move($destinationPath, $filename);
+                CoursesFiles::create([
+                    'filename'=>$filename,
+                    'course_id'=>$course->id,
+                    'ruta'=>'/uploads/archivoscurso/'.$filename
+                ]);
+            }
         }
 
         Session::flash('flash_message', 'Course updated!');
