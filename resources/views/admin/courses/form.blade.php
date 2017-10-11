@@ -61,13 +61,13 @@
         {!! $errors->first('img', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-<div class="form-group {{ $errors->has('file') ? 'has-error' : ''}}">
+<!--<div class="form-group {{ $errors->has('file') ? 'has-error' : ''}}">
     {!! Form::label('file', 'Video', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::file('video', null, ['class' => 'form-control']) !!}
         {!! $errors->first('video', '<p class="help-block">:message</p>') !!}
     </div>
-</div>
+</div>-->
 <div class="form-group {{ $errors->has('files') ? 'has-error' : ''}}">
     {!! Form::label('files', 'Archivos curso', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

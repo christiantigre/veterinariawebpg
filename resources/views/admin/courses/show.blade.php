@@ -38,7 +38,14 @@
                                         <th> Content </th><td> {{ $course->content }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Img </th><td> {{ $course->img }} </td>
+                                        <th> Img </th>
+                                        <td>
+                                            @if(empty($course->img))
+                                            No hay imagen
+                                            @else
+                                            <img class="img img-responsive" src="{{ asset( $course->img ) }}"></img>
+                                            @endif
+                                          </td>
                                     </tr>
                                     <tr>
                                         <th> Archivos </th>

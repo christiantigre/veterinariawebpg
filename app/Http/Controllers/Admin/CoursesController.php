@@ -8,6 +8,9 @@ use App\ClasificationCourse;
 use App\CoursesFiles;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\Input;
+use Image;
+
 class CoursesController extends Controller
 {
     /**
@@ -21,12 +24,12 @@ class CoursesController extends Controller
         $perPage = 25;
         if (!empty($keyword)) {
             $courses = Course::where('title', 'LIKE', "%$keyword%")
-				->orWhere('content', 'LIKE', "%$keyword%")
-				->orWhere('img', 'LIKE', "%$keyword%")
-				->orWhere('link', 'LIKE', "%$keyword%")
-				->orWhere('visible', 'LIKE', "%$keyword%")
-				->orWhere('tipecourse_id', 'LIKE', "%$keyword%")
-				->paginate($perPage);
+            ->orWhere('content', 'LIKE', "%$keyword%")
+            ->orWhere('img', 'LIKE', "%$keyword%")
+            ->orWhere('link', 'LIKE', "%$keyword%")
+            ->orWhere('visible', 'LIKE', "%$keyword%")
+            ->orWhere('tipecourse_id', 'LIKE', "%$keyword%")
+            ->paginate($perPage);
         } else {
             $courses = Course::paginate($perPage);
         }
@@ -52,12 +55,57 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
+        $files = $request->file('files');
+        $img = $request->file('img');
         $public=public_path();
+
+        if(!empty($img))
+        {
+            $file_img = Input::file('img');
+            $nombre = $file_img->getClientOriginalName();
+            $path = public_path('uploads/courses/'.$nombre);
+            $image = Image::make($file_img->getRealPath());
+            $image->save($path);
+        }
         
         $requestData = $request->all();
+        if(!empty($nombre)){
+            //$curso = Course::create($requestData);
+            $curso = Course::create([
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'content' => $request->content,
+                'description' => $request->description,
+                'duration' => $request->duration,
+                'hours' => $request->hours,
+                'hourdesde' => $request->hourdesde,
+                'hourhasta' => $request->hourhasta,
+                'dais' => $request->dais,
+                'img' => 'uploads/courses/'.$nombre,
+                'nameimg' => $nombre,
+                'video' => '',
+                'link' => $request->link,
+                'visible' => $request->visible,
+                'clasification_id' => $request->clasification_id
+            ]);
+        }else{
+            $curso = Course::create([
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'content' => $request->content,
+                'description' => $request->description,
+                'duration' => $request->duration,
+                'hours' => $request->hours,
+                'hourdesde' => $request->hourdesde,
+                'hourhasta' => $request->hourhasta,
+                'dais' => $request->dais,
+                'video' => '',
+                'link' => $request->link,
+                'visible' => $request->visible,
+                'clasification_id' => $request->clasification_id
+            ]);
+        }
         
-        $curso = Course::create($requestData);
-        $files = $request->file('files');
         $destinationPath = $public.'/uploads/archivoscurso/';
         if(!empty($files)){
             foreach($files as $file) {
@@ -110,9 +158,68 @@ class CoursesController extends Controller
      */
     public function update($id, Request $request)
     {        
+        $rutaHead = 'uploads/courses/';
+        if(!Input::file("img"))
+            {
+                $nameHeader="";
+            }else{
+                $note_delete = Course::findOrFail($id);   
+                $move = $note_delete['img'];
+                $old = public_path().'/'.$move;
+                       //verificamos si la imagen exist
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
+
+                $file = Input::file('img');
+                $nameHeader = $file->getClientOriginalName();
+                $path = public_path($rutaHead.$nameHeader);
+                $image = Image::make($file->getRealPath());
+                //$image->resize(1800, 720);
+                $image->save($path);
+            }
+
         $requestData = $request->all();       
-        $course = Course::findOrFail($id);
-        $course->update($requestData);
+        //$course = Course::findOrFail($id);
+        //$course->update($requestData);
+        if(!empty($nameHeader)){
+            $course = Course::findOrFail($id);
+            $course->title = $request->title;
+            $course->subtitle = $request->subtitle;
+            $course->content = $request->content;
+            $course->description = $request->description;
+            $course->duration = $request->duration;
+            $course->hours = $request->hours;
+            $course->hourdesde = $request->hourdesde;
+            $course->hourhasta = $request->hourhasta;
+            $course->dais = $request->dais;
+            $course->img = $rutaHead.$nameHeader;
+            $course->nameimg = $nameHeader;
+            $course->video = '';
+            $course->link = $request->link;
+            $course->visible = $request->visible;
+            $course->clasification_id = $request->clasification_id;
+            $course->save();
+        }else{
+            $course = Course::findOrFail($id);
+            $course->title = $request->title;
+            $course->subtitle = $request->subtitle;
+            $course->content = $request->content;
+            $course->description = $request->description;
+            $course->duration = $request->duration;
+            $course->hours = $request->hours;
+            $course->hourdesde = $request->hourdesde;
+            $course->hourhasta = $request->hourhasta;
+            $course->dais = $request->dais;
+            $course->video = '';
+            $course->link = $request->link;
+            $course->visible = $request->visible;
+            $course->clasification_id = $request->clasification_id;
+            $course->save();
+        }
+
         Session::flash('flash_message', 'Course updated!');
         return redirect('admin/courses');
     }

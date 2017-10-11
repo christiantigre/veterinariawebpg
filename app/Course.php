@@ -36,6 +36,7 @@ class Course extends Model
         'hourhasta',
         'dais',
          'img', 
+         'nameimg', 
          'video', 
          'link', 
          'visible', 

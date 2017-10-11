@@ -451,7 +451,7 @@ ul.products>li .added_to_cart.wc-forward:hover,
                                                         </div>
                                                     </div>
                                                     <div class="team_member_info">
-                                                        <a href="http://www.hvdes.com/staff/dra-veronica-olvera/">
+                                                        <a href="#">
                                                             <div class="name">{{ $socio->abrevTitulo }} {{ $socio->name }} {{ $socio->lastname }}</div>
                                                         </a>
                                                         <div class="positions">{{ $socio->especialitation }}</div>

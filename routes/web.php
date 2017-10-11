@@ -29,9 +29,11 @@ Route::get('/contact', function () {
    Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
    Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
    Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
+   Route::get('/DetallCourses/{id}', 'HomeController@DetallCourses');
    Route::get('/mision', 'HomeController@mision');
    Route::get('/vision', 'HomeController@vision');
    Route::get('/courses', 'HomeController@courses');
+   Route::get('/product', 'HomeController@product');
 
 
   Route::get('email', function(){

@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->text('hourhasta')->nullable();
             $table->text('dais')->nullable();
             $table->string('img',150)->nullable();
+            $table->string('nameimg',150)->nullable();
             $table->string('video',150)->nullable();
             $table->string('link',150)->nullable();
             $table->boolean('visible')->default(1);

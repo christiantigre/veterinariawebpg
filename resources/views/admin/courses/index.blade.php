@@ -28,7 +28,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Title</th><th>Content</th><th>Img</th><th>Actions</th>
+                                        <th>ID</th><th>Titulo</th><th>Introducción</th><th>Imagen</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,7 +37,13 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->content }}</td>
-                                        <td>{{ $item->img }}</td>
+                                        <td>
+                                            @if(empty($item->img))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($item->img) }}" class="img img-responsive">
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('/admin/courses/' . $item->id) }}" title="View Course"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/courses/' . $item->id . '/edit') }}" title="Edit Course"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

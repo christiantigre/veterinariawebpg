@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use Session;
 use App\ClasificationCourse;
+use App\Course;
 
 class HomeController extends Controller
 {
@@ -126,10 +127,22 @@ class HomeController extends Controller
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
         $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
         $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();    
         $pag = 'courses';
-        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases'));
+        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos'));
     }
-
+    public function product(){
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = 'product';
+        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos'));
+    }
     public function _howtoget_(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
@@ -248,6 +261,15 @@ class HomeController extends Controller
     }
 
     public function DetallTopic($id){
+        //dd('aqui');
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $notes = Note::findOrFail($id);
+        $pag = 'noticias';
+        return view('web.partials.pagina.detall.detallTemas',compact('veterinary','notes','pag'));
+        
+    }
+
+    public function DetallCourses($id){
         //dd('aqui');
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes = Note::findOrFail($id);
