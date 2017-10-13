@@ -33,6 +33,8 @@ class Slider extends Model
          'subtittle',
          'body',
          'detall',
+         'visible_slider',
+         'activo',
      ];
 
     

@@ -48,6 +48,30 @@
         {!! $errors->first('linkinfo', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('visible_slider') ? 'has-error' : ''}}">
+    {!! Form::label('visible_slider', 'Visible Slider', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        <div class="checkbox">
+    <label>{!! Form::radio('visible_slider', '1', true) !!} Yes</label>
+</div>
+<div class="checkbox">
+    <label>{!! Form::radio('visible_slider', '0') !!} No</label>
+</div>
+        {!! $errors->first('visible_slider', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('activo') ? 'has-error' : ''}}">
+    {!! Form::label('activo', 'Activo', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        <div class="checkbox">
+    <label>{!! Form::radio('activo', '1', true) !!} Yes</label>
+</div>
+<div class="checkbox">
+    <label>{!! Form::radio('activo', '0') !!} No</label>
+</div>
+        {!! $errors->first('activo', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

@@ -21,6 +21,8 @@ class CreateSlidersTable extends Migration
             $table->text('body')->nullable();
             $table->text('detall')->nullable();
             $table->text('linkinfo')->nullable();
+            $table->boolean('visible_slider')->default(1);
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

@@ -58,7 +58,7 @@
 <div class="form-group {{ $errors->has('fechainit') ? 'has-error' : ''}}">
     {!! Form::label('fechainit', 'Fecha de inicio', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('fechainit', null, ['class' => 'form-control','placeholder'=>'']) !!}
+        {!! Form::text('fechainit', null, ['class' => 'form-control date','placeholder'=>'','id'=>'datepicker']) !!}
         {!! $errors->first('fechainit', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -101,11 +101,11 @@
     {!! Form::label('visible', 'Visible', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="checkbox">
-    <label>{!! Form::radio('visible', '1', true) !!} Yes</label>
-</div>
-<div class="checkbox">
-    <label>{!! Form::radio('visible', '0') !!} No</label>
-</div>
+            <label>{!! Form::radio('visible', '1', true) !!} Yes</label>
+        </div>
+        <div class="checkbox">
+            <label>{!! Form::radio('visible', '0') !!} No</label>
+        </div>
         {!! $errors->first('visible', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -113,11 +113,11 @@
     {!! Form::label('visibleslider', 'Mostrar Carrusel', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="checkbox">
-    <label>{!! Form::radio('visibleslider', '1', true) !!} Yes</label>
-</div>
-<div class="checkbox">
-    <label>{!! Form::radio('visibleslider', '0') !!} No</label>
-</div>
+            <label>{!! Form::radio('visibleslider', '1', true) !!} Yes</label>
+        </div>
+        <div class="checkbox">
+            <label>{!! Form::radio('visibleslider', '0') !!} No</label>
+        </div>
         {!! $errors->first('visibleslider', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('nameslider') ? 'has-error' : ''}}">
@@ -139,17 +139,24 @@
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Crear', ['class' => 'btn btn-primary']) !!}
     </div>
 </div>
+<script type="text/javascript">
 
+    $('.date').datepicker({  
 
+       format: 'yyyy-mm-dd'
+
+     });  
+
+</script>  
 <script>
   var editor_config = {
     path_absolute : "/",
     selector: "textarea.my-editor",
     plugins: [
-      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-      "searchreplace wordcount visualblocks visualchars code fullscreen",
-      "insertdatetime media nonbreaking save table contextmenu directionality",
-      "emoticons template paste textcolor colorpicker textpattern"
+    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+    "searchreplace wordcount visualblocks visualchars code fullscreen",
+    "insertdatetime media nonbreaking save table contextmenu directionality",
+    "emoticons template paste textcolor colorpicker textpattern"
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
     relative_urls: false,
@@ -160,20 +167,20 @@
       var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
       if (type == 'image') {
         cmsURL = cmsURL + "&type=Images";
-      } else {
+    } else {
         cmsURL = cmsURL + "&type=Files";
-      }
+    }
 
-      tinyMCE.activeEditor.windowManager.open({
+    tinyMCE.activeEditor.windowManager.open({
         file : cmsURL,
         title : 'Filemanager',
         width : x * 0.8,
         height : y * 0.8,
         resizable : "yes",
         close_previous : "no"
-      });
-    }
-  };
+    });
+}
+};
 
-  tinymce.init(editor_config);
+tinymce.init(editor_config);
 </script>

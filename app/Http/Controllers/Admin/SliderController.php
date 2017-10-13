@@ -78,7 +78,9 @@ class SliderController extends Controller
             'img'=>'uploads/slider/'.$nombre,
             'title'=>$request->title,
             'content'=>$request->content,
-            'linkinfo'=>$request->linkinfo
+            'linkinfo'=>$request->linkinfo,
+            'visible_slider'=>$request->visible_slider,
+            'activo'=>$request->activo
         ]);
    
         Session::flash('flash_message', 'Slider added!');
@@ -145,6 +147,8 @@ class SliderController extends Controller
         $slider->subtittle= $request->subtittle;
         $slider->body= $request->body;
         $slider->detall= $request->detall;
+        $slider->visible_slider= $request->visible_slider;
+        $slider->activo= $request->activo;
         $slider->save();
         }else{
             $slider = Slider::findOrFail($id);
@@ -155,6 +159,8 @@ class SliderController extends Controller
         $slider->subtittle= $request->subtittle;
         $slider->body= $request->body;
         $slider->detall= $request->detall;
+        $slider->visible_slider= $request->visible_slider;
+        $slider->activo= $request->activo;
         $slider->save();
         }
         //$slider->update($requestData);
