@@ -1,7 +1,8 @@
 @extends('web.index')
 @section('content')
-<div class="divcontacto container-fluid">
-  <div class="container">
+  <div class="container " style="background: #ffffff;">
+    <div class="row">
+      <div class="col-md-12">
     @if ($errors->any())
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -12,10 +13,10 @@
           @foreach($veterinary as $veterinari)
     <h2>   Contacto {{ $veterinari->name }}  </h2>
     @endforeach
-    <div class="row">
-      <div class="col-md-6">
-        <div class="infoform">
-         <div class="mbottom">
+    <div class="row espacio" style="background: #ffffff;">
+      <div class="col-md-6" style="background: #ffffff;">
+        <div class="infoform" style="background: #ffffff;">
+         <div class="mbottom" style="background: #ffffff;">
 
 
           <h2>   Agradecemos tu visita  </h2>
@@ -58,10 +59,10 @@
  {!! Form::close() !!}
 </div>
 </div>
-<div class="col-md-1 text-center aralik1 hidden-xs">
+<div class="col-md-1 text-center aralik1 hidden-xs" style="background: #ffffff;">
   <!--<img class="img-responsive" src="http://erkankaratas.com.tr/wp-content/themes/drerkan/resimler/aralik1.png" alt="">-->
 </div>
-<div class="col-md-5 iletisimbilgi">
+<div class="col-md-5 iletisimbilgi" style="background: #ffffff;">
   <h2>   Encuentranos   </h2>
   @foreach($veterinary as $veterinari)
   <table class="mtop">
@@ -85,6 +86,7 @@
   </tbody>
 </table>
 @endforeach
+</div>
 </div>
 </div>
 </div>

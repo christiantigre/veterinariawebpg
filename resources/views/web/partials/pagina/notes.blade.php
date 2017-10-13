@@ -1,24 +1,26 @@
-<div class="container-fluid fondo-third">
+<div class="container-fluid ">
     <div class="sixteen columns">
         <div class="sub-text link-svgline">
-            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
-                We believe
-                <svg class="link-svgline">
-                    <use xlink:href="#svg_line">
-                    </use>
-                </svg>
-            </a>
-            in coming up with original ideas and turning them into digital work that is both
-            <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
-                innovative and measurable.
-                <svg class="link-svgline">
-                    <use xlink:href="#svg_line">
-                    </use>
-                </svg>
-            </a>
+            @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='notas')
+
+        <div class="sixteen columns">
+            <div class="sub-text link-svgline">
+                {!! $sec->title !!}
+            </div>
+        </div>
+
+        <p>{!! $sec->subtitle !!}</p>
+        
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="position: relative;top: -90px;">
         @if(count($notes)>0)
             @foreach($notes as $nota)
                 <div class="col-md-4">
@@ -27,7 +29,7 @@
                             “
                         </p>
                         <p class="quote-text">
-                            {{ str_limit($nota->description,120) }}
+                            {{ str_limit($nota->description,60) }}
                         </p>
                         
                             <a href="{{url('DetallTopic', ['id' => $nota->id])}}">{{ $nota->title }}</a>

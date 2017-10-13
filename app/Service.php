@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Service extends Model
 {
@@ -25,7 +26,28 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['service', 'is_active'];
+    protected $fillable = [
+        'service', 
+        'slug', 
+        'description', 
+        'precio_venta', 
+        'porcent_descuento', 
+        'img', 
+        'visible_slider', 
+        'promocion', 
+        'nuevo', 
+        'oferta', 
+        'is_active',
+        'created_at'
+    ];
+
+    public function actividad()
+    {
+        Carbon::setlocale(config('app.locale'));
+        $diff = Carbon::now()->diffForHumans(Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at));
+        /*Cambiar Y-m-d por el formato que tengas*/
+        return $diff;
+    }
 
     
 }

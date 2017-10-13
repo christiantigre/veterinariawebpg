@@ -30,6 +30,8 @@ class CreateCoursesTable extends Migration
             $table->string('video',150)->nullable();
             $table->string('link',150)->nullable();
             $table->boolean('visible')->default(1);
+            $table->boolean('visibleslider')->default(1);
+            $table->string('nameslider',50)->nullable();
             $table->integer('clasification_id')->unsigned();
             $table->foreign('clasification_id')->references('id')->on('clasification_courses');
             $table->integer('admin_id')->unsigned();

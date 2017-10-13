@@ -3,14 +3,14 @@
                 <nav class="vertical">
                     <ul class="menu">
                         <li>
-                            <a href="#">
+                            <a href="{{ url('/product') }}">
                                 Productos
                             </a>
                             <ul>
                                 @if(count($typeproducts)>0)
                                     @foreach($typeproducts as $typeproduct)
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ url('view_prod', ['id' => $typeproduct->id])}}">
                                         {{ $typeproduct->typeproduct }}
                                     </a>
                                 </li>
@@ -25,7 +25,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ url('/services') }}">
                                 Servicios
                             </a>
                             <ul>

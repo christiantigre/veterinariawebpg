@@ -1,14 +1,13 @@
 @extends('adminlte::page')
 
 @section('content')
-    <div class="container">
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Gallery #{{ $gallery->id }}</div>
+                    <div class="panel-heading">Editar Gallery #{{ $gallery->id }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/gallery') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/gallery') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -27,7 +26,7 @@
                             'files' => true
                         ]) !!}
 
-                        @include ('admin.gallery.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.gallery.form', ['submitButtonText' => 'Actualizar'])
 
                         {!! Form::close() !!}
 
@@ -35,5 +34,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div
 @endsection

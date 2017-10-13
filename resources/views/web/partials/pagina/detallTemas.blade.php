@@ -17,7 +17,7 @@
                 <span class="name-author">por {{ $notes->Admin->name }}</span>
             </div>
             <h5 class="sub-title">{{ $notes->Tag->tag }}</h5>
-            <h2 class="title">{{ $notes->subtitle }}...</h2>
+            <h2 class="title_head">{{ $notes->subtitle }}...</h2>
         </div>
 
         <!-- INFO -->
@@ -28,17 +28,9 @@
         </div>
         <div class="row row-eq-height" style="padding-right:15px">
             <div class="col-xs-9 text">
-                <p>El estadio de fútbol más grande del mundo es el Reungrado Primero de Mayo, ubicado en Pionyang, capital de la república socialista de Corea del Norte.</p>
-                <p>Su edificación empezó en el año 1980. Nueve años después, concretamente el 1 de mayo de 1989, se abrió al público.</p>
-                <p class="semi-title">Tamaño y diseño</p>
-                <p>El área del inmueble es de 207.000 metros cuadrados, con un total de ocho pisos, y puede albergar a 150.000 personas.</p>
-                <p>El techo posee 16 arcos que emulan los pétalos de una flor, y el césped es natural. También cuenta con una piscina y saunas.</p>
-                <p>En él no solo se llevan a cabo partidos de fútbol y competencias de atletismo (dispone de una pista de 400 metros), sino festivales artísticos, así como eventos del Partido de los Trabajadores, que gobierna el país desde 1948. </p>
-                <p>Dentro de las actividades que se realizan destaca el Festival Arirang, que incluye espectáculos de circo, música, gimnasia y danza.</p>
-                <p>Según la agencia EFE, este festival se celebra desde 2002 para recordar el nacimiento del líder fundador de Corea del Norte, Kim Il-sung.</p>
-                <p class="semi-title">Remodelación</p>
-                <p>En 2014, el estadio fue remodelado y el año pasado reabrió sus puertas. </p>
-                <p>De acuerdo con el diario inglés The Guardian, entre las renovaciones están nuevos vestuarios, equipo de fisioterapia, salas de juntas y un centro de medios.  </p>
+                
+                <p class="semi-title">{{ $notes->title }}</p>
+                <p>{!! $notes->description !!}</p>
             </div>
             <!-- Sidebar // advertising -->
             <div class="col-xs-3 side">
@@ -79,7 +71,7 @@
 .side{background:#fafafa;padding-top:15px}
 .side > img { margin-bottom:15px;}
 .semi-title{font-weight: bold;margin-top:30px;}
-.title{    
+.title_head{    
     position: absolute;
     bottom: 45px;
     padding: 7px;
@@ -145,7 +137,7 @@ display: flex;
             margin-top: -15px;
             margin-right: -15px;
     }
-    .title{
+    .title_head{
         font-size:15px;
         bottom:-12px;
         right:0px;

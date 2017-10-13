@@ -7,7 +7,7 @@
     <meta content="" name="description"/>
     <meta content="" name="author"/>
     <title>
-        @yield('title','Veterinaria')
+        @yield('title','Austrogen')
     </title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('theme/bootstrap/css/bootstrap.css') }}" rel="stylesheet"/>
@@ -84,18 +84,18 @@
         <!-- Bootstrap core JavaScript
             ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
-            <script src="theme/assets/js/jquery.min.js">
+            <script src="{{ asset('theme/assets/js/jquery.min.js') }}">
             </script>
-            <script src="theme/bootstrap/js/bootstrap.min.js">
+            <script src="{{ asset('theme/bootstrap/js/bootstrap.min.js') }}">
             </script>
             <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <script src="theme/assets/js/ie10-viewport-bug-workaround.js">
+            <script src="{{ asset('theme/assets/js/ie10-viewport-bug-workaround.js') }}">
             </script>
-            <script src="theme/js/jquery-3.2.1.js" type="text/javascript">
+            <script src="{{ asset('theme/js/jquery-3.2.1.js') }}" type="text/javascript">
             </script>
             <!--<script src="theme/js/jquery2-1-4.js" type="text/javascript">
-            </script>-->
-            <script src="theme/js/main.js" type="text/javascript">
+            </script'>-->
+            <script src="{{ asset('theme/js/main.js') }}" type="text/javascript">
             </script>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
             </script>

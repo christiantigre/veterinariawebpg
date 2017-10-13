@@ -1,0 +1,74 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "slug",
+            "type": "string"
+        },
+        {
+            "name": "cod",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        },        
+        {
+            "name": "precio_compra",
+            "type": "double"
+        },         
+        {
+            "name": "precio_venta",
+            "type": "double"
+        },        
+        {
+            "name": "porcent_descuento",
+            "type": "double"
+        },      
+        {
+            "name": "stock",
+            "type": "integer"
+        },
+        {
+            "name": "img",
+            "type": "file"
+        },
+        {
+            "name": "visible",
+            "type": "boolean"
+        },
+        {
+            "name": "visible_slider",
+            "type": "boolean"
+        },
+        {
+            "name": "promocion",
+            "type": "boolean"
+        },
+        {
+            "name": "nuevo",
+            "type": "boolean"
+        },
+        {
+            "name": "tipeproduct_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "tipeproduct_id",
+            "references": "id",
+            "on": "typeproducts"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Typeproduct",
+            "type": "belongsTo",
+            "class": "App\\Typeproduct"
+        }
+    ]
+}

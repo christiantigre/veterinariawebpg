@@ -18,6 +18,11 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -93,6 +98,8 @@ class CoursesController extends Controller
                 'video' => '',
                 'link' => $request->link,
                 'visible' => $request->visible,
+                'visibleslider' => $request->visibleslider,
+                'nameslider' => $request->nameslider,
                 'clasification_id' => $request->clasification_id,
                 'admin_id' => $admin
             ]);
@@ -112,6 +119,8 @@ class CoursesController extends Controller
                 'video' => '',
                 'link' => $request->link,
                 'visible' => $request->visible,
+                'visibleslider' => $request->visibleslider,
+                'nameslider' => $request->nameslider,
                 'clasification_id' => $request->clasification_id,
                 'admin_id' => $admin
             ]);
@@ -217,6 +226,8 @@ class CoursesController extends Controller
             $course->video = '';
             $course->link = $request->link;
             $course->visible = $request->visible;
+            $course->visibleslider = $request->visibleslider;
+            $course->nameslider = $request->nameslider;
             $course->clasification_id = $request->clasification_id;
             $course->admin_id = $admin;
             $course->save();
@@ -236,6 +247,8 @@ class CoursesController extends Controller
             $course->video = '';
             $course->link = $request->link;
             $course->visible = $request->visible;
+            $course->visibleslider = $request->visibleslider;
+            $course->nameslider = $request->nameslider;
             $course->clasification_id = $request->clasification_id;
             $course->admin_id = $admin;
             $course->save();
@@ -271,4 +284,15 @@ class CoursesController extends Controller
         Session::flash('flash_message', 'Course deleted!');
         return redirect('admin/courses');
     }
+
+
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+
+
+
 }

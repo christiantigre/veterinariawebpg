@@ -108,6 +108,24 @@
 </div>
         {!! $errors->first('visible', '<p class="help-block">:message</p>') !!}
     </div>
+</div>
+<div class="form-group {{ $errors->has('visibleslider') ? 'has-error' : ''}}">
+    {!! Form::label('visibleslider', 'Mostrar Carrusel', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        <div class="checkbox">
+    <label>{!! Form::radio('visibleslider', '1', true) !!} Yes</label>
+</div>
+<div class="checkbox">
+    <label>{!! Form::radio('visibleslider', '0') !!} No</label>
+</div>
+        {!! $errors->first('visibleslider', '<p class="help-block">:message</p>') !!}
+    </div>
+</div><div class="form-group {{ $errors->has('nameslider') ? 'has-error' : ''}}">
+    {!! Form::label('nameslider', 'Titulo para carrusel', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('nameslider', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('nameslider', '<p class="help-block">:message</p>') !!}
+    </div>
 </div><div class="form-group {{ $errors->has('clasification_id') ? 'has-error' : ''}}">
     {!! Form::label('clasification_id', 'Clasificación', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

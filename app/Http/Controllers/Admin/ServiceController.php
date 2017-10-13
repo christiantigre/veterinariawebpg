@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class ServiceController extends Controller
 {
@@ -51,8 +52,24 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'precio_venta' => 'numeric|min:1',
+            'porcent_descuento' => 'numeric|min:1',
+        ]);
         
         $requestData = $request->all();
+        
+
+        if ($request->hasFile('img')) {
+            $file = Input::file('img');
+                $uploadPath = public_path('uploads/service/');
+
+                $extension = $file->getClientOriginalName();
+                //$fileName = rand(11111, 99999) . '.' . $extension;
+
+                $file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/service/'.$extension;
+        }
         
         Service::create($requestData);
 
@@ -101,7 +118,16 @@ class ServiceController extends Controller
     {
         
         $requestData = $request->all();
-        
+        $files = Input::file('img');
+
+        if (!empty($files)) {
+                $uploadPath = public_path('uploads/service/');
+                $extension = $files->getClientOriginalName();
+                //$fileName = rand(11111, 99999) . '.' . $extension;
+
+                $files->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/service/'.$extension;
+        }
         $service = Service::findOrFail($id);
         $service->update($requestData);
 

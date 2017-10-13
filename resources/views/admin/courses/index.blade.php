@@ -36,12 +36,12 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{!! $item->content !!}</td>
+                                        <td>{!! str_limit($item->content,150) !!}</td>
                                         <td>
                                             @if(empty($item->img))
                                             <center>-</center>
                                             @else
-                                            <img src="{{ asset($item->img) }}" class="img img-responsive">
+                                            <img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo brand-centered">
                                             @endif
                                         </td>
                                         <td>

@@ -54,3 +54,27 @@
         @endif
     </div>
 </div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center clearfix">
+        @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='slider')
+
+        <div class="sixteen columns">
+            <div class="sub-text link-svgline">
+                {{ $sec->title }}
+            </div>
+        </div>
+
+        <p>{{ $sec->subtitle }}</p>
+        
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
+        
+    </div>
+</div>

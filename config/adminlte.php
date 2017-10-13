@@ -185,11 +185,6 @@ return [
                     'url'  => 'admin/subcategory',
                 ],
                 [
-                    'text' => 'Galeria',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/gallery',
-                ],
-                [
                     'text' => 'Etiquetas',
                     'icon'    => 'minus',
                     'url'  => 'admin/tag',
@@ -208,17 +203,18 @@ return [
                     'text' => 'Servicios',
                     'icon'    => 'minus',
                     'url'  => 'admin/service',
-                ],            
-                [
-                    'text' => 'Tipos producto',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/typeproduct',
-                ],
+                ], 
                 [
                     'text' => 'Tutores',
                     'icon'    => 'minus',
                     'url'  => 'admin/tutor',
                 ],
+                [
+                    'text' => 'Secciónes',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/section-title',
+                ],
+                
             ],
         ],               
         'INSTRUCCIÓN',
@@ -243,6 +239,29 @@ return [
                 ],
             ], 
         ], 
+        'PRODUCTOS',
+        [
+            'text'    => 'PRODUCTO',
+            'icon'    => 'eye',
+            'submenu' => [               
+                [
+                    'text' => 'Tipos producto',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/typeproduct',
+                ],
+                [
+                    'text' => 'Producto',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/product',
+                ],
+            ], 
+        ],
+        'MEDIA',
+        [
+            'text'       => 'Galeria',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/gallery',
+        ],
     ],
 
     /* 

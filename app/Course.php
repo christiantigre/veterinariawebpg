@@ -43,6 +43,8 @@ class Course extends Model
         'video', 
         'link', 
         'visible', 
+        'visibleslider', 
+        'nameslider', 
         'clasification_id',
         'admin_id',
         'created_at'
@@ -76,5 +78,7 @@ class Course extends Model
     {
         return $this->belongsTo('App\Admin', 'admin_id');
     }
+
+    
 
 }

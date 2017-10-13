@@ -2,838 +2,751 @@
 @section('content')
 
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-9">
-			<center>
-				<h1 class="page-header">
-					<small>  Elije tu curso </small><!--small>Statistics Overview</small-->
-				</h1>
-			</center>                       
-                       <ul id="myTab" class="nav nav-tabs">
-                       	<li class="active">
-                       		<a href="#init" data-toggle="tab">
-                       			Nuestros clientes prefieren
-                       		</a>
-                       	</li>
-                        @if(count($tipocources)>0)                      
-                          @foreach($tipocources as $tipo)
-                       	  <li><a href="#{{ $tipo->id }}" data-toggle="tab">{{ $tipo->type }}</a></li>
-                          @endforeach
-                        @else
-                          No configurado los tipos de cursos
-                        @endif
-
-                      </ul>
-                      <div id="myTabContent" class="tab-content">
-                      	<div class="tab-pane fade in active" id="init">
-                      		<div class="content_accordion">
-                      			<div class="panel-group" id="accordion">
-                              <?Php $i=1; ?>
-                              @foreach($clases as $clase)
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#{{ $clase->id }}"><?Php echo $i; ?>. {{ $clase->clasification }}</a>
-                                  </h4>
-                                </div>
-                                  @if($i=='1')
-                                    <div id="{{ $clase->id }}" class="panel-collapse collapse in">
-                                  @else
-                                    <div id="{{ $clase->id }}" class="panel-collapse collapse">
-                                  @endif
-                                  <div class="panel-body">
-                                    <p>{{ $clase->body }}. <a href="" target="_blank">Learn more.</a></p>
-                                  </div>
+<div class="container" style="margin-top: 30px">
+  @if(!empty($productos))
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <nav id="mainNav" class="hidden navbar navbar-default navbar-fixed-top navbar-custom affix-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>                
+                <!-- <img class="navbar-brand" src="#"/> -->
+                <a class="navbar-brand" href="#page-top">Connect Your Care</a>
+            </div>
+    
+            <!-- Menu options -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden active">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Option 1</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Option 2</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Option 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-xs-12 visible-xs">
+            <!-- Account selection for mobile - I -->
+            <div class="dropdown">
+              
+              <button id="actionsDrop" class="btn btn-default dropdown-toggle col-xs-12" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                HSA - $587.50
+                <span class="caret"></span>
+                <i class="down-arrow pull-right"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="actionsDrop">
+                
+                  <li class="selected"><a href="#">HSA - $587.50</a></li>
+                  <li><a href="#">FSA - $120.00</a></li>
+                  <li><a href="#">HSAOD - $350.00</a></li>
+                  <li><a href="#">DCAP - $2300,00</a></li>
+                
+              </ul>
+            </div>
+            <!-- Account selection for mobile - F -->
+      </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="row">
+      <div class="col-md-12" style="overflow:auto">
+            <div id="MyAccountsTab" class="tabbable tabs-left" style="width: 100%;">
+            <!-- Account selection for desktop - I -->
+          <ul  class="nav nav-tabs col-md-1 hidden-xs" style="width: 20%;">
+            @foreach($tipos as $tipo)
+            <li class="active">
+                <div data-target="#lA" data-toggle="tab" style="width: 100%;">
+                    <div class="ellipsis">                      
+                        <span class="account-type"><small>{{ $tipo->typeproduct }}</small></span><br/>
+                      </div>
+                  </div>
+            </li>
+            <li>
+                <div data-target="#lB" data-toggle="tab">
+                    <div>
+                        <span class="account-type">FSA</span><br/>
+                          <span class="account-amount">$120,00</span><br/>
+                      </div>
+                  </div>
+            </li>
+            <li>
+                <div data-target="#lC" data-toggle="tab">
+                    <div>
+                        <span class="account-type">HSAOD</span><br/>
+                        <span class="account-amount">$350,00</span><br/>
+                      </div>
+                  </div>
+            </li>
+            <li>
+                <div data-target="#lD" data-toggle="tab">
+                    <div>
+                        <span class="account-type">DCAP</span><br/>
+                          <span class="account-amount">$2.300,00</span><br/>
+                          <a href="#" class="account-link">Investments</a>
+                      </div>
+                  </div>
+            </li>
+            @endforeach
+          </ul>
+          <div class="tab-content col-md-11" style="width: 80%;">
+            <div class="tab-pane active" id="lA"><!--style="padding-left: 60px; padding-right:100px"-->
+                <div class="col-md-offset-1">
+                  <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                  <div class="col-md-2 col-xs-12" style="height: 65px">
+                            <div class="col-xs-12 bottom-aligned">
+                                <div class="col-xs-12">
+                                      <div class="row">
+                                        <div class="title">
+                                            <span>BALANCE</span>
+                                        </div>
+                                        <div>
+                                            <a href="#" class="balance">$587.50</a>
+                                        </div>
+                                    </div>
                                 </div>
                               </div>
-                              <?Php $i++; ?>
-                              @endforeach
-
-                      				<div class="panel panel-default">
-                      					<div class="panel-heading">
-                      						<h4 class="panel-title">
-                      							<a data-toggle="collapse" data-parent="#accordion" href="#eng">2. ENGLISH (PRECIS & COMPOSITION) Compulsory (Total Marks-l00)</a>
-                      						</h4>
-                      					</div>
-                      					<div id="eng" class="panel-collapse collapse">
-                      						<div class="panel-body">
-                      							<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      								The candidates should be capable of:
-
-                      								Using English correctly and efficiently as a vehicle of communication.
-                      								Reading, comprehending and analyzing advanced texts.
-                      								Grammar and Vocabulary
-                      								The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      								There shall be no prescribed course for this purpose.
-                      								Reading Comprehension and Analysis
-                      								Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      								Precise Writing
-                      								The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      								<a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#accordion" href="#isl">3. Islamic Studies</a>
-                      							</h4>
-                      						</div>
-                      						<div id="isl" class="panel-collapse collapse">
-                      							<div class="panel-body">
-                      								<p> <a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#accordion" href="#eds">4. Everyday Science</a>
-                      							</h4>
-                      						</div>
-                      						<div id="eds" class="panel-collapse collapse">
-                      							<div class="panel-body">
-                      								<p> <a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#accordion" href="#ca">5. Current Affairs</a>
-                      							</h4>
-                      						</div>
-                      						<div id="ca" class="panel-collapse collapse">
-                      							<div class="panel-body">
-                      								<p> <a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#accordion" href="#pa">6. Pakistan Affairs</a>
-                      							</h4>
-                      						</div>
-                      						<div id="pa" class="panel-collapse collapse">
-                      							<div class="panel-body">
-                      								<p> <a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-                      					
-                      				</div>
-                      			</div>
-                      			<!--accordion end-->
-                      		</div>
-                      		<div class="tab-pane fade" id="1">
-                      			<div class="content_accordion">
-                      				<div class="panel-group" id="ga">
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#ga" href="#aa">1. Accounting and Auditing </a>
-                      							</h4>
-                      						</div>
-                      						<div id="aa" class="panel-collapse collapse in">
-                      							<div class="panel-body">
-                      								<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      							</div>
-                      						</div>
-                      					</div>
-                      					<div class="panel panel-default">
-                      						<div class="panel-heading">
-                      							<h4 class="panel-title">
-                      								<a data-toggle="collapse" data-parent="#ga" href="#eco">2. Economics</a>
-                      							</h4>
-                      						</div>
-                      						<div id="eco" class="panel-collapse collapse">
-                      							<div class="panel-body">
-                      								<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      									The candidates should be capable of:
-
-                      									Using English correctly and efficiently as a vehicle of communication.
-                      									Reading, comprehending and analyzing advanced texts.
-                      									Grammar and Vocabulary
-                      									The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      									There shall be no prescribed course for this purpose.
-                      									Reading Comprehension and Analysis
-                      									Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      									Precise Writing
-                      									The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      									<a href="" target="_blank">Learn more.</a></p>
-                      								</div>
-                      							</div>
-                      						</div>
-                      						<div class="panel panel-default">
-                      							<div class="panel-heading">
-                      								<h4 class="panel-title">
-                      									<a data-toggle="collapse" data-parent="#ga" href="#pba">3. Public Administration</a>
-                      								</h4>
-                      							</div>
-                      							<div id="pba" class="panel-collapse collapse">
-                      								<div class="panel-body">
-                      									<p> <a href="" target="_blank">Learn more.</a></p>
-                      								</div>
-                      							</div>
-                      						</div>
-                      						<div class="panel panel-default">
-                      							<div class="panel-heading">
-                      								<h4 class="panel-title">
-                      									<a data-toggle="collapse" data-parent="#ga" href="#ba">4.Business Administration</a>
-                      								</h4>
-                      							</div>
-                      							<div id="ba" class="panel-collapse collapse">
-                      								<div class="panel-body">
-                      									<p> <a href="" target="_blank">Learn more.</a></p>
-                      								</div>
-                      							</div>
-                      						</div>
-                      					</div>
-                      				</div>
-                      				<!--accordion end-->
-                      			</div>
-
-                      			<div class="tab-pane fade" id="2">
-                      				<div class="content_accordion">
-                      					<div class="panel-group" id="gb">
-                      						<div class="panel panel-default">
-                      							<div class="panel-heading">
-                      								<h4 class="panel-title">
-                      									<a data-toggle="collapse" data-parent="#gb" href="#ps">1. Political Science </a>
-                      								</h4>
-                      							</div>
-                      							<div id="ps" class="panel-collapse collapse in">
-                      								<div class="panel-body">
-                      									<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      								</div>
-                      							</div>
-                      						</div>
-                      						<div class="panel panel-default">
-                      							<div class="panel-heading">
-                      								<h4 class="panel-title">
-                      									<a data-toggle="collapse" data-parent="#gb" href="#agr">2. Agriculture</a>
-                      								</h4>
-                      							</div>
-                      							<div id="agr" class="panel-collapse collapse">
-                      								<div class="panel-body">
-                      									<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      										The candidates should be capable of:
-
-                      										Using English correctly and efficiently as a vehicle of communication.
-                      										Reading, comprehending and analyzing advanced texts.
-                      										Grammar and Vocabulary
-                      										The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      										There shall be no prescribed course for this purpose.
-                      										Reading Comprehension and Analysis
-                      										Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      										Precise Writing
-                      										The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      										<a href="" target="_blank">Learn more.</a></p>
-                      									</div>
-                      								</div>
-                      							</div>
-                      							<div class="panel panel-default">
-                      								<div class="panel-heading">
-                      									<h4 class="panel-title">
-                      										<a data-toggle="collapse" data-parent="#gb" href="#for">3. Forestry </a>
-                      									</h4>
-                      								</div>
-                      								<div id="for" class="panel-collapse collapse">
-                      									<div class="panel-body">
-                      										<p> <a href="" target="_blank">Learn more.</a></p>
-                      									</div>
-                      								</div>
-                      							</div>
-                      							<div class="panel panel-default">
-                      								<div class="panel-heading">
-                      									<h4 class="panel-title">
-                      										<a data-toggle="collapse" data-parent="#gb" href="#soc">4.Sociology</a>
-                      									</h4>
-                      								</div>
-                      								<div id="soc" class="panel-collapse collapse">
-                      									<div class="panel-body">
-                      										<p> <a href="" target="_blank">Learn more.</a></p>
-                      									</div>
-                      								</div>
-                      							</div>
-                      							<div class="panel panel-default">
-                      								<div class="panel-heading">
-                      									<h4 class="panel-title">
-                      										<a data-toggle="collapse" data-parent="#gb" href="#jou">5.Journalism</a>
-                      									</h4>
-                      								</div>
-                      								<div id="jou" class="panel-collapse collapse">
-                      									<div class="panel-body">
-                      										<p> <a href="" target="_blank">Learn more.</a></p>
-                      									</div>
-                      								</div>
-                      							</div>
-                      						</div>
-                      					</div>
-                      					<!--accordion end-->
-                      				</div>
-                      				
-                      				<div class="tab-pane fade" id="3">
-                      					<div class="content_accordion">
-                      						<div class="panel-group" id="gc">
-                      							<div class="panel panel-default">
-                      								<div class="panel-heading">
-                      									<h4 class="panel-title">
-                      										<a data-toggle="collapse" data-parent="#gc" href="#pm">1. Pure Mathematics </a>
-                      									</h4>
-                      								</div>
-                      								<div id="pm" class="panel-collapse collapse in">
-                      									<div class="panel-body">
-                      										<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      									</div>
-                      								</div>
-                      							</div>
-                      							<div class="panel panel-default">
-                      								<div class="panel-heading">
-                      									<h4 class="panel-title">
-                      										<a data-toggle="collapse" data-parent="#gc" href="#am">2. Applied Mathematics</a>
-                      									</h4>
-                      								</div>
-                      								<div id="am" class="panel-collapse collapse">
-                      									<div class="panel-body">
-                      										<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-                      											<a href="" target="_blank">Learn more.</a></p>
-                      										</div>
-                      									</div>
-                      								</div>
-                      								<div class="panel panel-default">
-                      									<div class="panel-heading">
-                      										<h4 class="panel-title">
-                      											<a data-toggle="collapse" data-parent="#gc" href="#cs">3. Computer Science </a>
-                      										</h4>
-                      									</div>
-                      									<div id="cs" class="panel-collapse collapse">
-                      										<div class="panel-body">
-                      											<p> <a href="" target="_blank">Learn more.</a></p>
-                      										</div>
-                      									</div>
-                      								</div>
-                      								<div class="panel panel-default">
-                      									<div class="panel-heading">
-                      										<h4 class="panel-title">
-                      											<a data-toggle="collapse" data-parent="#gc" href="#stat">4.Statistics</a>
-                      										</h4>
-                      									</div>
-                      									<div id="stat" class="panel-collapse collapse">
-                      										<div class="panel-body">
-                      											<p> <a href="" target="_blank">Learn more.</a></p>
-                      										</div>
-                      									</div>
-                      								</div>
-                      							</div>
-                      						</div>
-                      						<!--accordion end-->
-                      					</div>
-                      					<div class="tab-pane fade" id="4">
-                      						<div class="content_accordion">
-                      							<div class="panel-group" id="gd">
-                      								<div class="panel panel-default">
-                      									<div class="panel-heading">
-                      										<h4 class="panel-title">
-                      											<a data-toggle="collapse" data-parent="#gd" href="#ps">1. Physics </a>
-                      										</h4>
-                      									</div>
-                      									<div id="phy" class="panel-collapse collapse in">
-                      										<div class="panel-body">
-                      											<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      										</div>
-                      									</div>
-                      								</div>
-                      								<div class="panel panel-default">
-                      									<div class="panel-heading">
-                      										<h4 class="panel-title">
-                      											<a data-toggle="collapse" data-parent="#gd" href="#geo">2. Geology</a>
-                      										</h4>
-                      									</div>
-                      									<div id="geo" class="panel-collapse collapse">
-                      										<div class="panel-body">
-                      											<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      												The candidates should be capable of:
-
-                      												Using English correctly and efficiently as a vehicle of communication.
-                      												Reading, comprehending and analyzing advanced texts.
-                      												Grammar and Vocabulary
-                      												The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      												There shall be no prescribed course for this purpose.
-                      												Reading Comprehension and Analysis
-                      												Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      												Precise Writing
-                      												The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      												<a href="" target="_blank">Learn more.</a></p>
-                      											</div>
-                      										</div>
-                      									</div>
-                      									<div class="panel panel-default">
-                      										<div class="panel-heading">
-                      											<h4 class="panel-title">
-                      												<a data-toggle="collapse" data-parent="#gd" href="#geog">3. Geography </a>
-                      											</h4>
-                      										</div>
-                      										<div id="geog" class="panel-collapse collapse">
-                      											<div class="panel-body">
-                      												<p> <a href="" target="_blank">Learn more.</a></p>
-                      											</div>
-                      										</div>
-                      									</div>
-                      									<div class="panel panel-default">
-                      										<div class="panel-heading">
-                      											<h4 class="panel-title">
-                      												<a data-toggle="collapse" data-parent="#gd" href="#chem">4.Chemistry</a>
-                      											</h4>
-                      										</div>
-                      										<div id="chem" class="panel-collapse collapse">
-                      											<div class="panel-body">
-                      												<p> <a href="" target="_blank">Learn more.</a></p>
-                      											</div>
-                      										</div>
-                      									</div>
-                      									<div class="panel panel-default">
-                      										<div class="panel-heading">
-                      											<h4 class="panel-title">
-                      												<a data-toggle="collapse" data-parent="#gd" href="#bot">5. Botany</a>
-                      											</h4>
-                      										</div>
-                      										<div id="bot" class="panel-collapse collapse">
-                      											<div class="panel-body">
-                      												<p> <a href="" target="_blank">Learn more.</a></p>
-                      											</div>
-                      										</div>
-                      									</div>
-                      								</div>
-                      							</div>
-                      							<!--accordion end-->
-                      						</div>
-                      						<div class="tab-pane fade" id="e">
-                      							<div class="content_accordion">
-                      								<div class="panel-group" id="ge">
-                      									<div class="panel panel-default">
-                      										<div class="panel-heading">
-                      											<h4 class="panel-title">
-                      												<a data-toggle="collapse" data-parent="#ge" href="#ihc">1. Islamic History & Culture </a>
-                      											</h4>
-                      										</div>
-                      										<div id="ihc" class="panel-collapse collapse in">
-                      											<div class="panel-body">
-                      												<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      											</div>
-                      										</div>
-                      									</div>
-                      									<div class="panel panel-default">
-                      										<div class="panel-heading">
-                      											<h4 class="panel-title">
-                      												<a data-toggle="collapse" data-parent="#ge" href="#iph">2. Indo Pak History</a>
-                      											</h4>
-                      										</div>
-                      										<div id="iph" class="panel-collapse collapse">
-                      											<div class="panel-body">
-                      												<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      													The candidates should be capable of:
-
-                      													Using English correctly and efficiently as a vehicle of communication.
-                      													Reading, comprehending and analyzing advanced texts.
-                      													Grammar and Vocabulary
-                      													The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      													There shall be no prescribed course for this purpose.
-                      													Reading Comprehension and Analysis
-                      													Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      													Precise Writing
-                      													The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      													<a href="" target="_blank">Learn more.</a></p>
-                      												</div>
-                      											</div>
-                      										</div>
-                      										<div class="panel panel-default">
-                      											<div class="panel-heading">
-                      												<h4 class="panel-title">
-                      													<a data-toggle="collapse" data-parent="#ge" href="#bh">3. British history </a>
-                      												</h4>
-                      											</div>
-                      											<div id="bh" class="panel-collapse collapse">
-                      												<div class="panel-body">
-                      													<p> <a href="" target="_blank">Learn more.</a></p>
-                      												</div>
-                      											</div>
-                      										</div>
-                      										<div class="panel panel-default">
-                      											<div class="panel-heading">
-                      												<h4 class="panel-title">
-                      													<a data-toggle="collapse" data-parent="#ge" href="#ah">4. History of United States of America</a>
-                      												</h4>
-                      											</div>
-                      											<div id="ah" class="panel-collapse collapse">
-                      												<div class="panel-body">
-                      													<p> <a href="" target="_blank">Learn more.</a></p>
-                      												</div>
-                      											</div>
-                      										</div>
-                      										<div class="panel panel-default">
-                      											<div class="panel-heading">
-                      												<h4 class="panel-title">
-                      													<a data-toggle="collapse" data-parent="#ge" href="#eh">5. European History</a>
-                      												</h4>
-                      											</div>
-                      											<div id="eh" class="panel-collapse collapse">
-                      												<div class="panel-body">
-                      													<p> <a href="" target="_blank">Learn more.</a></p>
-                      												</div>
-                      											</div>
-                      										</div>
-                      									</div>
-                      								</div>
-                      								<!--accordion end-->
-                      							</div>
-                      							<div class="tab-pane fade" id="f">
-                      								<div class="content_accordion">
-                      									<div class="panel-group" id="gf">
-                      										<div class="panel panel-default">
-                      											<div class="panel-heading">
-                      												<h4 class="panel-title">
-                      													<a data-toggle="collapse" data-parent="#gf" href="#law">1. Law </a>
-                      												</h4>
-                      											</div>
-                      											<div id="law" class="panel-collapse collapse in">
-                      												<div class="panel-body">
-                      													<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      												</div>
-                      											</div>
-                      										</div>
-                      										<div class="panel panel-default">
-                      											<div class="panel-heading">
-                      												<h4 class="panel-title">
-                      													<a data-toggle="collapse" data-parent="#gf" href="#ilaw">2. International Law</a>
-                      												</h4>
-                      											</div>
-                      											<div id="ilaw" class="panel-collapse collapse">
-                      												<div class="panel-body">
-                      													<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      														The candidates should be capable of:
-
-                      														Using English correctly and efficiently as a vehicle of communication.
-                      														Reading, comprehending and analyzing advanced texts.
-                      														Grammar and Vocabulary
-                      														The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      														There shall be no prescribed course for this purpose.
-                      														Reading Comprehension and Analysis
-                      														Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      														Precise Writing
-                      														The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      														<a href="" target="_blank">Learn more.</a></p>
-                      													</div>
-                      												</div>
-                      											</div>
-                      											<div class="panel panel-default">
-                      												<div class="panel-heading">
-                      													<h4 class="panel-title">
-                      														<a data-toggle="collapse" data-parent="#gf" href="#claw">3. Constitutional Law </a>
-                      													</h4>
-                      												</div>
-                      												<div id="claw" class="panel-collapse collapse">
-                      													<div class="panel-body">
-                      														<p> <a href="" target="_blank">Learn more.</a></p>
-                      													</div>
-                      												</div>
-                      											</div>
-                      											<div class="panel panel-default">
-                      												<div class="panel-heading">
-                      													<h4 class="panel-title">
-                      														<a data-toggle="collapse" data-parent="#gf" href="#mlaw">4. Mercantile Law</a>
-                      													</h4>
-                      												</div>
-                      												<div id="mlaw" class="panel-collapse collapse">
-                      													<div class="panel-body">
-                      														<p> <a href="" target="_blank">Learn more.</a></p>
-                      													</div>
-                      												</div>
-                      											</div>
-                      											<div class="panel panel-default">
-                      												<div class="panel-heading">
-                      													<h4 class="panel-title">
-                      														<a data-toggle="collapse" data-parent="#gf" href="#mlj">5. Muslim Law and Jurisprudence</a>
-                      													</h4>
-                      												</div>
-                      												<div id="mlj" class="panel-collapse collapse">
-                      													<div class="panel-body">
-                      														<p> <a href="" target="_blank">Learn more.</a></p>
-                      													</div>
-                      												</div>
-                      											</div>
-                      										</div>
-                      									</div>
-                      									<!--accordion end-->
-                      								</div>
-                      								<div class="tab-pane fade" id="g">
-                      									<div class="content_accordion">
-                      										<div class="panel-group" id="gg">
-                      											<div class="panel panel-default">
-                      												<div class="panel-heading">
-                      													<h4 class="panel-title">
-                      														<a data-toggle="collapse" data-parent="#gg" href="#psy">1. Psychology </a>
-                      													</h4>
-                      												</div>
-                      												<div id="psy" class="panel-collapse collapse in">
-                      													<div class="panel-body">
-                      														<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      													</div>
-                      												</div>
-                      											</div>
-                      											<div class="panel panel-default">
-                      												<div class="panel-heading">
-                      													<h4 class="panel-title">
-                      														<a data-toggle="collapse" data-parent="#gg" href="#phi">2. Philosophy</a>
-                      													</h4>
-                      												</div>
-                      												<div id="phi" class="panel-collapse collapse">
-                      													<div class="panel-body">
-                      														<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      															The candidates should be capable of:
-
-                      															Using English correctly and efficiently as a vehicle of communication.
-                      															Reading, comprehending and analyzing advanced texts.
-                      															Grammar and Vocabulary
-                      															The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      															There shall be no prescribed course for this purpose.
-                      															Reading Comprehension and Analysis
-                      															Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      															Precise Writing
-                      															The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      															<a href="" target="_blank">Learn more.</a></p>
-                      														</div>
-                      													</div>
-                      												</div>
-                      											</div>
-                      										</div>
-                      										<!--accordion end-->
-                      									</div>
-                      									<div class="tab-pane fade" id="h">
-                      										<div class="content_accordion">
-                      											<div class="panel-group" id="gh">
-                      												<div class="panel panel-default">
-                      													<div class="panel-heading">
-                      														<h4 class="panel-title">
-                      															<a data-toggle="collapse" data-parent="#gh" href="#sind">1. Sindhi </a>
-                      														</h4>
-                      													</div>
-                      													<div id="sind" class="panel-collapse collapse in">
-                      														<div class="panel-body">
-                      															<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      														</div>
-                      													</div>
-                      												</div>
-                      												<div class="panel panel-default">
-                      													<div class="panel-heading">
-                      														<h4 class="panel-title">
-                      															<a data-toggle="collapse" data-parent="#gh" href="#bal">2. Balochi</a>
-                      														</h4>
-                      													</div>
-                      													<div id="bal" class="panel-collapse collapse">
-                      														<div class="panel-body">
-                      															<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      																The candidates should be capable of:
-
-                      																Using English correctly and efficiently as a vehicle of communication.
-                      																Reading, comprehending and analyzing advanced texts.
-                      																Grammar and Vocabulary
-                      																The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      																There shall be no prescribed course for this purpose.
-                      																Reading Comprehension and Analysis
-                      																Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      																Precise Writing
-                      																The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      																<a href="" target="_blank">Learn more.</a></p>
-                      															</div>
-                      														</div>
-                      													</div>
-                      													<div class="panel panel-default">
-                      														<div class="panel-heading">
-                      															<h4 class="panel-title">
-                      																<a data-toggle="collapse" data-parent="#gh" href="#kpk">3. Pushto </a>
-                      															</h4>
-                      														</div>
-                      														<div id="kpk" class="panel-collapse collapse">
-                      															<div class="panel-body">
-                      																<p> <a href="" target="_blank">Learn more.</a></p>
-                      															</div>
-                      														</div>
-                      													</div>
-                      													<div class="panel panel-default">
-                      														<div class="panel-heading">
-                      															<h4 class="panel-title">
-                      																<a data-toggle="collapse" data-parent="#gh" href="#pun">4.Punjabi</a>
-                      															</h4>
-                      														</div>
-                      														<div id="pun" class="panel-collapse collapse">
-                      															<div class="panel-body">
-                      																<p> <a href="" target="_blank">Learn more.</a></p>
-                      															</div>
-                      														</div>
-                      													</div>
-                      												</div>
-                      											</div>
-                      											<!--accordion end-->
-                      										</div>
-                      										<div class="tab-pane fade" id="i">
-                      											<div class="content_accordion">
-                      												<div class="panel-group" id="gi">
-                      													<div class="panel panel-default">
-                      														<div class="panel-heading">
-                      															<h4 class="panel-title">
-                      																<a data-toggle="collapse" data-parent="#gi" href="#el">1. English Literature </a>
-                      															</h4>
-                      														</div>
-                      														<div id="el" class="panel-collapse collapse in">
-                      															<div class="panel-body">
-                      																<p>Candidates will be required to write one or more essays in English. A wide choice of subject will be given. <a href="" target="_blank">Learn more.</a></p>
-                      															</div>
-                      														</div>
-                      													</div>
-                      													<div class="panel panel-default">
-                      														<div class="panel-heading">
-                      															<h4 class="panel-title">
-                      																<a data-toggle="collapse" data-parent="#gi" href="#urd">2. Urdu</a>
-                      															</h4>
-                      														</div>
-                      														<div id="urd" class="panel-collapse collapse">
-                      															<div class="panel-body">
-                      																<p>The examination will be based upon a paper carrying 100 marks and will be geared to test the candidates' ability to handle grammatical structure, reading comprehension and analysis, and precise writing and composition.
-
-                      																	The candidates should be capable of:
-
-                      																	Using English correctly and efficiently as a vehicle of communication.
-                      																	Reading, comprehending and analyzing advanced texts.
-                      																	Grammar and Vocabulary
-                      																	The candidate's ability to handle the structure of English will be tested by framing items based upon grammatical categories that usually create problems for foreign students.
-                      																	There shall be no prescribed course for this purpose.
-                      																	Reading Comprehension and Analysis
-                      																	Two unseen passages shall be given with a fixed reading time and multiple choice questions would be placed at the end to be answered. The passage for comprehension shall be fairly technical. The passages would be selected from writings on economic, social, cultural subjects and international affairs.
-
-                      																	Precise Writing
-                      																	The candidates will be required to present an acceptable precis of a given passage. The unseen passage will be selected from current, economic, social, cultural and international affairs.
-                      																	<a href="" target="_blank">Learn more.</a></p>
-                      																</div>
-                      															</div>
-                      														</div>
-                      														<div class="panel panel-default">
-                      															<div class="panel-heading">
-                      																<h4 class="panel-title">
-                      																	<a data-toggle="collapse" data-parent="#gi" href="#per">3. Persian </a>
-                      																</h4>
-                      															</div>
-                      															<div id="per" class="panel-collapse collapse">
-                      																<div class="panel-body">
-                      																	<p> <a href="" target="_blank">Learn more.</a></p>
-                      																</div>
-                      															</div>
-                      														</div>
-                      														<div class="panel panel-default">
-                      															<div class="panel-heading">
-                      																<h4 class="panel-title">
-                      																	<a data-toggle="collapse" data-parent="#gi" href="#arb">4. Arabic</a>
-                      																</h4>
-                      															</div>
-                      															<div id="arb" class="panel-collapse collapse">
-                      																<div class="panel-body">
-                      																	<p> <a href="" target="_blank">Learn more.</a></p>
-                      																</div>
-                      															</div>
-                      														</div>
-                      													</div>
-                      													<!--accordion end-->
-                      												</div>
-                      											</div>
-                      										</div>
-
-
-		</div>
-
-
-		<div class="col-sm-3">
-        <h3><strong>Testimonial</strong></h3>
-        <div class="seprator"></div>
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <div class="item active">
-                  <div class="row" style="padding: 20px">
-                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>
-                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>
-                    <div class="row">
-                    <div class="col-sm-2">
-                        <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/jack.jpg" class="img-responsive" style="width: 80px">
+                          </div>
+                          <div class="col-md-4" style="height: 65px">
+                              <div class="col-xs-12 bottom-aligned">
+                                  <div class="col-xs-12">
+                                      <div class="row balance-amounts-box ellipsis" style="padding-left: 0">
+                                          <span>
+                                              <a class="clearfix" style="line-height: 18px; font-size:12px" href="#" >Investments</a>
+                                              <span style="font-weight:bold">$12.00</span>
+                                            </span>
+                                          <span>
+                                              <a class="clearfix" style="line-height: 18px; font-size:12px" href="#" >Contributions YTD</a>
+                                              <span style="font-weight:bold">$12.00</span>
+                                            </span>
+                                            <span>
+                                                <a class="clearfix" style="line-height: 18px; font-size:12px" href="#" >HSAOD</a>
+                                              <span style="font-weight:bold">$12.00</span>
+                                            </span>
+                                        </div>
+                                  </div>
+                              </div>
                         </div>
-                        <div class="col-sm-10">
-                        <h4><strong>Jack Andreson</strong></h4>
-                        <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>
-                        <span>Officeal All Star Cafe</span>
-                        </p>
+                        <div class="clearfix visible-xs"></div>
+                        
                     </div>
-                    </div>
+                  <hr/>
+                  <div class="row">
+                      
+                      <div class="clearfix visible-xs"></div>
+                      articulos
+                      
                   </div>
-                </div>
-               <div class="item">
-                   <div class="row" style="padding: 20px">
-                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>
-                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>
-                    <div class="row">
-                    <div class="col-sm-2">
-                        <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/kiara.jpg" class="img-responsive" style="width: 80px">
-                        </div>
-                        <div class="col-sm-10">
-                        <h4><strong>Kiara Andreson</strong></h4>
-                        <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>
-                        <span>Officeal All Star Cafe</span>
-                        </p>
-                    </div>
-                    </div>
-                  </div>
-                </div>
+                  <div class="clearfix hidden-xs" style="margin-top: 15px"></div>
+                  
               </div>
             </div>
-            <div class="controls testimonial_control pull-right">
-                <a class="left fa fa-chevron-left btn btn-default testimonial_btn" href="#carousel-example-generic"
-                  data-slide="prev"></a>
-
-                <a class="right fa fa-chevron-right btn btn-default testimonial_btn" href="#carousel-example-generic"
-                  data-slide="next"></a>
-              </div>
+            <div class="tab-pane" id="lB">
+                <div class="col-md-offset-1">
+                  <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                      <p>FSA account selected.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="lC">
+              <div class="col-md-offset-1">
+                  <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                      <p>HSAOD account selected.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="lD">
+              <div class="col-md-offset-1">
+                  <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                      <p>DCAP account selected.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <!-- Account selection for desktop - F -->
         </div>
-	</div>
-	<!-- /.row -->
+        </div>
+  </div>
 
+
+                    <div class="guide">
+                    </div>
+        </div>       
+    </div>
+    @else
+    <div class="row">
+      No Hay Productos Disponibles por el momento      
+    </div>
+    @endif
 </div>
-<!-- /.container-fluid -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+
+
+
 
 <style type="text/css">
-.content_accordion{
-	margin: 20px;
+ .bottom-aligned {
+    display:flex;
+    align-items: flex-end; 
+    height: 100%; 
+    padding:0;
 }
+
+.balance-amounts-box > span:not(:last-child) {
+    border-right: solid 1px #dce1e5;
+}
+
+.balance-amounts-box > span {
+    display:inline-block;
+    padding-left:7px;
+    padding-right:7px;
+}
+
+div {
+    /*box-sizing: border-box;*/
+    outline-color: #ade3ff;
+    outline-style: none;
+}
+
+/* Dropdowns - I */
+.dropdown .dropdown-toggle .down-arrow {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left:5px;
+    width: 16px;
+    height: 9px;
+    background-image: url("http://www.htic.es/assets/down-arrow.png")
+}
+
+.dropdown .dropdown-toggle .caret {
+    display: none;
+}
+
+.dropdown.open .down-arrow {
+    behavior:url(-ms-transform.htc);
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    transform: rotate(-180deg);
+}
+
+.dropdown button,
+.dropdown-menu {
+    background-color: #f6f8f8;
+}
+
+.dropdown-menu {
+    margin-top: 0px;
+    background-color: #f6f8f8;
+    border-radius: 0 0 0 0;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #96a4ad;
+}
+/* Dropdowns - F */
+
+div.clearfix {
+    margin-top: 15px;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+/* ROBOTO FONT FACES - I */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/ek4gzZ-GeXAPcSbHtCeQI_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/mErvLBYg_cXG3rLvUsKT_fesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/-2n2p-_Y08sg57CNWQfKNvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/u0TOpm082MNkS5K0Q4rhqvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/NdF9MtnOpLzo-noMoG0miPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* ROBOTO FONT FACES - F */
+
+/** General HTML style - I */
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900);*/
+
+body
+{
+  font-family: 'Roboto', sans-serif;
+  /*color: #B7C4CB;*/
+  /*background-color: #F7F9F9;*/
+  background-color: #ffffff;
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: 100%;
+}
+
+body > div {
+    margin-top: 10px;
+}
+
+a {
+    /*font-size: 0.9em;*/
+    color: #72B032;
+    /*color: #86BB4F;*/
+}
+
+a, a:hover, a:focus, a:visited {
+    text-decoration: none;
+}
+
+/** General HTML style - F */
+
+canvas {
+    margin-bottom: 15px;
+}
+
+container {
+    padding-bottom: 15px;
+}
+
+/*#monthDrop*/
+.dropdown button .btn-default {
+    width:100%;
+    border-color: red;
+}
+
+.balance {
+    line-height: 1em;
+    font-size:2.5em
+}
+
+.title {
+    color: #a0aeb6;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/** Rounded divs - I */
+div.rounded,
+div.top-rounded,
+div.bottom-rounded {
+    border: solid 1px #dce1e5;
+}
+
+div.rounded {
+    margin-bottom: 20px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+       -moz-border-radius:  4px 4px 4px 4px;
+            border-radius: 4px 4px 4px 4px;
+}
+
+div.top-rounded {
+    -webkit-border-radius: 4px 4px 0px 0px;
+       -moz-border-radius: 4px 4px 0px 0px;
+            border-radius: 4px 4px 0px 0px;
+}
+
+div.bottom-rounded {
+    border-top-style: none;
+    -webkit-border-radius: 0px 0px 4px 4px;
+       -moz-border-radius: 0px 0px 4px 4px;
+            border-radius: 0px 0px 4px 4px;
+}
+/** Rounded divs - F */
+
+
+/** Dropdown draft - I */
+.dropdown span.caret {
+    float:right;
+    margin-top:8px;
+}
+
+.dropdown button {
+    text-align: left;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+/** Dropdown draft - F */
+
+/** Let tabls-left class be available in bootstrap 3.3.7 - I **/
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+.tabs-left > .nav-tabs > li {
+  float: none;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-left > .nav-tabs > li > div {
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-left > .nav-tabs > li > div {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus,
+.tabs-left > .nav-tabs > li > div:hover,
+.tabs-left > .nav-tabs > li > div:focus{
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+  background-color: #eeeeee;
+}
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus,
+.tabs-left > .nav-tabs .active > div,
+.tabs-left > .nav-tabs .active > div:hover,
+.tabs-left > .nav-tabs .active > div:focus{
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+}
+/** Let tabls-left class be available in bootstrap 3.3.7 - F **/
+
+.account-type
+{
+    font-family: 'Roboto', sans-serif;
+    color: #A0AEB6;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.account-amount
+{
+    font-family: 'Roboto', sans-serif;
+  color: #A0AEB6;
+  font-size: 1.1em;
+  line-height: 16px;
+}
+
+.account-link
+{
+    font-family: 'Roboto', sans-serif;
+  font-size: 0.85em;
+  /*line-height: 1em;*/
+}
+
+/* TABS */
+.tabs-left > .nav-tabs{
+    margin-right:0px;
+    padding: 0;
+    height: 100%; /* 700px - Debe ser el mismo height que el que tenga .tab-content */
+}
+
+/* CONTENIDO DE LOS TABS */
+.tab-content {
+    background-color: #FFFFFF;
+    border:solid 1px #DCE1E5;
+    border-left-style: none;
+    height: 100%;
+    margin-bottom: 15px;
+    min-height: 700px;
+    border-radius: 0px 4px 4px 4px;
+    -moz-border-radius: 0px 4px 4px 4px;
+    -webkit-border-radius: 0px 4px 4px 4px;
+    
+    -webkit-box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.05);
+    box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.05);
+}
+
+.tab-content > div {
+    margin-top: 26px;
+}
+
+/* Formato del tab activo */
+.tabs-left > .nav-tabs .active > a, 
+.tabs-left > .nav-tabs .active > a:hover, 
+.tabs-left > .nav-tabs .active > a:focus,
+
+.tabs-left > .nav-tabs .active div, 
+.tabs-left > .nav-tabs .active div:hover, 
+.tabs-left > .nav-tabs .active div:focus
+{
+    background-color: #FFFFFF;
+    
+    border-bottom-style: none;
+    border-left-style: none;
+    
+    /*border-bottom: 1px solid #DCE1E5;*/
+    /*border-left: 1px solid #DCE1E5;*/
+    border-bottom-left-radius: 0px;
+    border-right-style: none;
+    
+    margin-right: -1px;
+    
+    -webkit-box-shadow: -4px 0px 18px -1px rgba(0,0,0,0.05);
+    -moz-box-shadow: -4px 0px 18px -1px rgba(0,0,0,0.05);
+    box-shadow: -4px 0px 18px -1px rgba(0,0,0,0.05);
+}
+
+/* Formato de los tabs en general */
+.tabs-left > .nav-tabs > li:nth-child(1) > a,
+.tabs-left > .nav-tabs > li:nth-child(1) > a:hover,
+.tabs-left > .nav-tabs > li:nth-child(1) > a:focus,
+
+.tabs-left > .nav-tabs > li:nth-child(1) > div,
+.tabs-left > .nav-tabs > li:nth-child(1) > div:hover,
+.tabs-left > .nav-tabs > li:nth-child(1) > div:focus 
+{
+    cursor: pointer;
+    border-top-left-radius: 4px;
+}
+
+.tabs-left > .nav-tabs > li.active:nth-child(1) > a,
+.tabs-left > .nav-tabs > li.active:nth-child(1) > a:hover,
+.tabs-left > .nav-tabs > li.active:nth-child(1) > a:focus,
+
+.tabs-left > .nav-tabs > li.active:nth-child(1) > div,
+.tabs-left > .nav-tabs > li.active:nth-child(1) > div:hover,
+.tabs-left > .nav-tabs > li.active:nth-child(1) > div:focus 
+{
+    border-top-left-radius: 4px;
+    border-bottom-style: none;
+    border-left: 1px solid #DCE1E5;
+}
+
+.tabs-left > .nav-tabs > li > a, 
+.tabs-left > .nav-tabs > li > div {
+    /*display:block;*/
+    /*display: table;*/
+    /*border: solid 1px transparent;*/
+    margin-right: -1px;
+    margin-bottom: -1px;
+    border:solid 1px #DCE1E5;
+    border-radius: 0px;
+}
+
+/* Style of the div element acting as tab content */
+.tabbable.tabs-left > .nav-tabs > li > div > div {
+    display:block;
+    width: 100%;
+    padding: 1em;
+    min-height: 6em;
+}
+
+/** For elements on the same line that jump down - I */
+@media (max-width: 767px) {
+    .mt-20 {
+        margin-top:20px;
+    }
+    
+    .tab-content {
+        border-left-style: solid;
+                border-radius: 4px 4px 4px 4px;
+           -moz-border-radius: 4px 4px 4px 4px;
+        -webkit-border-radius: 4px 4px 4px 4px;
+    }
+}
+/** For elements on the same line that jump down - F */
+
 </style>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+    var canvas = $("#chart").get(0);
+    var ctx = canvas.getContext('2d');
+
+    // Global Options:
+     //Chart.defaults.global.defaultFontColor = '#a0aeb6';
+     //Chart.defaults.global.defaultFontSize = 12;
+
+    // Data with datasets options
+    var data = {
+        labels: ["Eyecare", "Medical", "Dentist", "Rx"],
+        datasets: [
+          {
+            backgroundColor:
+              ['#313f4d','#54585a','#39af87','#379baf'],
+            borderWidth: 0,
+            data: [84.60, 84.60, 160, 110]
+          }
+        ]
+    };
+
+    var options = {
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 30,
+          bottom: 0
+        }
+      },
+      isFixedWidth:true,
+      barWidth:1,
+      legend: {
+        display: false
+      },
+      tooltips: {
+        mode: 'index',
+        callbacks: {
+          label: function(tooltipItem) {
+            return "$" + Number(tooltipItem.yLabel).toFixed(2);
+          },
+          labelTextColor:function(tooltipItem, chart){
+            return '#000000';
+          }/*,
+          titleTextColor:function(tooltipItem, chart){
+            return '#000000';
+          }*/
+        },
+        backgroundColor: '#ffffff',
+        borderColor: '#a0aeb6',
+        borderWidth: 1,
+        bodySpacing: 0,
+        cornerRadius: 2,
+        displayColors: false,
+        titleMarginTop: 20,
+        titleMarginBottom: 0,
+        titleFontSize: 0,
+        titleFontColor: '#000000',
+        caretSize: 4,
+        xAlign: 'center',
+        yAlign: 'bottom',
+        xPadding: 12,
+        yPadding: 12,
+      },
+      title: {
+        display: false,
+        text: 'Graph title',
+        position: 'bottom'
+      },
+      scales: {
+        xAxes: [
+          {
+            barThickness : 35,
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              fontSize: "12",
+              fontColor: "#000000",
+            }
+          }
+        ],
+        yAxes: [
+          {
+            gridLines: {
+              drawBorder: false,
+              color: "#dce1e5",
+              borderDash: [4, 3],
+              borderDashOffset: 3
+            },
+            ticks: {
+              beginAtZero:true,
+              fontColor: "#a0aeb6",
+              fontSize: "12",
+              callback: function (value) {
+                return "$"+Number(value)
+              },
+              stepSize: 25
+            }
+          }]
+      },
+      responsive: true
+    };
+
+    // Chart declaration:
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+
+});
+
+
+
+</script>
 
 
 @stop

@@ -22,6 +22,8 @@ use App\ClasificationCourse;
 use App\Course;
 use App\CoursesFiles;
 use Carbon\Carbon;
+use App\Product;
+use App\SectionTitle;
 
 class HomeController extends Controller
 {
@@ -52,10 +54,11 @@ class HomeController extends Controller
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
         $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
-
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->where('visibleslider',1)->get();    
+        $secciones = SectionTitle::orderBy('id', 'asc')->where('visible',1)->get();    
         $pag = 'inicio';
 
-        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','typeproducts','services'));
+        return view('web.template.index',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','typeproducts','services','cursos','secciones'));
         /*return view('home');*/
         //return view('web.index');
     }
@@ -94,8 +97,6 @@ class HomeController extends Controller
         return redirect('/contact');
     }
 
-
-
     public function us(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
@@ -118,6 +119,7 @@ class HomeController extends Controller
         $pag = 'empresa';
         return view('web.partials.pagina.empresamision',compact('veterinary','notes','notices','pag'));
     }
+
     public function vision(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         
@@ -126,6 +128,7 @@ class HomeController extends Controller
         $pag = 'empresa';
         return view('web.partials.pagina.empresavision',compact('veterinary','notes','notices','pag'));
     }
+
     public function courses(){
         $date = Carbon::now();
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
@@ -138,7 +141,12 @@ class HomeController extends Controller
         $pag = 'courses';
         return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos'));
     }
+
     public function product(){
+
+        $perPage = 25;
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
@@ -146,9 +154,232 @@ class HomeController extends Controller
         $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
         $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
         $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $cards = Product::paginate($perPage);      
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
         $pag = 'product';
-        return view('web.partials.pagina.cursos',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos'));
+        $active = 'active';
+        return view('web.partials.pagina.products',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
     }
+
+    public function services(){
+
+        $perPage = 25;
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $cards = Service::paginate($perPage);            
+        $pag = 'services';
+        $active = 'active';
+        return view('web.partials.pagina.services',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+    }
+    public function service_search(Request $request){
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $cards = Service::where('service', 'LIKE', "%$keyword%")
+                ->orWhere('slug', 'LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%")
+                ->orWhere('precio_venta', 'LIKE', "%$keyword%")
+                ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
+                ->orWhere('img', 'LIKE', "%$keyword%")
+                ->orWhere('is_active', 'LIKE', "%$keyword%")
+                ->orWhere('visible_slider', 'LIKE', "%$keyword%")
+                ->orWhere('promocion', 'LIKE', "%$keyword%")
+                ->orWhere('nuevo', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
+        } else {
+            $cards = Service::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = 'product';
+        $active = 'active';
+        return view('web.partials.pagina.services',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+
+    }
+
+    public function producto_search(Request $request){
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $cards = Product::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('slug', 'LIKE', "%$keyword%")
+                ->orWhere('cod', 'LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%")
+                ->orWhere('precio_compra', 'LIKE', "%$keyword%")
+                ->orWhere('precio_venta', 'LIKE', "%$keyword%")
+                ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
+                ->orWhere('stock', 'LIKE', "%$keyword%")
+                ->orWhere('img', 'LIKE', "%$keyword%")
+                ->orWhere('visible', 'LIKE', "%$keyword%")
+                ->orWhere('visible_slider', 'LIKE', "%$keyword%")
+                ->orWhere('promocion', 'LIKE', "%$keyword%")
+                ->orWhere('nuevo', 'LIKE', "%$keyword%")
+                ->orWhere('tipeproduct_id', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
+        } else {
+            $cards = Product::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = 'product';
+        $active = 'active';
+        return view('web.partials.pagina.products',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+
+    }
+
+    public function producto_search_id(Request $request,$id){
+        $perPage = 25;
+
+        if (!empty($id)) {
+            $cards = Product::where('tipeproduct_id',$id)
+                ->paginate($perPage);
+        } else {
+            $cards = Product::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = 'product';
+        $active = 'active';
+        return view('web.partials.pagina.products',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+
+    }
+    public function service_search_id(Request $request,$id){
+        $perPage = 25;
+
+        if (!empty($id)) {
+            $cards = Service::where('id',$id)
+                ->paginate($perPage);
+        } else {
+            $cards = Product::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $pag = '';
+        $active = 'active';
+        return view('web.partials.pagina.services',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','tipos','active','services','cards'));
+
+    }
+    public function socio_search_id($id){
+        $perPage = 25;
+
+        if (!empty($id)) {
+            $cards = Socio::where('id',$id)
+                ->paginate($perPage);
+        } else {
+            $cards = Socio::paginate($perPage);
+        }
+
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+              
+        
+        $pag = 'nosotros';
+        return view('web.partials.pagina.detallSocio',compact('veterinary','pag','cards'));
+        
+        
+
+    }
+
+    public function producto_detall(Request $request,$id){
+        $perPage = 25;
+
+        if (!empty($id)) {
+            $cards = Product::where('id',$id)->get();
+        } else {
+            $cards = Product::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = 'product';
+        $active = 'active';
+        return view('web.partials.pagina.detallProduct',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+    }
+
+    public function service_detall(Request $request,$id){
+        $perPage = 25;
+
+        if (!empty($id)) {
+            $cards = Service::where('id',$id)->get();
+        } else {
+            $cards = Service::paginate($perPage);
+        }
+
+        $services = Service::orderBy('id', 'desc')->where('is_active',1)->get();
+        $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active',1)->get();
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();        
+        $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
+        $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();        
+        $tipocources = TypeCourse::orderBy('id', 'asc')->where('is_active',1)->get();    
+        $clases = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $todos = ClasificationCourse::orderBy('id', 'asc')->where('visible',1)->get();    
+        $cursos = Course::orderBy('id', 'asc')->where('visible',1)->get();       
+        $tipos = Typeproduct::orderBy('id', 'asc')->where('is_active',1)->get(); 
+        $productos = Product::orderBy('id', 'asc')->where('visible',1)->get();       
+        $pag = '';
+        $active = 'active';
+        return view('web.partials.pagina.detallService',compact('veterinary','notes','notices','pag','tipocources','clases','todos','cursos','productos','tipos','active','services','typeproducts','cards'));
+    }
+
     public function _howtoget_(){
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::orderBy('id', 'desc')->get();
@@ -204,9 +435,10 @@ class HomeController extends Controller
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
+        $secciones = SectionTitle::orderBy('id', 'asc')->where('visible',1)->get();    
         $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
         $pag = 'noticias';
-        return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.partials.pagina.notices',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','secciones'));
         return view('web.partials.pagina.mapa');
     }
 
@@ -222,9 +454,10 @@ class HomeController extends Controller
         $notes = Note::orderBy('id', 'desc')->where('visible',1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible',1)->get();
         $galleries = Gallery::orderBy('id', 'desc')->where('visible',1)->get();
-        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();
+        $categories = Category::orderBy('id', 'desc')->where('visible',1)->get();  
+        $secciones = SectionTitle::orderBy('id', 'asc')->where('visible',1)->get();    
         $pag = 'galeria';
-        return view('web.partials.pagina.gallery',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
+        return view('web.partials.pagina.gallery',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag','secciones'));
     }
 
     public function howtoget()
@@ -253,7 +486,7 @@ class HomeController extends Controller
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider = Slider::findOrFail($id);
         $pag = 'noticias';
-        return view('web.partials.pagina.detall.detallslider',compact('veterinary','slider','pag'));
+        return view('web.partials.pagina.detallslider',compact('veterinary','slider','pag'));
         dd($slider);
     }
 
@@ -261,7 +494,7 @@ class HomeController extends Controller
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes = Card::findOrFail($id);
         $pag = 'noticias';
-        return view('web.partials.pagina.detall.detallCards',compact('veterinary','notes','pag'));
+        return view('web.partials.pagina.detallCards',compact('veterinary','notes','pag'));
         dd($notes);
         dd($slider);
     }
@@ -271,7 +504,7 @@ class HomeController extends Controller
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes = Note::findOrFail($id);
         $pag = 'noticias';
-        return view('web.partials.pagina.detall.detallTemas',compact('veterinary','notes','pag'));
+        return view('web.partials.pagina.detallTemas',compact('veterinary','notes','pag'));
         
     }
 
@@ -281,7 +514,7 @@ class HomeController extends Controller
         $course = Course::findOrFail($id);
         $files = CoursesFiles::where('course_id',$id)->get();
         $pag = 'courses';
-        return view('web.partials.pagina.detall.detallCourse',compact('veterinary','course','pag','files'));
+        return view('web.partials.pagina.detallCourse',compact('veterinary','course','pag','files'));
     }
 
     public function solicitainfo(Request $request){

@@ -1,7 +1,7 @@
 <header class="">
         <div class="auto">
             <a class="navbar-brand auto visible-xs hidden-sm hidden-md hidden-lg" href="www.google.com">
-                <img class="hidden-xs hidden-sm hidden-md visible-lg" src="theme/images/logo.png">
+                <img class="hidden-xs hidden-sm hidden-md visible-lg" src="{{ asset('theme/images/log.png') }}">
             </img>
         </a>
     </div>

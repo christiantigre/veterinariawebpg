@@ -1,15 +1,16 @@
 @extends('adminlte::page')
 
 @section('content')
-<div class="container">
         <div class="row">
 
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Veterinary</div>
                     <div class="panel-body">
-                        @if(!empty($veterinary))
-                            <a href="{{ url('/admin/veterinary/create') }}" class="btn btn-success btn-sm" title="Add New Veterinary">
+                        @if(count($veterinary)=='1')
+                            
+                        @else
+                        <a href="{{ url('/admin/veterinary/create') }}" class="btn btn-success btn-sm" title="Add New Veterinary">
                             <i class="fa fa-plus" aria-hidden="true"></i> Configurar
                         </a>
                         @endif
@@ -51,14 +52,14 @@
                                         <td>{{ $item->cel1 }} {{ $item->cel2 }}</td>
                                         <td><img src="{{ asset($item->logo) }}" class="navbar-brand navbar-brand-logo brand-centered"></td>
                                         <td>
-                                            <a href="{{ url('/admin/veterinary/' . $item->id) }}" title="View Veterinary"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/veterinary/' . $item->id . '/edit') }}" title="Edit Veterinary"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/veterinary/' . $item->id) }}" title="View Veterinary"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/veterinary/' . $item->id . '/edit') }}" title="Edit Veterinary"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/veterinary', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Veterinary',
@@ -76,6 +77,5 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 @endsection

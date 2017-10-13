@@ -26,16 +26,23 @@ Route::get('/contact', function () {
   Route::get('/notices', 'HomeController@notices')->name('/notices');
   Route::get('/pet', 'HomeController@pet')->name('/pet');
   Route::get('/gallery', 'HomeController@gallery')->name('/gallery');
-   Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
-   Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
-   Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
-   Route::get('/DetallCourses/{id}', 'HomeController@DetallCourses');
-   Route::get('/mision', 'HomeController@mision');
-   Route::get('/vision', 'HomeController@vision');
-   Route::get('/courses', 'HomeController@courses');
-   Route::get('/product', 'HomeController@product');
-   Route::post('/solicitainfo', 'HomeController@solicitainfo');
-
+  Route::get('/DetallSlider/{id}', 'HomeController@DetallSlider');
+  Route::get('/DetallCards/{id}', 'HomeController@DetallCards');
+  Route::get('/DetallTopic/{id}', 'HomeController@DetallTopic');
+  Route::get('/DetallCourses/{id}', 'HomeController@DetallCourses');
+  Route::get('/mision', 'HomeController@mision');
+  Route::get('/vision', 'HomeController@vision');
+  Route::get('/courses', 'HomeController@courses');
+  Route::get('/product', 'HomeController@product');
+  Route::get('/services', 'HomeController@services');
+  Route::post('/solicitainfo', 'HomeController@solicitainfo');
+  Route::get('/producto_search', 'HomeController@producto_search');
+  Route::get('/service_search', 'HomeController@service_search');
+  Route::get('/view_prod/{id}', 'HomeController@producto_search_id');
+  Route::get('/view_service/{id}', 'HomeController@service_search_id');
+  Route::get('/view_socio/{id}', 'HomeController@socio_search_id');
+  Route::get('/detall_prod/{id}', 'HomeController@producto_detall');
+  Route::get('/detall_service/{id}', 'HomeController@service_detall');
 
   Route::get('email', function(){
   //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
@@ -51,6 +58,11 @@ Route::get('/contact', function () {
 
   Route::get('/home', 'HomeController@index')->name('home');
 
+
+/*========================GRUPO ADMINISTRADOR================================*/
+
+
+
   Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'AdminAuth\LoginController@login');
@@ -63,7 +75,9 @@ Route::get('/contact', function () {
     Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset')->name('password.email');
     Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
     Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
-    /*===============================RUTAS===============================*/
+
+    /*===============================RUTAS ADMINISTRADOR===============================*/
+
 //Route::get('/administracion', 'Admin\AdminController@index')->name('administracion');
 
     Route::resource('/veterinary', 'Admin\\VeterinaryController');
@@ -85,8 +99,14 @@ Route::get('/contact', function () {
     Route::resource('/typeproduct', 'Admin\\TypeproductController');
     Route::resource('/clasification-courses', 'Admin\\ClasificationCoursesController');
     Route::resource('/tutor', 'Admin\\TutorController');
-    
+    Route::resource('/product', 'Admin\\ProductController'); 
+    Route::resource('/section-title', 'Admin\\SectionTitleController');  
   });
+
+
+
+
+
 
   Route::group(['prefix' => 'employee'], function () {
     Route::get('/login', 'EmployeeAuth\LoginController@showLoginForm')->name('login');

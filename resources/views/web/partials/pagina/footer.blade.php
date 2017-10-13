@@ -50,35 +50,14 @@
         <div class="col-md-3 col-sm-6">
             <div class="footer-info-single">
                 <h2 class="title">
-                    Help Center
+                    Ayuda
                 </h2>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="" title="">
+                        <a href="{{ url('/contact') }}" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            How to Pay
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            FAQ's
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            Sitemap
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            Delivery Info
+                            Contacto
                         </a>
                     </li>
                 </ul>
@@ -87,42 +66,28 @@
         <div class="col-md-3 col-sm-6">
             <div class="footer-info-single">
                 <h2 class="title">
-                    Customer information
+                    Empresa
                 </h2>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="" title="">
+                        <a href="{{ url('/mision') }}" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            About Us
+                            Mision
                         </a>
                     </li>
                     <li>
-                        <a href="" title="">
+                        <a href="{{ url('/vision') }}" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            FAQ's
+                            Vision
                         </a>
                     </li>
                     <li>
-                        <a href="" title="">
+                        <a href="{{ url('/us') }}" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            Sell Your Items
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            Contact Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            RSS
+                            Equipo
                         </a>
                     </li>
                 </ul>
@@ -131,35 +96,28 @@
         <div class="col-md-3 col-sm-6">
             <div class="footer-info-single">
                 <h2 class="title">
-                    Security & privacy
+                    Seguridad & Privacidad
                 </h2>
                 <ul class="list-unstyled">
                     <li>
                         <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            Terms Of Use
+                            Términos de uso
                         </a>
                     </li>
                     <li>
                         <a href="" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            Privacy Policy
+                            Politicas de uso
                         </a>
                     </li>
                     <li>
-                        <a href="" title="">
+                        <a href="{{ url('/') }}" title="">
                             <i class="fa fa-angle-double-right">
                             </i>
-                            Return / Refund Policy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" title="">
-                            <i class="fa fa-angle-double-right">
-                            </i>
-                            Store Locations
+                            Inicio
                         </a>
                     </li>
                 </ul>
@@ -168,10 +126,10 @@
         <div class="col-md-3 col-sm-6">
             <div class="footer-info-single">
                 <h2 class="title">
-                    Payment
+                    Metodos de pago
                 </h2>
                 <p>
-                    Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive
+                    Los pagos por la venta de productos, servicios y cursos se los realiza en las oficinas de la empresa.
                 </p>
             </div>
         </div>

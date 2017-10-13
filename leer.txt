@@ -49,14 +49,20 @@ php artisan crud:generate Service --fields="service#string; is_active#boolean;" 
 
 php artisan crud:generate Typeproduct --fields="typeproduct#string; is_active#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Tutor --fields="img#string; description#text; name#string; lastname#string; fb#string; tw#string; in#string; gg#string; lk#string; especialitation#string; datenac#string; workplace#string" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate SectionTitle --fields="title#string; subtitle#string; color#string; visible#boolean " --view-path=admin --controller-namespace=Admin --route-group=admin
+
 generar crud desde json
 php artisan crud:generate Subcategory --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/subcategory.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 php artisan crud:generate Courses --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldscourses.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Product --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldsproducts.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 php artisan crud:generate ClasificationCourses --fields="clasification#string; body#text; slug#text; typecourse_id#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
-php artisan crud:generate Tutor --fields="img#string; description#text; name#string; lastname#string; fb#string; tw#string; in#string; gg#string; lk#string; especialitation#string; datenac#string; workplace#string" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 
 
 laravel chat
@@ -113,7 +119,7 @@ ps: veterinariawebpg@gmail.com
 
 
 crear seeder
-php artisan make:seeder ClasesTableSeeder
+php artisan make:seeder TitleSectionsTableSeeder
 
 colaboracion con laravel 
 http://www.world-mag.pw/traer-un-valor-de-un-modelo-a-mi-vista-laravel/
@@ -146,3 +152,30 @@ MAIL_PORT=2525
 MAIL_USERNAME=c105fc943721d3
 MAIL_PASSWORD=587dcd7d885160
 MAIL_ENCRYPTION=null
+
+
+coneccion a base de datos en 000webjost archivo .env
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=id2995903_veterinaria
+DB_USERNAME=id2995903_root
+DB_PASSWORD=clave
+
+
+
+usuarios
+ftp host: files.000webhost.com
+user: austrogen
+password: austrogen.sv@gmail.com
+
+login 000webhost
+user: austrogen.sv@gmail.com
+pass: austrogen.sv@gmail.com
+
+
+base de datos
+dbname: id3250583_austrogen
+user: id3250583_austrogen
+host: localhost
+pass: id3250583_austrogen
