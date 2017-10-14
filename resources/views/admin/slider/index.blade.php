@@ -48,7 +48,7 @@
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Slider',
-                                                        'onclick'=>'return confirm("Confirm delete?")'
+                                                        'onclick'=>'return confirm("Desea eliminarlo?")'
                                                 )) !!}
                                             {!! Form::close() !!}
                                         </td>

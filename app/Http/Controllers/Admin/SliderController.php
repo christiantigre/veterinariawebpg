@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Slider;
 use Illuminate\Http\Request;
-use Session;
 use Illuminate\Support\Facades\Input;
 use Image;
+use Session;
 
 class SliderController extends Controller
 {
@@ -22,7 +20,7 @@ class SliderController extends Controller
     {
         $this->middleware('admin', ['except' => 'logout']);
     }
-    
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -30,10 +28,10 @@ class SliderController extends Controller
 
         if (!empty($keyword)) {
             $slider = Slider::where('img', 'LIKE', "%$keyword%")
-				->orWhere('title', 'LIKE', "%$keyword%")
-				->orWhere('content', 'LIKE', "%$keyword%")
-				->orWhere('linkinfo', 'LIKE', "%$keyword%")
-				->paginate($perPage);
+                ->orWhere('title', 'LIKE', "%$keyword%")
+                ->orWhere('content', 'LIKE', "%$keyword%")
+                ->orWhere('linkinfo', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
         } else {
             $slider = Slider::paginate($perPage);
         }
@@ -60,29 +58,28 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Input::file("img"))
-        {
-            $path="";
-        }else{
-            $file = Input::file('img');
+        if (!Input::file("img")) {
+            $path = "";
+        } else {
+            $file   = Input::file('img');
             $nombre = $file->getClientOriginalName();
-            $path = public_path('uploads/slider/'.$nombre);
-            $image = Image::make($file->getRealPath());
+            $path   = public_path('uploads/slider/' . $nombre);
+            $image  = Image::make($file->getRealPath());
             $image->save($path);
         }
-        
+
         $requestData = $request->all();
-        
+
         //Slider::create($requestData);
         Slider::create([
-            'img'=>'uploads/slider/'.$nombre,
-            'title'=>$request->title,
-            'content'=>$request->content,
-            'linkinfo'=>$request->linkinfo,
-            'visible_slider'=>$request->visible_slider,
-            'activo'=>$request->activo
+            'img'            => 'uploads/slider/' . $nombre,
+            'title'          => $request->title,
+            'content'        => $request->content,
+            'linkinfo'       => $request->linkinfo,
+            'visible_slider' => $request->visible_slider,
+            'activo'         => $request->activo,
         ]);
-   
+
         Session::flash('flash_message', 'Slider added!');
 
         return redirect('admin/slider');
@@ -126,42 +123,41 @@ class SliderController extends Controller
      */
     public function update($id, Request $request)
     {
-        if(!Input::file("img"))
-        {
-            $nombre="";
-        }else{
-            $file = Input::file('img');
+        if (!Input::file("img")) {
+            $nombre = "";
+        } else {
+            $file   = Input::file('img');
             $nombre = $file->getClientOriginalName();
-            $path = public_path('uploads/slider/'.$nombre);
-            $image = Image::make($file->getRealPath());
+            $path   = public_path('uploads/slider/' . $nombre);
+            $image  = Image::make($file->getRealPath());
             $image->save($path);
         }
-        
+
         $requestData = $request->all();
-        
-        if(empty($nombre)){
-            $slider = Slider::findOrFail($id);
-        $slider->title = $request->title;
-        $slider->content = $request->content;
-        $slider->linkinfo= $request->linkinfo;
-        $slider->subtittle= $request->subtittle;
-        $slider->body= $request->body;
-        $slider->detall= $request->detall;
-        $slider->visible_slider= $request->visible_slider;
-        $slider->activo= $request->activo;
-        $slider->save();
-        }else{
-            $slider = Slider::findOrFail($id);
-        $slider->img = 'uploads/slider/'.$nombre;
-        $slider->title = $request->title;
-        $slider->content = $request->content;
-        $slider->linkinfo= $request->linkinfo;
-        $slider->subtittle= $request->subtittle;
-        $slider->body= $request->body;
-        $slider->detall= $request->detall;
-        $slider->visible_slider= $request->visible_slider;
-        $slider->activo= $request->activo;
-        $slider->save();
+
+        if (empty($nombre)) {
+            $slider                 = Slider::findOrFail($id);
+            $slider->title          = $request->title;
+            $slider->content        = $request->content;
+            $slider->linkinfo       = $request->linkinfo;
+            $slider->subtittle      = $request->subtittle;
+            $slider->body           = $request->body;
+            $slider->detall         = $request->detall;
+            $slider->visible_slider = $request->visible_slider;
+            $slider->activo         = $request->activo;
+            $slider->save();
+        } else {
+            $slider                 = Slider::findOrFail($id);
+            $slider->img            = 'uploads/slider/' . $nombre;
+            $slider->title          = $request->title;
+            $slider->content        = $request->content;
+            $slider->linkinfo       = $request->linkinfo;
+            $slider->subtittle      = $request->subtittle;
+            $slider->body           = $request->body;
+            $slider->detall         = $request->detall;
+            $slider->visible_slider = $request->visible_slider;
+            $slider->activo         = $request->activo;
+            $slider->save();
         }
         //$slider->update($requestData);
 
