@@ -179,3 +179,6 @@ dbname: id3250583_austrogen
 user: id3250583_austrogen
 host: localhost
 pass: id3250583_austrogen
+
+solucion clonar branh
+https://stackoverflow.com/questions/2294313/how-to-download-a-branch-with-git
