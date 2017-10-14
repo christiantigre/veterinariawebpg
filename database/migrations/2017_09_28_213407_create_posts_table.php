@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePostsTable extends Migration
 {
@@ -15,9 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();
+            $table->string('title', 150)->nullable();
             $table->text('body')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('slug', 150)->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('visible')->default(1);

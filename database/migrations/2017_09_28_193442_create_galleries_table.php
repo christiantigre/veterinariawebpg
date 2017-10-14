@@ -12,12 +12,12 @@ class CreateGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('galleries', function(Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();
+            $table->string('title', 150)->nullable();
             $table->text('content')->nullable();
-            $table->string('img')->nullable();
-            $table->string('link')->nullable();
+            $table->string('img', 150)->nullable();
+            $table->string('link', 150)->nullable();
             $table->boolean('visible')->default(1);
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');

@@ -12,9 +12,9 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category')->nullable();
+            $table->string('category', 150)->nullable();
             $table->text('description')->nullable();
             $table->boolean('visible')->nullable()->default(1);
             $table->timestamps();

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTagsTable extends Migration
 {
@@ -15,8 +15,8 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tag')->nullable();
-            $table->string('description')->nullable();
+            $table->string('tag', 150)->nullable();
+            $table->string('description', 150)->nullable();
             $table->boolean('visible')->default(1);
             $table->timestamps();
         });

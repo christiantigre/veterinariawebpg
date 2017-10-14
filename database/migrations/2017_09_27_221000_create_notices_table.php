@@ -12,17 +12,17 @@ class CreateNoticesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notices', function(Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();
+            $table->string('title', 150)->nullable();
             $table->text('content')->nullable();
-            $table->string('link')->nullable();
-            $table->string('img')->nullable();
-            $table->string('day')->nullable();
-            $table->string('month')->nullable();
-            $table->string('compfb')->nullable();
-            $table->string('comptw')->nullable();
-            $table->string('compgg')->nullable();
+            $table->string('link', 150)->nullable();
+            $table->string('img', 150)->nullable();
+            $table->string('day', 150)->nullable();
+            $table->string('month', 50)->nullable();
+            $table->string('compfb', 150)->nullable();
+            $table->string('comptw', 150)->nullable();
+            $table->string('compgg', 150)->nullable();
             $table->boolean('visible')->nullable()->default(1);
             $table->timestamps();
         });
