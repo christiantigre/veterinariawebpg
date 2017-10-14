@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\Gallery;
 use App\Category;
+use App\Gallery;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Session;
 use Illuminate\Support\Facades\Input;
 use Image;
+use Session;
 
 class GalleryController extends Controller
 {
@@ -31,12 +29,12 @@ class GalleryController extends Controller
 
         if (!empty($keyword)) {
             $gallery = Gallery::where('title', 'LIKE', "%$keyword%")
-				->orWhere('content', 'LIKE', "%$keyword%")
-				->orWhere('img', 'LIKE', "%$keyword%")
-				->orWhere('link', 'LIKE', "%$keyword%")
-				->orWhere('visible', 'LIKE', "%$keyword%")
-				->orWhere('category_id', 'LIKE', "%$keyword%")
-				->paginate($perPage);
+                ->orWhere('content', 'LIKE', "%$keyword%")
+                ->orWhere('img', 'LIKE', "%$keyword%")
+                ->orWhere('link', 'LIKE', "%$keyword%")
+                ->orWhere('visible', 'LIKE', "%$keyword%")
+                ->orWhere('category_id', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
         } else {
             $gallery = Gallery::paginate($perPage);
         }
@@ -52,8 +50,8 @@ class GalleryController extends Controller
     public function create()
     {
 
-        $category = Category::orderBy('id','DESC')->where('visible',1)->pluck('category','id');
-        return view('admin.gallery.create',compact('category'));
+        $category = Category::orderBy('id', 'DESC')->where('visible', 1)->pluck('category', 'id');
+        return view('admin.gallery.create', compact('category'));
     }
 
     /**
@@ -65,30 +63,30 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Input::file("img"))
-        {
-            $path="";
-        }else{
-            $file = Input::file('img');
+        if (!Input::file("img")) {
+            $path = "";
+        } else {
+            $file   = Input::file('img');
             $nombre = $file->getClientOriginalName();
-            $path = public_path('uploads/notices/'.$nombre);
-            $image = Image::make($file->getRealPath());
+            $path   = public_path('uploads/notices/' . $nombre);
+            $image  = Image::make($file->getRealPath());
+            $image->resize(1200, 900);
             $image->save($path);
         }
 
-
         $this->validate($request, [
-			'title' => 'required|max:30'
-		]);
+            'title' => 'required|max:30',
+        ]);
         $requestData = $request->all();
-        
+
         Gallery::create([
-            'title'=>$request->title,
-            'content'=>$request->content,
-            'img'=>'uploads/galery/'.$nombre,
-            'link'=>$request->link,
-            'visible'=>$request->visible,
-            'category_id'=>$request->category_id
+            'title'       => $request->title,
+            'intro'       => $request->intro,
+            'content'     => $request->content,
+            'img'         => 'uploads/galery/' . $nombre,
+            'link'        => $request->link,
+            'visible'     => $request->visible,
+            'category_id' => $request->category_id,
         ]);
 
         Session::flash('flash_message', 'Gallery added!');
@@ -119,10 +117,10 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        $gallery = Gallery::findOrFail($id);
-        $category = Category::orderBy('id','DESC')->where('visible',1)->pluck('category','id');
+        $gallery  = Gallery::findOrFail($id);
+        $category = Category::orderBy('id', 'DESC')->where('visible', 1)->pluck('category', 'id');
 
-        return view('admin.gallery.edit', compact('gallery','category'));
+        return view('admin.gallery.edit', compact('gallery', 'category'));
     }
 
     /**
@@ -135,47 +133,48 @@ class GalleryController extends Controller
      */
     public function update($id, Request $request)
     {
-        if(!Input::file("img"))
-        {
-            $nombre="";
-        }else{
-            $file = Input::file('img');
+        if (!Input::file("img")) {
+            $nombre = "";
+        } else {
+            $file   = Input::file('img');
             $nombre = $file->getClientOriginalName();
-            $path = public_path('uploads/galery/'.$nombre);
-            $image = Image::make($file->getRealPath());
+            $path   = public_path('uploads/galery/' . $nombre);
+            $image  = Image::make($file->getRealPath());
+            $image->resize(1200, 900);
             $image->save($path);
         }
 
         $this->validate($request, [
-			'title' => 'required|max:30'
-		]);
+            'title' => 'required|max:30',
+        ]);
         $requestData = $request->all();
-        
+
         $gallery = Gallery::findOrFail($id);
 
-        if(!empty($nombre)){
+        if (!empty($nombre)) {
             $gallery->update(
-            [
-                'title'=>$request->title,
-                'content'=>$request->content,
-                'img'=>'uploads/galery/'.$nombre,
-                'link'=>$request->link,
-                'visible'=>$request->visible,
-                'category_id'=>$request->category_id
-            ]
-        );
-        }else{
+                [
+                    'title'       => $request->title,
+                    'intro'       => $request->intro,
+                    'content'     => $request->content,
+                    'img'         => 'uploads/galery/' . $nombre,
+                    'link'        => $request->link,
+                    'visible'     => $request->visible,
+                    'category_id' => $request->category_id,
+                ]
+            );
+        } else {
             $gallery->update(
-            [
-                'title'=>$request->title,
-                'content'=>$request->content,
-                'link'=>$request->link,
-                'visible'=>$request->visible,
-                'category_id'=>$request->category_id
-            ]
-        );
+                [
+                    'title'       => $request->title,
+                    'intro'       => $request->intro,
+                    'content'     => $request->content,
+                    'link'        => $request->link,
+                    'visible'     => $request->visible,
+                    'category_id' => $request->category_id,
+                ]
+            );
         }
-        
 
         Session::flash('flash_message', 'Gallery updated!');
 

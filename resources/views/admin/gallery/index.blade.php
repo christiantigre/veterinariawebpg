@@ -39,7 +39,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->content }}</td>
+                                        <td>{!! str_limit($item->content,150) !!}</td>
                                         <td>{{ $item->Category->category }}</td>
                                         <td>
                                             @if(empty($item->img))

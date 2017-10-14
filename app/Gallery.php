@@ -14,10 +14,10 @@ class Gallery extends Model
     protected $table = 'galleries';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -25,11 +25,11 @@ class Gallery extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'img', 'link', 'visible', 'category_id'];
+    protected $fillable = ['title', 'content', 'img', 'link', 'visible', 'category_id', 'intro'];
 
     public function Category()
-	{
-		return $this->belongsTo('App\Category');
-	}
-	
+    {
+        return $this->belongsTo('App\Category');
+    }
+
 }
