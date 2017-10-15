@@ -14,84 +14,71 @@ class SliderTableSeeder extends Seeder
     {
         Slider::create( [
 'id'=>1,
-'img'=>'uploads/slider/catdog.jpg',
-'title'=>'Slider 1',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:31:58',
-'updated_at'=>'2017-09-27 20:50:58'
+'img'=>'uploads/slider/fondo-1-final.png',
+'title'=>'Nuestra Empresa',
+'subtittle'=>'Nuestra empresa',
+'intro'=>'Biotecnología y servicios veterinarios. \r\n"soluciones técnicas mejores resultados".',
+'body'=>'<p style="margin-bottom: 0.28cm; line-height: 108%;" align="justify"><span style="color: #222222;">
+   <span style="background: #ffffff;">Austrogen, Es una Asociaci&oacute;n de Medico Veterinarios encaminados 
+   a satisfacer las necesidades del sector agropecuario mediante la implementaci&oacute;n de programas de 
+   mejoramiento y mantenimiento de biodiversidad gen&eacute;tica, prevenci&oacute;n de enfermedades 
+   implementaci&oacute;n y ejecuci&oacute;n de proyectos agropecuarios, capacitaci&oacute;n e innovaci&oacute;n 
+   de tecnolog&iacute;as. Orientados a mantener el bienestar animal, preservando el medio ambiente y dinamizando 
+   la producci&oacute;n que garantice el buen vivir</span></span></p>',
+'linkinfo'=>'http://localhost:8000/courses',
+'visible_slider'=>1,
+'activo'=>1,
+'created_at'=>'2017-09-28 01:31:58',
+'updated_at'=>'2017-10-15 04:38:29'
 ] );
 
-			
+            
 
 Slider::create( [
 'id'=>2,
-'img'=>'uploads/slider/granja.jpg',
-'title'=>'Slider 2',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:32:21',
-'updated_at'=>'2017-09-27 20:32:21'
+'img'=>'uploads/slider/slider1.jpg',
+'title'=>'Cursos',
+'subtittle'=>'Curso de inseminisacion Artificial',
+'intro'=>'Inseminación artificial en bovinos.',
+'body'=>'<p>Capacitaci&oacute;nes t&eacute;cnicas continuas impulsando el desarrollo del sector ganadero mediante el mejoramiento 
+   genetico atravez de la inseminicacion artificial.</p>',
+'linkinfo'=>'',
+'visible_slider'=>1,
+'activo'=>1,
+'created_at'=>'2017-09-28 01:32:21',
+'updated_at'=>'2017-10-15 04:42:12'
 ] );
 
-			
+            
 
 Slider::create( [
 'id'=>3,
-'img'=>'uploads/slider/loro.jpg',
-'title'=>'Slider 3',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:32:33',
-'updated_at'=>'2017-09-27 20:32:33'
+'img'=>'uploads/slider/sldier3.jpg',
+'title'=>'Equipo de trabajo',
+'subtittle'=>'',
+'intro'=>'Personal Técnico especializados en las diferentes áreas de veterinaria.',
+'body'=>'<p>Personal T&eacute;cnico especializados en las diferentes &aacute;reas de veterinaria.</p>',
+'linkinfo'=>'http://localhost:8000/DetallCourses/1',
+'visible_slider'=>1,
+'activo'=>1,
+'created_at'=>'2017-09-28 01:32:33',
+'updated_at'=>'2017-10-15 04:47:30'
 ] );
 
-			
+            
 
 Slider::create( [
 'id'=>4,
-'img'=>'uploads/slider/medic.jpg',
-'title'=>'Slider 4',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:32:44',
-'updated_at'=>'2017-09-27 20:32:44'
-] );
-
-			
-
-Slider::create( [
-'id'=>5,
-'img'=>'uploads/slider/varios2.jpg',
-'title'=>'Slider 5',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:32:58',
-'updated_at'=>'2017-09-27 20:32:58'
-] );
-
-			
-
-Slider::create( [
-'id'=>6,
-'img'=>'uploads/slider/variosanimales.jpg',
-'title'=>'Slider 6',
-'intro'=>'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto deerew',
-'linkinfo'=>NULL,
-'created_at'=>'2017-09-27 20:33:07',
-'updated_at'=>'2017-09-27 20:33:07'
-] );
-
-			
-
-Slider::create( [
-'id'=>7,
-'img'=>'uploads/slider/log.png',
-'title'=>'Slider 7',
-'intro'=>'https://www.google.es/',
-'linkinfo'=>'https://www.google.es/',
-'created_at'=>'2017-09-27 20:52:57',
-'updated_at'=>'2017-09-27 20:52:57'
+'img'=>'uploads/slider/ventasSemenPorcino.jpg',
+'title'=>'Semen Porcino',
+'subtittle'=>'',
+'intro'=>'Realizamos la venta de semen porcino.',
+'body'=>'<p>Realizamos la venta de semen porcino e Inseminicacion Artificial.</p>',
+'linkinfo'=>'',
+'visible_slider'=>1,
+'activo'=>1,
+'created_at'=>'2017-10-15 04:50:24',
+'updated_at'=>'2017-10-15 04:55:56'
 ] );
     }
 }

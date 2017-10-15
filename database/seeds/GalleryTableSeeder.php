@@ -14,129 +14,33 @@ class GalleryTableSeeder extends Seeder
     {
         
 
+
+
 Gallery::create( [
 'id'=>1,
-'title'=>'Esterilización',
-'content'=>'city',
-'img'=>'uploads/galery/aseo.jpg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>8,
-'created_at'=>'2017-09-29 19:10:43',
-'updated_at'=>'2017-09-29 21:39:10'
-] );
-
-			
-
-Gallery::create( [
-'id'=>2,
-'title'=>'Evento de Adopcion canica',
-'content'=>'nature',
-'img'=>'uploads/galery/perros-en-adopcion-02.jpg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>10,
-'created_at'=>'2017-09-29 19:11:41',
-'updated_at'=>'2017-09-29 21:39:17'
-] );
-
-			
-
-Gallery::create( [
-'id'=>3,
-'title'=>'Medicación',
-'content'=>'food',
-'img'=>'uploads/galery/medicacion.jpeg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>9,
-'created_at'=>'2017-09-29 19:14:01',
-'updated_at'=>'2017-09-29 21:39:27'
-] );
-
-			
-
-Gallery::create( [
-'id'=>4,
-'title'=>'Aseo mascotas',
-'content'=>NULL,
-'img'=>'uploads/galery/aseo.jpg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>8,
-'created_at'=>'2017-09-29 19:14:29',
-'updated_at'=>'2017-09-29 21:01:13'
-] );
-
-			
-
-Gallery::create( [
-'id'=>5,
-'title'=>'Peluqueria',
-'content'=>NULL,
-'img'=>'uploads/galery/peluqueria-canina-spa-canino_1.png',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>4,
-'created_at'=>'2017-09-29 19:14:55',
-'updated_at'=>'2017-09-29 20:33:35'
-] );
-
-			
-
-Gallery::create( [
-'id'=>6,
-'title'=>'Atencion Domicilio',
-'content'=>NULL,
-'img'=>'uploads/galery/atencion.jpeg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>7,
-'created_at'=>'2017-09-29 19:16:27',
-'updated_at'=>'2017-09-29 21:01:21'
-] );
-
-			
-
-Gallery::create( [
-'id'=>7,
-'title'=>'Hospitalización',
-'content'=>NULL,
-'img'=>'uploads/galery/hospitalizacion.jpg',
+'title'=>'Insiminisación bovinos.',
+'intro'=>'Curso de Inseminación artificial',
+'content'=>'<p>Aenean vitae pretium ligula. Nulla ultrices odio non sapien tincidunt, 
+   sed viverra diam commodo. Morbi malesuada massa viverra, vestibulum est in, 
+   molestie purus. Ut auctor maximus augue, quis sodales eros cursus nec. 
+   Sed a vulputate magna. Cras id erat est. Nunc molestie purus porttitor dolor sagittis porttitor. 
+   Donec mollis rhoncus fringilla. Quisque imperdiet pulvinar posuere. 
+   Class aptent taciti sociosqu ad litora torquent per conubia nostra, 
+   per inceptos himenaeos. Pellentesque risus ex, consequat vel ipsum sed, vehicula luctus metus.
+   </p>\r\n<p><img src="/photos/shares/20170322_092533.jpg" alt="imagen" width="150" height="150" /> 
+   <img src="/photos/shares/20170323_094728.jpg" alt="imagen 2" width="150" height="150" /></p>',
+'img'=>'uploads/galery/20170322_092512.jpg',
 'link'=>NULL,
 'visible'=>1,
 'category_id'=>11,
-'created_at'=>'2017-09-29 19:17:03',
-'updated_at'=>'2017-09-29 21:01:31'
+'created_at'=>'2017-10-15 03:52:11',
+'updated_at'=>'2017-10-15 03:54:40'
 ] );
+
 
 			
 
-Gallery::create( [
-'id'=>8,
-'title'=>'people 2',
-'content'=>'datos de prueba',
-'img'=>'uploads/galery/aseo.jpg',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>11,
-'created_at'=>'2017-09-29 22:11:34',
-'updated_at'=>'2017-09-29 22:11:34'
-] );
 
-			
-
-Gallery::create( [
-'id'=>9,
-'title'=>'Visita a domicilio',
-'content'=>'test food',
-'img'=>'uploads/galery/peluqueria-canina-spa-canino_1.png',
-'link'=>NULL,
-'visible'=>1,
-'category_id'=>9,
-'created_at'=>'2017-09-29 22:12:25',
-'updated_at'=>'2017-09-29 22:12:25'
-] );
 
 			
 

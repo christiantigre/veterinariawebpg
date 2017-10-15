@@ -280,7 +280,9 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
+        CoursesFiles::where('course_id', $id)->delete();
         Course::destroy($id);
+
         Session::flash('flash_message', 'Course deleted!');
         return redirect('admin/courses');
     }

@@ -22,11 +22,11 @@ class CreateVeterinariesTable extends Migration
             $table->string('cel2',18)->nullable();
             $table->string('mail',45)->nullable();
             $table->string('linkweb',150)->nullable();
-            $table->string('prop',150)->nullable();
+            $table->text('prop')->nullable();
             $table->string('gerent',150)->nullable();
             $table->string('area',150)->nullable();
             $table->text('description')->nullable();
-            $table->string('logo',150)->nullable();
+            $table->text('logo')->nullable();
             $table->string('namelogo',150)->nullable();
             $table->date('datestart')->nullable();
             $table->string('ruc',20)->nullable();

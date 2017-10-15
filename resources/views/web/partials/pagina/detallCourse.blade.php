@@ -2,8 +2,8 @@
 @section('content')
 
 
-<div class="container">
-	<div class="row">
+<div class="container ">
+	<div class="row espacio">
      <!-- HEADER -->
      <div class="header">
         @if(empty($course->img))
@@ -23,14 +23,14 @@
             @endif
         </div>
         <h5 class="sub-title_detall">{{ $course->title }}</h5>
-        <h2 class="title_detall">{{ $course->subtitle }}...</h2>
+        <h2 class="title_detall">{{ $course->subtitle }}</h2>
     </div>
 
     <!-- INFO -->
     <div class="row">
         <div class="col-xs-12">
             <h2 style="line-height: 25px;">{{ $course->title }}.</h2>
-            <h4 style="line-height: 25px;">{!! $course->content !!}.</h4>
+            <h4 style="line-height: 25px;">{!! $course->content !!}</h4>
         </div>
     </div>
     <div class="row row-eq-height" style="padding-right:15px">
@@ -128,13 +128,13 @@
 </p>
 </div>
 <!-- Sidebar // advertising -->
-<div class="col-xs-3 side">
+<div class="col-xs-3 side ">
     @if(!empty($veterinary))
     @foreach($veterinary as $veter)
     @if(!empty($veter->logo))
     <img style="max-width: 100%" src="{{ asset($veter->logo) }}" alt="Photograph" />
     @endif
-            <div class="col-lg-12" id="panel">
+            <div class="col-lg-12 espacio" id="panel">
                 <h2 class="class_h2">Te Informamos sin compromiso</h2>
 
                 {!! Form::open(['url' => '/solicitainfo','method'=>'post', 'enctype'=>'multipart/form-data', 'files' => false]) !!}
