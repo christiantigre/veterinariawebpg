@@ -25,7 +25,11 @@ class Notice extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'link', 'img', 'day', 'month', 'compfb', 'comptw', 'compgg', 'visible'];
+    protected $fillable = [
+        'title', 'intro','content', 'link', 'img', 'day', 
+        'month', 'compfb', 'comptw', 'compgg', 
+        'visible','precio','asistire','preg','mens','fechainit'
+];
 
     
 }

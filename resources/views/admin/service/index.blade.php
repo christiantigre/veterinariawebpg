@@ -35,7 +35,11 @@
                                 @foreach($service as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->service }}</td><td>{{ $item->is_active }}</td>
+                                        <td>{{ $item->service }}</td><td>@if(($item->is_active)=='1')
+                                                <small class="label pull-left bg-green">Activado</small>
+                                            @else
+                                            <small class="label pull-left bg-red">Desactivado</small>
+                                            @endif</td>
                                         <td>
                                             <a href="{{ url('/admin/service/' . $item->id) }}" title="View Service"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/service/' . $item->id . '/edit') }}" title="Edit Service"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

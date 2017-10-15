@@ -82,10 +82,13 @@ class NoticesController extends Controller
         Notice::create([
             'title'=>$request->title,
             'content'=>$request->content,
+            'intro'=>$request->intro,
             'link'=>$request->link,
             'img'=>'uploads/notices/'.$nombre,
             'day'=>$request->day,
+            'precio'=>$request->precio,
             'month'=>$request->month,
+            'fechainit'=>$request->fechainit,
             'compfb'=>$request->compfb,
             'comptw'=>$request->comptw,
             'compgg'=>$request->compgg,

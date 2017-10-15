@@ -28,7 +28,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Img</th><th>Description</th><th>Name</th><th>Actions</th>
+                                        <th>ID</th><th>Imagen</th><th>Descripción</th><th>Nombre</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +42,7 @@
                                             <img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo">
                                             @endif
                                         </td>
-                                        <td>{!! $item->description !!}</td><td>{{ $item->name }}</td>
+                                        <td>{!! str_limit($item->description,100) !!}</td><td>{{ $item->name }}</td>
                                         <td>
                                             <a href="{{ url('/admin/socios/' . $item->id) }}" title="View Socio"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/socios/' . $item->id . '/edit') }}" title="Edit Socio"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

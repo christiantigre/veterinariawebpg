@@ -3,7 +3,7 @@
 
 
 
-<div class="container-fluid fondo-equipo">
+<div class="container-fluid fondo-equipo" style="margin: 35px;">
     <div class="row">
         <div class="col-xs-12 text-center clearfix">
             <!--

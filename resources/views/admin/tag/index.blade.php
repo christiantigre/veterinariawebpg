@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Tag</div>
+                    <div class="panel-heading">Etiquetas</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/tag/create') }}" class="btn btn-success btn-sm" title="Add New Tag">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/tag', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
@@ -29,23 +29,29 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Description</th><th>Visible</th><th>Actions</th>
+                                        <th>ID</th><th>Etiqueta</th><th>Descripción</th><th>Estado</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($tag as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->tag }}</td><td>{{ $item->description }}</td><td>{{ $item->visible }}</td>
+                                        <td>{{ $item->tag }}</td><td>{{ $item->description }}</td><td>
+                                            @if(($item->visible)=='1')
+                                                <small class="label pull-left bg-green">Activado</small>
+                                            @else
+                                            <small class="label pull-left bg-red">Desactivado</small>
+                                            @endif
+                                        </td>
                                         <td>
-                                            <a href="{{ url('/admin/tag/' . $item->id) }}" title="View Tag"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/tag/' . $item->id . '/edit') }}" title="Edit Tag"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/tag/' . $item->id) }}" title="View Tag"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/tag/' . $item->id . '/edit') }}" title="Edit Tag"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/tag', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Tag',

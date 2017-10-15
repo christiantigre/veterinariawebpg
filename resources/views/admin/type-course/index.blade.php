@@ -36,10 +36,10 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->type }}</td><td>{{ $item->slug }}</td><td>
-                                            @if(($item->is_active)=='0')
-                                                Inactivo
+                                           @if(($item->is_active)=='1')
+                                                <small class="label pull-left bg-green">Activado</small>
                                             @else
-                                                Activo
+                                            <small class="label pull-left bg-red">Desactivado</small>
                                             @endif
                                         </td>
                                         <td>

@@ -6,38 +6,79 @@
 	<div class="row">
 		 <!-- HEADER -->
         <div class="header">
-            @if(empty($notes->imgHeader))
+            @if(empty($notices->img))
                 @foreach($veterinary as $vet)
                     <img style="width:100%" src="{{ asset($vet->logo) }}" />
                 @endforeach
             @else
-            <img style="width:100%" src="{{ asset($notes->imgHeader) }}" />
+            <img style="width:100%" src="{{ asset($notices->img) }}" />
             @endif
             <div class="triangulo"></div>
-            <div class="profile">
-                @if(!empty($notes->Admin->name))                
-                <img class="photo-author img-circle" src="{{ asset('uploads/statics/user.png') }}" />
-
-                <span class="name-author">por {{ $notes->Admin->name }}</span>
-                @else
-                <img class="photo-author img-circle" src="{{ asset('uploads/statics/user.png') }}" />
-                @endif               
-            </div>
-            <h5 class="sub-title">{{ $notes->Tag->tag }}</h5>
-            <h2 class="title_head">{{ $notes->subtitle }}...</h2>
+            <h2 class="title_head">{{ $notices->title }}...</h2>
         </div>
 
         <!-- INFO -->
         <div class="row">
             <div class="col-xs-12">
-                <h4 style="line-height: 25px;">{!! $notes->intro !!}</h4>
+                <h4 style="line-height: 25px;">{!! $notices->content !!}</h4>
             </div>
         </div>
         <div class="row row-eq-height" style="padding-right:15px">
             <div class="col-xs-9 text">
                 
-                <p class="semi-title">{{ $notes->title }}</p>
-                <p>{!! $notes->description !!}</p>
+                <p class="semi-title">{{ $notices->title }}</p>
+
+
+
+                <div class="row">
+                    @if(!empty($notices->precio))
+                    <div class="col-md-12">
+                      <div class="update-nag">
+                        <div class="update-split"><i class="glyphicon glyphicon-usd"></i></div>
+                        <div class="update-text"><a href="#">Précio </a><strong>{{ $notices->precio }}</strong> </div>
+                    </div>
+                </div>
+                @endif
+
+    @if(!empty($notices->fechainit))
+    <div class="col-md-12">
+      <div class="update-nag">
+        <div class="update-split update-info"><i class="glyphicon glyphicon-calendar"></i></div>
+        <div class="update-text"> <a href=""> <strong>Fecha</strong> </a> 
+            {{ $notices->fechainit }} </div>
+        </div>
+    </div>
+    @endif
+                @if(!empty($notices->asistire))
+                <div class="col-md-12">
+                  <div class="update-nag">
+                    <div class="update-split update-info"><i class="glyphicon glyphicon-arrow-right"></i></div>
+                    <div class="update-text"><a href="#">Asistirán </a> {{ $notices->asistire }} 
+                        <a href="#"></a> </div>
+                    </div>
+                </div>
+                @endif
+        
+
+@if(!empty($veterinary))
+<div class="col-md-12">
+  <div class="update-nag">
+    <div class="update-split update-info"><i class="glyphicon glyphicon-info-sign"></i></div>
+    <div class="update-text"> 
+        @foreach($veterinary as $vet)
+        <strong> <i class="glyphicon glyphicon-earphone"></i> </strong> {{ $vet->tlf1 }} {{ $vet->tlf2 }} 
+        <strong> <i class="glyphicon glyphicon-phone"></i> </strong> {{ $vet->cel1 }} {{ $vet->cel2 }} 
+        <strong> <i class="glyphicon glyphicon-envelope"></i> </strong> {{ $vet->mail }} 
+        @endforeach
+    </div>
+</div>
+</div>
+@endif
+
+</div>   
+
+
+
             </div>
             <!-- Sidebar // advertising -->
             <div class="col-xs-3 side">
@@ -168,6 +209,67 @@ display: flex;
         font-size:10px;
     }
 }
+
+
+
+/*================0LISTA===================*/
+
+
+/*lista*/
+
+
+.update-nag{
+  display: inline-block;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  height: 40px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+  margin-bottom: 10px;
+}
+
+.update-nag:hover{
+    cursor: pointer;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.4);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+}
+
+.update-nag > .update-split{
+  background: #337ab7;
+  width: 33px;
+  float: left;
+  color: #fff!important;
+  height: 100%;
+  text-align: center;
+}
+
+.update-nag > .update-split > .glyphicon{
+  position:relative;
+  top: calc(50% - 9px)!important; /* 50% - 3/4 of icon height */
+}
+.update-nag > .update-split.update-success{
+  background: #5cb85c!important;
+}
+
+.update-nag > .update-split.update-danger{
+  background: #d9534f!important;
+}
+
+.update-nag > .update-split.update-info{
+  background: #5bc0de!important;
+}
+
+
+
+.update-nag > .update-text{
+  line-height: 19px;
+  padding-top: 11px;
+  padding-left: 45px;
+  padding-right: 20px;
+}
+
+
 </style>
 
 @stop

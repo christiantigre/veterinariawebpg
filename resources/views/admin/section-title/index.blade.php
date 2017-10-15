@@ -45,10 +45,10 @@
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->subtitle }}</td>
                                         <td>{{ $item->color }}</td>
-                                        <td>@if(($item->visible)=='0')
-                                                Inactivo
+                                        <td>@if(($item->visible)=='1')
+                                                <small class="label pull-right bg-green">Activado</small>
                                             @else
-                                                Activo
+                                            <small class="label pull-right bg-red">Desactivado</small>
                                             @endif</td>
                                         <td>
                                             <a href="{{ url('/admin/section-title/' . $item->id) }}" title="View SectionTitle"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>

@@ -5,10 +5,10 @@
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Notices</div>
+                    <div class="panel-heading">Noticias</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/notices/create') }}" class="btn btn-success btn-sm" title="Add New Notice">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/notices', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
@@ -28,23 +28,25 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Title</th><th>Content</th><th>Link</th><th>Actions</th>
+                                        <th>ID</th><th>Titulo</th><th>Introducción</th><th>Link</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($notices as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->content }}</td><td>{{ $item->link }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ str_limit($item->intro,120) }}</td>
+                                        <td>{{ $item->link }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/notices/' . $item->id) }}" title="View Notice"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/notices/' . $item->id . '/edit') }}" title="Edit Notice"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/notices/' . $item->id) }}" title="View Notice"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/notices/' . $item->id . '/edit') }}" title="Edit Notice"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/notices', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Notice',

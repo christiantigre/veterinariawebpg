@@ -8,7 +8,7 @@
                     <div class="panel-heading">Gallery</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/gallery/create') }}" class="btn btn-success btn-sm" title="Add New Gallery">
-                            <i class="fa fa-plus" aria-hidden="true"></i>Nuevo
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/gallery', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}

@@ -34,7 +34,7 @@
                             {{ $notice->day }}
                         </span>
                         <span class="month">
-                            {{ $notice->month }}
+                            {{ str_limit($notice->month,4) }}
                         </span>
                         <span class="year">
                             2014
@@ -49,34 +49,31 @@
                             {{ $notice->title }}
                         </h2>
                         <p class="desc">
-                            {{ $notice->content }}
+                            {!! str_limit($notice->intro,120) !!}
                         </p>
                         <ul>
                             <li style="width:20%;">
-                                <a href="{{ $notice->link }}">
+                                <a href="{{url('DetallNotice', ['id' => $notice->id])}}">
                                     <span class="fa fa-globe">
                                     </span>
-                                    Website
+                                    Detalles
                                 </a>
                             </li>
+                            @if(!empty($notice->precio))
                             <li style="width:20%;">
                                 <span class="fa fa-money">
                                 </span>
-                                $39.99
+                                ${{ $notice->precio }}
                             </li>
+                            @endif
                             <li style="width:20%;">
-                                1
+                                Asistirán
                                 <span class="glyphicon glyphicon-ok">
                                 </span>
                             </li>
                             <li style="width:20%;">
-                                3
-                                <span class="fa fa-question">
-                                </span>
-                            </li>
-                            <li style="width:20%;">
-                                103
-                                <span class="fa fa-envelope">
+                                Visitas
+                                <span class="fa fa-eye">
                                 </span>
                             </li>
                         </ul>
@@ -123,7 +120,7 @@
 
 
 <!--***************************LO NUEVO*****************************-->
-<div class="container-fluid fondo-first">
+<!--<div class="container-fluid fondo-first">
     <div class="text-center col-md-12">
         <h1>
             LO NUEVO
@@ -173,7 +170,7 @@
             
         </div>
     </div>
-</div>
+</div>-->
 
 
 

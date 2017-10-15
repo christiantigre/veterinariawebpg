@@ -29,14 +29,18 @@
                             “
                         </p>
                         <p class="quote-text">
-                            {{ str_limit($nota->description,60) }}
+                            @if(($nota->intro)=="")
+                            {!! str_limit($nota->description,60) !!}
+                            @else
+                            {!! str_limit($nota->intro,60) !!}
+                            @endif
                         </p>
                         
                             <a href="{{url('DetallTopic', ['id' => $nota->id])}}">{{ $nota->title }}</a>
                         <hr>
                         <div class="blog-post-actions">
                             <p class="blog-post-bottom pull-left">
-                            {{ $nota->name }}
+                            {{ $nota->Admin->name }}
                             </p>
                             <p class="blog-post-bottom pull-right">
                                 <span class="badge quote-badge">

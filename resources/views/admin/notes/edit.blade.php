@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Note #{{ $note->id }}</div>
+                    <div class="panel-heading">Editar Nota #{{ $note->title }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/notes') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/notes') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -27,7 +27,7 @@
                             'files' => true
                         ]) !!}
 
-                        @include ('admin.notes.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.notes.form', ['submitButtonText' => 'Actualizar'])
 
                         {!! Form::close() !!}
 

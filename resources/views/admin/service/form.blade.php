@@ -81,7 +81,7 @@
     </div>
 </div>
 <div class="form-group {{ $errors->has('is_active') ? 'has-error' : ''}}">
-    {!! Form::label('is_active', 'Active', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('is_active', 'Activo', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="checkbox">
     <label>{!! Form::radio('is_active', '1', true) !!} Yes</label>

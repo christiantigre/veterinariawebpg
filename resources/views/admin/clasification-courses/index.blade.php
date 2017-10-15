@@ -36,10 +36,10 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->clasification }}</td><td>{{ $item->TypeCourse->type }}</td><td>
-                                            @if(($item->visible)=='0')
-                                                Inactivo
+                                            @if(($item->visible)=='1')
+                                                <small class="label pull-left bg-green">Activado</small>
                                             @else
-                                                Activo
+                                            <small class="label pull-left bg-red">Desactivado</small>
                                             @endif
                                         </td>
                                         <td>

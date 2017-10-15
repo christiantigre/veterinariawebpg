@@ -5,10 +5,10 @@
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Notes</div>
+                    <div class="panel-heading">Notas</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/notes/create') }}" class="btn btn-success btn-sm" title="Add New Note">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/notes', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
@@ -29,8 +29,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Title</th>
-                                        <th>Description</th>
+                                        <th>Titulo</th>
+                                        <th>Descripción</th>
                                         <th>Link</th>
                                         <th>Imagen</th>
                                         <th>Actions</th>
@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ str_limit($item->description,120) }}</td>
+                                        <td>{!! str_limit($item->description,120) !!}</td>
                                         <td>{{ $item->link }}</td>
                                         <td>
                                             @if(empty($item->imgHeader))
@@ -51,14 +51,14 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('/admin/notes/' . $item->id) }}" title="View Note"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/notes/' . $item->id . '/edit') }}" title="Edit Note"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/notes/' . $item->id) }}" title="View Note"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/notes/' . $item->id . '/edit') }}" title="Edit Note"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/notes', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Note',

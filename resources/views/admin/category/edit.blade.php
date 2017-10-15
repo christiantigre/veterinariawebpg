@@ -6,9 +6,9 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Category #{{ $category->id }}</div>
+                    <div class="panel-heading">Editar Categoria #{{ $category->cotegory }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/category') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/category') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -27,7 +27,7 @@
                             'files' => true
                         ]) !!}
 
-                        @include ('admin.category.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.category.form', ['submitButtonText' => 'Actualizar'])
 
                         {!! Form::close() !!}
 

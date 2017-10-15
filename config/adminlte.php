@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Vete</b>Rinaria',
+    'logo' => '<b>Austro</b>gen',
 
-    'logo_mini' => '<b>V</b>T',
+    'logo_mini' => '<b>A</b>G',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,20 +108,20 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'ADMINISTRADOR',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Paginas',
+            'url'         => '/',
             'icon'        => 'file',
-            'label'       => 4,
+            'label'       => 8,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
+        'MI CUENTA',
         [
             'text'    => 'Cuenta',
             'url'  => 'admin/settings',
@@ -145,17 +145,12 @@ return [
             'icon'    => 'eye',
             'submenu' => [
                 [
-                    'text' => 'General',
+                    'text' => 'Empresa',
                     'icon'    => 'minus',
                     'url'  => 'admin/veterinary',
                 ],
                 [
-                    'text'    => 'Slider',
-                    'icon'    => 'minus',
-                    'url'     => 'admin/slider',
-                ],
-                [
-                    'text' => 'Lo Nuevo',
+                    'text' => 'Temas Nuevos',
                     'icon'    => 'minus',
                     'url'  => 'admin/card',
                 ],
@@ -175,6 +170,11 @@ return [
                     'url'  => 'admin/notices',
                 ],
                 [
+                    'text' => 'Post',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/post',
+                ],
+                [
                     'text' => 'Categorias',
                     'icon'    => 'minus',
                     'url'  => 'admin/category',
@@ -190,20 +190,10 @@ return [
                     'url'  => 'admin/tag',
                 ],
                 [
-                    'text' => 'Post',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/post',
-                ],
-                [
                     'text' => 'Modalidades',
                     'icon'    => 'minus',
                     'url'  => 'admin/modalidad',
-                ],                
-                [
-                    'text' => 'Servicios',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/service',
-                ], 
+                ],     
                 [
                     'text' => 'Tutores',
                     'icon'    => 'minus',
@@ -241,7 +231,7 @@ return [
         ], 
         'PRODUCTOS',
         [
-            'text'    => 'PRODUCTO',
+            'text'    => 'Productos',
             'icon'    => 'eye',
             'submenu' => [               
                 [
@@ -255,12 +245,30 @@ return [
                     'url'  => 'admin/product',
                 ],
             ], 
+
+        ],
+        'SERVICIOS',
+        [
+            'text'=>'Servicios',
+            'icon'=>'eye',
+            'submenu'=>[
+                [
+                    'text'=>'Servicio',
+                    'icon'=>'minus',
+                    'url'=>'admin/service',
+                ],
+            ],
         ],
         'MEDIA',
         [
             'text'       => 'Galeria',
             'icon_color' => 'aqua',
             'url'  => 'admin/gallery',
+        ],        
+        [
+            'text'    => 'Slider',
+            'icon_color'    => 'aqua',
+            'url'     => 'admin/slider',
         ],
     ],
 

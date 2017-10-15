@@ -553,6 +553,15 @@ class HomeController extends Controller
         return view('web.partials.pagina.detallItemSlider', compact('veterinary', 'slider', 'pag','temasgalerias'));
         dd($slider);
     }
+    
+    public function DetallNotice($id)
+    {
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $notices     = Notice::findOrFail($id);        
+        $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
+        $pag        = 'noticias';
+        return view('web.partials.pagina.detall.detallNotice', compact('veterinary', 'notices', 'pag','temasgalerias'));
+    }
 
     public function solicitainfo(Request $request)
     {
