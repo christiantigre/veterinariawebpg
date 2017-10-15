@@ -44,6 +44,7 @@ Route::get('/view_socio/{id}', 'HomeController@socio_search_id');
 Route::get('/detall_prod/{id}', 'HomeController@producto_detall');
 Route::get('/detall_service/{id}', 'HomeController@service_detall');
 Route::get('/DetallGalleryItem/{id}', 'HomeController@itemgallery_detall');
+Route::get('/DetallItemSlider/{id}', 'HomeController@DetallItemSlider');
 
 Route::get('email', function () {
     //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());

@@ -17,9 +17,8 @@ class CreateSlidersTable extends Migration
             $table->string('img', 191)->nullable();
             $table->text('title')->nullable();
             $table->text('subtittle')->nullable();
-            $table->text('content')->nullable();
+            $table->text('intro')->nullable();
             $table->text('body')->nullable();
-            $table->text('detall')->nullable();
             $table->text('linkinfo')->nullable();
             $table->boolean('visible_slider')->default(1);
             $table->boolean('activo')->default(1);

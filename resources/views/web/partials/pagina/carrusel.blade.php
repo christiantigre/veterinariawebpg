@@ -18,7 +18,7 @@
                             </h2>
                         </div>
                         <p>
-                            {{ str_limit( $slide->content,120) }}
+                            {{ str_limit( $slide->intro,120) }}
                         </p>
 
                         @if(!empty($slide->linkweb))
@@ -28,7 +28,7 @@
                             </button>
                         </a>
                         @else
-                        <a href="{{url('DetallSlider', ['id' => $slide->id])}}">
+                        <a href="{{url('DetallItemSlider', ['id' => $slide->id])}}">
                             <button>
                                 MAS INFO
                             </button>

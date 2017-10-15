@@ -76,6 +76,9 @@ class SociosController extends Controller
             $nombre = $file->getClientOriginalName();
             $path = public_path('uploads/socios/'.$nombre);
             $image = Image::make($file->getRealPath());
+            $image->resize(350, 400);
+            //$image->resize();
+            //$image->resize(1200, 900);
             $image->save($path);
         }
         
@@ -160,6 +163,7 @@ class SociosController extends Controller
                 $nameHeader = $file->getClientOriginalName();
                 $path = public_path($rutaHead.$nameHeader);
                 $image = Image::make($file->getRealPath());
+                $image->resize(350, 400);
                 //$image->resize(1800, 720);
                 $image->save($path);
             }

@@ -42,7 +42,7 @@
                                             <img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo">
                                             @endif
                                         </td>
-                                        <td>{{ $item->description }}</td><td>{{ $item->name }}</td>
+                                        <td>{!! $item->description !!}</td><td>{{ $item->name }}</td>
                                         <td>
                                             <a href="{{ url('/admin/socios/' . $item->id) }}" title="View Socio"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/socios/' . $item->id . '/edit') }}" title="Edit Socio"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

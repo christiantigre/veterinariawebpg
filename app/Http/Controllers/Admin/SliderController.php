@@ -74,7 +74,8 @@ class SliderController extends Controller
         Slider::create([
             'img'            => 'uploads/slider/' . $nombre,
             'title'          => $request->title,
-            'content'        => $request->content,
+            'intro'        => $request->intro,
+            'body'        => $request->body,
             'linkinfo'       => $request->linkinfo,
             'visible_slider' => $request->visible_slider,
             'activo'         => $request->activo,
@@ -138,11 +139,10 @@ class SliderController extends Controller
         if (empty($nombre)) {
             $slider                 = Slider::findOrFail($id);
             $slider->title          = $request->title;
-            $slider->content        = $request->content;
+            $slider->intro        = $request->intro;
             $slider->linkinfo       = $request->linkinfo;
             $slider->subtittle      = $request->subtittle;
             $slider->body           = $request->body;
-            $slider->detall         = $request->detall;
             $slider->visible_slider = $request->visible_slider;
             $slider->activo         = $request->activo;
             $slider->save();
@@ -150,11 +150,10 @@ class SliderController extends Controller
             $slider                 = Slider::findOrFail($id);
             $slider->img            = 'uploads/slider/' . $nombre;
             $slider->title          = $request->title;
-            $slider->content        = $request->content;
+            $slider->intro        = $request->intro;
             $slider->linkinfo       = $request->linkinfo;
             $slider->subtittle      = $request->subtittle;
             $slider->body           = $request->body;
-            $slider->detall         = $request->detall;
             $slider->visible_slider = $request->visible_slider;
             $slider->activo         = $request->activo;
             $slider->save();

@@ -15,8 +15,8 @@ class CreateFilesCoursesTable extends Migration
     {
         Schema::create('files_courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('filename');
-            $table->string('ruta');
+            $table->string('filename',150)->nullable();
+            $table->string('ruta',150)->nullable();
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
