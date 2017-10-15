@@ -120,18 +120,19 @@ class HomeController extends Controller
 
         $notes   = Note::orderBy('id', 'desc')->where('visible', 1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
+        $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag     = 'empresa';
-        return view('web.partials.pagina.empresamision', compact('veterinary', 'notes', 'notices', 'pag'));
+        return view('web.partials.pagina.empresamision', compact('veterinary','temasgalerias', 'notes', 'notices', 'pag'));
     }
 
     public function vision()
     {
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
-
+        $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $notes   = Note::orderBy('id', 'desc')->where('visible', 1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
         $pag     = 'empresa';
-        return view('web.partials.pagina.empresavision', compact('veterinary', 'notes', 'notices', 'pag'));
+        return view('web.partials.pagina.empresavision', compact('veterinary','temasgalerias','notes', 'notices', 'pag'));
     }
 
     public function courses()
@@ -517,17 +518,16 @@ class HomeController extends Controller
 
     public function DetallTopic($id)
     {
-        //dd('aqui');
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $notes      = Note::findOrFail($id);
         $pag        = 'noticias';
-        return view('web.partials.pagina.detallTemas', compact('veterinary', 'notes', 'pag'));
+        return view('web.partials.pagina.detallTemas', compact('veterinary','temasgalerias','notes', 'pag'));
 
     }
 
     public function DetallCourses($id)
     {
-        //dd('aqui');
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $course     = Course::findOrFail($id);
         $files      = CoursesFiles::where('course_id', $id)->get();
@@ -560,7 +560,7 @@ class HomeController extends Controller
         $notices     = Notice::findOrFail($id);        
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag        = 'noticias';
-        return view('web.partials.pagina.detall.detallNotice', compact('veterinary', 'notices', 'pag','temasgalerias'));
+        return view('web.partials.pagina.detall.detallNotice', compact('veterinary','temasgalerias','notices', 'pag','temasgalerias'));
     }
 
     public function solicitainfo(Request $request)

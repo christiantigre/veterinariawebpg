@@ -33,8 +33,6 @@ h1::after {
 }
 
 .top-color {
-    /*#BFE9EB BFE9EB*/
-    /*background: #93CB00;*/
     background: #93CB00;
     height: 10px;
 }
@@ -103,7 +101,7 @@ h1::after {
 
 .ses_cta, li a:hover, .glyphicon-search:hover {
     font-size: 14px;
-    color: #BFE9EB;
+    color: #fff;
 }
 
 div ul li a.hover_class:hover {
@@ -111,6 +109,10 @@ div ul li a.hover_class:hover {
     color: #BFE9EB;
 }
 
+.nav .open > a, .nav .open> a:hover{
+    background-color: #93CB00;
+    color: #333;
+}
 
 /***************************social***************************************/
 
@@ -119,7 +121,7 @@ div ul li a.hover_class:hover {
 
 .cabecera {
     height: 100%;
-    background-color: #D7C4C0;
+    background-color: #93CB00;
 }
 
 .cabecera-top {
@@ -329,6 +331,10 @@ div.support-menu {
 a .right_a: {
     color: #93CB00;
 }
+a .right_a:hover, .lisearch {
+    background-color: #93CB00
+    color: #fff;
+}
 
 .navbar-brand, .auto {
     width: auto;
@@ -432,12 +438,9 @@ body {
 }
 
 #lisearch a:hover {
-    /*black #D7C4C0*/
     background: #93CB00;
     color: #fff;
-    /*color: #BFE9EB;*/
 }
-
 
 /*menu collapse*/
 
@@ -445,8 +448,7 @@ body {
     min-width: 250px;
     padding: 14px 14px 0;
     overflow: hidden;
-    /*rgba(255,255,255,.8)*/
-    background-color: #D7C4C0;
+    background-color: #93CB00;
 }
 
 #login-dp .help-block {
@@ -559,7 +561,7 @@ body {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: white;
     /*background-color: #428bca;*/
-    background-color: #dc7633;
+    background-color: #93CB00;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -597,7 +599,8 @@ body {
 .top-bar {
     width: 100%;
     /*black*/
-    background-color: #D7C4C0;
+    /*background-color: #D7C4C0;*/
+    background-color: #93CB00;
     margin: 0;
     padding: 0;
     color: #93CB00;

@@ -32,7 +32,7 @@
                                 @if(count($services)>0)
                                     @foreach($services as $service)
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ url('view_service', ['id' => $service->id])}}">
                                         {{ $service->service }}
                                     </a>
                                 </li>

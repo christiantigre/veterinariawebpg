@@ -32,29 +32,8 @@
                 <p class="semi-title">Visión</p>
                 <p>{!! $veterinaria->vision !!}  </p>
             </div>
-            <!-- Sidebar // advertising -->
-            <div class="col-xs-3 side">
-                <img style="max-width: 100%" src="http://youthnesia.id//assets/img/images/Advertise-here.png" alt="Photograph" />
-
-                <small>
-                <p style="margin-bottom:0px;"><b>Estadísticas</b></p>
-                <div class="statistics">
-                    <p><span class="label label-default">Visitas 2550</span></p>
-                    <p><span class="label label-default">Comentarios 15</span></p>
-                    <p><span class="label label-default">Compartido 50 veces</span></p>
-                    <p><span class="label label-default">Me gusta 20</span></p>
-                </div>
-                <p style="margin-bottom:0px;margin-top:25px;"><b>Noticias importantes</b></p>
-                <ul class="list-group">
-                    <li class="list-group-item"><big><b>1.</b></big> Cras justo odio</li>
-                    <li class="list-group-item"><big><b>2.</b></big> Dapibus ac facilisis in</li>
-                    <li class="list-group-item"><big><b>3.</b></big> Morbi leo risus</li>
-                    <li class="list-group-item"><big><b>4.</b></big> Porta ac consectetur ac</li>
-                    <li class="list-group-item"><big><b>5.</b></big> Vestibulum at eros</li>
-                </ul>
-                </small>
-                
-            </div>
+            <!-- Sidebar // advertising -->            
+            @include('web.partials.pagina.sidebar')
         </div>
         @endforeach
 	</div>
