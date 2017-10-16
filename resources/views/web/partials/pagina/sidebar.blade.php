@@ -22,4 +22,5 @@
             @endif
         </ul>
     </small>
+    @include('web.partials.pagina.cajaseguidores')
 </div>

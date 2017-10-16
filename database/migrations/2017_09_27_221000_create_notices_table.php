@@ -26,9 +26,9 @@ class CreateNoticesTable extends Migration
             $table->string('img', 150)->nullable();
             $table->string('day', 150)->nullable();
             $table->string('month', 50)->nullable();
-            $table->string('compfb', 150)->nullable();
-            $table->string('comptw', 150)->nullable();
-            $table->string('compgg', 150)->nullable();
+            $table->text('compfb')->nullable();
+            $table->text('comptw')->nullable();
+            $table->text('compgg')->nullable();
             $table->boolean('visible')->nullable()->default(1);
             $table->timestamps();
         });

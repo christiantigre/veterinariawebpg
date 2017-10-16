@@ -22,13 +22,17 @@
             <div class="col-xs-12 col-sm-12 col-md-4 text">
                 <p class="semi-title">{{ $gallery->title }}</p>
                 <p>{!! $gallery->content !!}</p>
+                @include('web.partials.pagina.cajas.likecompartir')
             </div>
+
             <!-- Sidebar // advertising -->
             @include('web.partials.pagina.sidebar')
             <!--fin de sidebar-->
         </div>
         </div>
     </div>
+
+    @include('web.partials.pagina.cajas.comentarios')
 </div>
 <style type="text/css">
 .list-item-group, .list-group-item a:hover {

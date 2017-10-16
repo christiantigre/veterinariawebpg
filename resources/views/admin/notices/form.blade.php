@@ -62,21 +62,21 @@
     </div>
 </div>
 <div class="form-group {{ $errors->has('compfb') ? 'has-error' : ''}}">
-    {!! Form::label('compfb', 'Compartidos facebook', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('compfb', 'Enlace facebook', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('compfb', null, ['class' => 'form-control']) !!}
         {!! $errors->first('compfb', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 <div class="form-group {{ $errors->has('comptw') ? 'has-error' : ''}}">
-    {!! Form::label('comptw', 'Compartir twitter', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('comptw', 'Enlace twitter', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('comptw', null, ['class' => 'form-control']) !!}
         {!! $errors->first('comptw', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 <div class="form-group {{ $errors->has('compgg') ? 'has-error' : ''}}">
-    {!! Form::label('compgg', 'Compartir google +', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('compgg', 'Enlace google +', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('compgg', null, ['class' => 'form-control']) !!}
         {!! $errors->first('compgg', '<p class="help-block">:message</p>') !!}

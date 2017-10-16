@@ -25,6 +25,7 @@
                 @if(!empty($slider->linkinfo))
                     <a href="{{ $slider->linkinfo }}"> vara ver los detalles click aqui</a>
                 @endif
+                @include('web.partials.pagina.cajas.likecompartir')
             </div>
             <!-- Sidebar // advertising -->
             <div class="col-xs-12 col-sm-8 col-md-3 side">
@@ -56,6 +57,7 @@
         </div>
         </div>
     </div>
+    @include('web.partials.pagina.cajas.comentarios')
 </div>
 <style type="text/css">
 .list-item-group, .list-group-item a:hover {

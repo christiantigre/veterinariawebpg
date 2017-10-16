@@ -75,6 +75,7 @@
 </div>
 @endif
 
+    @include('web.partials.pagina.cajas.likecompartir')
 </div>   
 
 
@@ -84,6 +85,8 @@
             @include('web.partials.pagina.sidebar')
         </div>
 	</div>
+
+    @include('web.partials.pagina.cajas.comentarios')
 </div>
 <style type="text/css">
     .header{position:relative;overflow:hidden;max-height:350px;display:flex;align-items:center;justify-content:center}

@@ -81,19 +81,19 @@
                     <div class="social">
                         <ul>
                             <li class="facebook" style="width:33%;">
-                                <a href="#facebook">
+                                <a href="{{ $notice->compfb }}" title="ENLACE">
                                     <span class="fa fa-facebook">
                                     </span>
                                 </a>
                             </li>
                             <li class="twitter" style="width:34%;">
-                                <a href="#twitter">
+                                <a href="{{ $notice->comptw }}" title="ENLACE">
                                     <span class="fa fa-twitter">
                                     </span>
                                 </a>
                             </li>
                             <li class="google-plus" style="width:33%;">
-                                <a href="#google-plus">
+                                <a href="{{ $notice->compgg }}" title="ENLACE">
                                     <span class="fa fa-google-plus">
                                     </span>
                                 </a>
