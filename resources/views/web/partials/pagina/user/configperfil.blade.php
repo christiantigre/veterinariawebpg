@@ -101,6 +101,7 @@
        <div class="form-group">
         <label class="col-md-4 control-label" for="Gender">Genero</label>
         <div class="col-md-4"> 
+          {!! Form::select('id_gender', $genero, null, ['class' => 'form-control']) !!}
           <label class="radio-inline" for="Gender-0">
             <input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
             Masculino

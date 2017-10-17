@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Veterinary;
+use App\Gender;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,10 +70,16 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {        
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            return redirect('/home');
+        }
+        $genero = Gender::orderBy('id', 'DESC')->pluck('genero', 'id');
         $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $pag  = '';
         $user = User::findOrFail($id);
-        return view('web.partials.pagina.user.configperfil',compact('veterinary','pag','user'));
+        return view('web.partials.pagina.user.configperfil',compact('veterinary','pag','user','genero'));
         //dd($user);
     }
 
