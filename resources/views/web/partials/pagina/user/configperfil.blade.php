@@ -39,9 +39,7 @@
                   <i class="fa fa-user">
                   </i>
                 </div>
-
                 {!! Form::text('name', null, ['class' => 'form-control input-md','placeholder'=>'Usuario']) !!}
-                <!--<input id="name" name="name" type="text" placeholder="Usuario" class="form-control input-md">-->
               </div>    
             </div>  
           </div>
@@ -201,6 +199,32 @@
       <textarea class="form-control" rows="10"  id="history" placeholder="Tu Historia" name="history"></textarea>
     </div>
   </div>
+
+
+
+
+
+          <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+              <label class="col-md-4 control-label" for="Nombres">Clave</label>  
+              <div class="col-md-4">
+               <div class="input-group">                {!! Form::password('password', null, ['class' => 'form-control input-md','placeholder'=>'Usuario']) !!}
+              </div>    
+            </div>  
+          </div>
+
+
+
+
+
+
+          <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : ''}}">
+              <label class="col-md-4 control-label" for="Nombres">Confirma clave</label>  
+              <div class="col-md-4">
+               <div class="input-group">
+                {!! Form::password('password_confirmation', null, ['class' => 'form-control input-md','placeholder'=>'Usuario']) !!}
+              </div>    
+            </div>  
+          </div>
 
 
   <div class="form-group">

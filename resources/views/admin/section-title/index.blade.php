@@ -42,8 +42,8 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->section }}</td>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->subtitle }}</td>
+                                        <td>{!! $item->title !!}</td>
+                                        <td>{!! $item->subtitle !!}</td>
                                         <td>{{ $item->color }}</td>
                                         <td>@if(($item->visible)=='1')
                                                 <small class="label pull-right bg-green">Activado</small>

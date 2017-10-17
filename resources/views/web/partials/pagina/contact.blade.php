@@ -18,10 +18,17 @@
         <div class="infoform" style="background: #ffffff;">
          <div class="mbottom" style="background: #ffffff;">
 
-
-          <h2>   Agradecemos tu visita  </h2>
+          @if(count($secciones)>0)
+            @foreach($secciones as $sec)
+        @if(($sec->section)=='contacto')
+          <h2>   {!! $sec->title !!}  </h2>
           
-          <p>   Nos gustaria saber sobre tus dudas o sugerencias. gracias por visitarnos...</p>
+          <p>  {!! $sec->subtitle !!}  </p>
+            @endif
+        @endforeach
+        @else
+        No configurado
+          @endif
         </div>
         
         {!! Form::open(['url' => '/contact', 'class' => 'form-horizontal', 'files' => true]) !!}

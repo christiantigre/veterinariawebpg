@@ -66,6 +66,14 @@ class NoticesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'img' => 'mimes:jpeg,png',
+            'title' => '|max:150',
+            'link' => '|max:150',
+            'precio' => 'numeric',
+            'day' => 'integer|max:31',
+            'month' => 'max:11',
+        ]);
         if(!Input::file("img"))
         {
             $path="";
@@ -138,7 +146,14 @@ class NoticesController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $this->validate($request, [
+            'img' => 'mimes:jpeg,png',
+            'title' => '|max:150',
+            'link' => '|max:150',
+            'precio' => 'numeric',
+            'day' => 'integer|max:31',
+            'month' => 'max:11',
+        ]);
         $requestData = $request->all();
         
         $notice = Notice::findOrFail($id);

@@ -56,13 +56,12 @@ Route::get('email', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
-    Route::resource('/perfil', 'customer\\ClienteController');
-Route::group(['middleware' => ['auth']], function () {    
-});
+
+
 
 /*========================GRUPO ADMINISTRADOR================================*/
 
@@ -106,7 +105,22 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/section-title', 'Admin\\SectionTitleController');
 });
 
-Route::group(['prefix' => 'employee'], function () {
+
+    
+    // Only authenticated users may enter...
+
+
+Route::group(['prefix'=>env('APP_DOMAIN')], function(){
+    Auth::routes();
+    Route::resource('/perfil', 'customer\\ClienteController');
+    Route::get('/perfil/{id}/editCredentials', 'customer\\ClienteController@editCredentials')->name('editCredentials');
+    Route::post('/perfil/{id}/upcredentials', 'customer\\ClienteController@upCredentials');
+});
+
+
+
+
+/*Route::group(['prefix' => 'employee'], function () {
     Route::get('/login', 'EmployeeAuth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'EmployeeAuth\LoginController@login');
     Route::post('/logout', 'EmployeeAuth\LoginController@logout')->name('logout');
@@ -118,9 +132,11 @@ Route::group(['prefix' => 'employee'], function () {
     Route::post('/password/reset', 'EmployeeAuth\ResetPasswordController@reset')->name('password.email');
     Route::get('/password/reset', 'EmployeeAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
     Route::get('/password/reset/{token}', 'EmployeeAuth\ResetPasswordController@showResetForm');
-});
+});*/
 
-Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
+
+/*Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {*/
+/*Route::group(['prefix' => 'customer'], function () {
     Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');
     Route::post('/login', 'CustomerAuth\LoginController@login');
     Route::post('/logout', 'CustomerAuth\LoginController@logout');
@@ -132,26 +148,8 @@ Route::group(['domain' => 'customer.' . env('APP_DOMAIN')], function () {
     Route::post('/password/reset', 'CustomerAuth\ResetPasswordController@reset');
     Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm');
     Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
-});
+    
+});*/
 
-Route::get('/mapas', function () {
-    $config                    = array();
-    $config['center']          = 'auto';
-    $config['onboundschanged'] = 'if (!centreGot) {
-      var mapCentre = map.getCenter();
-      marker_0.setOptions({
-        position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
-      });
-    }
-    centreGot = true;';
 
-    \Gmaps::initialize($config);
 
-    // set up the marker ready for positioning
-    // once we know the users location
-    $marker = array();
-    \Gmaps::add_marker($marker);
-
-    $map = \Gmaps::create_map();
-    echo "<html><head><script type='text/javascript'>var centreGot = false;</script>" . $map['js'] . "</head><body>" . $map['html'] . "</body></html>";
-});

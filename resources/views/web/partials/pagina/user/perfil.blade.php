@@ -53,6 +53,18 @@
         </div>
 
         <div class="span6 col-md-4 ">
+           <h2>Credenciales</h2> 
+           <ul class="unstyled">
+              <li>
+                <i class="fa fa-user"></i>Usuario:  {{ $user->name }}
+              </li>
+              <li>
+                <i class="fa fa-lock"></i>Clave:  ****
+              </li>
+           </ul>
+           <a href="{{ url('/perfil/' . $user->id . '/editCredentials') }}" title="Editar Perfil"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+        </div>
+        <div class="span6 col-md-4 ">
           <ul class="inline stats">
            <li>
              <h2>Mi historia</h2>
@@ -74,6 +86,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">-->
 
   <style type="text/css">
+  li{
+    list-style: none; 
+  }
   
   .stats {
     text-align:center;

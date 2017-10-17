@@ -6,34 +6,22 @@
 <div class="container-fluid fondo-equipo" style="margin: 35px;">
     <div class="row">
         <div class="col-xs-12 text-center clearfix">
-            <!--
-                <div class="sixteen columns">
-                <div class="sub-text link-svgline">
-                    <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#about">
-                        We believe
-                        <svg class="link-svgline">
-                            <use xlink:href="#svg_line">
-                            </use>
-                        </svg>
-                    </a>
-                    in coming up with original ideas and turning them into digital work that is both
-                    <a data-gal="m_PageScroll2id" data-ps2id-offset="65" href="#services">
-                        innovative and measurable.
-                        <svg class="link-svgline">
-                            <use xlink:href="#svg_line">
-                            </use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            -->
             <p>
-                <h1>
-                El mejor equipo humano a su servicio
-                </h1>
-                <small>
-                    Tenemos una convicción firme de que nuestro equipo debe de tener experiencia, ambición, y un afán increíble por la medicina veterinaria en pos de darle el mejor diagnóstico posible a su mascota. A continuación puede leer un poco acerca de nuestro grupo de trabajo.
-                </small>
+                @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='equipo')
+
+        <h1>
+                {!! $sec->title !!}
+            </h1>
+
+        <small>{!! $sec->subtitle !!}</small>
+        
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
             </p>
         </div>
     </div>
@@ -56,7 +44,6 @@
                                                 <div class="col-xs-8 col-sm-12 col-md-12 col-lg-12">
                                                     <div class="thumbnail">
 
-                                                        <!--Init section items http://www.hvdes.com/wp-content/uploads/bfi_thumb/veronicaolvera-felinos-Copiar-31fpk1vy4xpg4ysh6a1b0g.jpg-->
                                                         @foreach($socios as $socio)
                                                         <center>
 
@@ -112,6 +99,10 @@
 
 
     <style type="text/css" id="custom-fonts-css">
+    .logo_header{
+    max-width: 40%; 
+    height: auto; 
+}
     .fondo-equipo{
         background-color: #FFFFFF;
     }
@@ -481,6 +472,6 @@
         }</style>
 
 
-        <link rel='stylesheet' id='main-css'  href='http://www.hvdes.com/wp-content/themes/clinico/css/main.css?ver=4.2.16' type='text/css' media='all' />
-        <link rel='stylesheet' id='layout-css'  href='http://www.hvdes.com/wp-content/themes/clinico/css/layout.css?ver=4.2.16' type='text/css' media='all' />
+        <link rel='stylesheet' id='main-css'  href="{{ asset('theme/css/maincicl.css') }}" type='text/css' media='all' />
+        <link rel='stylesheet' id='main-css'  href="{{ asset('theme/css/cic1.css') }}" type='text/css' media='all' />
         @stop

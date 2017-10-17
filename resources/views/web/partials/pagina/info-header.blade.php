@@ -4,9 +4,15 @@
         <p class="text-left text-center colo-fux">
             <a href="{{ url('/') }}">
                 @if(!empty($veterinari->logo))
-                <img class="logo_header" style="" src="{{ asset($veterinari->logo) }}"/>
+                <img class="logo_header" style="" src="{{ asset($veterinari->logo) }}" style="
+    max-width: 40%; 
+    height: auto; 
+" />
                             @else
-                            <img class="logo_header" src="{{ asset('theme/images/log.png') }}"/>
+                            <img class="logo_header" src="{{ asset('theme/images/log.png') }}" style="
+    max-width: 40%; 
+    height: auto; 
+" />
                             @endif
                         </a>
                     </p>
@@ -134,12 +140,7 @@
                                     <li class="col">
                                       <a href="{{ ('register') }}" class="pull-right">Registrarse</a> 
                                   </li>
-                                  <!--<li class="col">-->
-                                      <!--<a href="{{ route('login') }}" class="pull-left"><i class="fa fa-sign-in mr-5"></i>Ingresar</a> -->
-                                      <!--</li>-->
-                      <!--<li class="col">
-                          <a href="{{ route('register') }}" class="pull-right">Registrarse</a> 
-                      </li>-->
+                                  
                   </div>
                   @endauth
                   @endif

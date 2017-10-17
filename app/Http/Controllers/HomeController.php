@@ -84,8 +84,9 @@ class HomeController extends Controller
         $notices    = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
         $galleries  = Gallery::orderBy('id', 'desc')->where('visible', 1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
+        $secciones    = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag        = 'contacto';
-        return view('web.partials.pagina.contact', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user'));
+        return view('web.partials.pagina.contact', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user','secciones'));
     }
 
     public function postContact(Request $request)
@@ -126,9 +127,10 @@ class HomeController extends Controller
         $notices    = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
         $galleries  = Gallery::orderBy('id', 'desc')->where('visible', 1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
+        $secciones    = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag        = 'nosotros';
         //return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
-        return view('web.partials.pagina.equipo', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user'));
+        return view('web.partials.pagina.equipo', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user','secciones'));
     }
 
     public function mision()
@@ -178,8 +180,9 @@ class HomeController extends Controller
         $clases      = ClasificationCourse::orderBy('id', 'asc')->where('visible', 1)->get();
         $todos       = ClasificationCourse::orderBy('id', 'asc')->where('visible', 1)->get();
         $cursos      = Course::orderBy('id', 'asc')->where('visible', 1)->get();
+        $secciones    = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag         = 'courses';
-        return view('web.partials.pagina.cursos', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos','cards','user'));
+        return view('web.partials.pagina.cursos', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos','cards','user','secciones'));
     }
 
     public function product()

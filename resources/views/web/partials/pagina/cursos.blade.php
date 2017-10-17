@@ -7,7 +7,19 @@
 		<div class="col-lg-9">
 			<center>
 				<h1 class="page-header">
-					<small>  Elije tu curso </small><!--small>Statistics Overview</small-->
+					<small>  
+            @if(count($secciones)>0)
+            @foreach($secciones as $sec)
+        @if(($sec->section)=='pagina cursos')
+          <h2>   {!! $sec->title !!}  </h2>
+          
+          <p>  {!! $sec->subtitle !!}  </p>
+            @endif
+        @endforeach
+        @else
+        No configurado
+          @endif
+          </small><!--small>Statistics Overview</small-->
 				</h1>
 			</center>                       
      <ul id="myTab" class="nav nav-tabs">

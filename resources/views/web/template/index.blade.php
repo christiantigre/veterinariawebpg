@@ -9,6 +9,7 @@
     <title>
         @yield('title','Austrogen')
     </title>
+    <link rel="shortcut icon" href="{{ asset('uploads/logos/favicon.ico') }}" />
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('theme/bootstrap/css/bootstrap.css') }}" rel="stylesheet"/>
     <!-- Custom styles for this template -->

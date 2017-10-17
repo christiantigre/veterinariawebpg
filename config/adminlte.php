@@ -150,11 +150,6 @@ return [
                     'url'  => 'admin/veterinary',
                 ],
                 [
-                    'text' => 'Temas Nuevos',
-                    'icon'    => 'minus',
-                    'url'  => 'admin/card',
-                ],
-                [
                     'text' => 'Socios',
                     'icon'    => 'minus',
                     'url'  => 'admin/socios',
@@ -273,6 +268,13 @@ return [
     ],
 
     /* 
+    eliminados
+    
+                [
+                    'text' => 'Temas Nuevos',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/card',
+                ],
     |--------------------------------------------------------------------------
     | Menu Filters
     |--------------------------------------------------------------------------

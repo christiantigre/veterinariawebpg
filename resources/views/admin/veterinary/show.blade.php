@@ -6,17 +6,17 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Veterinary {{ $veterinary->id }}</div>
+                    <div class="panel-heading">Veterinary #{{ $veterinary->name }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/admin/veterinary') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/admin/veterinary/' . $veterinary->id . '/edit') }}" title="Edit Veterinary"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/veterinary') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
+                        <a href="{{ url('/admin/veterinary/' . $veterinary->id . '/edit') }}" title="Edit Veterinary"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['admin/veterinary', $veterinary->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
                                     'title' => 'Delete Veterinary',

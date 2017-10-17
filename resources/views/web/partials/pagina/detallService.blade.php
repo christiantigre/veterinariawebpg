@@ -59,7 +59,9 @@
   @foreach($cards as $card)
   @foreach($veterinary as $veterinaria)
                <div class="col-xs-5 item-photo">
+                @if(!empty($card->img))
                     <img style="max-width:100%;" src="{{ asset($card->img) }}" />
+                @endif
                 </div>
                 <div class="col-xs-7" style="border:0px solid gray">
                     <!-- Datos del vendedor y titulo del producto -->

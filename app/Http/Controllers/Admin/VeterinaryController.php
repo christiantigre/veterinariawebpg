@@ -194,6 +194,27 @@ class VeterinaryController extends Controller
      */
     public function update($id, Request $request)
     {       
+        $this->validate($request, [
+            'name' => '|max:150',
+            'address' => '|max:150',
+            'tlf1' => 'numeric|max:999999999999999999',
+            'tlf2' => 'numeric|max:999999999999999999',
+            'cel1' => 'numeric|max:999999999999999999',
+            'cel2' => 'numeric|max:999999999999999999',
+            'mail' => '|max:45|email|',
+            'logo' => 'mimes:jpeg,png',
+            'linkweb' => 'max:150',
+            'gerent' => 'max:150',
+            'area' => 'max:150',
+            'ruc' => 'max:20',
+            'razonsocial' => 'max:150',
+            'fb' => 'max:150',
+            'tw' => 'max:150',
+            'in' => 'max:150',
+            'yt' => 'max:150',
+            'gg' => 'max:150',
+            'fax' => 'max:50',
+        ]);
 
 
         if(!Input::file("logo"))

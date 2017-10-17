@@ -5,7 +5,7 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('customer')->user();
 
-    //dd($users);
+    dd($users);
 
     return view('customer.home');
 })->name('home');

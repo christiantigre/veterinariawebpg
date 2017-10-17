@@ -22,6 +22,10 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'logout']);
+    }
     
     public function index()
     {
@@ -87,9 +91,30 @@ class ClienteController extends Controller
         $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $pag  = '';
         $user = User::findOrFail($id);
-        return view('web.partials.pagina.user.configperfil',compact('veterinary','pag','user','genero','paises','provincias'));
+                $user['password'] = "********";
+                return view('web.partials.pagina.user.configperfil',compact('veterinary','pag','user','genero','paises','provincias'));
         //dd($user);
     }
+
+    public function editCredentials($id)
+    {      
+
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            return redirect('/home');
+        }
+        $genero = Gender::orderBy('id', 'DESC')->pluck('genero', 'id');
+        $paises = Country::orderBy('id', 'DESC')->pluck('country', 'id');
+        $provincias = Province::orderBy('id', 'DESC')->pluck('province', 'id');
+        $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $pag  = '';
+        $user = User::findOrFail($id);
+                $user['password'] = "********";
+                return view('web.partials.pagina.user.changecredentials',compact('veterinary','pag','user','genero','paises','provincias'));
+        //dd($user);
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -129,6 +154,28 @@ class ClienteController extends Controller
         return redirect('/perfil');
     }
 
+    public function upCredentials(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => '|min:1|max:20',
+            'password' => 'min:6|required', 
+            'password_confirmation' => 'min:6|same:password'
+        ]);
+
+        $requestData = $request->all();
+        $user = User::findOrFail($id);
+        $user['password'] = bcrypt($request['password']);
+        $user->update([
+            'password'=>$user['password'],
+            'email'=>$requestData['email'],
+            'name'=>$requestData['name'],
+        ]);
+
+        Session::flash('flash_message', 'Información Actualizada correctamente!');
+
+        return redirect('/perfil');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -138,6 +185,11 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('auth');
     }
 
    
