@@ -13,7 +13,7 @@
             @endif
             <div class="triangulo"></div>
             <div class="profile">
-                <img class="photo-author img-circle" src="http://www.bordeaux-tourism.co.uk/var/ezwebin_site/storage/images/media/images/regards-bordelais/jean-poutge/profil-jean/12599-2-fre-FR/Profil-Jean_format_360x360.jpg" />
+               <!-- <img class="photo-author img-circle" src="http://www.bordeaux-tourism.co.uk/var/ezwebin_site/storage/images/media/images/regards-bordelais/jean-poutge/profil-jean/12599-2-fre-FR/Profil-Jean_format_360x360.jpg" />-->
                 <span class="name-author">por </span>
             </div>
             <h5 class="sub-title">tag</h5>

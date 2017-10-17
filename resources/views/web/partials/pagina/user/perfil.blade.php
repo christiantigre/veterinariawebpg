@@ -1,13 +1,13 @@
 @extends('web.index')
 @section('content')
 
-<div class="container profile">
+<div class="container profile" style="background-color: #ffffff;">
   @if(!empty($user))
-  <div class="row">
-    <div class="span12">
+  <div class="row" style="background-color: #ffffff;">
+    <div class="span12" style="background-color: #ffffff;">
 
-      <div class="well clearfix">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center clearfix">
+      <div class="well clearfix" style="background-color: #ffffff;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
 
 
           <div class="col-md-4 text-center">
@@ -18,32 +18,45 @@
             @endif
          </div>
 
-         <div class="span4 col-md-4 text-center">
+         <div class="span4 col-md-4 ">
            <h2>{{ $user->name }}</h2> 
            <ul class="unstyled">
             <li><i class="fa fa-user"></i> {{ $user->nombres }} {{ $user->apellidos }}</li>
-            <li><i class="fa fa-phone"></i> {{ $user->telefono }} {{ $user->celular }}</li>
+            @if(!empty($user->telefono))
+            <li><i class="fa fa-phone"></i> 
+              {{ $user->telefono }}
+            </li>
+            @endif
+            @if(!empty($user->celular)) 
+            <li><i class="fa fa-phone"></i> 
+              {{ $user->celular }}
+            </li>
+            @endif
+            
             <li><i class="fa fa-envelope"></i> {{ $user->email }} </li>
-            <li><i class="fa fa-map-markere"></i> {{ $user->direccion }} </li>
-            <li><i class="fa fa-map-male"></i> {{ $user->genero }} </li>
-            <li><i class="fa fa-map-birthday-cake"></i> {{ $user->fecha_nacimiento }} </li>
+              @if(!empty($user->domicilio))
+            <li><i class="fa fa-map-markere"></i> 
+              ({{$user->Country->country}})
+              <br/>
+              ({{$user->Province->province}})
+              {{ $user->domicilio }}
+               </li>
+              @endif
+            <li><i class="fa fa-map-male"></i> {{ $user->Gender->genero }} </li>
+              @if(!empty($user->fecha_nacimiento)) 
+            <li><i class="fa fa-map-birthday-cake"></i> 
+              {{$user->fecha_nacimiento}}({{ $user->actividad() }})
+          </li>
+            @endif 
             <a href="{{ url('/perfil/' . $user->id . '/edit') }}" title="Editar Perfil"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
           </ul>
         </div>
 
-        <div class="span6 col-md-4 text-center">
+        <div class="span6 col-md-4 ">
           <ul class="inline stats">
            <li>
-             <span>275</span>
-             Friends
-           </li>
-           <li>
-             <span>354</span>
-             Followers
-           </li>
-           <li>
-             <span>186</span>
-             Photos
+             <h2>Mi historia</h2>
+             {{ $user->history }}
            </li>
          </ul>
          <div><!--/span6-->

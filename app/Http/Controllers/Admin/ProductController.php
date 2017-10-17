@@ -133,6 +133,7 @@ class ProductController extends Controller
      */
     public function update($id, Request $request)
     {
+        dd('actuliza');
         
         $requestData = $request->all();
         $files = Input::file('img');

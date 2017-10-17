@@ -79,9 +79,13 @@
                                                               <span class="item">
                                                                 <div class="receipt-left">
                                                                     <span class="item-left">
-                                                                        <img class="img-responsive" alt="iamgurdeeposahan" style="width: 71px; border-radius: 43px;" src="{{ asset('theme/images/perfil/perfil.jpg') }}" alt="" />
+                                                                        @if(!empty($user->img))
+                                                                        <img class="img-responsive" alt="iamgurdeeposahan" style="width: 71px; border-radius: 43px;" src="{{ asset($user->img) }}" alt="" />
+                                                                        @else
+                                                                        <img class="img-responsive" alt="iamgurdeeposahan" style="width: 71px; border-radius: 43px;" src="{{ asset('uploads/statics/avatar.jpg') }}" alt="" />
+                                                                        @endif
                                                                         <span class="item-info">
-                                                                            <span>Username</span>
+                                                                            <span>{{ $user->name }}</span>
                                                                         </span>
                                                                     </span>
                                                                 </div>

@@ -24,6 +24,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -44,6 +45,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider       = Slider::orderBy('id', 'desc')->get();
         $cards        = Card::orderBy('id', 'desc')->where('visible', 1)->get();
@@ -58,13 +64,18 @@ class HomeController extends Controller
         $secciones    = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'inicio';
 
-        return view('web.template.index', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'typeproducts', 'services', 'cursos', 'secciones'));
+        return view('web.template.index', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'typeproducts', 'services', 'cursos', 'secciones','user'));
         /*return view('home');*/
         //return view('web.index');
     }
 
     public function contact()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::orderBy('id', 'desc')->get();
         $cards      = Card::orderBy('id', 'desc')->get();
@@ -74,11 +85,12 @@ class HomeController extends Controller
         $galleries  = Gallery::orderBy('id', 'desc')->where('visible', 1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
         $pag        = 'contacto';
-        return view('web.partials.pagina.contact', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag'));
+        return view('web.partials.pagina.contact', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user'));
     }
 
     public function postContact(Request $request)
     {
+
         $this->validate(request(), [
             'name'    => 'required',
             'mail'    => 'required|email',
@@ -101,6 +113,11 @@ class HomeController extends Controller
 
     public function us()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::orderBy('id', 'desc')->get();
         $cards      = Card::orderBy('id', 'desc')->get();
@@ -111,32 +128,48 @@ class HomeController extends Controller
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
         $pag        = 'nosotros';
         //return view('web.partials.pagina.us',compact('veterinary','slider','cards','socios','notes','notices','galleries','categories','pag'));
-        return view('web.partials.pagina.equipo', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag'));
+        return view('web.partials.pagina.equipo', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag','user'));
     }
 
     public function mision()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
 
         $notes   = Note::orderBy('id', 'desc')->where('visible', 1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag     = 'empresa';
-        return view('web.partials.pagina.empresamision', compact('veterinary','temasgalerias', 'notes', 'notices', 'pag'));
+        return view('web.partials.pagina.empresamision', compact('veterinary','temasgalerias', 'notes', 'notices', 'pag','user'));
     }
 
     public function vision()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $notes   = Note::orderBy('id', 'desc')->where('visible', 1)->get();
         $notices = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
         $pag     = 'empresa';
-        return view('web.partials.pagina.empresavision', compact('veterinary','temasgalerias','notes', 'notices', 'pag'));
+        return view('web.partials.pagina.empresavision', compact('veterinary','temasgalerias','notes', 'notices', 'pag','user'));
     }
 
     public function courses()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
+        $cards     = Service::orderBy('id', 'desc')->where('is_active', 1)->get();
         $date        = Carbon::now();
         $veterinary  = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes       = Note::orderBy('id', 'desc')->where('visible', 1)->get();
@@ -146,12 +179,16 @@ class HomeController extends Controller
         $todos       = ClasificationCourse::orderBy('id', 'asc')->where('visible', 1)->get();
         $cursos      = Course::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag         = 'courses';
-        return view('web.partials.pagina.cursos', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos'));
+        return view('web.partials.pagina.cursos', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos','cards','user'));
     }
 
     public function product()
     {
-
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage      = 25;
         $services     = Service::orderBy('id', 'desc')->where('is_active', 1)->get();
         $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active', 1)->get();
@@ -167,12 +204,16 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'product';
         $active       = 'active';
-        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
     }
 
     public function services()
     {
-
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage      = 25;
         $services     = Service::orderBy('id', 'desc')->where('is_active', 1)->get();
         $typeproducts = Typeproduct::orderBy('id', 'desc')->where('is_active', 1)->get();
@@ -187,10 +228,15 @@ class HomeController extends Controller
         $cards        = Service::paginate($perPage);
         $pag          = 'services';
         $active       = 'active';
-        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
     }
     public function service_search(Request $request)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -223,12 +269,17 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'product';
         $active       = 'active';
-        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
 
     }
 
     public function producto_search(Request $request)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -265,12 +316,17 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'product';
         $active       = 'active';
-        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
 
     }
 
     public function producto_search_id(Request $request, $id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage = 25;
 
         if (!empty($id)) {
@@ -293,11 +349,16 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'product';
         $active       = 'active';
-        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
 
     }
     public function service_search_id(Request $request, $id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage = 25;
 
         if (!empty($id)) {
@@ -319,11 +380,16 @@ class HomeController extends Controller
         $tipos        = Typeproduct::orderBy('id', 'asc')->where('is_active', 1)->get();
         $pag          = '';
         $active       = 'active';
-        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'tipos', 'active', 'services', 'cards'));
+        return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'tipos', 'active', 'services', 'cards','user'));
 
     }
     public function socio_search_id($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage = 25;
 
         if (!empty($id)) {
@@ -337,12 +403,17 @@ class HomeController extends Controller
         $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
 
         $pag = 'nosotros';
-        return view('web.partials.pagina.detallSocio', compact('veterinary', 'pag', 'cards'));
+        return view('web.partials.pagina.detallSocio', compact('veterinary', 'pag', 'cards','user'));
 
     }
 
     public function producto_detall(Request $request, $id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage = 25;
 
         if (!empty($id)) {
@@ -364,11 +435,16 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = 'product';
         $active       = 'active';
-        return view('web.partials.pagina.detallProduct', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.detallProduct', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
     }
 
     public function service_detall(Request $request, $id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $perPage = 25;
 
         if (!empty($id)) {
@@ -390,7 +466,7 @@ class HomeController extends Controller
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag          = '';
         $active       = 'active';
-        return view('web.partials.pagina.detallService', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards'));
+        return view('web.partials.pagina.detallService', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
     }
 
     public function _howtoget_()
@@ -443,6 +519,11 @@ class HomeController extends Controller
 
     public function notices()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::orderBy('id', 'desc')->get();
         $cards      = Card::orderBy('id', 'desc')->get();
@@ -453,7 +534,7 @@ class HomeController extends Controller
         $secciones  = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
         $pag        = 'noticias';
-        return view('web.partials.pagina.notices', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'secciones'));
+        return view('web.partials.pagina.notices', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'secciones','user'));
         return view('web.partials.pagina.mapa');
     }
 
@@ -464,6 +545,11 @@ class HomeController extends Controller
 
     public function gallery()
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::orderBy('id', 'desc')->get();
         $cards      = Card::orderBy('id', 'desc')->get();
@@ -474,7 +560,7 @@ class HomeController extends Controller
         $categories = Category::orderBy('id', 'desc')->where('visible', 1)->get();
         $secciones  = SectionTitle::orderBy('id', 'asc')->where('visible', 1)->get();
         $pag        = 'galeria';
-        return view('web.partials.pagina.gallery', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'secciones'));
+        return view('web.partials.pagina.gallery', compact('veterinary', 'slider', 'cards', 'socios', 'notes', 'notices', 'galleries', 'categories', 'pag', 'secciones','user'));
     }
 
     public function howtoget()
@@ -499,68 +585,103 @@ class HomeController extends Controller
 
     public function DetallSlider($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::findOrFail($id);
         $pag        = 'noticias';
-        return view('web.partials.pagina.detallslider', compact('veterinary', 'slider', 'pag'));
+        return view('web.partials.pagina.detallslider', compact('veterinary', 'slider', 'pag','user'));
         dd($slider);
     }
 
     public function DetallCards($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notes      = Card::findOrFail($id);
         $pag        = 'noticias';
-        return view('web.partials.pagina.detallCards', compact('veterinary', 'notes', 'pag'));
+        return view('web.partials.pagina.detallCards', compact('veterinary', 'notes', 'pag','user'));
         dd($notes);
         dd($slider);
     }
 
     public function DetallTopic($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $notes      = Note::findOrFail($id);
         $pag        = 'noticias';
-        return view('web.partials.pagina.detallTemas', compact('veterinary','temasgalerias','notes', 'pag'));
+        return view('web.partials.pagina.detallTemas', compact('veterinary','temasgalerias','notes', 'pag','user'));
 
     }
 
     public function DetallCourses($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $course     = Course::findOrFail($id);
         $files      = CoursesFiles::where('course_id', $id)->get();
         $pag        = 'courses';
-        return view('web.partials.pagina.detallCourse', compact('veterinary', 'course', 'pag', 'files'));
+        return view('web.partials.pagina.detallCourse', compact('veterinary', 'course', 'pag', 'files','user'));
     }
 
     public function itemgallery_detall($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary    = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $gallery       = Gallery::findOrFail($id);
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag           = 'galeria';
-        return view('web.partials.pagina.detallItemgallery', compact('veterinary', 'gallery', 'pag', 'temasgalerias'));
+        return view('web.partials.pagina.detallItemgallery', compact('veterinary', 'gallery', 'pag', 'temasgalerias','user'));
     }
 
     public function DetallItemSlider($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $slider     = Slider::findOrFail($id);
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag        = 'inicio';
-        return view('web.partials.pagina.detallItemSlider', compact('veterinary', 'slider', 'pag','temasgalerias'));
+        return view('web.partials.pagina.detallItemSlider', compact('veterinary', 'slider', 'pag','temasgalerias','user'));
         dd($slider);
     }
     
     public function DetallNotice($id)
     {
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            $user='';
+        }
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $notices     = Notice::findOrFail($id);        
         $temasgalerias = Gallery::orderBy('id', 'desc')->where('visible', '1')->get();
         $pag        = 'noticias';
-        return view('web.partials.pagina.detall.detallNotice', compact('veterinary','temasgalerias','notices', 'pag','temasgalerias'));
+        return view('web.partials.pagina.detall.detallNotice', compact('veterinary','temasgalerias','notices', 'pag','temasgalerias','user'));
     }
 
     public function solicitainfo(Request $request)
