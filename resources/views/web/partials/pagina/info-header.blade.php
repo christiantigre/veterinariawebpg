@@ -90,7 +90,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <li>
-                                                            <a href="{{ url('/home') }}">
+                                                            <a href="{{ url('perfil') }}">
                                                                 <small>  Perfil</small>                                                    
                                                             </a>
                                                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))

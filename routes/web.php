@@ -52,13 +52,17 @@ Route::get('email', function () {
     return new \App\Mail\SendMail('Christian');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('/perfil', 'customer\\ClienteController');
+Route::group(['middleware' => ['auth']], function () {    
+});
 
 /*========================GRUPO ADMINISTRADOR================================*/
 

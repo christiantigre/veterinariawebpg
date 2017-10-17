@@ -84,6 +84,7 @@ https://www.youtube.com/watch?v=MOkwJcALJ-Y&index=18&list=PLl0rlrKS77MpgHg17oW4A
 
 crear controlador
 php artisan make:controller Admin/TagController --resource
+php artisan make:controller customer/ClienteController --resource
 
 
 generador de amin de page 
@@ -119,7 +120,11 @@ ps: veterinariawebpg@gmail.com
 
 
 crear seeder
-php artisan make:seeder FilesTableSeeder
+php artisan make:seeder CountryTableSeeder
+php artisan make:seeder GenderTableSeeder
+
+crear migration
+php artisan make:migration create_user_table
 
 colaboracion con laravel 
 http://www.world-mag.pw/traer-un-valor-de-un-modelo-a-mi-vista-laravel/
@@ -175,10 +180,27 @@ pass: austrogen.sv@gmail.com
 
 
 base de datos
-dbname: id3250583_austrogen
-user: id3250583_austrogen
+dbname: u873982574_austr
+user: u873982574_austr
 host: localhost
-pass: id3250583_austrogen
+pass: u873982574_austr
 
 solucion clonar branh
 https://stackoverflow.com/questions/2294313/how-to-download-a-branch-with-git
+
+
+
+configuracion 
+DB
+pass: austrogenpassword
+DBname: u873982574_austr
+User: u873982574_austr
+host: mysql.hostinger.com
+
+ftp cuenta
+servidor ip: ftp://31.170.161.65/
+user: u873982574
+password: u873982574
+port: 21
+
+sitio: http://www.austrogen.com/

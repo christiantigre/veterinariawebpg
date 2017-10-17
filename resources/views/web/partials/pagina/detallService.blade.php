@@ -97,7 +97,9 @@
                             {!! $card->description !!}
                             </small>
                         </p>
+                        @include('web.partials.pagina.cajas.likecompartir')
                     </div>
+                    @include('web.partials.pagina.cajas.comentarios')
                 </div>    
                 @endforeach
             </div>
