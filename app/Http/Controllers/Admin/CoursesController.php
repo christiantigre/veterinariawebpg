@@ -60,7 +60,14 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->validate($request, [
+            'img' => 'mimes:jpeg,png|max:1500',
+            'title' => 'max:150',
+            'subtitle' => 'max:150',
+            'link' => 'max:150',
+            'nameslider' => 'max:50',
+            'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf',
+        ]);
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;
         $admin = auth('admin')->user()->id;
@@ -177,6 +184,14 @@ class CoursesController extends Controller
      */
     public function update($id, Request $request)
     {        
+        $this->validate($request, [
+            'img' => 'mimes:jpeg,png|max:1500',
+            'title' => 'max:150',
+            'subtitle' => 'max:150',
+            'link' => 'max:150',
+            'nameslider' => 'max:50',
+            'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf'
+        ]);
         $files = $request->file('files');
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;

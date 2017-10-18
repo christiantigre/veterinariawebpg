@@ -70,29 +70,36 @@ class NoticesController extends Controller
             'img' => 'mimes:jpeg,png',
             'title' => '|max:150',
             'link' => '|max:150',
-            'precio' => 'numeric',
-            'day' => 'integer|max:31',
+            'precio' => 'nullable|numeric',
+            'day' => 'nullable|integer|max:31',
             'month' => 'max:11',
         ]);
+        
+        $requestData = $request->all();
+
         if(!Input::file("img"))
         {
             $path="";
+            $nombre="";
         }else{
             $file = Input::file('img');
             $nombre = $file->getClientOriginalName();
             $path = public_path('uploads/notices/'.$nombre);
             $image = Image::make($file->getRealPath());
+            $requestData['img'] = 'uploads/notices/'.$nombre;
             $image->save($path);
         }
-        
-        $requestData = $request->all();
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $img=$requestData['img'];
         
         Notice::create([
             'title'=>$request->title,
             'content'=>$request->content,
             'intro'=>$request->intro,
             'link'=>$request->link,
-            'img'=>'uploads/notices/'.$nombre,
+            'img'=>$img,
             'day'=>$request->day,
             'precio'=>$request->precio,
             'month'=>$request->month,
@@ -100,7 +107,8 @@ class NoticesController extends Controller
             'compfb'=>$request->compfb,
             'comptw'=>$request->comptw,
             'compgg'=>$request->compgg,
-            'visible'=>$request->visible
+            'visible'=>$request->visible,
+            'admins_id'=>$IdAdmin
         ]);
 
         Session::flash('flash_message', 'Notice added!');
@@ -155,7 +163,21 @@ class NoticesController extends Controller
             'month' => 'max:11',
         ]);
         $requestData = $request->all();
+        $files = Input::file('img');
+
+        if (!empty($files)) {
+                $uploadPath = public_path('uploads/notices/');
+                $extension = $files->getClientOriginalName();
+                //$fileName = rand(11111, 99999) . '.' . $extension;
+
+                $files->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/notices/'.$extension;
+        }
         
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $requestData['admins_id']=$IdAdmin;
         $notice = Notice::findOrFail($id);
         $notice->update($requestData);
 

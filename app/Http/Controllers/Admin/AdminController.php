@@ -4,6 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Admin;
+use App\Notice;
+use App\Note;
+use App\Service;
+use App\Course;
+use App\Product;
+use Illuminate\Support\Facades\Auth;
+use Session;
+use Illuminate\Support\Facades\Input;
 
 class AdminController extends Controller
 {
@@ -19,7 +28,18 @@ class AdminController extends Controller
 
     public function index()
     {
-        return "admin";
+        $mailAdmin = auth('admin')->user()->email;
+        $admin = auth('admin')->user()->id;
+        $administrador = Admin::findOrFail($admin);
+
+        $notices      = Notice::orderBy('id', 'desc')->where('admins_id', $administrador->id)->get();
+        $notes        = Note::orderBy('id', 'desc')->where('admins_id', $administrador->id)->get();
+        $services     = Service::orderBy('id', 'desc')->where('admins_id', $administrador->id)->get();
+        $cursos       = Course::orderBy('id', 'asc')->where('admin_id', $administrador->id)->get();
+        $productos    = Product::orderBy('id', 'asc')->where('admins_id', $administrador->id)->get();
+
+        //dd($administrador);
+        return view('admin.profile.profile', compact('administrador','notices','notes','services','cursos','productos'));
     }
 
     /**
@@ -62,7 +82,22 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $administrador = Admin::findOrFail($id);
+        $notices      = Notice::orderBy('id', 'desc')->where('visible', 1)->get();
+        $notes        = Note::orderBy('id', 'desc')->where('visible', 1)->get();
+        $services     = Service::orderBy('id', 'desc')->where('is_active', 1)->get();
+        $cursos       = Course::orderBy('id', 'asc')->where('visible', 1)->where('visibleslider', 1)->get();
+        $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
+        dd($productos);
+
+        return view('admin.profile.edit', compact('administrador','services'));
+    }
+
+    public function edit_cred($id)
+    {
+        $administrador = Admin::findOrFail($id);
+
+        return view('admin.profile.edit_cred', compact('administrador'));
     }
 
     /**
@@ -74,9 +109,57 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombres' => 'nullable|min:1|max:50',
+            'apellidos' => 'nullable|min:1|max:50',
+            'telefono' => 'numeric|min:1|max:999999999999999',
+            'celular' => 'numeric|min:1|max:999999999999999',
+            'domicilio' => 'max:150',
+            'pais' => 'max:30',
+            'ciudad' => 'max:30',
+            'abrev' => 'max:20',
+            'img' => 'mimes:jpeg,png|max:1500',
+        ]);
+
+        $requestData = $request->all();
+        
+        $files = Input::file('img');
+        $user = Admin::findOrFail($id);
+        if (!empty($files)) {
+                $uploadPath = public_path('uploads/users/');
+                $extension = $files->getClientOriginalName();
+                //$fileName = rand(11111, 99999) . '.' . $extension;
+
+                $files->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/users/'.$extension;
+                $requestData['nameimg'] = $extension;
+        }
+        $user->update($requestData);
+
+        Session::flash('flash_message', 'Información Actualizada correctamente!');
+
+        $admin = auth('admin')->user()->id;
+        $administrador = Admin::findOrFail($admin);
+        return redirect('admin/settings');
     }
 
+    public function update_cred(Request $request, $id){
+        $this->validate($request, [
+            'name' => '|min:1|max:20',
+            'email' => 'min:6|max:45|required|email', 
+            'password' => 'min:6|required', 
+            'password_confirmation' => 'min:6|same:password'
+        ]);
+        $requestData = $request->all();
+        $user = Admin::findOrFail($id);
+        $user['password'] = bcrypt($request['password']);
+        $user->update([
+            'password'=>$user['password'],
+            'email'=>$requestData['email'],
+            'name'=>$requestData['name'],
+        ]);
+        return redirect('admin/settings');
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -31,6 +31,8 @@ class CreateProductsTable extends Migration
             $table->boolean('oferta')->default(1);
             $table->integer('tipeproduct_id')->unsigned();
             $table->foreign('tipeproduct_id')->references('id')->on('typeproducts');
+            $table->integer('admins_id')->unsigned()->default(1);
+            $table->foreign('admins_id')->references('id')->on('admins');
             $table->timestamps();
         });
     }

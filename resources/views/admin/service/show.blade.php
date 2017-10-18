@@ -38,22 +38,13 @@
                                         <th> Sub titulo </th><td> {{ $service->slug }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Descripción </th><td> {{ $service->description }} </td>
+                                        <th> Descripción </th><td> {!! $service->description !!} </td>
                                     </tr>                                    
                                     <tr>
                                         <th> Precio venta </th><td> {{ $service->precio_venta }} </td>
                                     </tr>                                  
                                     <tr>
                                         <th> Porcentaje descuento </th><td> {{ $service->porcent_descuent }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Imagen</th> <td>
-                                            @if(empty($service->img))
-                                            No hay imagen
-                                            @else
-                                            <img class="img img-responsive" src="{{ asset( $service->img ) }}"></img>
-                                            @endif
-                                        </td>
                                     </tr>
                                     <tr>
                                         <th> Estado </th>
@@ -98,6 +89,15 @@
                                             @else
                                             <small class="label pull-left bg-red">Desactivado</small>
                                             @endif 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Imagen</th> <td>
+                                            @if(empty($service->img))
+                                            No hay imagen
+                                            @else
+                                            <img class="img img-responsive" src="{{ asset( $service->img ) }}"></img>
+                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>

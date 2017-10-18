@@ -25,22 +25,7 @@ class SociosController extends Controller
     
     public function index(Request $request)
     {
-        $this->validate($request, [
-            'img' => 'mimes:jpeg,png',
-            'name' => '|max:150',
-            'abrevTitulo' => '|max:15',
-            'name' => 'max:50',
-            'lastname' => '|max:50',
-            'fb' => 'max:150',
-            'tw' => 'max:150',
-            'in' => 'max:150',
-            'lk' => 'max:150',
-            'gg' => 'max:150',
-            'especialitation' => 'max:150',
-            'blog' => 'max:150',
-            'workplacelink' => 'max:150',
-            'workplace' => 'max:150',
-        ]);
+        
         $keyword = $request->get('search');
         $perPage = 25;
 
@@ -84,9 +69,26 @@ class SociosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'img' => 'mimes:jpeg,png',
+            'name' => '|max:150',
+            'abrevTitulo' => '|max:15',
+            'name' => 'max:50',
+            'lastname' => '|max:50',
+            'fb' => 'max:150',
+            'tw' => 'max:150',
+            'in' => 'max:150',
+            'lk' => 'max:150',
+            'gg' => 'max:150',
+            'especialitation' => 'max:150',
+            'blog' => 'max:150',
+            'workplacelink' => 'max:150',
+            'workplace' => 'max:150',
+        ]);
         if(!Input::file("img"))
         {
             $path="";
+            $nombre="";
         }else{
             $file = Input::file('img');
             $nombre = $file->getClientOriginalName();

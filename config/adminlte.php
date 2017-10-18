@@ -128,14 +128,9 @@ return [
             'icon'    => 'user',
             'submenu' => [
                 [
-                    'text' => 'Profile',
+                    'text' => 'Perfíl',
                     'url'  => 'admin/settings',
                     'icon' => 'user',
-                ],
-                [
-                    'text' => 'Change Password',
-                    'url'  => 'admin/settings',
-                    'icon' => 'lock',
                 ],
             ],
         ],

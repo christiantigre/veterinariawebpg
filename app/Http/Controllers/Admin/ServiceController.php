@@ -53,11 +53,19 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'precio_venta' => 'numeric|min:1',
-            'porcent_descuento' => 'numeric|min:1',
+            'precio_venta' => 'nullable|numeric|min:1',
+            'porcent_descuento' => 'nullable|numeric|min:1',   
+            'service' => 'max:150',
+            'slug' => 'max:150',
+            'img' => 'mimes:jpeg,png|max:1500',
         ]);
         
         $requestData = $request->all();
+
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $requestData['admins_id']=$IdAdmin;
         
 
         if ($request->hasFile('img')) {
@@ -116,8 +124,20 @@ class ServiceController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $this->validate($request, [
+            'precio_venta' => 'nullable|numeric|min:1',
+            'porcent_descuento' => 'nullable|numeric|min:1',   
+            'service' => 'max:150',
+            'slug' => 'max:150',
+            'img' => 'mimes:jpeg,png|max:1500',
+        ]);
         $requestData = $request->all();
+
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $requestData['admins_id']=$IdAdmin;
+        
         $files = Input::file('img');
 
         if (!empty($files)) {

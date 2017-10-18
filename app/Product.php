@@ -27,7 +27,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = ['name', 'slug', 'cod', 'description', 'precio_compra', 'precio_venta', 'porcent_descuento', 'stock', 'img', 'visible', 'visible_slider', 'promocion', 'nuevo', 'tipeproduct_id','vendidos','oferta',
-        'created_at'];
+        'created_at','admins_id'];
 
     public function Typeproduct()
 	{

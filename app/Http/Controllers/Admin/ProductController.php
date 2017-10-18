@@ -67,14 +67,21 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'precio_compra' => 'numeric|min:1',
-            'precio_venta' => 'numeric|min:1',
-            'porcent_descuento' => 'numeric|min:1',
-            'stock' => 'integer|min:1',
+            'name' => 'nullable|max:150',
+            'slug' => 'nullable|max:150',
+            'cod' => 'nullable|max:30',
+            'precio_compra' => 'nullable|numeric|min:1',
+            'precio_venta' => 'nullable|numeric|min:1',
+            'porcent_descuento' => 'nullable|numeric|min:1',
+            'stock' => 'nullable|integer|min:1',
+            'img' => 'mimes:jpeg,png|max:1500',
         ]);
         
         $requestData = $request->all();
-        
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $requestData['admins_id']=$IdAdmin;
 
         if ($request->hasFile('img')) {
             $file = Input::file('img');
@@ -133,9 +140,23 @@ class ProductController extends Controller
      */
     public function update($id, Request $request)
     {
-        dd('actuliza');
-        
+        $this->validate($request, [   
+            'name' => 'nullable|max:150',
+            'slug' => 'nullable|max:150',
+            'cod' => 'nullable|max:30',
+            'precio_compra' => 'nullable|numeric|min:1',
+            'precio_venta' => 'nullable|numeric|min:1',
+            'porcent_descuento' => 'nullable|numeric|min:1',
+            'stock' => 'nullable|integer|min:1',
+            'img' => 'mimes:jpeg,png|max:1500',
+        ]);
         $requestData = $request->all();
+
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+        $requestData['admins_id']=$IdAdmin;
+        
         $files = Input::file('img');
 
         if (!empty($files)) {

@@ -62,6 +62,12 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'imgHeader' => 'mimes:jpeg,png',
+            'title' => '|max:150',
+            'subtitle' => '|max:150',
+            'link' => '|max:150',
+        ]);
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;
         $IdAdmin = auth('admin')->user()->id;
@@ -144,6 +150,12 @@ class NotesController extends Controller
      */
     public function update($id, Request $request)
     {        
+        $this->validate($request, [
+            'imgHeader' => 'mimes:jpeg,png',
+            'title' => '|max:150',
+            'subtitle' => '|max:150',
+            'link' => '|max:150',
+        ]);
         $rutaHead = 'uploads/notes/head/';
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;

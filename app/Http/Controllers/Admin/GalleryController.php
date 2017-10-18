@@ -76,6 +76,8 @@ class GalleryController extends Controller
 
         $this->validate($request, [
             'title' => 'required|max:30',
+            'img' => 'mimes:jpeg,png|max:1500',
+            'link' => 'max:150',
         ]);
         $requestData = $request->all();
 
@@ -143,9 +145,10 @@ class GalleryController extends Controller
             $image->resize(1200, 900);
             $image->save($path);
         }
-
         $this->validate($request, [
             'title' => 'required|max:30',
+            'img' => 'mimes:jpeg,png|max:1500',
+            'link' => 'max:150',
         ]);
         $requestData = $request->all();
 

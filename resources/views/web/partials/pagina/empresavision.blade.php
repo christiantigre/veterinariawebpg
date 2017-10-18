@@ -29,7 +29,6 @@
         <div class="row row-eq-height" style="padding-right:15px">
             <div class="col-xs-9 text">
                 <p>{!! $veterinaria->description !!}</p>
-                <p class="semi-title">Visión</p>
                 <p>{!! $veterinaria->vision !!}  </p>
             </div>
             <!-- Sidebar // advertising -->            

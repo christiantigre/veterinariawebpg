@@ -79,9 +79,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 
     /*===============================RUTAS ADMINISTRADOR===============================*/
+    Route::get('/settings', 'Admin\AdminController@index')->name('settings');
 
 //Route::get('/administracion', 'Admin\AdminController@index')->name('administracion');
 
+    Route::get('/settingscred/{id}/edit_cred', 'Admin\\AdminController@edit_cred');
+    Route::post('/settingscred/{id}/upcredentials', 'Admin\\AdminController@update_cred');
+    Route::resource('/settings', 'Admin\\AdminController');
     Route::resource('/veterinary', 'Admin\\VeterinaryController');
     Route::resource('/card', 'Admin\\CardController');
     Route::resource('/slider', 'Admin\\SliderController');

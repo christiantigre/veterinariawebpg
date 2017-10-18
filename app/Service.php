@@ -38,6 +38,7 @@ class Service extends Model
         'nuevo', 
         'oferta', 
         'is_active',
+        'admins_id',
         'created_at'
     ];
 

@@ -17,4 +17,4 @@ $url= $_SERVER["REQUEST_URI"];
 
 
 
-<div class="fb-page" data-href="https://www.facebook.com/PcSolutionCt/" data-tabs="timeline" data-width="350" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/PcSolutionCt/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/PcSolutionCt/">PcSolution</a></blockquote></div>
+<div class="fb-page" data-href="https://www.facebook.com/Austrogen/" data-tabs="timeline" data-width="350" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Austrogen/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Austrogen/">Austrogen</a></blockquote></div>

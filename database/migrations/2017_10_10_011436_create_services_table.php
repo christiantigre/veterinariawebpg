@@ -25,6 +25,8 @@ class CreateServicesTable extends Migration
             $table->boolean('nuevo')->default(1);
             $table->boolean('oferta')->default(1);
             $table->boolean('is_active')->default(1);
+            $table->integer('admins_id')->unsigned()->default(1);;
+            $table->foreign('admins_id')->references('id')->on('admins');
             $table->timestamps();
         });
     }

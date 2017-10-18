@@ -58,6 +58,10 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title'=>'required',
+            'img' => 'mimes:jpeg,png|max:1500',
+        ]);
         if (!Input::file("img")) {
             $path = "";
         } else {
@@ -124,6 +128,10 @@ class SliderController extends Controller
      */
     public function update($id, Request $request)
     {
+         $this->validate($request, [
+            'title'=>'required',
+            'img' => 'mimes:jpeg,png|max:1500',
+        ]);
         if (!Input::file("img")) {
             $nombre = "";
         } else {

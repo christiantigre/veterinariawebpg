@@ -29,7 +29,7 @@ class CreateNotesTable extends Migration
             $table->integer('share')->nullable()->default(1);
             $table->integer('tag_id')->unsigned()->default(1);
             $table->foreign('tag_id')->references('id')->on('tags');
-            $table->integer('admins_id')->unsigned()->default(1);;
+            $table->integer('admins_id')->unsigned()->default(1);
             $table->foreign('admins_id')->references('id')->on('admins');
             $table->timestamps();
         });
