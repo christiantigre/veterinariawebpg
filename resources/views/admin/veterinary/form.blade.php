@@ -176,7 +176,7 @@
 </div>
 
 
-<div class="form-group {{ $errors->has('visible') ? 'has-error' : ''}}">
+<!--<div class="form-group {{ $errors->has('visible') ? 'has-error' : ''}}">
     {!! Form::label('ubicacion', 'Ubicación', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="checkbox">
@@ -187,14 +187,14 @@
         </div>
         {!! $errors->first('rad', '<p class="help-block">:message</p>') !!}
     </div>
+-->
 
 
 
 
 
 
-
-    <div class="form-group">
+    {{--<!--<div class="form-group">
         <div class="control-label col-md-12">      
             <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-map-marker"></i> Ubicación<i><small></small></i></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -203,12 +203,12 @@
                 'placeholder'=>'Ingrese nombre...','autofocus'=>'autofocus','id'=>'ln') ) !!}
 
                 {!! Form::hidden('lg',null,array('class'=>'form-control col-md-7 col-xs-12','placeholder'=>'Ingrese nombre...','autofocus'=>'autofocus','id'=>'lg')) !!}
-                <div id='ubicacion' class="col-md-12" style='display:none;'></div>
+                <!--<div id='ubicacion' class="col-md-12" style='display:none;'></div>
                 <div id="demo" class="embed-responsive embed-responsive-4by3 col-md-12"></div>
-                <div id="mapholder" class="embed-responsive embed-responsive-4by3 col-md-12"></div>
-            </div>
+                <div id="mapholder" class="embed-responsive embed-responsive-4by3 col-md-12"></div>-->
+            <!--</div>
         </div>
-    </div>
+    </div>-->--}}
 
 
     <div class="form-group">
@@ -226,7 +226,7 @@
        });  
 
    </script> 
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfEnRziz09pG_OBmrz01pB0X5XXBBFOMg&signed_in=true&callback=initMap"></script>
+   <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfEnRziz09pG_OBmrz01pB0X5XXBBFOMg&signed_in=true&callback=initMap"></script>
    <script type="text/javascript">
     var x = document.getElementById("demo");
     function cargarmap() {
@@ -270,9 +270,9 @@
                 break;
             }
         }}
-    </script>
+    </script>-->
 
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         function vaciar() {
             document.getElementById("ln").value = "";
             document.getElementById("lg").value = "";
@@ -305,7 +305,7 @@
             navigator.geolocation.watchPosition(mostrarUbicacion);
         }
 
-    </script>
+    </script>-->
     <script>
   var editor_config = {
     path_absolute : "/",

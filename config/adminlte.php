@@ -115,7 +115,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Paginas',
+            'text'        => 'Vista previa',
             'url'         => '/',
             'icon'        => 'file',
             'label'       => 8,
