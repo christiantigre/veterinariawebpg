@@ -66,7 +66,7 @@ class CoursesController extends Controller
             'subtitle' => 'max:150',
             'link' => 'max:150',
             'nameslider' => 'max:50',
-            'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf',
+            //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf',
         ]);
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;
@@ -190,7 +190,7 @@ class CoursesController extends Controller
             'subtitle' => 'max:150',
             'link' => 'max:150',
             'nameslider' => 'max:50',
-            'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf'
+            //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf'
         ]);
         $files = $request->file('files');
         $data = $request->session()->all();

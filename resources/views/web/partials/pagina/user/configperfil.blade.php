@@ -204,27 +204,6 @@
 
 
 
-          <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
-              <label class="col-md-4 control-label" for="Nombres">Clave</label>  
-              <div class="col-md-4">
-               <div class="input-group">                {!! Form::password('password', null, ['class' => 'form-control input-md','placeholder'=>'Usuario']) !!}
-              </div>    
-            </div>  
-          </div>
-
-
-
-
-
-
-          <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : ''}}">
-              <label class="col-md-4 control-label" for="Nombres">Confirma clave</label>  
-              <div class="col-md-4">
-               <div class="input-group">
-                {!! Form::password('password_confirmation', null, ['class' => 'form-control input-md','placeholder'=>'Usuario']) !!}
-              </div>    
-            </div>  
-          </div>
 
 
   <div class="form-group">

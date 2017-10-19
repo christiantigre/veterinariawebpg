@@ -9,7 +9,7 @@ ha dejado su información de la ciudad ({{ $data['ciudad'] }}).
 # {{ $data['message'] }}.
 
 @component('mail::button', ['url' => ''])
-Veterinaria
+Austrogen
 @endcomponent
 
 Gracias,<br>

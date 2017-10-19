@@ -88,7 +88,7 @@ class AdminController extends Controller
         $services     = Service::orderBy('id', 'desc')->where('is_active', 1)->get();
         $cursos       = Course::orderBy('id', 'asc')->where('visible', 1)->where('visibleslider', 1)->get();
         $productos    = Product::orderBy('id', 'asc')->where('visible', 1)->get();
-        dd($productos);
+        
 
         return view('admin.profile.edit', compact('administrador','services'));
     }

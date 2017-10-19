@@ -138,7 +138,7 @@
                                         <a href="{{ url('/login') }}" class="pull-left"> Ingresar </a>
                                     </li>
                                     <li class="col">
-                                      <a href="{{ ('register') }}" class="pull-right">Registrarse</a> 
+                                      <a href="{{ ('/register') }}" class="pull-right">Registrarse</a> 
                                   </li>
                                   
                   </div>

@@ -6,7 +6,7 @@
 # {{ $data['message'] }}.
 
 @component('mail::button', ['url' => ''])
-Veterinaria
+Austrogen
 @endcomponent
 
 Gracias,<br>

@@ -129,9 +129,9 @@ class ClienteController extends Controller
             'name' => '|min:1|max:20',
             'nombres' => 'required|min:1|max:50',
             'apellidos' => 'required|min:1|max:50',
-            'telefono' => 'numeric|min:1|max:999999999999999',
-            'celular' => 'numeric|min:1|max:999999999999999',
-            'domicilio' => 'max:150',
+            'telefono' => 'nullable|numeric|min:1|max:999999999999999',
+            'celular' => 'nullable|numeric|min:1|max:999999999999999',
+            'domicilio' => 'nullable|max:150',
         ]);
 
         $requestData = $request->all();

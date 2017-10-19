@@ -114,11 +114,14 @@ Route::group(['prefix' => 'admin'], function () {
     // Only authenticated users may enter...
 
 
-Route::group(['prefix'=>env('APP_DOMAIN')], function(){
+
     Auth::routes();
     Route::resource('/perfil', 'customer\\ClienteController');
     Route::get('/perfil/{id}/editCredentials', 'customer\\ClienteController@editCredentials')->name('editCredentials');
     Route::post('/perfil/{id}/upcredentials', 'customer\\ClienteController@upCredentials');
+
+    Route::group(['prefix'=>env('APP_DOMAIN')], function(){
+        
 });
 
 

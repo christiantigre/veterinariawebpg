@@ -30,6 +30,6 @@ class SendSolicita extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.solicitainfo');
+        return $this->markdown('emails.solicitainfo')->subject('Más Info.');
     }
 }
