@@ -17,6 +17,11 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\View\View
      */
+     public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -170,5 +175,10 @@ class ServiceController extends Controller
         Session::flash('flash_message', 'Service deleted!');
 
         return redirect('admin/service');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

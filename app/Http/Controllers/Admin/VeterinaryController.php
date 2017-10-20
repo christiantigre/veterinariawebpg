@@ -38,7 +38,7 @@ class VeterinaryController extends Controller
             ->orWhere('mail', 'LIKE', "%$keyword%")
             ->orWhere('linkweb', 'LIKE', "%$keyword%")
             ->orWhere('prop', 'LIKE', "%$keyword%")
-            ->orWhere('genent', 'LIKE', "%$keyword%")
+            ->orWhere('gerent', 'LIKE', "%$keyword%")
             ->orWhere('area', 'LIKE', "%$keyword%")
             ->orWhere('description', 'LIKE', "%$keyword%")
             ->orWhere('logo', 'LIKE', "%$keyword%")

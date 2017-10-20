@@ -16,6 +16,10 @@ class TypeproductController extends Controller
      *
      * @return \Illuminate\View\View
      */
+     public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -124,5 +128,9 @@ class TypeproductController extends Controller
         Session::flash('flash_message', 'Typeproduct deleted!');
 
         return redirect('admin/typeproduct');
+    }
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Subcategory</div>
+                    <div class="panel-heading">Subcategoria</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/subcategory/create') }}" class="btn btn-success btn-sm" title="Add New Subcategory">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/subcategory', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
@@ -30,9 +30,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Subcategory</th>
-                                        <th>Content</th>
-                                        <th>Category</th>
+                                        <th>Subcategoria</th>
+                                        <th>Contenido</th>
+                                        <th>Categoria</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -44,14 +44,14 @@
                                         <td>{{ $item->content }}</td>
                                         <td>{{ $item->Category->category }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/subcategory/' . $item->id) }}" title="View Subcategory"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/subcategory/' . $item->id . '/edit') }}" title="Edit Subcategory"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/subcategory/' . $item->id) }}" title="View Subcategory"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
+                                            <a href="{{ url('/admin/subcategory/' . $item->id . '/edit') }}" title="Edit Subcategory"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/subcategory', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Subcategory',

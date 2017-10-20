@@ -59,12 +59,14 @@
                                                 'url' => ['/admin/veterinary', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
+                                            {{--
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Veterinary',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
+                                                --}}
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>

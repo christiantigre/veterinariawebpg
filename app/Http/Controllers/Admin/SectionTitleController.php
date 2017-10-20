@@ -16,6 +16,10 @@ class SectionTitleController extends Controller
      *
      * @return \Illuminate\View\View
      */
+     public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -130,5 +134,9 @@ class SectionTitleController extends Controller
         Session::flash('flash_message', 'SectionTitle deleted!');
 
         return redirect('admin/section-title');
+    }
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

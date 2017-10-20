@@ -18,6 +18,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\View\View
      */
+     public function __construct()
+    {
+        $this->middleware('admin', ['except' => 'logout']);
+    }
+    
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -190,5 +195,10 @@ class ProductController extends Controller
         Session::flash('flash_message', 'Product deleted!');
 
         return redirect('admin/product');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }
