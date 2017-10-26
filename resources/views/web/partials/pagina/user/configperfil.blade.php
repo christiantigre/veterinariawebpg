@@ -98,7 +98,7 @@
                <i class="fa fa-birthday-cake"></i>
 
              </div>
-              {!! Form::text('fecha_nacimiento', null, ['class' => 'form-control input-md date','placeholder'=>'','id'=>'datepicker']) !!}
+              {!! Form::text('fecha_nacimiento', null, ['class' => 'form-control input-md date','placeholder'=>'1990-10-20','id'=>'datepicker']) !!}
         {!! $errors->first('fechainit', '<p class="help-block">:message</p>') !!}
              <!--<input id="fecha_nacimiento" name="fecha_nacimiento" type="text" placeholder="Fecha de nacimiento" class="form-control input-md">-->
            </div>
