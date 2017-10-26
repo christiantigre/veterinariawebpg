@@ -121,6 +121,12 @@ return [
             'label'       => 8,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Inicio',
+            'url'         => 'admin/inicio',
+            'icon'        => 'star',
+            'label_color' => 'success',
+        ],
         'MI CUENTA',
         [
             'text'    => 'Cuenta',
@@ -143,6 +149,11 @@ return [
                     'text' => 'Empresa',
                     'icon'    => 'minus',
                     'url'  => 'admin/veterinary',
+                ],
+                [
+                    'text' => 'Usuarios',
+                    'icon'    => 'minus',
+                    'url'  => 'admin/user',
                 ],
                 [
                     'text' => 'Socios',
@@ -194,10 +205,14 @@ return [
                     'icon'    => 'minus',
                     'url'  => 'admin/section-title',
                 ],
+                [
+                    'text'=>'Tipo suscripción',
+                    'icon'=>'minus',
+                    'url'=>'admin/typesuscription',
+                ],
                 
             ],
-        ],               
-        'INSTRUCCIÓN',
+        ],              
         [
             'text'    => 'Cursos',
             'icon'    => 'eye',
@@ -217,9 +232,13 @@ return [
                     'icon'    => 'minus',
                     'url'  => 'admin/courses',
                 ],
+                [
+                    'text'=>'Suscripciónes',
+                    'icon'=>'minus',
+                    'url'=>'admin/suscribir'
+                ],
             ], 
         ], 
-        'PRODUCTOS',
         [
             'text'    => 'Productos',
             'icon'    => 'eye',
@@ -237,7 +256,6 @@ return [
             ], 
 
         ],
-        'SERVICIOS',
         [
             'text'=>'Servicios',
             'icon'=>'eye',

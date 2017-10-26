@@ -39,6 +39,7 @@ class Course extends Model
         'img', 
         'nameimg', 
         'precio', 
+        'disponibles', 
         'fechainit',
         'video', 
         'link', 
@@ -77,6 +78,11 @@ class Course extends Model
     public function Admin()
     {
         return $this->belongsTo('App\Admin', 'admin_id');
+    }
+
+    public function Suscribir()
+    {
+        return $this->hasMany('App\Suscribir', 'id');
     }
 
     

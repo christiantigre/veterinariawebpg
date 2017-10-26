@@ -11,9 +11,11 @@
         "hesto/multi-auth": "^2.0",
         "intervention/image": "^2.4",
         "jeroennoten/laravel-adminlte": "^1.20",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
+        "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "^1.22",
         "unisharp/laravel-filemanager": "^1.8"
     },

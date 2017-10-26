@@ -19,22 +19,63 @@
     <!-- Select tags -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/select2.min.css') }}">
     <!-- Datepicker  -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  -->
+    <link href="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap.min.css') }}" rel="stylesheet">  
+      <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">-->
+  <link href="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/jquery/1.9.1/jquery.js') }}"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>-->
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
+  <script src="{{ asset('vendor/adminlte/plugins/datepicker/jquery.js') }}"></script> 
   <!-- Fin Datepicker  -->
 
 
+  <!-- datatables  -->
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">  
+    
+  <link href="{{ asset('vendor/adminlte/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+  
+    
+  <script src="{{ asset('vendor/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script> 
+  <script src="{{ asset('vendor/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script> 
+    
+    
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>     
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> 
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script> 
+    <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script> 
+    <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script> 
+    <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script> 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
+
+  <!-- datatables  -->
+
+
+    
+    
+
+
+
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">  -->
+     <link href="{{ asset('vendor/adminlte/plugins/datepicker/2bootstrap-datepicker.css') }}" rel="stylesheet">  
+
+    <script src="{{ asset('vendor/adminlte/plugins/datepicker/2jquery.js') }}"></script>  
+
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  -->
+    <script src="{{ asset('vendor/adminlte/plugins/datepicker/2bootstrap.min.js') }}"></script>  
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  -->
+     <script src="{{ asset('vendor/adminlte/plugins/datepicker/2bootstrap-datepicker.js') }}"></script>  
 
     <!-- Select2 -->
     {!! Html::style('plugins/select2/dist/css/select2.min.css') !!}

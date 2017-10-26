@@ -46,6 +46,12 @@ Route::get('/detall_service/{id}', 'HomeController@service_detall');
 Route::get('/DetallGalleryItem/{id}', 'HomeController@itemgallery_detall');
 Route::get('/DetallItemSlider/{id}', 'HomeController@DetallItemSlider');
 Route::get('/DetallNotice/{id}', 'HomeController@DetallNotice');
+Route::get('/suscribirse/{id}', 'HomeController@susbribirse_cupo');
+Route::get('/miscursos/{id}', 'HomeController@miscursos');
+Route::post('/crear_cupo', 'HomeController@crearcupo');
+Route::get('/verdetallcupo/{id}', 'HomeController@verdetallcupo');
+Route::get('/editcupo/{id}', 'HomeController@editcupo');
+Route::post('/suscribirupdate/{id}', 'HomeController@updatecupo');
 
 Route::get('email', function () {
     //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());
@@ -66,6 +72,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*========================GRUPO ADMINISTRADOR================================*/
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/inicio', 'Admin\\AdminController@inicio');
     Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'AdminAuth\LoginController@login');
     Route::post('/logout', 'AdminAuth\LoginController@logout')->name('logout');
@@ -83,6 +90,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 //Route::get('/administracion', 'Admin\AdminController@index')->name('administracion');
 
+    Route::post('/exportarexcel', 'Admin\\AdminController@exportarexcel');
     Route::get('/settingscred/{id}/edit_cred', 'Admin\\AdminController@edit_cred');
     Route::post('/settingscred/{id}/upcredentials', 'Admin\\AdminController@update_cred');
     Route::resource('/settings', 'Admin\\AdminController');
@@ -107,6 +115,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/tutor', 'Admin\\TutorController');
     Route::resource('/product', 'Admin\\ProductController');
     Route::resource('/section-title', 'Admin\\SectionTitleController');
+    Route::resource('/typesuscription', 'Admin\\TypesuscriptionController');
+    Route::resource('/suscribir', 'Admin\\SuscribirController');   
+    Route::resource('/user', 'Admin\\UserController');
 });
 
 
@@ -157,6 +168,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
     
 });*/
+
 
 
 

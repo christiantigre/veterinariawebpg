@@ -98,6 +98,20 @@ $url= $_SERVER["REQUEST_URI"];
         </div>
     </div>
     @endif
+    @if(!empty($course->disponibles))
+    <div class="col-md-12">
+      <div class="update-nag">
+        <div class="update-split update-split"><i class="glyphicon glyphicon-calendar"></i></div>
+        <div class="update-text"> <a href=""> <strong>Cupos disponible </strong> </a> 
+            @if(($course->disponibles)>0)
+            <span class="label label-success">Disponible</span>
+            @else
+            <span class="label label-danger">Agotado</span>
+            @endif
+        </div>
+        </div>
+    </div>
+    @endif
     @if(!empty($files))
     <div class="col-md-12">
       <div class="update-nag">
@@ -126,6 +140,17 @@ $url= $_SERVER["REQUEST_URI"];
 </div>
 </div>
 @endif
+
+
+<div class="col-md-3">
+<div class="group">
+    <a href="{{ url('suscribirse',$course->id) }}" class="btn btn-success " title="Separar mi cupo en este curso">Separar Cupo <span class="glyphicon glyphicon-pencil"></span></a> 
+                            
+                        
+
+
+</div>
+</div>
 
 @include('web.partials.pagina.cajas.likecompartir')
 

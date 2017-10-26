@@ -55,10 +55,17 @@
         {!! $errors->first('precio', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('disponibles') ? 'has-error' : ''}}">
+    {!! Form::label('disponibles', 'Cupos disponibles', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::number('disponibles', null, ['class' => 'form-control','placeholder'=>'150']) !!}
+        {!! $errors->first('disponibles', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group {{ $errors->has('fechainit') ? 'has-error' : ''}}">
     {!! Form::label('fechainit', 'Fecha de inicio', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('fechainit', null, ['class' => 'form-control date','placeholder'=>'','id'=>'datepicker']) !!}
+        {!! Form::text('fechainit', null, ['class' => 'form-control date','placeholder'=>'','id'=>'datepicker','autocomplete'=>'off']) !!}
         {!! $errors->first('fechainit', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

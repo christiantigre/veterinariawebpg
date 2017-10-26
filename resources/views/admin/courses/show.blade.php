@@ -59,6 +59,9 @@
                                         <th> Precio </th><td> {!! $course->precio !!} </td>
                                     </tr>
                                     <tr>
+                                        <th> Cupos </th><td> {!! $course->disponibles !!} </td>
+                                    </tr>
+                                    <tr>
                                         <th> Fecha de inicio </th><td> {!! $course->fechainit !!} </td>
                                     </tr>
 

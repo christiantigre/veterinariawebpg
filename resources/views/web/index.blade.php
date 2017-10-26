@@ -42,6 +42,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+
 </head>
 <body>
     
@@ -82,6 +88,10 @@
     @include('web.partials.pagina.menu')    
 </div>
 <!--************************************************FIN MENU***************************************-->
+<div class="container">
+    @include('web.partials.errors.success')
+</div>
+
 
 @yield('content')
 

@@ -33,6 +33,8 @@ php artisan crud:generate Notes --fields="title#string; description#text; link#s
 
 php artisan crud:generate Notices --fields="title#string; content#text; link#string; img#string; day#string; month#string; compfb#string; comptw#string; compgg#string; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Typesuscription --fields="tipo#string; estado#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 php artisan crud:generate Gallery --fields="title#string; content#text; img#string; link#string; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 php artisan crud:generate Category --fields="category#string; description#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
@@ -62,8 +64,9 @@ php artisan crud:generate Product --fields_from_file="/home/pcsolution/Dropbox/w
 
 php artisan crud:generate ClasificationCourses --fields="clasification#string; body#text; slug#text; typecourse_id#text; visible#boolean;" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+php artisan crud:generate Suscribir --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldssuscriber.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
-
+php artisan crud:generate User --fields="name#string; nombres#string; apellidos#string; telefono#string; celular#string; fecha_nacimiento#date; domicilio#string; img#file; history#text; activo#boolean; email#string; password#string" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 laravel chat
 https://www.youtube.com/watch?v=5_VlSC5eXRU

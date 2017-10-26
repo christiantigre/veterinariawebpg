@@ -127,10 +127,10 @@ class ClienteController extends Controller
     {
         $this->validate($request, [
             'name' => '|min:1|max:20',
-            'nombres' => 'required|min:1|max:50',
-            'apellidos' => 'required|min:1|max:50',
-            'telefono' => 'nullable|numeric|min:1|max:999999999999999',
-            'celular' => 'nullable|numeric|min:1|max:999999999999999',
+            'nombres' => 'nullable|min:1|max:50',
+            'apellidos' => 'nullable|min:1|max:50',
+            'telefono' => 'nullable|min:1|max:999999999999999',
+            'celular' => 'nullable|min:1|max:999999999999999',
             'domicilio' => 'nullable|max:150',
         ]);
 

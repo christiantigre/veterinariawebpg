@@ -66,6 +66,7 @@ class CoursesController extends Controller
             'subtitle' => 'max:150',
             'link' => 'max:150',
             'nameslider' => 'max:50',
+            'disponibles' => 'nullable|numeric',
             //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf',
         ]);
         $data = $request->session()->all();
@@ -98,6 +99,7 @@ class CoursesController extends Controller
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
                 'precio' => $request->precio,
+                'disponibles' => $request->disponibles,
                 'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
                 'img' => 'uploads/courses/'.$nombre,
@@ -121,6 +123,7 @@ class CoursesController extends Controller
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
                 'precio' => $request->precio,
+                'disponibles' => $request->disponibles,
                 'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
                 'video' => '',
@@ -190,6 +193,7 @@ class CoursesController extends Controller
             'subtitle' => 'max:150',
             'link' => 'max:150',
             'nameslider' => 'max:50',
+            'disponibles' => 'nullable|numeric',
             //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf'
         ]);
         $files = $request->file('files');
@@ -234,6 +238,7 @@ class CoursesController extends Controller
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
             $course->precio = $request->precio;
+            $course->disponibles = $request->disponibles;
             $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
             $course->img = $rutaHead.$nameHeader;
@@ -257,6 +262,7 @@ class CoursesController extends Controller
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
             $course->precio = $request->precio;
+            $course->disponibles = $request->disponibles;
             $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
             $course->video = '';

@@ -1,0 +1,56 @@
+{
+    "fields": [
+        {
+            "name": "nombres",
+            "type": "string"
+        },
+        {
+            "name": "apellidos",
+            "type": "string"
+        },
+        {
+            "name": "correo",
+            "type": "string"
+        },
+        {
+            "name": "celular",
+            "type": "text"
+        },        
+        {
+            "name": "telefono",
+            "type": "double"
+        },         
+        {
+            "name": "tipesuscription_id",
+            "type": "integer#unsigned"
+        },         
+        {
+            "name": "curso_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "tipesuscription_id",
+            "references": "id",
+            "on": "Typesuscription"
+        },
+        {
+            "column": "curso_id",
+            "references": "id",
+            "on": "Course"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Typesuscription",
+            "type": "belongsTo",
+            "class": "App\\Typesuscription"
+        },
+        {
+            "name": "Course",
+            "type": "belongsTo",
+            "class": "App\\Course"
+        }
+    ]
+}

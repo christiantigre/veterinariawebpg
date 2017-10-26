@@ -13,6 +13,9 @@ use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Input;
+use App\Suscribir;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -26,6 +29,41 @@ class AdminController extends Controller
         $this->middleware('admin', ['except' => 'logout']);
     }
 
+    public function inicio(Request $request)
+    {
+        $keyword = $request->get('curso_id');
+        if (!empty($keyword)) {
+            $inscripciones   = Suscribir::where('curso_id',$keyword)->orderBy('id', 'desc')->get();
+            $curso = Course::findOrFail($keyword);
+        } else {
+            $inscripciones   = Suscribir::orderBy('id', 'desc')->get();
+        }
+
+        $cursos = Course::orderBy('id','DESC')->where('visible',1)->pluck('title','id');
+        return view('admin.home', compact('inscripciones','cursos'));
+
+    }
+
+    public function exportarexcel(Request $request)
+    {
+            //$inscripciones   = Suscribir::select('nombres','apellidos','correo','celular','telefono','valor_depositado','fecha_suscripcion','orden_cupo','tipesuscription_id')->where('curso_id',$request->curso_id)->orderBy('id', 'desc')->get();
+        $inscripciones = DB::table('suscribirs')
+                    ->join('courses', 'suscribirs.curso_id', '=', 'courses.id')
+                    ->join('typesuscriptions', 'suscribirs.tipesuscription_id', '=', 'typesuscriptions.id')
+                    ->select('suscribirs.*','courses.title','typesuscriptions.*')
+                     ->where('suscribirs.curso_id', '=', $request->curso_id)
+                     ->get();
+        //dd($inscripciones);
+
+        Excel::create("Exportado", function ($excel) use ($inscripciones) {
+            $excel->setTitle("Title");
+            $excel->sheet("Sheet 1", function ($sheet) use ($inscripciones) {
+            $sheet->loadView('admin.exports.exportexcel')->with('inscripciones', $inscripciones);
+        });
+        })->download('xls');
+        return back();
+    }
+
     public function index()
     {
         $mailAdmin = auth('admin')->user()->email;
@@ -37,8 +75,7 @@ class AdminController extends Controller
         $services     = Service::orderBy('id', 'desc')->where('admins_id', $administrador->id)->get();
         $cursos       = Course::orderBy('id', 'asc')->where('admin_id', $administrador->id)->get();
         $productos    = Product::orderBy('id', 'asc')->where('admins_id', $administrador->id)->get();
-
-        //dd($administrador);
+        
         return view('admin.profile.profile', compact('administrador','notices','notes','services','cursos','productos'));
     }
 
@@ -126,13 +163,13 @@ class AdminController extends Controller
         $files = Input::file('img');
         $user = Admin::findOrFail($id);
         if (!empty($files)) {
-                $uploadPath = public_path('uploads/users/');
-                $extension = $files->getClientOriginalName();
+            $uploadPath = public_path('uploads/users/');
+            $extension = $files->getClientOriginalName();
                 //$fileName = rand(11111, 99999) . '.' . $extension;
 
-                $files->move($uploadPath, $extension);
-                $requestData['img'] = 'uploads/users/'.$extension;
-                $requestData['nameimg'] = $extension;
+            $files->move($uploadPath, $extension);
+            $requestData['img'] = 'uploads/users/'.$extension;
+            $requestData['nameimg'] = $extension;
         }
         $user->update($requestData);
 

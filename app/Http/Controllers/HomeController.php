@@ -10,6 +10,7 @@ use App\CoursesFiles;
 use App\Gallery;
 use App\Mail\SendMail;
 use App\Mail\SendSolicita;
+use App\Mail\notifyclient;
 use App\Note;
 use App\Notice;
 use App\Product;
@@ -20,11 +21,15 @@ use App\Socio;
 use App\TypeCourse;
 use App\Typeproduct;
 use App\Veterinary;
+use App\Suscribir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+//use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -36,7 +41,7 @@ class HomeController extends Controller
     /*public function __construct()
     {
     $this->middleware('auth');
-    }*/
+}*/
 
     /**
      * Show the application dashboard.
@@ -245,16 +250,16 @@ class HomeController extends Controller
 
         if (!empty($keyword)) {
             $cards = Service::where('service', 'LIKE', "%$keyword%")
-                ->orWhere('slug', 'LIKE', "%$keyword%")
-                ->orWhere('description', 'LIKE', "%$keyword%")
-                ->orWhere('precio_venta', 'LIKE', "%$keyword%")
-                ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
-                ->orWhere('img', 'LIKE', "%$keyword%")
-                ->orWhere('is_active', 'LIKE', "%$keyword%")
-                ->orWhere('visible_slider', 'LIKE', "%$keyword%")
-                ->orWhere('promocion', 'LIKE', "%$keyword%")
-                ->orWhere('nuevo', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+            ->orWhere('slug', 'LIKE', "%$keyword%")
+            ->orWhere('description', 'LIKE', "%$keyword%")
+            ->orWhere('precio_venta', 'LIKE', "%$keyword%")
+            ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
+            ->orWhere('img', 'LIKE', "%$keyword%")
+            ->orWhere('is_active', 'LIKE', "%$keyword%")
+            ->orWhere('visible_slider', 'LIKE', "%$keyword%")
+            ->orWhere('promocion', 'LIKE', "%$keyword%")
+            ->orWhere('nuevo', 'LIKE', "%$keyword%")
+            ->paginate($perPage);
         } else {
             $cards = Service::paginate($perPage);
         }
@@ -288,20 +293,20 @@ class HomeController extends Controller
 
         if (!empty($keyword)) {
             $cards = Product::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('slug', 'LIKE', "%$keyword%")
-                ->orWhere('cod', 'LIKE', "%$keyword%")
-                ->orWhere('description', 'LIKE', "%$keyword%")
-                ->orWhere('precio_compra', 'LIKE', "%$keyword%")
-                ->orWhere('precio_venta', 'LIKE', "%$keyword%")
-                ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
-                ->orWhere('stock', 'LIKE', "%$keyword%")
-                ->orWhere('img', 'LIKE', "%$keyword%")
-                ->orWhere('visible', 'LIKE', "%$keyword%")
-                ->orWhere('visible_slider', 'LIKE', "%$keyword%")
-                ->orWhere('promocion', 'LIKE', "%$keyword%")
-                ->orWhere('nuevo', 'LIKE', "%$keyword%")
-                ->orWhere('tipeproduct_id', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+            ->orWhere('slug', 'LIKE', "%$keyword%")
+            ->orWhere('cod', 'LIKE', "%$keyword%")
+            ->orWhere('description', 'LIKE', "%$keyword%")
+            ->orWhere('precio_compra', 'LIKE', "%$keyword%")
+            ->orWhere('precio_venta', 'LIKE', "%$keyword%")
+            ->orWhere('porcent_descuento', 'LIKE', "%$keyword%")
+            ->orWhere('stock', 'LIKE', "%$keyword%")
+            ->orWhere('img', 'LIKE', "%$keyword%")
+            ->orWhere('visible', 'LIKE', "%$keyword%")
+            ->orWhere('visible_slider', 'LIKE', "%$keyword%")
+            ->orWhere('promocion', 'LIKE', "%$keyword%")
+            ->orWhere('nuevo', 'LIKE', "%$keyword%")
+            ->orWhere('tipeproduct_id', 'LIKE', "%$keyword%")
+            ->paginate($perPage);
         } else {
             $cards = Product::paginate($perPage);
         }
@@ -334,7 +339,7 @@ class HomeController extends Controller
 
         if (!empty($id)) {
             $cards = Product::where('tipeproduct_id', $id)
-                ->paginate($perPage);
+            ->paginate($perPage);
         } else {
             $cards = Product::paginate($perPage);
         }
@@ -355,6 +360,7 @@ class HomeController extends Controller
         return view('web.partials.pagina.products', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'productos', 'tipos', 'active', 'services', 'typeproducts', 'cards','user'));
 
     }
+
     public function service_search_id(Request $request, $id)
     {
         if(Auth::user()){
@@ -366,7 +372,7 @@ class HomeController extends Controller
 
         if (!empty($id)) {
             $cards = Service::where('id', $id)
-                ->paginate($perPage);
+            ->paginate($perPage);
         } else {
             $cards = Product::paginate($perPage);
         }
@@ -386,6 +392,7 @@ class HomeController extends Controller
         return view('web.partials.pagina.services', compact('veterinary', 'notes', 'notices', 'pag', 'tipocources', 'clases', 'todos', 'cursos', 'tipos', 'active', 'services', 'cards','user'));
 
     }
+    
     public function socio_search_id($id)
     {
         if(Auth::user()){
@@ -397,7 +404,7 @@ class HomeController extends Controller
 
         if (!empty($id)) {
             $cards = Socio::where('id', $id)
-                ->paginate($perPage);
+            ->paginate($perPage);
         } else {
             $cards = Socio::paginate($perPage);
         }
@@ -705,5 +712,191 @@ class HomeController extends Controller
         Session::flash('flash_message', 'Su mensaje se ha enviado correctamente');
         return redirect('/courses');
     }
+
+    public function susbribirse_cupo($id)
+    { 
+        $carbon = new \Carbon\Carbon();
+        Carbon::setlocale(config('app.locale'));
+        $date = $carbon->now();
+        $date = $date->format('Y-m-d');
+        //flash('Welcome Aboard!');
+        if(Auth::user()){
+            $user = Auth::user();
+            $suscripcion = Suscribir::where('user_id', '=',$user->id)->where('curso_id','=',$id)->first();
+            $contadordemismocurso = Suscribir::where('user_id', $user->id)->where('curso_id',$id)->count();
+            if(($contadordemismocurso)>0)
+            {
+                \Session::flash('warning', 'Ya existe una solicitud de cupo en este curso para su usuario.'); 
+                return redirect()->back();  
+            }else{
+                \Session::flash('success', 'Ingresa tu información para asignarte un cupo.'); 
+            }
+        }else{
+            \Session::flash('warning', 'Para obtener un cupo debe registrarse en nuestra página'); 
+            $user='';
+            //dd('inicia session');
+            return redirect()->back();
+        }
+        $user['fecha']=$date;
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $course     = Course::findOrFail($id);
+        $pag        = 'courses';   
+        return view('web.partials.pagina.user.form_cupo', compact('veterinary', 'course', 'pag','id','user'));
+    }
+
+    public function crearcupo(Request $request){
+        $user = Auth::user();
+        $this->validate($request, [
+            'nombres' => 'required|max:150',
+            'apellidos' => 'required|max:150',
+            'correo' => 'required|max:30',
+            'telefono' => 'nullable|min:1',
+            'celular' => 'nullable|min:1',
+        ]);
+        $requestData = $request->all();
+        $carbon = new \Carbon\Carbon();
+        Carbon::setlocale(config('app.locale'));
+        $date = $carbon->now();
+        $date = $date->format('Y-m-d');
+        if ($request->hasFile('comprobante')) {
+            $file = Input::file('comprobante');
+            $uploadPath = public_path('uploads/comprobantes/');
+            $extension = $file->getClientOriginalName();
+            $file->move($uploadPath, $extension);
+            $requestData['comprobante'] = 'uploads/comprobantes/'.$extension;
+            $requestData['name_comprobante'] = $extension;
+        }
+            $requestData['tipesuscription_id'] = '1';
+            $requestData['fecha_suscripcion'] = $date;
+            $requestData['orden_cupo'] = '0';
+            $requestData['user_id'] = $user->id;
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $veterinaria = Veterinary::where('id', 1)->orderBy('name', 'desc')->first();
+        $pag        = 'courses'; 
+        if($suscribir = Suscribir::create($requestData)){
+            $curso_title = Course::findOrFail($suscribir->curso_id);
+        $data = array(
+            'name'    => $request->nombres.' '.$request->apellidos,
+            'phone'   => $request->telefono.' '.$request->celular,
+            'mail'    => $request->correo,
+            'subject' => 'Solicitud para obtener un cupo en el curso '.$curso_title->title,
+            'message' => 'Este mensaje es automatico, se termina de solicitar un cupo para el curso de "'.$curso_title->title.'" Para ('.$request->nombres.' '.$request->apellidos.'), con correo ('.$request->correo.'). '
+        );
+        $to         = $veterinaria['mail'];
+        Mail::to($to)->send(new SendMail($data));
+            \Session::flash('success', 'Hemos recibido su información, le enviaremos una respuesta al correo que ha ingresado.'); 
+            //return redirect()->back();
+        }else{
+            \Session::flash('warning', 'Se produjo un error al procesar su información, intenta nuevamente.'); 
+            //return redirect()->back();
+        }
+        $id = $suscribir->curso_id;
+
+        //$suscribir = Suscribir::where('curso_id',1)->get();
+
+        return view('web.partials.pagina.user.detallcupo', compact('suscribir','veterinary', 'pag','id','user'));
+
+    }
+
+    public function miscursos(Request $request, $id){
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            \Session::flash('warning', 'No se puede acceder a la sección'); 
+            $user='';
+            //dd('inicia session');
+            return redirect()->back();
+        }
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $pag        = 'courses';   
+
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $suscribir = Suscribir::where('nombres', 'LIKE', "%$keyword%")
+                ->orWhere('apellidos', 'LIKE', "%$keyword%")
+                ->orWhere('correo', 'LIKE', "%$keyword%")
+                ->orWhere('celular', 'LIKE', "%$keyword%")
+                ->orWhere('telefono', 'LIKE', "%$keyword%")
+                ->orWhere('tipesuscription_id', 'LIKE', "%$keyword%")
+                ->orWhere('curso_id', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
+        } else {
+            $suscribir = Suscribir::where('user_id',$user->id)->paginate($perPage);
+        }
+
+
+        return view('web.partials.pagina.user.miscursos', compact('veterinary', 'course', 'pag','user','suscribir'));
+    
+    }
+
+    public function editcupo($id){
+        $suscribir = Suscribir::findOrFail($id);
+        $carbon = new \Carbon\Carbon();
+        Carbon::setlocale(config('app.locale'));
+        $date = $carbon->now();
+        $date = $date->format('Y-m-d');
+        //flash('Welcome Aboard!');
+        if(Auth::user()){
+            $user = Auth::user();
+        }else{
+            \Session::flash('warning', 'Para obtener un cupo debe registrarse en nuestra página'); 
+            $user='';
+            //dd('inicia session');
+            return redirect()->back();
+        }
+        $user['fecha']=$date;
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $pag        = 'courses';         
+        return view('web.partials.pagina.user.edit', compact('veterinary', 'pag','id','suscribir','user'));  
+    }
+
+    public function verdetallcupo($id){
+            $user = Auth::user();
+        $suscribir = Suscribir::findOrFail($id);
+        $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+        $pag        = 'courses';   
+
+        return view('web.partials.pagina.user.detallcupo', compact('suscribir','veterinary', 'pag','id','user'));
+    }
+
+    public function updatecupo(Request $request, $id){
+        $suscribir = Suscribir::findOrFail($id);
+        $user = Auth::user();
+        $this->validate($request, [
+            'nombres' => 'required|max:150',
+            'apellidos' => 'required|max:150',
+            'correo' => 'required|max:30',
+            'telefono' => 'nullable|min:1',
+            'celular' => 'nullable|min:1',
+            'valor_depositado' => 'numeric|nullable|min:1',
+        ]);
+        $requestData = $request->all();
+        $carbon = new \Carbon\Carbon();
+        Carbon::setlocale(config('app.locale'));
+        $date = $carbon->now();
+        $date = $date->format('Y-m-d');
+        if ($request->hasFile('comprobante')) {
+            $file = Input::file('comprobante');
+            $uploadPath = public_path('uploads/comprobantes/');
+            $extension = $file->getClientOriginalName();
+            $file->move($uploadPath, $extension);
+            $requestData['comprobante'] = 'uploads/comprobantes/'.$extension;
+            $requestData['name_comprobante'] = $extension;
+        }
+            $requestData['tipesuscription_id'] = '1';
+            $requestData['fecha_suscripcion'] = $date;
+            $requestData['orden_cupo'] = '0';
+            $requestData['user_id'] = $user->id;
+        if($suscribir->update($requestData)){
+            \Session::flash('success', 'Información actualizada con exito.'); 
+            return redirect()->back();
+        }else{
+            \Session::flash('warning', 'Se produjo un error al procesar su información, intenta nuevamente.'); 
+            return redirect()->back();
+        }
+    }
+
 
 }
