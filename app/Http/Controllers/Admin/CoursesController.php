@@ -99,6 +99,8 @@ class CoursesController extends Controller
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
                 'precio' => $request->precio,
+                'precio_teorico' => $request->precio_teorico,
+                'precio_practico' => $request->precio_practico,
                 'disponibles' => $request->disponibles,
                 'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
@@ -123,6 +125,8 @@ class CoursesController extends Controller
                 'hourdesde' => $request->hourdesde,
                 'hourhasta' => $request->hourhasta,
                 'precio' => $request->precio,
+                'precio_teorico' => $request->precio_teorico,
+                'precio_practico' => $request->precio_practico,
                 'disponibles' => $request->disponibles,
                 'fechainit' => $request->fechainit,
                 'dais' => $request->dais,
@@ -238,6 +242,8 @@ class CoursesController extends Controller
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
             $course->precio = $request->precio;
+            $course->precio_teorico = $request->precio_teorico;
+            $course->precio_practico = $request->precio_practico;
             $course->disponibles = $request->disponibles;
             $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
@@ -262,6 +268,8 @@ class CoursesController extends Controller
             $course->hourdesde = $request->hourdesde;
             $course->hourhasta = $request->hourhasta;
             $course->precio = $request->precio;
+            $course->precio_teorico = $request->precio_teorico;
+            $course->precio_practico = $request->precio_practico;
             $course->disponibles = $request->disponibles;
             $course->fechainit = $request->fechainit;
             $course->dais = $request->dais;
