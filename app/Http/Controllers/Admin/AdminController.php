@@ -10,6 +10,8 @@ use App\Note;
 use App\Service;
 use App\Course;
 use App\Product;
+use App\User;
+use App\visit;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\Input;
@@ -38,9 +40,36 @@ class AdminController extends Controller
         } else {
             $inscripciones   = Suscribir::orderBy('id', 'desc')->get();
         }
+        $visitas= visit::count();
+
+        $cursos= Course::all();
+        $ultimo= $cursos->last();
+
+        $usuarios= User::count();
+        //$ultimo_us= $usuarios->last();
+
+        //$cantidadusuarios = count($ultimo_us);
+        //dd($usuarios);
+        $cantidadusuarios = $usuarios;
+        if(count($ultimo)>0){
+            $count = Suscribir::where('curso_id', $ultimo->id)->where('tipesuscription_id',2)->count();
+            $count_cupo = Suscribir::where('curso_id', $ultimo->id)->where('tipesuscription_id',1)->count();
+            $cupos = $ultimo->disponibles;
+        }else{
+            $count = 0;
+            $count_cupo = 0;
+            $cupos = 0;
+        }
+        
+
+        //$porcentaje = ($count_cupo * 100)/$cupos;
+        //dd($cupos);
+        //$porcentaje =;
+        //dd($count);
+        //dd($max);
 
         $cursos = Course::orderBy('id','DESC')->where('visible',1)->pluck('title','id');
-        return view('admin.home', compact('inscripciones','cursos'));
+        return view('admin.home', compact('inscripciones','cursos','count','count_cupo','cantidadusuarios','visitas'));
 
     }
 

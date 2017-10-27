@@ -39,6 +39,8 @@ class Course extends Model
         'img', 
         'nameimg', 
         'precio', 
+        'precio_teorico', 
+        'precio_practico', 
         'disponibles', 
         'fechainit',
         'video', 

@@ -45,6 +45,27 @@
                      </td>
                     </tr>
                     <tr>
+                      <th> Precio teórico </th><td>
+                        <a href="{{ url('DetallCourses', ['id' => $suscribir->curso_id])}}">
+                          {{ $suscribir->precio_teorico }} 
+                        </a>
+                     </td>
+                    </tr>
+                    <tr>
+                      <th> Precio practico </th><td>
+                        <a href="{{ url('DetallCourses', ['id' => $suscribir->curso_id])}}">
+                          {{ $suscribir->precio_practico }} 
+                        </a>
+                     </td>
+                    </tr>
+                    <tr>
+                      <th> Total curso </th><td>
+                        <a href="{{ url('DetallCourses', ['id' => $suscribir->curso_id])}}">
+                          {{ $suscribir->total }} 
+                        </a>
+                     </td>
+                    </tr>
+                    <tr>
                       <th> Estado </th>
                       <td>
                         @if(($suscribir->tipesuscription_id)=='1')

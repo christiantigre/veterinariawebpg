@@ -96,6 +96,36 @@
      </div>
    </div>
 
+   <!-- checkbox -->
+   <!-- Text input-->
+   <div class="form-group">
+    <label class="col-md-4 control-label" for="Phone number ">Seleccione los ítems de su interés </label>  
+    <div class="col-md-4">
+      <div class="input-group {{ $errors->has('precio_teorico') ? 'has-error' : ''}}">
+       <label>
+        <!--<input type="checkbox">-->
+        @if(($suscribir->precio_teorico)=='0.00')
+        {{ Form::checkbox('precio_teorico', $curso->precio_teorico, null, ['class' => 'field']) }}
+        @else
+        {{ Form::checkbox('precio_teorico', $curso->precio_teorico, true, ['class' => 'field']) }}
+        @endif
+        ({{ $curso->precio_teorico }}) Teórico
+      </label>              
+    </div>
+    <div class="input-group othertop {{ $errors->has('precio_practico') ? 'has-error' : ''}}">
+     <label>
+      <!--<input type="checkbox">-->
+      @if(($suscribir->precio_practico)=='0.00')
+      {{ Form::checkbox('precio_practico', $curso->precio_practico, null, ['class' => 'field']) }}
+        @else
+      {{ Form::checkbox('precio_practico', $curso->precio_practico, true, ['class' => 'field']) }}
+        @endif
+      ({{ $curso->precio_practico }}) Práctico
+    </label> 
+  </div>
+</div>
+</div>
+
 
    <!-- File Button --> 
    <div class="form-group">

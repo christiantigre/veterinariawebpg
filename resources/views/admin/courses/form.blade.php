@@ -55,6 +55,20 @@
         {!! $errors->first('precio', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('precio_teorico') ? 'has-error' : ''}}">
+    {!! Form::label('precio_teorico', 'Precio Teórico', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('precio_teorico', null, ['class' => 'form-control','placeholder'=>'150']) !!}
+        {!! $errors->first('precio_teorico', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('precio_practico') ? 'has-error' : ''}}">
+    {!! Form::label('precio_practico', 'Precio Práctico', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('precio_practico', null, ['class' => 'form-control','placeholder'=>'150']) !!}
+        {!! $errors->first('precio_practico', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group {{ $errors->has('disponibles') ? 'has-error' : ''}}">
     {!! Form::label('disponibles', 'Cupos disponibles', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

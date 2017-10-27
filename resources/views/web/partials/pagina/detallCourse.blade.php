@@ -79,12 +79,22 @@ $url= $_SERVER["REQUEST_URI"];
             </div>
         </div>
         @endif
-        @if(!empty($course->precio))
+        @if(!empty($course->precio_teorico))
         <div class="col-md-12">
           <div class="update-nag">
             <div class="update-split update-success"><i class="glyphicon glyphicon-usd"></i></div>
-            <div class="update-text"> <a href=""> <strong>Precio </strong> </a>
-                {{ $course->precio }} $
+            <div class="update-text"> <a href=""> <strong>Precio Teórico</strong> </a>
+                {{ $course->precio_teorico }} $
+            </div>
+        </div>
+    </div>
+    @endif
+    @if(!empty($course->precio_practico))
+        <div class="col-md-12">
+          <div class="update-nag">
+            <div class="update-split update-success"><i class="glyphicon glyphicon-usd"></i></div>
+            <div class="update-text"> <a href=""> <strong>Precio Práctico</strong> </a>
+                {{ $course->precio_practico }} $
             </div>
         </div>
     </div>

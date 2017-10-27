@@ -80,11 +80,11 @@
     </tr>
     <tr>
       <td><strong>   Teléfono :    </strong></td>
-      <td>+{{ $veterinari->tlf1 }}<br>+{{ $veterinari->tlf1 }}<br>+{{ $veterinari->cel1 }}<br>+{{ $veterinari->tlf2 }}</td>
+      <td>+{{ $veterinari->tlf1 }} - {{ $veterinari->tlf1 }} - {{ $veterinari->cel1 }} - {{ $veterinari->tlf2 }}</td>
     </tr>
     <tr>
       <td><strong>E-Mail: </strong></td>
-      <td>{{ $veterinari->mail }}<br>{{ $veterinari->name }}</td>
+      <td>{{ $veterinari->mail }} ({{ $veterinari->name }})</td>
     </tr>    
     <tr>
       <td><strong>Fax: </strong></td>

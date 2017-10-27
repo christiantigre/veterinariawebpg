@@ -24,6 +24,8 @@ class CreateCoursesTable extends Migration
             $table->text('hourhasta')->nullable();
             $table->text('dais')->nullable();
             $table->text('precio')->nullable();
+            $table->text('precio_teorico')->nullable();
+            $table->text('precio_practico')->nullable();
             $table->date('fechainit')->nullable();
             $table->string('img',150)->nullable();
             $table->string('nameimg',150)->nullable();

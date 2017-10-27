@@ -26,7 +26,7 @@
           <legend>Separár mi cupo</legend>
           <p>
             El curso del que desea obtener un cupo es :
-              <strong> {{ $course->title }},</strong> al enviarnos tu datos se le enviará un correo de verificación en el que te daremos el numero de cuenta si aun no lo tiene, para que realices el pago del valor de nuestro curso.
+            <strong> {{ $course->title }},</strong> al enviarnos tu datos se le enviará un correo de verificación en el que te daremos el numero de cuenta si aun no lo tiene, para que realices el pago del valor de nuestro curso.
 
 
 
@@ -94,46 +94,69 @@
      </div>
    </div>
 
-
-   <!-- File Button --> 
+   <!-- checkbox -->
+   <!-- Text input-->
    <div class="form-group">
-    <label class="col-md-4 control-label" for="Upload photo">Voucher depósito</label>
+    <label class="col-md-4 control-label" for="Phone number ">Seleccione los ítems de su interés </label>  
     <div class="col-md-4">
-      {!! Form::File('comprobante', null, ['class' => 'input-file','accept'=>'image/*']) !!}
+      <div class="input-group {{ $errors->has('precio_teorico') ? 'has-error' : ''}}">
+       <label>
+        <!--<input type="checkbox">-->
+        {{ Form::checkbox('precio_teorico', $course->precio_teorico, true, ['class' => 'field']) }}
+        ({{ $course->precio_teorico }}) Teórico
+      </label>              
     </div>
+    <div class="input-group othertop {{ $errors->has('precio_practico') ? 'has-error' : ''}}">
+     <label>
+      <!--<input type="checkbox">-->
+      {{ Form::checkbox('precio_practico', $course->precio_practico, null, ['class' => 'field']) }}
+      ({{ $course->precio_practico }}) Práctico
+    </label> 
   </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="Date Of Birth">Fecha de depósito</label>  
-    <div class="col-md-4">
-
-      <div class="input-group">
-       <div class="input-group-addon">
-         <i class="fa fa-calendar"></i>
-
-       </div>
-       {!! Form::text('fecha_deposito', $user->fecha, ['class' => 'form-control input-md date','placeholder'=>'','id'=>'datepicker']) !!}
-       {!! $errors->first('fecha_deposito', '<p class="help-block">:message</p>') !!}
-     </div>
-
-
-   </div>
- </div>
+</div>
+</div>
 
 
 
 <!-- File Button --> 
-   <div class="form-group">
-    <label class="col-md-4 control-label" for="Upload photo">Nombre depositante</label>
-    <div class="col-md-4">
-      {!! Form::text('nombre_depositante', null, ['class' => 'form-control','placeholder'=>'Depositante']) !!}
-    </div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Upload photo">Voucher depósito</label>
+  <div class="col-md-4">
+    {!! Form::File('comprobante', null, ['class' => 'input-file','accept'=>'image/*']) !!}
   </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Date Of Birth">Fecha de depósito</label>  
+  <div class="col-md-4">
+
+    <div class="input-group">
+     <div class="input-group-addon">
+       <i class="fa fa-calendar"></i>
+
+     </div>
+     {!! Form::text('fecha_deposito', $user->fecha, ['class' => 'form-control input-md date','placeholder'=>'','id'=>'datepicker']) !!}
+     {!! $errors->first('fecha_deposito', '<p class="help-block">:message</p>') !!}
+   </div>
+
+
+ </div>
+</div>
 
 
 
- <div class="form-group">
+<!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Upload photo">Nombre depositante</label>
+  <div class="col-md-4">
+    {!! Form::text('nombre_depositante', null, ['class' => 'form-control','placeholder'=>'Depositante']) !!}
+  </div>
+</div>
+
+
+
+<div class="form-group">
   <label class="col-md-4 control-label" for="Permanent Address"></label>  
   <div class="col-md-4  col-xs-4">
     {!! Form::text('valor_depositado', null, ['class' => 'form-control input-md','placeholder'=>'Valor depositado']) !!} 
@@ -160,12 +183,12 @@
   <div class="col-md-4">
     {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Enviar', ['class' => 'btn btn-success']) !!}
 
-      </div>
-    </div>
+  </div>
+</div>
 
-  </fieldset>
-  <!--</form>-->
-  {!! Form::close() !!}
+</fieldset>
+<!--</form>-->
+{!! Form::close() !!}
 </div>
 
 

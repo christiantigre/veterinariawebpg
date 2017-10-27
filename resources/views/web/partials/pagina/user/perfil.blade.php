@@ -50,7 +50,7 @@
             @endif 
             <a href="{{ url('/perfil/' . $user->id . '/edit') }}" title="Editar Perfil"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
 
-            <a href="{{ url('/miscursos/' . $user->id ) }}" title="Editar Perfil"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mis Cursos</button></a>
+            <a href="{{ url('/miscursos/' . $user->id ) }}" title="Ver cursos"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Mis Cursos</button></a>
           </ul>
         </div>
 

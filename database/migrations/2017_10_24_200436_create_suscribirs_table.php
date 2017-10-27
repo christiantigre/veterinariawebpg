@@ -23,6 +23,9 @@ class CreateSuscribirsTable extends Migration
             $table->text('name_comprobante')->nullable();
             $table->string('numero_control')->nullable();
             $table->string('nombre_depositante')->nullable();
+            $table->double('precio_teorico',15,2)->nullable();
+            $table->double('precio_practico',15,2)->nullable();
+            $table->double('total',15,2)->nullable();
             $table->double('valor_depositado',15,2)->nullable();
             $table->date('fecha_deposito')->nullable();
             $table->date('fecha_suscripcion')->nullable();

@@ -47,7 +47,18 @@
                                      </td></tr>
                                       <tr><th> Número control </th><td> {{ $suscribir->numero_control }} </td></tr>
                                       <tr><th> Depositante </th><td> {{ $suscribir->nombre_depositante }} </td></tr>
-                                      <tr><th> Valor depositado </th><td> {{ $suscribir->valor_depositado }} </td></tr>
+                                      <tr>
+                                        <th> Precio teorico </th><td> {{ $suscribir->precio_teorico }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Precio práctico </th><td> {{ $suscribir->precio_practico }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Total curso </th><td> {{ $suscribir->total }} </td>
+                                    </tr>
+                                      <tr>
+                                        <th> Valor depositado </th><td> {{ $suscribir->valor_depositado }} </td>
+                                    </tr>
                                       <tr><th> Fecha depósito </th><td> {{ $suscribir->fecha_deposito }} </td></tr>
                                       <tr><th> Fecha de suscripción </th><td> {{ $suscribir->fecha_suscripcion }} </td></tr>
                                       <tr><th> Orden N# Cupo </th><td> {{ $suscribir->orden_cupo }} </td></tr>

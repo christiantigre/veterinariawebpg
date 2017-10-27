@@ -59,6 +59,12 @@
                                         <th> Precio </th><td> {!! $course->precio !!} </td>
                                     </tr>
                                     <tr>
+                                        <th> Precio Teórico</th><td> {!! $course->precio_teorico !!} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Precio Práctico</th><td> {!! $course->precio_practico !!} </td>
+                                    </tr>
+                                    <tr>
                                         <th> Cupos </th><td> {!! $course->disponibles !!} </td>
                                     </tr>
                                     <tr>
