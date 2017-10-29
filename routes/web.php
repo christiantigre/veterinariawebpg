@@ -52,6 +52,8 @@ Route::post('/crear_cupo', 'HomeController@crearcupo');
 Route::get('/verdetallcupo/{id}', 'HomeController@verdetallcupo');
 Route::get('/editcupo/{id}', 'HomeController@editcupo');
 Route::post('/suscribirupdate/{id}', 'HomeController@updatecupo');
+Route::post('busquedas', 'HomeController@busqueda');
+Route::get('/resultsearch/{data}', 'HomeController@resultsearch');
 
 Route::get('email', function () {
     //Mail::to('andrescondo17@gmail.com')->send(new \App\Mail\SendMail());

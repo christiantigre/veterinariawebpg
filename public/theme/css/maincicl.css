@@ -1002,7 +1002,7 @@ input[type=checkbox]:checked:before {
 .page_footer .cws-widget ul>li.page_item.current_page_item>a{
 	color: #fff;
 }
-.search-form .screen-reader-text{
+/*.search-form .screen-reader-text{
 	display:none;
 }
 .search-form{
@@ -1065,7 +1065,7 @@ input[type=checkbox]:checked:before {
 }
 .search-form label.button-hover:after{
 	background:#fff;
-}
+}*/
 .cws-widget .recentcomments a{
 	padding-left:0;
 	padding-right:0;
@@ -1101,7 +1101,7 @@ input[type=checkbox]:checked:before {
 	position:relative;
 }
 /** cf7 widget */
-.wpcf7-form-control-wrap:not([class*='captcha']),
+/*.wpcf7-form-control-wrap:not([class*='captcha']),
 .cws-widget .archive_item,
 .find_a_doctor .search_field input,
 .find_a_doctor .search_field select{
@@ -1112,7 +1112,7 @@ input[type=checkbox]:checked:before {
 .cws-widget .wpcf7-form input[type="submit"]{
 	height: auto;
 	padding: 11px 21px;
-}
+}*/
 .cws-widget .wpcf7-form textarea,
 .cws-widget .archive_item,
 .comments-part textarea{
@@ -1234,7 +1234,7 @@ input[type=checkbox]:checked:before {
 .cws-widget .wpcf7-form .wpcf7-form-control-wrap:nth-of-type(even) input.wpcf7-not-valid, .cws-widget .wpcf7-form p:nth-of-type(even) .wpcf7-form-control-wrap input.wpcf7-not-valid{
 	border-color:#fd7172;
 } 
-*[type="submit"], .load_more{
+/**[type="submit"], .load_more{
 	display: inline-block;
 	padding: 11px 21px;
 	border-width: 3px;
@@ -1248,7 +1248,7 @@ input[type=checkbox]:checked:before {
 }
 *[type="submit"]:hover{
 	background:#fff;
-}
+}*/
 .wpcf7-response-output{
 	position:relative;
 	margin:1em 0 0 !important;

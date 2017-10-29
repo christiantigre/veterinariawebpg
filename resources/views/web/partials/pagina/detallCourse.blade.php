@@ -6,8 +6,11 @@ $url= $_SERVER["REQUEST_URI"];
 ?>
 
 <div class="container ">
-	<div class="row espacio">
-     <!-- HEADER -->
+
+
+    <!--Header-->
+         <!-- HEADER -->
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
      <div class="header">
         @if(empty($course->img))
         Sin imagen de encabezado
@@ -28,24 +31,45 @@ $url= $_SERVER["REQUEST_URI"];
         <h5 class="sub-title_detall">{{ $course->title }}</h5>
         <h2 class="title_detall">{{ $course->subtitle }}</h2>
     </div>
+    </div>
+    <!--Fin Header-->
 
-    <!-- INFO -->
+    <!--intro-->
+
+     <!-- INFO -->
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h2 style="line-height: 25px;">{{ $course->title }}.</h2>
             <h4 style="line-height: 25px;">{!! $course->content !!}</h4>
         </div>
     </div>
-    <div class="row row-eq-height" style="padding-right:15px">
-        <div class="col-xs-9 text">
-            <p>{{ $course->subtitle }}.</p>
+
+
+    <!--fin intro-->
+
+
+	<div class="row espacio">
+    
+   
+    <!--<div class="row row-eq-height" style="padding-right:15px">-->
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 text">
+            <div class="row">
+                <div class="container">
+                    
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 text">
+
+            <p>{{ $course->subtitle }}</p>
             <p></p>
             <p class="semi-title">{{ $course->ClasificationCourse->clasification }}</p>
-            <p>{!! $course->description !!}.</p>
+            <p>{!! $course->description !!}</p>
             <p class="semi-title">Detalles</p>
             <p>Información extra que te ayudará ha conocer mas sobre este tema. </p>
+
+            </div>
             <p>
                 <div class="row">
+                <div class="container">
+
                     @if(!empty($course->duration))
                     <div class="col-md-12">
                       <div class="update-nag">
@@ -162,21 +186,35 @@ $url= $_SERVER["REQUEST_URI"];
 </div>
 </div>
 
+<div class="row">
+    <div class="container">
+    <div class=" col-xs-6 col-sm-6 col-md-12 col-lg-12 text">
+        
+    
+
 @include('web.partials.pagina.cajas.likecompartir')
 
 
+</div>
+</div>
+</div>
 
+
+
+</div>
 </div>                    
 </p>
 </div>
+</div>
+</div>
 <!-- Sidebar // advertising -->
-<div class="col-xs-3 side ">
+<div class="col-xs-12 col-sm-12 col-lg-3 col-md-3 side ">
     @if(!empty($veterinary))
     @foreach($veterinary as $veter)
     @if(!empty($veter->logo))
-    <img style="max-width: 100%" src="{{ asset($veter->logo) }}" alt="Photograph" />
+    <img style="max-width: 100%" src="{{ asset($veter->logo) }}" alt="Logo" />
     @endif
-            <div class="col-lg-12 espacio" id="panel">
+            <div class="col-lg-12 col-md-12 com-sm-12 col-xs-12 espacio" id="panel">
                 <h2 class="class_h2">Te Informamos sin compromiso</h2>
 
                 {!! Form::open(['url' => '/solicitainfo','method'=>'post', 'enctype'=>'multipart/form-data', 'files' => false]) !!}
@@ -217,7 +255,11 @@ $url= $_SERVER["REQUEST_URI"];
                         <label>Mensaje</label>
                     </div>
                     <div class="group">
-                        <center> <button type="submit" class="btn btn-warning">Solicitar Información<span class="glyphicon glyphicon-send"></span></button></center>
+                        <center> 
+                            <button type="submit" class="btn btn-warning">Solicitar Información
+                                <span class="glyphicon glyphicon-send" ></span>
+                            </button>
+                        </center>
                     </div>
                 {!! Form::close() !!}
                 
@@ -225,7 +267,7 @@ $url= $_SERVER["REQUEST_URI"];
             @endforeach
             @endif                
         </div>
-    </div>
+    <!--/div>-->
 </div>
 
 
@@ -249,8 +291,19 @@ var url = location.href;
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+<div class="row">
+    <div class="container">
+    <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 text">
+        
 
-<div class="fb-comments" data-href="<?php echo "http://" . $host . $url; ?>" data-width="100%" data-numposts="5" data-order-by="reverse_time"></div>
+<div class="fb-comments" data-href="<?php echo "http://" . $host . $url; ?>" data-width="100%" data-numposts="5" data-order-by="reverse_time">
+    
+</div>
+
+</div>
+</div>
+</div>
+
 
 <!--fin comentarios facebook-->
   
@@ -329,6 +382,7 @@ var url = location.href;
     display: -ms-flexbox;
     display: flex;
 }   
+
 
 @media (max-width: 426px) {
     .header{

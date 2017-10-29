@@ -1,5 +1,5 @@
 <div id="search">
-          <form>
+          <form method="POST" action="{{ url('/busquedas') }}">
                 <input placeholder="Qué desea buscar?..." type="search" value=""/>
                 <button class="btn btn-primary" type="submit">
                     Buscar

@@ -1479,7 +1479,7 @@ body {
     transform: translateY(-50%);
 }
 
-.slide-controls .left, .slide-controls .right {
+.slide-controls .left, .slide-controls .right_slide {
     position: absolute;
     top: 0;
     width: 50%;
@@ -1490,11 +1490,11 @@ body {
     transition: all 1s ease;
 }
 
-.slide-controls .left:hover, .slide-controls .right:hover {
+.slide-controls .left:hover, .slide-controls .right_slide:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.slide-controls .right {
+.slide-controls .right_slide {
     right: 0;
 }
 

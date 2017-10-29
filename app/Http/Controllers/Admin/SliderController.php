@@ -62,28 +62,20 @@ class SliderController extends Controller
             'title'=>'required',
             'img' => 'mimes:jpeg,png|max:1500',
         ]);
-        if (!Input::file("img")) {
-            $path = "";
-        } else {
-            $file   = Input::file('img');
-            $nombre = $file->getClientOriginalName();
-            $path   = public_path('uploads/slider/' . $nombre);
-            $image  = Image::make($file->getRealPath());
-            $image->save($path);
+        
+        $requestData = $request->all();
+        if ($request->hasFile('img')) {
+            $file = Input::file('img');
+                $uploadPath = public_path('uploads/slider/');
+                $extension = $file->getClientOriginalName();
+                $file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/slider/'.$extension;
+                $requestData['nameimg'] = $extension;
         }
 
-        $requestData = $request->all();
+        
 
-        //Slider::create($requestData);
-        Slider::create([
-            'img'            => 'uploads/slider/' . $nombre,
-            'title'          => $request->title,
-            'intro'        => $request->intro,
-            'body'        => $request->body,
-            'linkinfo'       => $request->linkinfo,
-            'visible_slider' => $request->visible_slider,
-            'activo'         => $request->activo,
-        ]);
+        Slider::create($requestData);
 
         Session::flash('flash_message', 'Slider added!');
 
@@ -132,41 +124,32 @@ class SliderController extends Controller
             'title'=>'required',
             'img' => 'mimes:jpeg,png|max:1500',
         ]);
-        if (!Input::file("img")) {
-            $nombre = "";
-        } else {
-            $file   = Input::file('img');
-            $nombre = $file->getClientOriginalName();
-            $path   = public_path('uploads/slider/' . $nombre);
-            $image  = Image::make($file->getRealPath());
-            $image->save($path);
-        }
-
+        
         $requestData = $request->all();
 
-        if (empty($nombre)) {
-            $slider                 = Slider::findOrFail($id);
-            $slider->title          = $request->title;
-            $slider->intro        = $request->intro;
-            $slider->linkinfo       = $request->linkinfo;
-            $slider->subtittle      = $request->subtittle;
-            $slider->body           = $request->body;
-            $slider->visible_slider = $request->visible_slider;
-            $slider->activo         = $request->activo;
-            $slider->save();
-        } else {
-            $slider                 = Slider::findOrFail($id);
-            $slider->img            = 'uploads/slider/' . $nombre;
-            $slider->title          = $request->title;
-            $slider->intro        = $request->intro;
-            $slider->linkinfo       = $request->linkinfo;
-            $slider->subtittle      = $request->subtittle;
-            $slider->body           = $request->body;
-            $slider->visible_slider = $request->visible_slider;
-            $slider->activo         = $request->activo;
-            $slider->save();
+        if ($request->hasFile('img')) {
+            $file = Input::file('img');
+                $uploadPath = public_path('uploads/slider/');
+                $extension = $file->getClientOriginalName();
+                $file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/slider/'.$extension;
+                $requestData['nameimg'] = $extension;
+
+                $item_delete = Slider::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/slider/').$move;
+                       //verificamos si la imagen exist
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
+
         }
-        //$slider->update($requestData);
+
+            $slider                 = Slider::findOrFail($id);
+
+        $slider->update($requestData);
 
         Session::flash('flash_message', 'Slider updated!');
 

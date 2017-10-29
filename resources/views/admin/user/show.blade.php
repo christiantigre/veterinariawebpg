@@ -31,7 +31,45 @@
                                     <tr>
                                         <th>ID</th><td>{{ $user->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $user->name }} </td></tr><tr><th> Nombres </th><td> {{ $user->nombres }} </td></tr><tr><th> Apellidos </th><td> {{ $user->apellidos }} </td></tr>
+                                    <tr>
+                                        <th> Username </th><td> {{ $user->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Nombres </th><td> {{ $user->nombres }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Apellidos </th><td> {{ $user->apellidos }} </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th> Fecha nacimiento </th><td> {{ $user->fecha_nacimiento }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Contactos </th><td> {{ $user->telefono }} / {{ $user->celular }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Domicilio </th><td> {{ $user->domicilio }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Correo </th><td> {{ $user->email }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Imagen </th>
+                                        <td> 
+                                        @if(empty($user->img))
+                                            <center>-</center>
+                                            @else
+                                            <img src="{{ asset($user->img) }}" class="img img-responsive">
+                                            @endif
+                                            </td>
+                                    </tr>
+                                    <tr><th> Estado </th><td> 
+                                        @if(($user->activo)=='1')
+                                            <small class="label pull-left bg-green">Activado</small>
+                                        @else
+                                            <small class="label pull-left bg-red">Desactivado</small>
+                                        @endif
+                                    </td></tr>
                                 </tbody>
                             </table>
                         </div>

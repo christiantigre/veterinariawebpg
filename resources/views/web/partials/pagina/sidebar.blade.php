@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-8 col-md-3 side">
+<div class="hidden-xs col-sm-12 col-md-4 col-lg-4 side">
     <small>
         <p style="margin-bottom:0px;"><b>Interes</b></p>
         <div class="statistics">

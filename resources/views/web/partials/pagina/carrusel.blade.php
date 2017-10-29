@@ -44,7 +44,7 @@
                 <div class="left">
                     ‹
                 </div>
-                <div class="right">
+                <div class="right_slide">
                     ›
                 </div>
             </div>
@@ -64,11 +64,11 @@
 
         <div class="sixteen columns">
             <div class="sub-text link-svgline">
-                {{ $sec->title }}
+                {!! $sec->title !!}
             </div>
         </div>
 
-        <p>{{ $sec->subtitle }}</p>
+        <p>{!! $sec->subtitle !!}</p>
         
         @endif
         @endforeach

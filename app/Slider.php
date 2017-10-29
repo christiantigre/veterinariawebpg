@@ -27,10 +27,12 @@ class Slider extends Model
      */
     protected $fillable = [
         'img',
+        'nameimg',
          'title', 
          'content', 
          'linkinfo',
          'subtittle',
+         'intro',
          'body',
          'detall',
          'visible_slider',

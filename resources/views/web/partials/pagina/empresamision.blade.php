@@ -4,30 +4,18 @@
 
 <div class="container">
 	<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		 <!-- HEADER -->
-        <div class="header_div">
-            @if(empty($notes->imgHeader))
-            Sin imagen de encabezado
-            @else
-            <img style="width:100%" src="{{ asset($notes->imgHeader) }}" />
-            @endif
-            <div class="triangulo"></div>
-            <div class="profile">
-               <!-- <img class="photo-author img-circle" src="http://www.bordeaux-tourism.co.uk/var/ezwebin_site/storage/images/media/images/regards-bordelais/jean-poutge/profil-jean/12599-2-fre-FR/Profil-Jean_format_360x360.jpg" />-->
-                <span class="name-author">por </span>
-            </div>
-            <h5 class="sub-title">tag</h5>
-            <h2 class="title_h2">sub</h2>
-        </div>
+        
 @foreach($veterinary as $veterinaria)
         <!-- INFO -->
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 style="line-height: 25px;">Nuestra empresa {{ $veterinaria->name }}</h4>
             </div>
         </div>
         <div class="row row-eq-height" style="padding-right:15px">
-            <div class="col-xs-9 text">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text">
                 <p>{!! $veterinaria->description !!}</p>
                 <p>{!! $veterinaria->mision !!}</p>
             </div>
@@ -36,7 +24,9 @@
         </div>
         @endforeach
 	</div>
+    </div>
 </div>
+
 <style type="text/css">
     .header_div{position:relative;overflow:hidden;max-height:350px;display:flex;align-items:center;justify-content:center}
 .text{

@@ -16,6 +16,7 @@
         </button>
         <strong>
             {!! session()->get('warning') !!}
+            <a href="{{ ('/register') }}" >Registrarse</a>
         </strong>
     </div>
 @endif

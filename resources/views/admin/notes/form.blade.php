@@ -33,6 +33,13 @@
         {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
+    {!! Form::label('publicador', 'Publicador', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group {{ $errors->has('imgHeader') ? 'has-error' : ''}}">
     {!! Form::label('imgHeader', 'Imagen encabezado', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

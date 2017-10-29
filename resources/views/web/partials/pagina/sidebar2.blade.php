@@ -1,4 +1,4 @@
-<div class="col-sm-3">
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
   <h3><strong>Servicios</strong></h3>
   <div class="seprator"></div>
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

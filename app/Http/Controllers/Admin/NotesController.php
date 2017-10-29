@@ -199,6 +199,7 @@ class NotesController extends Controller
             $note->intro = $request->intro;
             $note->description = $request->description;
             $note->link = $request->link;
+            $note->name = $request->name;
             $note->visible = $request->visible;
             $note->webvisible = $request->webvisible;
             $note->tag_id = $request->tag_id;
@@ -211,6 +212,7 @@ class NotesController extends Controller
             $note->intro = $request->intro;
             $note->description = $request->description;
             $note->link = $request->link;
+            $note->name = $request->name;
             $note->imgHeader = $imgHead;
             $note->nameimg = $nameHeader;
             $note->visible = $request->visible;

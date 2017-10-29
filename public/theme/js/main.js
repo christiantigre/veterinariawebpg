@@ -77,7 +77,7 @@ window.onload = function() {
         slidePercent = 100 / slidesLen,
         lastSlide = slidesLen - 1,
         slideLeft = document.getElementsByClassName('left')[0],
-        slideRight = document.getElementsByClassName('right')[0],
+        slideRight = document.getElementsByClassName('right_slide')[0],
         translateLen = slidePercent * -1,
         translateBy = 0,
         threshold = 1.3,
@@ -353,6 +353,5 @@ $(document).ready(function() {
       }, 300);
     });
   });
-
 
 

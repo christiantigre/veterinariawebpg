@@ -87,6 +87,56 @@ class HomeController extends Controller
         //return view('web.index');
    }
 
+   public function busqueda(Request $request)
+   {
+        /*$keyword = Input::get('campobuscar');
+        return $keyword;*/
+
+        $course = Course::where('content', 'LIKE', '%'.$request->message.'%')
+        ->orwhere('title', 'LIKE', '%'.$request->message.'%')->get();
+
+        $service = Service::where('service', 'LIKE', '%'.$request->message.'%')
+                ->orWhere('description', 'LIKE', '%'.$request->message.'%')->get();
+
+        $product = Product::where('name', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('slug', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('cod', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('description', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('precio_compra', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('precio_venta', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('porcent_descuento', 'LIKE', '%'.$request->message.'%')
+        ->orWhere('stock', 'LIKE', '%'.$request->message.'%')
+        ->get();
+
+        $coincidencias = array(
+            'cursos'=>$course,
+            'services'=>$service,
+            'product'=>$product
+        );
+
+       
+
+        $response = array(
+          'estado' => 'success',
+          'campobuscar' => $request->message
+        );
+
+      return response()->json($coincidencias); 
+      
+   }
+
+   public function resultsearch($data)
+   {
+    if(Auth::user()){
+        $user = Auth::user();
+    }else{
+        $user='';
+    }
+    $pag        = '';
+    $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
+    return view('web.partials.pagina.resulbusqueda',compact('data','veterinary','user','pag'));
+   }
+
 
    public function contact()
    {
@@ -748,9 +798,9 @@ public function _howtoget_()
         }else{
             \Session::flash('warning', 'Para obtener un cupo debe registrarse en nuestra página'); 
             $user='';
-            //dd('inicia session');
             return redirect()->back();
         }
+
         $user['fecha']=$date;
         $veterinary = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
         $course     = Course::findOrFail($id);
@@ -874,7 +924,6 @@ public function _howtoget_()
         }else{
             \Session::flash('warning', 'Para obtener un cupo debe registrarse en nuestra página'); 
             $user='';
-            //dd('inicia session');
             return redirect()->back();
         }
         $user['fecha']=$date;
