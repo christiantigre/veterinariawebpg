@@ -37,6 +37,8 @@ class Note extends Model
           'visible',
           'webvisible',
           'visit',
+          'backgroud',
+          'colortext',
           'like',
           'share',
           'tag_id',

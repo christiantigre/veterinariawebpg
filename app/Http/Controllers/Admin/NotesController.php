@@ -103,6 +103,8 @@ class NotesController extends Controller
             'visible'=>$request->visible,
             'webvisible'=>$request->webvisible,
             'tag_id'=>$request->tag_id,
+            'backgroud'=>$request->backgroud,
+            'colortext'=>$request->colortext,
             'admins_id'=>$IdAdmin
         ]);
 
@@ -203,6 +205,8 @@ class NotesController extends Controller
             $note->visible = $request->visible;
             $note->webvisible = $request->webvisible;
             $note->tag_id = $request->tag_id;
+            $note->backgroud = $request->backgroud;
+            $note->colortext = $request->colortext;
             $note->admins_id = $IdAdmin;
             $note->save();
         }else{
@@ -218,6 +222,8 @@ class NotesController extends Controller
             $note->visible = $request->visible;
             $note->webvisible = $request->webvisible;
             $note->tag_id = $request->tag_id;
+            $note->backgroud = $request->backgroud;
+            $note->colortext = $request->colortext;
             $note->admins_id = $IdAdmin;
             $note->save();
         }

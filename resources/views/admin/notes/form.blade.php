@@ -73,6 +73,20 @@
         {!! $errors->first('tag_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('backgroud') ? 'has-error' : ''}}">
+    {!! Form::label('backgroud', 'Color fondo', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('backgroud', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('backgroud', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group {{ $errors->has('colortext') ? 'has-error' : ''}}">
+    {!! Form::label('colortext', 'Color texto', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('colortext', null, ['class' => 'form-control']) !!}
+        {!! $errors->first('colortext', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
