@@ -42,6 +42,7 @@ class Suscribir extends Model
         'fecha_deposito', 
         'fecha_suscripcion', 
         'orden_cupo', 
+        'separarcupos',
         'tipesuscription_id', 
         'curso_id',
         'user_id'

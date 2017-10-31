@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
-@section('content')       
+@section('content')   
+@include('errors.success')    
  <div class="row">
 
             <div class="col-md-12">

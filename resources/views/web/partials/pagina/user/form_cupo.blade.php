@@ -89,10 +89,23 @@
          <div class="input-group-addon">
            <i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i>
          </div>
-         {!! Form::text('celular', $user->celular, ['class' => 'form-control input-md','placeholder'=>'Celular']) !!}   
+         {!! Form::text('celular', $user->celular, ['class' => 'form-control input-md','placeholder'=>'Celular','value'=>'1']) !!}   
        </div>
      </div>
    </div>
+ <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Email Address">Cantidad cupos</label>  
+        <div class="col-md-4">
+          <div class="input-group {{ $errors->has('separarcupos') ? 'has-error' : ''}}">
+           <div class="input-group-addon">
+             <i class="fa fa-sticky-note-o"></i>
+           </div>
+           {!! Form::number('separarcupos', 1, ['class' => 'form-control input-md','placeholder'=>'N#','min'=>'1']) !!}    
+         </div>
+       </div>
+     </div>
+  
 
    <!-- checkbox -->
    <!-- Text input-->

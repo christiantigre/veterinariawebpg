@@ -77,7 +77,7 @@ class NoticesController extends Controller
         
         $requestData = $request->all();
 
-        if(!Input::file("img"))
+        /*if(!Input::file("img"))
         {
             $path="";
             $nombre="";
@@ -92,9 +92,21 @@ class NoticesController extends Controller
         $data = $request->session()->all();
         $mailAdmin = auth('admin')->user()->email;
         $IdAdmin = auth('admin')->user()->id;
-        $img=$requestData['img'];
+        $img=$requestData['img'];*/
+        if ($request->hasFile('img')) {
+            $file = Input::file('img');
+                $uploadPath = public_path('uploads/notices/');
+                $extension = $file->getClientOriginalName();
+                $file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/notices/'.$extension;
+                $requestData['nameimg'] = $extension;
+        }
+        $data = $request->session()->all();
+        $mailAdmin = auth('admin')->user()->email;
+        $IdAdmin = auth('admin')->user()->id;
+                $requestData['admins_id'] = $IdAdmin;
         
-        Notice::create([
+        /*Notice::create([
             'title'=>$request->title,
             'content'=>$request->content,
             'intro'=>$request->intro,
@@ -109,7 +121,8 @@ class NoticesController extends Controller
             'compgg'=>$request->compgg,
             'visible'=>$request->visible,
             'admins_id'=>$IdAdmin
-        ]);
+        ]);*/
+        Notice::create($requestData);
 
         Session::flash('flash_message', 'Notice added!');
 
@@ -168,10 +181,18 @@ class NoticesController extends Controller
         if (!empty($files)) {
                 $uploadPath = public_path('uploads/notices/');
                 $extension = $files->getClientOriginalName();
-                //$fileName = rand(11111, 99999) . '.' . $extension;
-
                 $files->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/notices/'.$extension;
+                $requestData['nameimg'] = $extension;
+
+                $item_delete = Notice::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/notices/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
         }
         
         $data = $request->session()->all();

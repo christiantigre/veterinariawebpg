@@ -30,7 +30,7 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-//use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -810,7 +810,6 @@ public function _howtoget_()
     }
 
     public function crearcupo(Request $request){
-
         $user = Auth::user();
         $this->validate($request, [
             'nombres' => 'required|max:150',
@@ -818,6 +817,7 @@ public function _howtoget_()
             'correo' => 'required|max:30',
             'telefono' => 'nullable|min:1',
             'celular' => 'nullable|min:1',
+            'separarcupos' => 'required|min:1',
         ]);
         $requestData = $request->all();
         if(empty($request->precio_teorico)){
@@ -875,8 +875,12 @@ public function _howtoget_()
 
         //$suscribir = Suscribir::where('curso_id',1)->get();
 
-        return view('web.partials.pagina.user.detallcupo', compact('suscribir','veterinary', 'pag','id','user'));
+        //return view('web.partials.pagina.user.detallcupo', compact('suscribir','veterinary', 'pag','id','user'));
+        //return redirect()->route('verdetallcupo', ['id' => $id])->compact('suscribir','veterinary', 'pag','id','user');
+        //return redirect('/courses');
+        $path = 'verdetallcupo/' . $suscribir->id;
 
+        return Redirect::to($path)->with('suscribir', $suscribir);
     }
 
     public function miscursos(Request $request, $id){
@@ -953,6 +957,7 @@ public function _howtoget_()
             'telefono' => 'nullable|min:1',
             'celular' => 'nullable|min:1',
             'valor_depositado' => 'numeric|nullable|min:1',
+            'separarcupos' => 'required|min:1',
         ]);
         $requestData = $request->all();
         if(empty($request->precio_teorico)){
@@ -978,6 +983,15 @@ public function _howtoget_()
             $file->move($uploadPath, $extension);
             $requestData['comprobante'] = 'uploads/comprobantes/'.$extension;
             $requestData['name_comprobante'] = $extension;
+
+                $item_delete = Suscribir::findOrFail($id);   
+                $move = $item_delete['name_comprobante'];
+                $old = public_path('uploads/comprobantes/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
         }
         $requestData['tipesuscription_id'] = '1';
         $requestData['fecha_suscripcion'] = $date;

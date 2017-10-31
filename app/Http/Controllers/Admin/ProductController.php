@@ -91,17 +91,20 @@ class ProductController extends Controller
         if ($request->hasFile('img')) {
             $file = Input::file('img');
                 $uploadPath = public_path('uploads/img/');
-
                 $extension = $file->getClientOriginalName();
                 //$fileName = rand(11111, 99999) . '.' . $extension;
-
                 $file->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/img/'.$extension;
+                $requestData['nameimg'] = $extension;
+        }
+        try {
+        Product::create($requestData);
+        Session::flash('success', 'Producto registrado!');            
+        } catch (\Exception $e) {
+        Session::flash('warning', '!!! Se produjo un error');            
+            
         }
 
-        Product::create($requestData);
-
-        Session::flash('flash_message', 'Product added!');
 
         return redirect('admin/product');
     }
@@ -167,16 +170,29 @@ class ProductController extends Controller
         if (!empty($files)) {
                 $uploadPath = public_path('uploads/img/');
                 $extension = $files->getClientOriginalName();
-                //$fileName = rand(11111, 99999) . '.' . $extension;
-
                 $files->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/img/'.$extension;
+                $requestData['nameimg'] = $extension;
+
+                $item_delete = Product::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/img/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }                
+
         }
 
         $product = Product::findOrFail($id);
-        $product->update($requestData);
-
-        Session::flash('flash_message', 'Product updated!');
+        try {
+            $product->update($requestData);
+            Session::flash('success', 'Actualizado correctamente!');
+        } catch (\Exception $e) {
+            Session::flash('warning', '!!!Error al actualizar');
+            
+        }
 
         return redirect('admin/product');
     }

@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
+@include('errors.success')
         <div class="row">
 
             <div class="col-md-12">
@@ -67,6 +68,25 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
+
+
+                                             {!! Form::open([
+                                                'method'=>'POST',
+                                                'url' => ['/admin/autosuscriber', $item->id],
+                                                'style' => 'display:inline'
+                                            ]) !!}
+        {!! Form::hidden('curso_id', $item->curso_id, null, ['class' => 'form-control']) !!}
+
+
+                                                {!! Form::button('<i class="fa fa-toggle-on" aria-hidden="true"></i> Suscribir', array(
+                                                        'type' => 'submit',
+                                                        'class' => 'btn btn-default btn-xs',
+                                                        'title' => 'Suscribir',
+                                                        'onclick'=>'return confirm("Desea confirmar la suscripción?")'
+                                                )) !!}
+                                            {!! Form::close() !!}
+
+
                                         </td>
                                     </tr>
                                 @endforeach

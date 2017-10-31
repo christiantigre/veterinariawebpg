@@ -63,7 +63,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Input::file("img")) {
+        /*if (!Input::file("img")) {
             $path = "";
         } else {
             $file   = Input::file('img');
@@ -72,7 +72,7 @@ class GalleryController extends Controller
             $image  = Image::make($file->getRealPath());
             $image->resize(1200, 900);
             $image->save($path);
-        }
+        }*/
 
         $this->validate($request, [
             'title' => 'required|max:30',
@@ -80,16 +80,19 @@ class GalleryController extends Controller
             'link' => 'max:150',
         ]);
         $requestData = $request->all();
+        if ($request->hasFile('img')) {
+            $file = Input::file('img');
+                $uploadPath = public_path('uploads/galery/');
+                $extension = $file->getClientOriginalName();
+                $image  = Image::make($file->getRealPath());
+                $image->resize(1200, 900);
+                $image->save($uploadPath.$extension);
+                //$file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/galery/'.$extension;
+                $requestData['nameimg'] = $extension;
+        }
 
-        Gallery::create([
-            'title'       => $request->title,
-            'intro'       => $request->intro,
-            'content'     => $request->content,
-            'img'         => 'uploads/galery/' . $nombre,
-            'link'        => $request->link,
-            'visible'     => $request->visible,
-            'category_id' => $request->category_id,
-        ]);
+        Gallery::create($requestData);
 
         Session::flash('flash_message', 'Gallery added!');
 
@@ -135,7 +138,7 @@ class GalleryController extends Controller
      */
     public function update($id, Request $request)
     {
-        if (!Input::file("img")) {
+        /*if (!Input::file("img")) {
             $nombre = "";
         } else {
             $file   = Input::file('img');
@@ -144,7 +147,7 @@ class GalleryController extends Controller
             $image  = Image::make($file->getRealPath());
             $image->resize(1200, 900);
             $image->save($path);
-        }
+        }*/
         $this->validate($request, [
             'title' => 'required|max:30',
             'img' => 'mimes:jpeg,png|max:1500',
@@ -154,7 +157,29 @@ class GalleryController extends Controller
 
         $gallery = Gallery::findOrFail($id);
 
-        if (!empty($nombre)) {
+        $files = Input::file('img');
+
+        if (!empty($files)) {
+                $uploadPath = public_path('uploads/galery/');
+                $extension = $files->getClientOriginalName();
+                //$files->move($uploadPath, $extension);
+                $image  = Image::make($files->getRealPath());
+                $image->resize(1200, 900);
+                $image->save($uploadPath.$extension);
+                $requestData['img'] = 'uploads/galery/'.$extension;
+                $requestData['nameimg'] = $extension;
+
+                $item_delete = Gallery::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/galery/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
+        }
+
+        /*if (!empty($nombre)) {
             $gallery->update(
                 [
                     'title'       => $request->title,
@@ -177,9 +202,13 @@ class GalleryController extends Controller
                     'category_id' => $request->category_id,
                 ]
             );
+        }*/
+        try {
+            $gallery->update($requestData);
+            Session::flash('success', 'Actualizado correctamente!');
+        } catch (\Exception $e) {
+            Session::flash('warning', 'Error al Actualizar!');            
         }
-
-        Session::flash('flash_message', 'Gallery updated!');
 
         return redirect('admin/gallery');
     }

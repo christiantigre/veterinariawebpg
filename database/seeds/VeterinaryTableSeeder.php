@@ -20,7 +20,7 @@ class VeterinaryTableSeeder extends Seeder
 'tlf2'=>'073014693',
 'cel1'=>'0993463289',
 'cel2'=>'0984271836',
-'mail'=>'austrogen.sv@gmail.com',
+'mail'=>'andrescondo17@gmail.com',
 'linkweb'=>'',
 'prop'=>'Austrogen',
 'gerent'=>'Dr. Manuel Humberto Guachún Yanza',

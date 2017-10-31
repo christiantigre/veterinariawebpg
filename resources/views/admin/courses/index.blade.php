@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content') 
+@include('errors.success')
         <div class="row">
 
             <div class="col-md-12">
@@ -45,8 +46,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('/admin/courses/' . $item->id) }}" title="View Course"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
-                                            <a href="{{ url('/admin/courses/' . $item->id . '/edit') }}" title="Edit Course"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                            <a href="{{ url('/admin/courses/' . $item->id) }}" title="View Course"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button>
+                                            </a>
+                                            <a href="{{ url('/admin/courses/' . $item->id . '/edit') }}" title="Edit Course"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+                                            </a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/courses', $item->id],
@@ -59,6 +62,10 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
+
+
+                                           
+
                                         </td>
                                     </tr>
                                 @endforeach

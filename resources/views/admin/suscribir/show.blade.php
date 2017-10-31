@@ -22,6 +22,27 @@
                                     'onclick'=>'return confirm("Confirm delete?")'
                             ))!!}
                         {!! Form::close() !!}
+
+
+
+                        {!! Form::open([
+                                                'method'=>'POST',
+                                                'url' => ['/admin/autosuscriber', $suscribir->id],
+                                                'style' => 'display:inline'
+                                            ]) !!}
+        {!! Form::hidden('curso_id', $suscribir->curso_id, null, ['class' => 'form-control']) !!}
+
+
+                                                {!! Form::button('<i class="fa fa-toggle-on" aria-hidden="true"></i> Suscribir', array(
+                                                        'type' => 'submit',
+                                                        'class' => 'btn btn-default btn-xs',
+                                                        'title' => 'Suscribir',
+                                                        'onclick'=>'return confirm("Desea confirmar la suscripción?")'
+                                                )) !!}
+                                            {!! Form::close() !!}
+
+
+
                         <br/>
                         <br/>
 
@@ -58,6 +79,9 @@
                                     </tr>
                                       <tr>
                                         <th> Valor depositado </th><td> {{ $suscribir->valor_depositado }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Cupos solicitados </th><td> {{ $suscribir->separarcupos }} </td>
                                     </tr>
                                       <tr><th> Fecha depósito </th><td> {{ $suscribir->fecha_deposito }} </td></tr>
                                       <tr><th> Fecha de suscripción </th><td> {{ $suscribir->fecha_suscripcion }} </td></tr>

@@ -1,4 +1,4 @@
-<div class="container-fluid top-fluid">
+<div class="container-fluid top-fluid" style="">
     @foreach($veterinary as $veterinari)
     <div class="col-md-3 text-center colo-fux logo hidden-xs hidden-sm">
         <p class="text-left text-center colo-fux">

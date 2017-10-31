@@ -24,6 +24,7 @@ class CreateNoticesTable extends Migration
             $table->integer('mens')->nullable();
             $table->date('fechainit')->nullable();
             $table->string('img', 150)->nullable();
+            $table->string('nameimg',150)->nullable();
             $table->string('day', 150)->nullable();
             $table->string('month', 50)->nullable();
             $table->text('compfb')->nullable();

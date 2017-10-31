@@ -67,6 +67,8 @@ class CoursesController extends Controller
             'link' => 'max:150',
             'nameslider' => 'max:50',
             'disponibles' => 'nullable|numeric',
+            'precio_teorico' => 'required|numeric|min:0',
+            'precio_practico' => 'required|numeric|min:0',
             //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf',
         ]);
         $data = $request->session()->all();
@@ -198,6 +200,8 @@ class CoursesController extends Controller
             'link' => 'max:150',
             'nameslider' => 'max:50',
             'disponibles' => 'nullable|numeric',
+            'precio_teorico' => 'required|numeric|min:0',
+            'precio_practico' => 'required|numeric|min:0',
             //'files' => 'mimes:jpg,jpeg,gif,png,xls,xlsx,doc,docx,pdf'
         ]);
         $files = $request->file('files');
@@ -309,10 +313,16 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            
         CoursesFiles::where('course_id', $id)->delete();
         Course::destroy($id);
 
-        Session::flash('flash_message', 'Course deleted!');
+        Session::flash('success', 'Courso eliminado!');
+        } catch (\Exception $e) {
+        Session::flash('warning', '!!! Error al eliminar');
+            
+        }
         return redirect('admin/courses');
     }
 

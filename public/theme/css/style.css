@@ -3,7 +3,28 @@
     /*font-family: 'Anton', sans-serif;*/
     /*font-family: 'Poppins', sans-serif;*/
     font-family: 'Ubuntu', sans-serif;
+    
 }
+.top-fluid{
+    background-color: #006A32;
+}
+.fade
+{
+        opacity:0.9;
+}
+.fade:hover
+{
+        opacity:1;
+}
+.fade:hover
+{
+box-shadow:
+1px 1px #53a7ea,
+2px 2px #53a7ea,
+3px 3px #53a7ea;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+} 
 
 h1 {
     color: #666666;

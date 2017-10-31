@@ -141,12 +141,20 @@ class ClienteController extends Controller
         if (!empty($files)) {
                 $uploadPath = public_path('uploads/users/');
                 $extension = $files->getClientOriginalName();
-                //$fileName = rand(11111, 99999) . '.' . $extension;
-
                 $files->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/users/'.$extension;
                 $requestData['nameimg'] = $extension;
+                $item_delete = User::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/users/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
         }
+
+
         $user->update($requestData);
 
         Session::flash('flash_message', 'Información Actualizada correctamente!');

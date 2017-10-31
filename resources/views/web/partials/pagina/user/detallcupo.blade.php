@@ -121,6 +121,18 @@
 
                        </td>
                     </tr>
+                    <tr>
+                      <th>Cupos solicitados</th>
+                      <td> 
+                        @if(empty($suscribir->separarcupos))
+                          En espera
+                        @else
+                          N# {{ $suscribir->separarcupos }}
+                        @endif
+
+
+                       </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

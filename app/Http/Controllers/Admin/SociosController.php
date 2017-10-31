@@ -85,41 +85,27 @@ class SociosController extends Controller
             'workplacelink' => 'max:150',
             'workplace' => 'max:150',
         ]);
-        if(!Input::file("img"))
-        {
-            $path="";
-            $nombre="";
-        }else{
+        
+        if ($request->hasFile('img')) {
             $file = Input::file('img');
-            $nombre = $file->getClientOriginalName();
-            $path = public_path('uploads/socios/'.$nombre);
-            $image = Image::make($file->getRealPath());
-            $image->resize(350, 400);
-            //$image->resize();
-            //$image->resize(1200, 900);
-            $image->save($path);
+                $uploadPath = public_path('uploads/socios/');
+                $extension = $file->getClientOriginalName();
+                $image  = Image::make($file->getRealPath());
+                $image->resize(350, 400);
+                $image->save($uploadPath.$extension);
+                //$file->move($uploadPath, $extension);
+                $requestData['img'] = 'uploads/socios/'.$extension;
+                $requestData['nameimg'] = $extension;
         }
         
-        //$requestData = $request->all();        
-        //Socio::create($requestData);
-         Socio::create([
-            'img'=>'uploads/socios/'.$nombre,
-            'description'=>$request->description,
-            'name'=>$request->name,
-            'lastname'=>$request->lastname,
-            'fb'=>$request->fb,
-            'tw'=>$request->tw,
-            'in'=>$request->in,
-            'gg'=>$request->gg,
-            'lk'=>$request->lk,
-            'especialitation'=>$request->especialitation,
-            'workplace'=>$request->workplace,
-            'workplacelink'=>$request->workplacelink,
-            'is_active'=>$request->is_active,
-            'abrevTitulo'=>$request->abrevTitulo
-        ]);
-
-        Session::flash('flash_message', 'Socio added!');
+        
+        try {            
+            Socio::create($requestData);
+            Session::flash('success', 'Socio registrado!');
+        } catch (\Exception $e) {
+            Session::flash('warning', '!!!Error al registrar socio');
+            
+        }
 
         return redirect('admin/socios');
     }
@@ -178,78 +164,37 @@ class SociosController extends Controller
             'workplacelink' => 'max:150',
             'workplace' => 'max:150',
         ]);
-        $rutaHead = 'uploads/socios/';
-        if(!Input::file("img"))
-            {
-                $nameHeader="";
-            }else{
-                $soc_delete = Socio::findOrFail($id);   
-                $move = $soc_delete['img'];
-                $old = public_path().'/'.$move;
-                       //verificamos si la imagen exist
+        
+        $requestData = $request->all();
+        $files = Input::file('img');
+
+        if (!empty($files)) {
+                $uploadPath = public_path('uploads/socios/');
+                $extension = $files->getClientOriginalName();
+                $image  = Image::make($files->getRealPath());
+                $image->resize(350, 400);
+                $image->save($uploadPath.$extension);
+                $requestData['img'] = 'uploads/socios/'.$extension;
+                $requestData['nameimg'] = $extension;
+
+                $item_delete = Socio::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/socios/').$move;
                 if(!empty($move)){
                     if(\File::exists($old)){
                         unlink($old);
                     }
                 }
-
-                $file = Input::file('img');
-                $nameHeader = $file->getClientOriginalName();
-                $path = public_path($rutaHead.$nameHeader);
-                $image = Image::make($file->getRealPath());
-                $image->resize(350, 400);
-                //$image->resize(1800, 720);
-                $image->save($path);
-            }
-            if (!empty($nameHeader)) {
-             $imgHead = $rutaHead.$nameHeader;   
-         }else{
-            $imgHead='';
         }
 
-
-        //$requestData = $request->all();
-        
-        //$socio = Socio::findOrFail($id);
-        //$socio->update($requestData);
-        if(empty($nameHeader)){
-            $socio = Socio::findOrFail($id);
-            $socio->description = $request->description;
-            $socio->abrevTitulo = $request->abrevTitulo;
-            $socio->name = $request->name;
-            $socio->lastname = $request->lastname;
-            $socio->fb = $request->fb;
-            $socio->tw = $request->tw;
-            $socio->in = $request->in;
-            $socio->gg = $request->gg;
-            $socio->lk = $request->lk;
-            $socio->especialitation = $request->especialitation;
-            $socio->blog = $request->blog;
-            $socio->workplacelink = $request->workplacelink;
-            $socio->workplace = $request->workplace;
-            $socio->is_active = $request->is_active;
-            $socio->save();
-        }else{
-            $socio = Socio::findOrFail($id);
-            $socio->img = $imgHead;
-            $socio->description = $request->description;
-            $socio->abrevTitulo = $request->abrevTitulo;
-            $socio->name = $request->name;
-            $socio->lastname = $request->lastname;
-            $socio->fb = $request->fb;
-            $socio->tw = $request->tw;
-            $socio->in = $request->in;
-            $socio->gg = $request->gg;
-            $socio->lk = $request->lk;
-            $socio->especialitation = $request->especialitation;
-            $socio->blog = $request->blog;
-            $socio->workplacelink = $request->workplacelink;
-            $socio->workplace = $request->workplace;
-            $socio->is_active = $request->is_active;
-            $socio->save();
+        $socio = Socio::findOrFail($id);
+        try {            
+            $socio->update($requestData);
+            Session::flash('success', 'Actualizado correctamente');
+        } catch (\Exception $e) {
+            Session::flash('warning', '!!!Error al actualizar');
+            
         }
-
-        Session::flash('flash_message', 'Socio updated!');
 
         return redirect('admin/socios');
     }

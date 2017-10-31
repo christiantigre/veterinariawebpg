@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('stock')->nullable();
             $table->integer('vendidos')->nullable();
             $table->string('img',150)->nullable();
+            $table->string('nameimg',150)->nullable();
             $table->boolean('visible')->default(1);
             $table->boolean('visible_slider')->default(1);
             $table->boolean('promocion')->default(1);

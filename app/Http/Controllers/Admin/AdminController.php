@@ -56,9 +56,9 @@ class AdminController extends Controller
             $count_cupo = Suscribir::where('curso_id', $ultimo->id)->where('tipesuscription_id',1)->count();
             $cupos = $ultimo->disponibles;
         }else{
-            $count = 0;
-            $count_cupo = 0;
-            $cupos = 0;
+            $count = "";
+            $count_cupo = "";
+            $cupos = "";
         }
         
 

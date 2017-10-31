@@ -76,12 +76,10 @@ class ServiceController extends Controller
         if ($request->hasFile('img')) {
             $file = Input::file('img');
                 $uploadPath = public_path('uploads/service/');
-
                 $extension = $file->getClientOriginalName();
-                //$fileName = rand(11111, 99999) . '.' . $extension;
-
                 $file->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/service/'.$extension;
+                $requestData['nameimg'] = $extension;
         }
         
         Service::create($requestData);
@@ -152,6 +150,15 @@ class ServiceController extends Controller
 
                 $files->move($uploadPath, $extension);
                 $requestData['img'] = 'uploads/service/'.$extension;
+                $requestData['nameimg'] = $extension;
+                $item_delete = Service::findOrFail($id);   
+                $move = $item_delete['nameimg'];
+                $old = public_path('uploads/service/').$move;
+                if(!empty($move)){
+                    if(\File::exists($old)){
+                        unlink($old);
+                    }
+                }
         }
         $service = Service::findOrFail($id);
         $service->update($requestData);

@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->double('precio_venta',15,2)->nullable();
             $table->double('porcent_descuento',15,2)->nullable();
             $table->string('img',150)->nullable();
+            $table->string('nameimg',150)->nullable();
             $table->boolean('visible_slider')->default(1);
             $table->boolean('promocion')->default(1);
             $table->boolean('nuevo')->default(1);

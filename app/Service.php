@@ -33,6 +33,7 @@ class Service extends Model
         'precio_venta', 
         'porcent_descuento', 
         'img', 
+        'nameimg',
         'visible_slider', 
         'promocion', 
         'nuevo', 

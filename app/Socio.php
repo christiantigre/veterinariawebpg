@@ -27,6 +27,7 @@ class Socio extends Model
      */
     protected $fillable = [
         'img', 
+        'nameimg',
         'description', 
         'name', 
         'lastname', 

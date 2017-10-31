@@ -120,9 +120,17 @@ class TypeCourseController extends Controller
      */
     public function destroy($id)
     {
+        try {
+
+
         TypeCourse::destroy($id);
 
-        Session::flash('flash_message', 'TypeCourse deleted!');
+        Session::flash('success', 'Eliminado correctamente!');
+            
+        } catch (\Exception $e) {
+        Session::flash('warning', '!!!Error al eliminar');
+            
+        }
 
         return redirect('admin/type-course');
     }

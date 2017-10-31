@@ -59,7 +59,9 @@
                                         @if(empty($user->img))
                                             <center>-</center>
                                             @else
+                                            <a href="{{ asset($user->img) }}">
                                             <img src="{{ asset($user->img) }}" class="img img-responsive">
+                                            </a>
                                             @endif
                                             </td>
                                     </tr>
@@ -70,6 +72,15 @@
                                             <small class="label pull-left bg-red">Desactivado</small>
                                         @endif
                                     </td></tr>
+
+                                    <tr><th> Notificar novedades </th><td> 
+                                        @if(($user->notificame)=='1')
+                                            <small class="label pull-left bg-green">Activado</small>
+                                        @else
+                                            <small class="label pull-left bg-red">Desactivado</small>
+                                        @endif
+                                    </td></tr>
+
                                 </tbody>
                             </table>
                         </div>

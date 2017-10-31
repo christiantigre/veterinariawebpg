@@ -30,6 +30,7 @@ class CreateSuscribirsTable extends Migration
             $table->date('fecha_deposito')->nullable();
             $table->date('fecha_suscripcion')->nullable();
             $table->integer('orden_cupo')->nullable();
+            $table->integer('separarcupos')->default(1);
             $table->integer('tipesuscription_id')->unsigned();
             $table->integer('curso_id')->unsigned();
             $table->integer('user_id')->unsigned();

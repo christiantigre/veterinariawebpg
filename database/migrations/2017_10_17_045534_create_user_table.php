@@ -26,6 +26,7 @@ class CreateUserTable extends Migration
             $table->text('nameimg')->nullable();
             $table->text('history')->nullable();
             $table->boolean('activo')->default(1);
+            $table->boolean('notificame')->default(1);
             $table->string('email',191)->unique();
             $table->string('password',191);
             $table->integer('id_country')->unsigned()->defaul(66);

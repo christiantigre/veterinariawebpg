@@ -26,6 +26,7 @@ class User extends Authenticatable
         'img',
         'nameimg',
         'activo',
+        'notificame',
         'email', 
         'password',
         'id_country',

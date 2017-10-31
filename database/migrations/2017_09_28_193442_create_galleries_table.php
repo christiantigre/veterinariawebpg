@@ -18,6 +18,7 @@ class CreateGalleriesTable extends Migration
             $table->text('intro')->nullable();
             $table->text('content')->nullable();
             $table->string('img', 150)->nullable();
+            $table->string('nameimg', 150)->nullable();
             $table->string('link', 150)->nullable();
             $table->boolean('visible')->default(1);
             $table->integer('category_id')->unsigned();

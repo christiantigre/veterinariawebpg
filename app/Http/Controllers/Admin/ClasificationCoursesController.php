@@ -129,9 +129,15 @@ class ClasificationCoursesController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            
         ClasificationCourse::destroy($id);
 
-        Session::flash('flash_message', 'ClasificationCourse deleted!');
+        Session::flash('success', 'Eliminado corretamente!');
+        } catch (\Exception $e) {
+        Session::flash('warning', '!!!Error al eliminar');
+            
+        }
 
         return redirect('admin/clasification-courses');
     }

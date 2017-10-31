@@ -20,11 +20,21 @@
 
             <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                placeholder="{{ trans('adminlte::adminlte.full_name') }}">
+                placeholder="Nombre">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>
+                </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback {{ $errors->has('apellidos') ? 'has-error' : '' }}">
+                <input type="text" name="apellidos" class="form-control" value="{{ old('apellidos') }}"
+                placeholder="Apellidos">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @if ($errors->has('apellidos'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('apellidos') }}</strong>
                 </span>
                 @endif
             </div>

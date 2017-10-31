@@ -15,6 +15,7 @@ class CreateSociosTable extends Migration
         Schema::create('socios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img', 150)->nullable();
+            $table->string('nameimg',150)->nullable();
             $table->text('description')->nullable();
             $table->string('abrevTitulo', 15)->nullable();
             $table->string('name', 50)->nullable();

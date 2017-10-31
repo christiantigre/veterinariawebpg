@@ -121,6 +121,53 @@ class SuscribirController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function autosuscriber($id, Request $request){
+        //dd($request);
+        $requestData = $request->all();
+        $suscribir = Suscribir::findOrFail($id);
+        
+            try {
+                
+            $requestData['tipesuscription_id']='2';
+            $contadordemismocurso = Suscribir::where('curso_id',$requestData['curso_id'])->where('tipesuscription_id',2)->count();
+        
+            $incremento=$contadordemismocurso+1;
+            Suscribir::where('id', $id)
+            ->update(['orden_cupo' => $incremento]);
+            $curso = Course::where('id',$requestData['curso_id'])->first();
+            $capacidad = $curso['disponibles'];
+            if(($capacidad)>0)
+            {
+                $decremento = $capacidad-1;
+                Course::where('id',$requestData['curso_id'])
+                ->update(['disponibles'=>$decremento]);
+
+                $data = array(
+                    'name'    => $request->nombres.' '.$request->apellidos,
+                    'cursotitulo'   => $curso->title,
+                    'mail'    => $suscribir['correo'],
+                    'subject' => 'Suscripción al curso '.$curso->title.' activada',
+                    'message' => ''
+                );
+                $to         = $suscribir['correo'];
+                Mail::to($to)->send(new NotifyClient($data));
+            }
+            
+
+            $suscribir->update($requestData);
+
+            Session::flash('flash_message', 'Suscripción aceptada con exito');
+                
+            } catch (\Exception $e) {
+                Session::flash('flash_message', '!!!Error al aceptar la suscripción');
+            }
+
+        return redirect('admin/suscribir');
+
+
+    }
+
+
     public function update($id, Request $request)
     {
 
