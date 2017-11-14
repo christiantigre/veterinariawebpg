@@ -814,7 +814,7 @@ public function _howtoget_()
         $this->validate($request, [
             'nombres' => 'required|max:150',
             'apellidos' => 'required|max:150',
-            'correo' => 'required|max:30',
+            'correo' => 'required|max:45',
             'telefono' => 'nullable|min:1',
             'celular' => 'nullable|min:1',
             'separarcupos' => 'required|min:1',

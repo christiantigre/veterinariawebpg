@@ -14,6 +14,7 @@ use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\notifyEmail;
+use Crypt;
 
 class UserController extends Controller
 {
@@ -25,6 +26,22 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('admin', ['except' => 'logout']);
+    }
+
+    public function nolist_users(){
+        $users = User::orderBy('id','DESC')->where('id',32)->first();
+        $clave = $users['password'];
+        $pass = Crypt::decrypt($clave);
+        dd($pass);
+    }
+
+    public function list_users()
+    {
+        $users = User::orderBy('id','DESC')->where('id',32)->first();        
+        $key = $users['password'];
+            $value = Crypt::decrypt($key);
+ 
+        return $value;
     }
 
     public function index(Request $request)

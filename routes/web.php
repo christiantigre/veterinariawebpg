@@ -120,6 +120,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/typesuscription', 'Admin\\TypesuscriptionController');
     Route::resource('/suscribir', 'Admin\\SuscribirController');   
     Route::resource('/user', 'Admin\\UserController');
+    Route::get('/userslist', 'Admin\UserController@list_users');
     Route::post('/autosuscriber/{id}', 'Admin\\SuscribirController@autosuscriber');
     Route::get('/buscar/usuario', 'Admin\UserController@buscarcliente');
 
