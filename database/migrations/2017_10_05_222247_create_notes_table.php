@@ -26,6 +26,8 @@ class CreateNotesTable extends Migration
             $table->boolean('webvisible')->nullable()->defaul(1);
             $table->integer('visit')->nullable();
             $table->integer('like')->nullable();
+            $table->text('backgroud')->nullable();
+            $table->text('colortext')->nullable();
             $table->integer('share')->nullable()->default(1);
             $table->integer('tag_id')->unsigned()->default(1);
             $table->foreign('tag_id')->references('id')->on('tags');

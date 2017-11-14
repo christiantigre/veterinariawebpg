@@ -28,6 +28,8 @@ class Notice extends Model
     protected $fillable = [
         'title', 'intro','content', 'link', 'img', 'nameimg','day', 
         'month', 'compfb', 'comptw', 'compgg', 
+          'backgroud',
+          'colortext',
         'visible','precio','asistire','preg','mens','fechainit','admins_id'
 ];
 

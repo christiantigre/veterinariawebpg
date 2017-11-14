@@ -29,8 +29,8 @@
                 @if(count($notices)>0)
                 @foreach($notices as $notice)
                 <li>
-                    <time datetime="2014-07-20">
-                        <span class="day">
+                    <time datetime="2014-07-20" style="background-color: {!! $notice->backgroud  !!};color: {!! $notice->colortext  !!};">
+                        <span class="day" style="">
                             {{ $notice->day }}
                         </span>
                         <span class="month">
@@ -43,7 +43,7 @@
                             ALL DAY
                         </span>
                     </time>
-                    <img alt="Independence Day" src="{{ asset($notice->img) }}"/>
+                    <img alt="Noticia" src="{{ asset($notice->img) }}"/>
                     <div class="info">
                         <h2 class="title">
                             {{ $notice->title }}
@@ -204,12 +204,12 @@
         @if(count($notes)>0)
             @foreach($notes as $nota)
                 <div class="col-md-4">
-                    <blockquote class="quote-box">
+                    <blockquote class="quote-box" style="background-color: {!! $nota->backgroud  !!};color: {!! $nota->colortext  !!};" >
                         <p class="quotation-mark">
                             “
                         </p>
                         <p class="quote-text">
-                            {{ str_limit($nota->description,60) }}
+                            {!! str_limit($nota->description,60) !!}
                         </p>
                         
                             <a href="{{url('DetallTopic', ['id' => $nota->id])}}">{{ $nota->title }}</a>

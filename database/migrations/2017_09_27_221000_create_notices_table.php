@@ -30,6 +30,8 @@ class CreateNoticesTable extends Migration
             $table->text('compfb')->nullable();
             $table->text('comptw')->nullable();
             $table->text('compgg')->nullable();
+            $table->text('backgroud')->nullable();
+            $table->text('colortext')->nullable();
             $table->boolean('visible')->nullable()->default(1);
             $table->integer('admins_id')->unsigned()->default(1);;
             $table->foreign('admins_id')->references('id')->on('admins');

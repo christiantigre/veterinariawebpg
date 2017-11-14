@@ -47,7 +47,7 @@
                                                         @foreach($socios as $socio)
                                                         <center>
 
-                                                            <div class="item col-lg-4 col-xs-12 text-center ">
+                                                            <div class="item col-md-3 col-lg-3 col-xs-12 text-center ">
                                                                 <div class="pic">
                                                                     <img src="{{ asset($socio->img) }}" alt="{{ $socio->name }}"><div class="hover-effect">
 
