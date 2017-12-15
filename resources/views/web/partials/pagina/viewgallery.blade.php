@@ -68,8 +68,8 @@
     } 
     */
     .gal-container{
-        margin-top: 10px;
-      }
+      margin-top: 10px;
+    }
     @media(max-width:320px) {
       .gal-container{
         margin-top:15px;
@@ -139,9 +139,9 @@
                   </ul>
                   <div class="sixteen columns" style="background: #ffffff;color: #999999;">
                     @if(!empty($detall))
-                  {{ $detall }}
-                  @endif
-                </div>
+                    {{ $detall }}
+                    @endif
+                  </div>
                 </div>
               </div>
 
