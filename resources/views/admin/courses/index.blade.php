@@ -29,7 +29,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Titulo</th><th>Introducción</th><th>Imagen</th><th>Actions</th>
+                                        <th>ID</th><th>Titulo</th><th>Introducción</th><th>Imagen</th><th>Activo</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +43,13 @@
                                             <center>-</center>
                                             @else
                                             <img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo brand-centered">
+                                            @endif
+                                        </td>
+                                        <td>
+                                        @if(($item->visible)=='1')
+                                                <small class="label pull-right bg-green">En curso</small>
+                                            @else
+                                            <small class="label pull-right bg-red">Finalizado</small>
                                             @endif
                                         </td>
                                         <td>
