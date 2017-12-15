@@ -64,6 +64,10 @@
                                             <a href="{{ asset( $suscribir->comprobante ) }}">
                                             <img class="img img-responsive" src="{{ asset( $suscribir->comprobante ) }}"></img>
                                             </a>
+                                            <a href="{{ asset( $suscribir->comprobante ) }}">
+                                            Ver Imagen                                            
+                                            </a>
+
                                             @endif
                                      </td></tr>
                                       <tr><th> Número control </th><td> {{ $suscribir->numero_control }} </td></tr>

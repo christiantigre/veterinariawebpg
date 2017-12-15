@@ -70,6 +70,12 @@ php artisan crud:generate Suscribir --fields_from_file="/home/pcsolution/Dropbox
 
 php artisan crud:generate User --fields="name#string; nombres#string; apellidos#string; telefono#string; celular#string; fecha_nacimiento#date; domicilio#string; img#file; history#text; activo#boolean; email#string; password#string" --view-path=admin --controller-namespace=Admin --route-group=admin
 
+crea albun
+
+php artisan crud:generate Albun --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldalbun.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Image --fields_from_file="/home/pcsolution/Dropbox/webpageveterinaria/public/fields/fieldimages.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
 laravel chat
 https://www.youtube.com/watch?v=5_VlSC5eXRU
 
@@ -209,3 +215,6 @@ password: u873982574
 port: 21
 
 sitio: http://www.austrogen.com/
+
+diseñarwebs
+http://develoteca.com/17-frameworks-para-material-design/

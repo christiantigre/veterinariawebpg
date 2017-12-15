@@ -1,87 +1,185 @@
 @extends('web.index')
 @section('content')
 
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('theme/pluging/galery/dist/viewer.css') }}">
+  <style>
+    .pictures, #picture {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      max-width: 30rem;
+    }
+
+    .pictures, #picture > li {
+      float: left;
+      width: 33.3%;
+      height: 33.3%;
+      margin: 0 -1px -1px 0;
+      border: 1px solid transparent;
+      overflow: hidden;
+    }
+
+    .pictures , #picture > li > img {
+      width: 100%;
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in;
+    }
+
+    .viewer-download {
+      color: #fff;
+      font-family: FontAwesome;
+      font-size: .75rem;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+
+    .viewer-download::before {
+      content: "\f019";
+    }
+  </style>
+
+
 <div class="container-fluid fondo-quint" style="background: #ffffff;">
-    <div class="sixteen columns" style="background: #ffffff;">
-        <div class="sub-text link-svgline">
+  
 
-            @if(count($secciones)>0)
-        @foreach($secciones as $sec)
-        @if(($sec->section)=='galeria')
 
-                {!! $sec->title !!}
+  <div class="sixteen columns" style="background: #ffffff;">
+    <div class="sub-text link-svgline">
 
-        {!! $sec->subtitle !!}
+      @if(count($secciones)>0)
+      @foreach($secciones as $sec)
+      @if(($sec->section)=='galeria')
 
-        @endif
-        @endforeach
-        @else
-        No configurado
-        @endif
-        </div>
+      {!! $sec->title !!}
+
+      {!! $sec->subtitle !!}
+
+      @endif
+      @endforeach
+      @else
+      No configurado
+      @endif
     </div>
-    <div class="row " style="position: relative;top: -90px; background: #ffffff;">
-        <div class="col-md-12 gal-container" style="margin-top:0px;">
-            <div class="work">
-                <div class="category-buttons">
-                    @if(count($categories)>0)
-                    <a class="active all" data-group="all" href="#">
-                        Todas
-                    </a>
-                    @foreach($categories as $category)
-                    <a data-group="{{ $category->category }}" href="#">
-                        {{ $category->category }}
-                    </a>
-                    @endforeach
-                    @else
-                    No configurado la sección de categorias
-                    @endif
+  </div>
+  <div class="row " style="position: relative;top: -90px; background: #ffffff;">
+    <div class="col-md-12 gal-container" style="margin-top:0px;">
+      <!--INICIO DE TAB PANEL GALERIA-->
+      <div id="exTab1" class="container">
+        <ul  class="nav nav-pills">
+          <?Php $i = 1;?>
+          @foreach($categories as $category)
+          @if($i=='1')
+          <li class="active">
+            <a  href="{{ url('gallerycategory') }}/{{ $category->id }}" class="tab-class">{{ $category->category }}</a>
+          </li>
+          @else
+          <li>
+            <a href="{{ url('gallerycategory') }}/{{ $category->id }}" class="tab-class">{{ $category->category }}</a>
+          </li>
+          @endif
+          <?Php $i++;?>
+          @endforeach
+        </ul>
+        <div class="tab-content clearfix">
+          @foreach($categories as $cat)
+          <?php 
+          $contpanel = 1;
+          ?>
+          <div class="tab-pane active" id="{{ $cat->id }}">
+            <!--  galeria  -->
+            <div class="work" style="margin-top: 5px; height: auto;">
+              <div class="category-buttons">
+                <div class="toolbar mb2 mt2">
+                  @foreach($albuns as $alb)
+                  @if(($alb->category_id)==($cat->id))
+                  <a class="btn-albun fil-cat" href="" data-rel="{{ $alb->id }}">
+                    {{ $alb->namealbun }}
+                  </a>
+                  @endif
+                  @endforeach
                 </div>
-                <div class="grid gal-item" id="grid">
-                    @if(count($galleries)>0)
-                    @foreach($galleries as $galery)
-
-                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#{{ $galery->Category->category }}">
-                        <img class="example-image" src="{{ asset($galery->img) }}"/>
-                        <div class="title">
-                            <p>{{ str_limit($galery->intro,50) }}</p> {{ $galery->Category->category }}
-                        </div>
-                    </a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="{{ $galery->Category->category }}" role="dialog">
-                        <div class="modal-dialog">
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <div class="modal-body">
-                                <img src="{{ asset($galery->img) }}" style="width: 100%; height: auto;">
-                            </div>
-                            <div class="col-md-12 description">
-                              <a href="{{url('DetallGalleryItem', ['id' => $galery->id])}}">
-                                @if(empty($gallery->intro))
-                                <p><h4>{{  str_limit($galery->title,60)  }}</h4></p>
-                                @else
-                                <p><h4>{{  str_limit($galery->intro,60)  }}</h4></p>
-                                @endif
-                              </a>
-                          </div>
-                      </div>
-                  </div>
               </div>
-              <!--fin modal-->
+            </div>
+            <div id="portfolio" style="margin-top: -60px; height: auto;">
 
+              <div id="galley">
+                <ul class="picture" id="picture">
+              @foreach($images as $img)
+                  <li>                    
+                  <img data-original="{{ asset($img->file_path) }}" src="{{ asset($img->file_path) }}" alt="" />
+                  </li>
               @endforeach
-              @else
-              No configurado la sección de galegia
-              @endif
-
-
-              <div class="guide">
+                </ul>
               </div>
+            </div>
+            <!--  fin galeria  -->
           </div>
+          <?Php $contpanel++;?>
+          @endforeach
+        </div>
       </div>
+
+      <!--INICIO DE TAB PANEL GALERIA-->
+    </div>
   </div>
 </div>
-</div>
+
+<!--<div id="galley">
+      <ul class="pictures">
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Cuo Na Lake"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Tibetan Plateau"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Jokhang Temple"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Potala Palace 1"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Potala Palace 2"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Potala Palace 3"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Lhasa River"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Namtso 1"></li>
+        <li><img data-original="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" src="{{ asset('uploads/galery/9-10-5a25fa6bd4cfcprogramador.jpg') }}" alt="Namtso 2"></li>
+      </ul>
+    </div>-->
+
+
+<link rel="stylesheet" href="{{ asset('theme/pluging/galery/css/style.css') }}">
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+<script  src="{{ asset('theme/pluging/galery/js/index.js') }}"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('theme/pluging/galery/dist/viewer.js') }}"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var galley = document.getElementById('galley');
+      var viewer = new Viewer(galley, {
+        url: 'data-original',
+        toolbar: {
+          oneToOne: true,
+          prev: function() {
+            viewer.prev(true);
+          },
+          play: true,
+          next: function() {
+            viewer.next(true);
+          },
+          download: function() {
+            const a = document.createElement('a');
+
+            a.href = viewer.image.src;
+            a.download = viewer.image.alt;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          },
+        },
+      });
+    });
+  </script>
+
 
 @stop

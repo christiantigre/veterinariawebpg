@@ -47,10 +47,8 @@
                             <p>{{ str_limit($galery->intro,50) }}</p> {{ $galery->Category->category }}
                         </div>
                     </a>
-                    <!-- Modal -->
                       <div class="modal fade" id="{{ $galery->Category->category }}" role="dialog">
                         <div class="modal-dialog">
-                          <!-- Modal content-->
                           <div class="modal-content">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                               <div class="modal-body">
@@ -68,7 +66,6 @@
                             </div>
                         </div>
                       </div>
-                      <!--fin modal-->
 
                     @endforeach
                     @else
@@ -83,3 +80,4 @@
         </div>
     </div>
 </div>
+

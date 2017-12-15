@@ -1,0 +1,56 @@
+{
+    "fields": [
+        {
+            "name": "file_name",
+            "type": "text"
+        }, 
+        {
+            "name": "file_size",
+            "type": "text"
+        }, 
+        {
+            "name": "file_mime",
+            "type": "text"
+        }, 
+        {
+            "name": "file_path",
+            "type": "text"
+        }, 
+        {
+            "name": "category_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "albun_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "category_id",
+            "references": "id",
+            "on": "categories"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "albun_id",
+            "references": "id",
+            "on": "albuns"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Category",
+            "type": "belongsTo",
+            "class": "App\\Category"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Albun",
+            "type": "belongsTo",
+            "class": "App\\Albun"
+        }
+    ]
+}

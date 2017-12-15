@@ -16,7 +16,9 @@
                 @if(empty($gallery->img))
                 Sin imagen de encabezado
                 @else
+                <a href="{{ url($gallery->img) }}">                    
                 <img style="width:100%" src="{{ asset($gallery->img) }}" />
+                </a>
                 @endif
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 text">

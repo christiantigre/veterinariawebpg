@@ -85,9 +85,13 @@
 
     <!-- Tinymce -->
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="{{ asset('vendor/adminlte/plugins/tinymce/tinymce.min.js') }}"></script>
     
 
-      
+
+    <!-- Dropzone -->
+    <script type="text/javascript" src="{{ asset('vendor/adminlte/plugins/dropzone/dropzone.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/adminlte/plugins/dropzone/dropzone.min.css') }}">
     
     @if(config('adminlte.plugins.datatables'))
         <!-- DataTables -->

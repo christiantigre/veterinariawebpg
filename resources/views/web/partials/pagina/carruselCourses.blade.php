@@ -4,7 +4,7 @@
     
 
 
-    <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 text-center clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center clearfix">
       @if(count($secciones)>0)
 
 

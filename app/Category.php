@@ -31,5 +31,15 @@ class Category extends Model
     {
         return $this->hasMany('App\Subcategory', 'id');
     }
+
+    public function Albun()
+    {
+        return $this->hasMany('App\Albun', 'id');
+    }
+
+    public function albuns()
+    {
+        return $this->hasMany('App\Albun');
+    }
     
 }

@@ -17,6 +17,7 @@
         "laravelcollective/html": "^5.5",
         "maatwebsite/excel": "^2.1",
         "nesbot/carbon": "^1.22",
+        "renatomarinho/laravel-page-speed": "^1.8",
         "unisharp/laravel-filemanager": "^1.8"
     },
     "require-dev": {

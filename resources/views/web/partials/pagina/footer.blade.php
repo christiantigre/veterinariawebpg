@@ -140,7 +140,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <p>
-                    Copyright © 2017. Christian Tigre.
+                    Copyright © 2017 - Austrogen.
                 </p>
             </div>
             <div class="col-sm-6">

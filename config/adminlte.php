@@ -272,6 +272,11 @@ return [
             'text'       => 'Galeria',
             'icon_color' => 'aqua',
             'url'  => 'admin/gallery',
+        ],
+        [
+            'text'       => 'Albun',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/albun',
         ],        
         [
             'text'    => 'Slider',

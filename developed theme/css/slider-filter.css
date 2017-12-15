@@ -1,13 +1,18 @@
 .work {
+  padding-bottom: 10px;
+  margin-top: 20px;
+  /*
   padding-bottom: 40px;
   margin-top: 60px;
+  */
 }
 .work * {
   box-sizing: border-box;
 }
 .work .category-buttons {
   text-align: center;
-  margin: 0 0 60px 0;
+  margin: 0 0 10px 0;
+
 }
 @media (max-width: 610px) {
   .work .category-buttons {
@@ -39,7 +44,8 @@
   text-decoration: none;
   padding: 9px 15px;
   border: 1px solid #9A9A9A;
-  margin: 0 10px;
+  /*margin: 0 10px;*/
+  margin: 0 1px;
   cursor: pointer;
 }
 .work .category-buttons a.active {

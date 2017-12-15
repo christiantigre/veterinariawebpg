@@ -1,242 +1,470 @@
-<div class="container-fluid top-fluid">
-    @foreach($veterinary as $veterinari)
-    <div class="col-md-3 text-center colo-fux logo hidden-xs hidden-sm">
-        <p class="text-left text-center colo-fux">
-            <a href="{{ url('/') }}">
-                @if(!empty($veterinari->logo))
-                <img class="logo_header" style="" src="{{ asset($veterinari->logo) }}" style="
-                max-width: 40%; 
-                height: auto; 
-                " />
-                @else
-                <img class="logo_header" src="{{ asset('theme/images/log.png') }}" style="
-                max-width: 40%; 
-                height: auto; 
-                " />
-                @endif
-            </a>
-        </p>
-    </div>
-    <div class="col-md-3 text-center colo-fux info">
-        <div class="" id="bs-megadropdown-tabs">
-            <span class="nav-text">
-                <i aria-hidden="true" class="fa fa-phone">
-                </i>
-                + {{ $veterinari->tlf1 }} | + {{ $veterinari->cel1 }}
-                <i aria-hidden="true" class="fa fa-envelope">
-                </i>
-                {{ $veterinari->mail }}
-            </span>
+<div class="container-fluid fondo-quint">
+    <div class="sixteen columns">
+        <div class="sub-text link-svgline">
+            @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='galeria')
+
+        <div class="sixteen columns">
+            <div class="sub-text link-svgline">
+                {!! $sec->title !!}
+            </div>
+        </div>
+
+        <p>{!! $sec->subtitle !!}</p>
+
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
         </div>
     </div>
-    <div class="col-md-3 text-center colo-fux ico">
-        <div class="" id="bs-megadropdown-tabs">
-            <a class="btn-social btn-facebook" href="{{ $veterinari->fb }}" target="_blank">
-                <i class="fa fa-facebook">
-                </i>
-            </a>
-            <a class="btn-social btn-twitter" href="{{ $veterinari->tw }}" target="_blank">
-                <i class="fa fa-twitter">
-                </i>
-            </a>
-            <a class="btn-social btn-instagram" href="{{ $veterinari->in }}" target="_blank">
-                <i class="fa fa-instagram">
-                </i>
-            </a>
-            <a class="btn-social btn-youtube" href="{{ $veterinari->yt }}" target="_blank">
-                <i class="fa fa-youtube">
-                </i>
-            </a>
-            <a class="btn-social btn-google-plus" href="{{ $veterinari->gg }}" target="_blank">
-                <i class="fa fa-google-plus">
-                </i>
-            </a>
+    <div class="row " style="position: relative;top: -90px;">
+        <div class="col-md-12 gal-container">
+            <div class="work">
+                <div class="category-buttons">
+                    @if(count($categories)>0)
+                            <a class="active all" data-group="all" href="#">
+                                Todas
+                            </a>
+                    @foreach($categories as $category)
+                            <a data-group="{{ $category->category }}" href="#">
+                                {{ $category->category }}
+                            </a>
+                    @endforeach
+                    @else
+                        No configurado la sección de categorias
+                    @endif
+                </div>
+                <div class="grid gal-item" id="grid">
+                    @if(count($galleries)>0)
+                    @foreach($galleries as $galery)
+
+                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#{{ $galery->Category->category }}">
+                        <img class="example-image" src="{{ asset($galery->img) }}"/>
+                        <div class="title">
+                            <p>{{ str_limit($galery->intro,50) }}</p> {{ $galery->Category->category }}
+                        </div>
+                    </a>
+                      <div class="modal fade" id="{{ $galery->Category->category }}" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                              <div class="modal-body">
+                                <img src="{{ asset($galery->img) }}" style="width: 100%; height: auto;">
+                              </div>
+                                <div class="col-md-12 description">
+                              <a href="{{url('DetallGalleryItem', ['id' => $galery->id])}}">
+                                @if(empty($gallery->intro))
+                                <p><h4>{{  str_limit($galery->title,60)  }}</h4></p>
+                                @else
+                                <p><h4>{{  str_limit($galery->intro,60)  }}</h4></p>
+                                @endif
+                              </a>
+                          </div>
+                            </div>
+                        </div>
+                      </div>
+
+                    @endforeach
+                    @else
+                        No configurado la sección de galegia
+                    @endif
+
+
+                    <div class="guide">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    @endforeach
-    <div class="col-md-3 text-center colo-fux ">
-
-        <div class="" id="bs-megadropdown-tabs">
-
-            <ul class="nav navbar-nav navbar-right right ses_cta navegador">
-                <li id="lisearch">
-
-                <!--<div class="col-md-12 ">
-                    <div class="input-group searcharea">
-                        <input type="text" class="form-control SearchBar" placeholder="Buscar...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-defaul SearchButton" type="button">
-                                <span class=" glyphicon glyphicon-search SearchIcon" ></span>
-                            </button>
-                        </span>
-                    </div><!-- /input-group -->
-                    <!--</div><!-- /input-group -->
+</div>
 
 
 
-                          <!--<a class="search right_a hover_class" href="#search">
-                                ...
-                                <input type="text" class="form-control SearchBar" placeholder="Buscar...">
-                                <span class="glyphicon glyphicon-search">
-                                </span>
-                            </a>-->
 
-                            <div class="search_div dropdown-toggle right_a hover_class hidden-xs">
-                                <!--<form id="buscador" name="buscador" method="post" action="{{ url('/busquedas') }}">-->
+------------------------------------------------------------------------
 
 
-                                    @include('web.partials.pagina.cajas.buscador')
 
-
-                                    </div>
-
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle right_a hover_class" data-toggle="dropdown" href="#">
-                                        CUENTA
-                                        <span class="caret">
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu" id="login-dp">
-                                        <li>
-                                            <div class="row centered">
-                                                <div class="col-md-12">
-                                                    @if (Route::has('login'))
-
-                                                    @auth
-                                                    <ul class="licredentials dropdown-cred" id="ejm2">
-                                                        <div class="row centered">
-                                                            <div class="col-md-12 center">
-
-                                                                <li>
-                                                                  <span class="item">
-                                                                    <div class="receipt-left">
-                                                                        <span class="item-left">
-                                                                            @if(!empty($user->img))
-                                                                            <img class="img-responsive" alt="iamgurdeeposahan" style="width: 71px; border-radius: 43px;" src="{{ asset($user->img) }}" alt="" />
-                                                                            @else
-                                                                            <img class="img-responsive" alt="iamgurdeeposahan" style="width: 71px; border-radius: 43px;" src="{{ asset('uploads/statics/avatar.jpg') }}" alt="" />
-                                                                            @endif
-                                                                            <span class="item-info">
-                                                                                <span>{{ $user->name }}</span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </div>
-                                                                </span>
-                                                            </li>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <li>
-                                                                <a href="{{ url('perfil') }}">
-                                                                    <small>  Perfil</small>                                                    
-                                                                </a>
-                                                                @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
-                                                                <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
-                                                                  <small>
-                                                                    {{ trans('adminlte::adminlte.log_out') }}
-                                                                </small>
-                                                            </a>
-                                                        </li>
-                                                        @else
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                       <li>
-                                                        <a href="#"
-                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                                        >
-                                                        <small>
-                                                          {{ trans('adminlte::adminlte.log_out') }}
-                                                      </small>
-                                                  </a>
-                                                  <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
-                                                    @if(config('adminlte.logout_method'))
-                                                    {{ method_field(config('adminlte.logout_method')) }}
-                                                    @endif
-                                                    {{ csrf_field() }}
-                                                </form>
-                                            </li>
+<div class="row " style="position: relative;top: 0px;">
+                                <div class="col-md-12 gal-container">
+                                    <div class="work">
+                                        <div class="category-buttons">
+                                            @foreach($albuns as $alb)
+                                                @if(($alb->category_id)==($cat->id))
+                                                    <a data-group="{{ $alb->id }}" href="#">
+                                                        {{ $alb->namealbun }}
+                                                    </a>
+                                                @endif
+                                            @endforeach
                                         </div>
+
+                                        <!-- zone img -->
+                                       
+                                        <!-- end zone img -->
+
                                     </div>
+                                </div>
+                            </div>
 
-                                    @endif
-                                    @else
-                                    <div class="center">
-                                        <li class="col">
-                                            <a href="{{ url('/login') }}" class="pull-left"> Ingresar </a>
-                                        </li>
-                                        <li class="col">
-                                          <a href="{{ ('/register') }}" class="pull-right">Registrarse</a> 
-                                      </li>
 
-                                  </div>
-                                  @endauth
-                                  @endif
 
-                              </ul>
+
+
+
+
+
+ <div class="grid gal-item" id="grid">
+                                            @foreach($images as $galery)
+                                                @if(($galery->albun_id)==($alb->id))
+                                            <a class="card" data-groups="{{ $galery->albun_id }}," href="#" data-toggle="modal" data-target="#{{ $galery->albun_id }}">
+                                                <img class="example-image" src="{{ asset($galery->file_path) }}"/>
+                                                <div class="title">
+                                                    <p>{{ str_limit($galery->namealbun,50) }}</p> {{ $galery->albun->namealbun }}
+                                                </div>
+                                            </a>
+                                            @endif
+                                              <div class="modal fade" id="{{ $galery->albun->id }}" role="dialog">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                      <div class="modal-body">
+                                                        <img src="{{ asset($galery->file_path) }}" style="width: 100%; height: auto;">
+                                                      </div>
+                                                        <div class="col-md-12 description">
+                                                      <a href="{{url('DetallGalleryItem', ['id' => $galery->id])}}">
+                                                        @if(empty($gallery->intro))
+                                                        <p><h4>{{  str_limit($galery->title,60)  }}</h4></p>
+                                                        @else
+                                                        <p><h4>{{  str_limit($galery->intro,60)  }}</h4></p>
+                                                        @endif
+                                                      </a>
+                                                  </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                            @endforeach
+                                            <div class="guide">
+                                            </div>
+                                        </div>
+
+
+
+<____________________________________funciona / copiar todo y reemplazar en el todo el blade________________________________________>
+
+
+<div class="container-fluid">
+    <div class="sixteen columns">
+        <div class="sub-text link-svgline">
+            @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='galeria')
+
+        <div class="sixteen columns">
+            <div class="sub-text link-svgline">
+                {!! $sec->title !!}
+            </div>
+        </div>
+
+        <p>{!! $sec->subtitle !!}</p>
+
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
+        </div>
+    </div>
+
+<!--INICIO DE TAB PANEL GALERIA-->
+<div id="exTab1" class="container">
+        <ul  class="nav nav-pills">
+            <?Php $i = 1;?>
+            @foreach($categories as $category)
+                @if($i=='1')
+                    <li class="active">
+                        <a  href="#{{ $category->id }}" data-toggle="tab" class="tab-class">{{ $category->category }}</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="#{{ $category->id }}" data-toggle="tab" class="tab-class">{{ $category->category }}</a>
+                    </li>
+                @endif
+            <?Php $i++;?>
+            @endforeach
+        </ul>
+            <div class="tab-content clearfix">
+                @foreach($categories as $cat)
+                    @foreach($albuns as $alb)
+                        @if(($alb->category_id)==($cat->id))
+                    <div class="tab-pane active" id="{{ $cat->id }}">
+                        <!--  galeria  -->
+                            <div class="work" style="margin-top: 5px; height: auto;">
+                                <div class="category-buttons">
+                                    <div class="toolbar mb2 mt2">
+                                    @foreach($albuns as $alb)
+                                        @if(($alb->category_id)==($cat->id))
+                                            <a class="btn-albun fil-cat" href="" data-rel="{{ $alb->id }}">
+                                                {{ $alb->namealbun }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        <div id="portfolio" style="margin-top: -60px; height: auto;">
+                            <?Php $contImg=1; ?>
+                            @foreach($images as $img)
+                                    <div class="tile scale-anm {{ $img->albun_id }} all">
+                                        <img src="{{ asset($img->file_path) }}" alt="" />
+                                    </div>                               
+                            @endforeach
+                        </div>
+                        <!--  fin galeria  -->
+                    </div>
+                        @endif
+                    @endforeach
+                @endforeach
+            </div>
+  </div>
+
+<!--INICIO DE TAB PANEL GALERIA-->
+
+
+
+    </div>
+
+
+
+
+      <link rel="stylesheet" href="{{ asset('theme/pluging/galery/css/style.css') }}">
+
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script  src="{{ asset('theme/pluging/galery/js/index.js') }}"></script>
+
+
+
+
+<------------------------fin copiar todo en blade-------------------------------------------->
+    
+
+
+    <------------------------------------------FUNCIONAL 2----------------------------------------->
+    <div class="container-fluid">
+    <div class="sixteen columns">
+        <div class="sub-text link-svgline">
+            @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='galeria')
+
+        <div class="sixteen columns">
+            <div class="sub-text link-svgline">
+                {!! $sec->title !!}
+            </div>
+        </div>
+
+        <p>{!! $sec->subtitle !!}</p>
+
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
+        </div>
+    </div>
+
+<!--INICIO DE TAB PANEL GALERIA-->
+<div id="exTab1" class="container">
+        <ul  class="nav nav-pills">
+            <?Php $i = 1;?>
+            @foreach($categories as $category)
+                @if($i=='1')
+                    <li class="active">
+                        <a  href="#{{ $category->id }}" data-toggle="tab" class="tab-class">{{ $category->category }}</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="#{{ $category->id }}" data-toggle="tab" class="tab-class">{{ $category->category }}</a>
+                    </li>
+                @endif
+            <?Php $i++;?>
+            @endforeach
+        </ul>
+     <div class="tab-content clearfix">
+        @foreach($categories as $cat)
+            @foreach($albuns as $alb)
+                @if(($alb->category_id)==($cat->id))
+                    <div class="tab-pane active" id="{{ $cat->id }}">
+                        <!--  galeria  -->
+                        <div class="work" style="margin-top: 5px; height: auto;">
+                            <div class="category-buttons">
+                                <div class="toolbar mb2 mt2">
+                                    @foreach($albuns as $alb)
+                                        @if(($alb->category_id)==($cat->id))
+                                            <a class="btn-albun fil-cat" href="" data-rel="{{ $alb->id }}">
+                                                {{ $alb->namealbun }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div id="portfolio" style="margin-top: -60px; height: auto;">
+                            @foreach($images as $img)
+                                <div class="tile scale-anm {{ $img->albun_id }} all">
+                                    <img src="{{ asset($img->file_path) }}" alt="" />
+                                </div>
+                            @endforeach
+                        </div>
+                        <!--  fin galeria  -->
+                    </div>
+                @endif
+            @endforeach
+        @endforeach
+        <a href="{{ url('/gallery') }}" class="btn-albun fil-cat">
+            VER MÁS
+        </a>
+    </div>
+  </div>
+
+<!--INICIO DE TAB PANEL GALERIA-->
+
+
+
+    </div>
+
+
+
+
+      <link rel="stylesheet" href="{{ asset('theme/pluging/galery/css/style.css') }}">
+
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script  src="{{ asset('theme/pluging/galery/js/index.js') }}"></script>
+    <------------------------------------------FIN FUNCIONAL 2----------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<-----------------------RESPALDO DE GALERIA------------------------>
+
+
+@extends('web.index')
+@section('content')
+
+<div class="container-fluid fondo-quint" style="background: #ffffff;">
+    <div class="sixteen columns" style="background: #ffffff;">
+        <div class="sub-text link-svgline">
+
+            @if(count($secciones)>0)
+        @foreach($secciones as $sec)
+        @if(($sec->section)=='galeria')
+
+                {!! $sec->title !!}
+
+        {!! $sec->subtitle !!}
+
+        @endif
+        @endforeach
+        @else
+        No configurado
+        @endif
+        </div>
+    </div>
+    <div class="row " style="position: relative;top: -90px; background: #ffffff;">
+        <div class="col-md-12 gal-container" style="margin-top:0px;">
+            <div class="work">
+                <div class="category-buttons">
+                    @if(count($categories)>0)
+                    <a class="active all" data-group="all" href="#">
+                        Todas
+                    </a>
+                    @foreach($categories as $category)
+                    <a data-group="{{ $category->category }}" href="#">
+                        {{ $category->category }}
+                    </a>
+                    @endforeach
+                    @else
+                    No configurado la sección de categorias
+                    @endif
+                </div>
+                <div class="grid gal-item" id="grid">
+                    @if(count($galleries)>0)
+                    @foreach($galleries as $galery)
+
+                    <a class="card" data-groups="{{ $galery->Category->category }}," href="#" data-toggle="modal" data-target="#{{ $galery->Category->category }}">
+                        <img class="example-image" src="{{ asset($galery->img) }}"/>
+                        <div class="title">
+                            <p>{{ str_limit($galery->intro,50) }}</p> {{ $galery->Category->category }}
+                        </div>
+                    </a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="{{ $galery->Category->category }}" role="dialog">
+                        <div class="modal-dialog">
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <div class="modal-body">
+                                <img src="{{ asset($galery->img) }}" style="width: 100%; height: auto;">
+                            </div>
+                            <div class="col-md-12 description">
+                              <a href="{{url('DetallGalleryItem', ['id' => $galery->id])}}">
+                                @if(empty($gallery->intro))
+                                <p><h4>{{  str_limit($galery->title,60)  }}</h4></p>
+                                @else
+                                <p><h4>{{  str_limit($galery->intro,60)  }}</h4></p>
+                                @endif
+                              </a>
                           </div>
                       </div>
-                  </li>
-              </ul>
-          </li>
-      </ul>
+                  </div>
+              </div>
+              <!--fin modal-->
+
+              @endforeach
+              @else
+              No configurado la sección de galegia
+              @endif
+
+
+              <div class="guide">
+              </div>
+          </div>
+      </div>
   </div>
 </div>
 </div>
 
-<style type="text/css">
-.logo_header{
-    max-width: 40%; 
-    height: auto; 
-}
+@stop
+
+
+
+<-----------------------FIN RESPALDO DE GALERIA-------------------->
 
 
 
 
-.search_div {
-    padding: 5px 0;
-    width: 115px;
-    height: 30px;
-    position: relative;
-    left: 10px;
-    float: left;
-    line-height: 22px;
-    padding: 
-}
 
-.search_div input.buscarcampo {
-    position: absolute;
-    width: 0px;
-    float: left;
-    margin-left: 75px;
-    -webkit-transition: all 0.7s ease-in-out;
-    -moz-transition: all 0.7s ease-in-out;
-    -o-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out;
-    height: 30px;
-    line-height: 18px;
-    padding: 0 2px 0 2px;
-    border-radius:1px;
-    top: 11px;
-}
 
-.search_div:hover input.buscarcampo, .search_div input.buscarcampo:focus {
-    width: 200px;
-    margin-left: -100px;
-}
 
-.postbutton {
-    height: 30px;
-    position: absolute;
-    right: 0;
-    top: 0px;
-    border-radius:2px;
-    border-color: #00CDF8;
-    background-color:#00CDF8;
-    margin: 11px;
-}
-.postbutton:hover{    
-    border-radius:2px;
-    border-color: #93CB00;
-    background-color:#93CB00;
-}
-</style>
+
+
+
+
+
+
+
+
+

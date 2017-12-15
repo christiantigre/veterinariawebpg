@@ -3184,3 +3184,48 @@ div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-righ
     .section{width:104%;}
     .menu-items{padding-left:0;}
 }
+
+#exTab1{   
+  padding-bottom: 50px;
+  
+}
+#exTab1 ul li a{
+    color: #93CB00 !important;
+}
+#exTab1 ul li.active a{
+    background-color: #93CB00 !important;
+    color: #ffffff !important;
+}
+#exTab1 a.tab-class:hover{
+  background-color: #93CB00;
+    color: #ffffff !important;
+}
+
+#exTab1 .tab-content {
+  color : white;
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #93CB00;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: #93CB00;
+  padding : 5px 15px;
+}

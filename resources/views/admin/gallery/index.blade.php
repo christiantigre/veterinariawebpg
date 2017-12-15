@@ -61,7 +61,7 @@
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
                                                         'title' => 'Delete Gallery',
-                                                        'onclick'=>'return confirm("Confirm delete?")'
+                                                        'onclick'=>'return confirm("Desea eliminar?")'
                                                 )) !!}
                                             {!! Form::close() !!}
                                         </td>
