@@ -29,14 +29,30 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Imagen</th><th>Titulo</th><th>Introducción</th><th>Acciónes</th>
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Titulo</th>
+                                        <th>Introducción</th>
+                                        <th>Estado</th>
+                                        <th>Acciónes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($slider as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td><img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo brand-centered"></td><td>{{ $item->title }}</td><td>{!! str_limit($item->intro,50) !!}</td>
+                                        <td>
+                                            <img src="{{ asset($item->img) }}" class="navbar-brand navbar-brand-logo brand-centered">
+                                        </td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{!! str_limit($item->intro,50) !!}</td>
+                                            <td>
+                                                @if(($item->activo)=='1')
+                                    <small class="label label-success">Activo</small>
+                                    @else
+                                    <small class="label label-danger">Inactivo</small>
+                                    @endif
+                                            </td>
                                         <td>
                                             <a href="{{ url('/admin/slider/' . $item->id) }}" title="View Slider"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/slider/' . $item->id . '/edit') }}" title="Edit Slider"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

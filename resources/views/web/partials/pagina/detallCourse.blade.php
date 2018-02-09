@@ -136,6 +136,15 @@ $url= $_SERVER["REQUEST_URI"];
 </div>
 @endif
 
+
+<div class="col-md-3">
+<div class="group">
+    <a href="{{ url('suscribirse',$course->id) }}" class="btn btn-success " title="Separar mi cupo en este curso">Separar Cupo 
+        <span class="glyphicon glyphicon-pencil"></span>
+    </a> 
+</div>
+</div>
+
 @include('web.partials.pagina.cajas.likecompartir')
 
 

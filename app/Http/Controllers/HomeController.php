@@ -61,7 +61,7 @@ class HomeController extends Controller
             $user = '';
         }
         $veterinary   = Veterinary::where('id', 1)->orderBy('name', 'desc')->get();
-        $slider       = Slider::orderBy('id', 'desc')->get();
+        $slider       = $slider       = Slider::orderBy('id', 'desc')->where('visible_slider', 1)->where('activo', 1)->get();        
         $cards        = Card::orderBy('id', 'desc')->where('visible', 1)->get();
         $socios       = Socio::orderBy('id', 'desc')->get();
         $notes        = Note::orderBy('id', 'desc')->where('visible', 1)->get();
